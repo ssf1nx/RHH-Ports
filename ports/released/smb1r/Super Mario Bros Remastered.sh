@@ -24,9 +24,10 @@ TARGET_ROM="$CONFDIR/baserom.nes"
 
 # CD and set up log and permissions
 cd "$GAMEDIR"
-> "$GAMEDIR/log.txt" 2>/dev/null
-exec >/dev/null 2>&1
+exec > "$GAMEDIR/log.txt" 2>&1
 $ESUDO chmod +rwx "$GAMEDIR/SMB1R.arm64"
+$ESUDO chmod +rwx "$GAMEDIR/splash"
+
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
@@ -64,10 +65,10 @@ find_and_copy_rom() {
                 tmpnes=$(mktemp)
                 unzip -p "$zip" "$nes_file" > "$tmpnes" 2>/dev/null
                 md5=$(md5sum "$tmpnes" | awk '{print $1}')
-                rm -f "$tmpnes"
                 if [ "$md5" = "$VALID_MD5" ]; then
                     echo "Valid ROM found inside zip: $zip -> $nes_file"
                     cp "$tmpnes" "$TARGET_ROM"
+                    rm -f "$tmpnes"
                     found=1
                     break 2
                 fi
@@ -169,6 +170,5 @@ $ESUDO env $weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
 $ESUDO $weston_dir/westonwrap.sh cleanup
 if [ "$PM_CAN_MOUNT" != "N" ]; then
     $ESUDO umount "$weston_dir"
-    $ESUDO umount "$godot_dir"
 fi
 pm_finish
