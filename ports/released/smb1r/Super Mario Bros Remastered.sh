@@ -130,7 +130,7 @@ update_check() {
 
 	if [ $download_needed -eq 1 ]; then
 		[ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
-		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 8000 &
+		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 16000 &
 		echo "Downloading SMB1R.pck..."
 		if curl -L -o "$local_pck" "$remote_url"; then
 			chmod +r "$local_pck"
