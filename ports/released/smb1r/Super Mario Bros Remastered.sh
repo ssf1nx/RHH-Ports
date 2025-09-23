@@ -94,6 +94,25 @@ find_and_copy_rom() {
 	exit 1
 }
 
+# --- PCK verification ---
+verify_pck() {
+    local file="$1"
+    if [ ! -f "$file" ]; then
+        echo "Missing PCK file: $file"
+        return 1
+    fi
+
+    # Read first 4 bytes (should be "GDPC")
+    local magic
+    magic=$(head -c4 "$file" | od -An -t x1 | tr -d ' \n')
+
+    if [ "$magic" != "47445043" ]; then
+        echo "Invalid PCK: bad header (expected GDPC)."
+        return 1
+    fi
+    return 0
+}
+
 # --- Check for PCK updates ---
 update_check() {
 	remote_url="https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/SMB1R.pck"
@@ -128,19 +147,25 @@ update_check() {
 		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 8000 &
 	fi
 
-	if [ $download_needed -eq 1 ]; then
-		[ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
-		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 16000 &
-		echo "Downloading SMB1R.pck..."
-		if curl -L -o "$local_pck" "$remote_url"; then
-			chmod +r "$local_pck"
-			echo "$remote_etag" > "$etag_file"
-			echo "Download complete."
-		else
-			echo "Failed to download SMB1R.pck — please check your internet connection!"
-			[ ! -f "$local_pck" ] && exit 1
-		fi
-	fi
+    if [ $download_needed -eq 1 ]; then
+        [ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
+        $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 16000 &
+        echo "Downloading SMB1R.pck..."
+        if curl -L --max-time 20 --retry 3 -o "$local_pck" "$remote_url"; then
+            chmod +r "$local_pck"
+            if verify_pck "$local_pck"; then
+                echo "$remote_etag" > "$etag_file"
+                echo "Download complete and verified as valid Godot PCK."
+            else
+                echo "Downloaded file is not a valid Godot PCK! Aborting."
+                rm -f "$local_pck"
+                exit 1
+            fi
+        else
+            echo "Failed to download SMB1R.pck — please check your internet connection!"
+            [ ! -f "$local_pck" ] && exit 1
+        fi
+    fi
 }
 
 # Run update check
