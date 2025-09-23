@@ -1,5 +1,5 @@
-# Jeod's Ports
-You can use [Download-Directory](https://download-directory.github.io/) to download specific folders in this repository without having to clone the whole thing. Downgit will download a zip archive of your desired port, which you can then copy to `PortMaster/autoinstall` folder. Once copied, running the PortMaster application will install the port for you.
+# Jeod's Retro Handheld Ports
+This repository is a large collection of ports I authored. They all require the [PortMaster Framework](https://portmaster.games/installation.html).
 
 Whether you're new to retro handhelds, a developer who came across this repository and noticed their game has a port, or a developer seeking information, I can't recommend enough this video by WULFF DEN which encapsulates the whole idea pretty well.
 
@@ -16,6 +16,11 @@ Whether you're new to retro handhelds, a developer who came across this reposito
   </table>
 </div>
 
+## Port Installation
+You can use the [https://jeodc.github.io/RHH-Ports](https://jeodc.github.io/RHH-Ports/) website frontend to download specific ports. Clicking the blue Download button on a port will download a zip archive of the port, which you can then copy to `PortMaster/autoinstall` folder. 
+
+Once copied, running the PortMaster application will install the port for you including cover art and gamelist.xml metadata.
+
 ## Port Capability Requirements
 Some of the ports in this repository have minimum requirements. Be sure to check the `port.json` file for a port to see if it lists any of the following requirements:
 
@@ -29,18 +34,20 @@ Some of the ports in this repository have minimum requirements. Be sure to check
 ## Runtimes
 Some of my ports require runtimes--mounted squashfs files that contain common scripts, programs, etc. These are found in the `runtimes` folder of this repository and should be placed in `PortMaster/libs` on your device. For large runtimes (like GMToolkit), the squashfs file may be split into multiple parts. You’ll need to recombine the parts before transferring to your device. Download all the parts and, in the same folder, do one of the following:
 
-On Linux and MacOS:
+#### On Linux and MacOS:
 
 `cat gmtoolkit.squashfs.part.* > gmtoolkit.squashfs`
 
-On Windows:
+#### On Windows:
 
 cmd: `copy /b gmtoolkit.squashfs.part.001 + gmtoolkit.squashfs.part.002 + gmtoolkit.squashfs.part.003 gmtoolkit.squashfs`
 
 powershell: `Get-ChildItem -Filter "gmtoolkit.squashfs.part.*" | Sort-Object Name | Get-Content -Encoding Byte -ReadCount 0 | Set-Content gmtoolkit.squashfs -Encoding Byte`
 
 ## Keeping up
-You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/RHH-Ports/commits/main) for the format `[PORTNAME] Move to released folder`. You can also browse the [unreleased](https://github.com/JeodC/RHH-Ports/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
+You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/RHH-Ports/commits/main). I always prepend my commits with `[PORTNAME]` so it's easy to see what the commit most affects.
+
+You can also browse the [unreleased](https://github.com/JeodC/RHH-Ports/tree/main/ports/unreleased) folder to see what I'm working on. If you star and watch this repository, you'll get GitHub notifications when I make changes.
 
 ## Contributing
 If you see potential for improvements to my ports, I'm open to suggestions and pull requests--especially for unreleased ports, which are either in progress or in limbo for one reason or another. Please do not open issues to suggest new ports unless you're certain they can be ported. Although, if you're certain a game can be ported, why not do it yourself?
