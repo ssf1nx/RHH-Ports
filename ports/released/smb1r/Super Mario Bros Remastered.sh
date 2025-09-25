@@ -32,6 +32,23 @@ $ESUDO chmod +rwx "$GAMEDIR/tools/crc32.py"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export GODOT_SILENCE_ROOT_WARNING=1
 
+gl_test() {
+    # Extract the OpenGL version number (e.g., "4.6" or "3.3")
+    version=$(glxinfo | grep -oP 'OpenGL version string: \K[0-9]+\.[0-9]+' | head -n 1)
+
+    # Split into major and minor version
+    major=${version%%.*}
+    minor=${version#*.}
+
+    # Check if it's at least 3.3
+    if [ "$major" -lt 3 ] || { [ "$major" -eq 3 ] && [ "$minor" -lt 3 ]; }; then
+        # Dead Cells doesn't use geometry shaders, so let's fake the version.
+        export MESA_GL_VERSION_OVERRIDE=3.3
+        export MESA_GLSL_VERSION_OVERRIDE=330
+        export MESA_NO_ASYNC_COMPILE=1
+    fi
+}
+
 # --- ROM detection & validation (CRC32) ---
 find_and_copy_rom() {
 	VALID_CRC32S=("3337EC46" "393A432F")
@@ -175,6 +192,9 @@ update_check
 if [ ! -f "$GAMEDIR/config/baserom.nes" ]; then
     find_and_copy_rom
 fi
+
+# Run the GL test
+gl_test
 
 # Mount Weston runtime
 weston_dir=/tmp/weston
