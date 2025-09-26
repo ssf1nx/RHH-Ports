@@ -3,8 +3,6 @@ You must provide a copy of Super Mario Bros. for the NES. The launchscript will 
 
 The launchscript is designed to check for updates to `SMB1R.pck` if there is an active internet connection.
 
-**THIS PORT WILL NOT RUN WITH ARKOS!!**
-
 ## Usage
 Controls and modernization options can be set in the settings menu. The port relies on GPToKeyB controls.
 

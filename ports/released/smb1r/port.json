@@ -26,12 +26,10 @@
 	],
     "store": [],
     "availability": "paid",
-    "reqs": [
-	  "!arkos"
-	],
+    "reqs": [],
     "arch": [
       "aarch64"
     ],
-    "min_glibc": "2.36"
+    "min_glibc": ""
   }
 }

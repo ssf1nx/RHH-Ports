@@ -24,14 +24,21 @@ CONFDIR="$GAMEDIR/config"
 # CD and set up log and permissions
 cd "$GAMEDIR"
 exec > "$GAMEDIR/log.txt" 2>&1
-$ESUDO chmod +rwx "$GAMEDIR/SMB1R.arm64"
-$ESUDO chmod +rwx "$GAMEDIR/tools/splash"
-$ESUDO chmod +rwx "$GAMEDIR/tools/crc32.py"
+$ESUDO chmod +x "$GAMEDIR/SMB1R.arm64"
+$ESUDO chmod +x "$GAMEDIR/tools/splash"
+$ESUDO chmod +r "$GAMEDIR/tools/crc32.py"
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export GODOT_SILENCE_ROOT_WARNING=1
 
+# -- Display splash --
+display_splash() {
+    [ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
+    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 16000 &
+}
+
+# -- GL Test --
 gl_test() {
     # Extract the OpenGL version number (e.g., "4.6" or "3.3")
     version=$(glxinfo | grep -oP 'OpenGL version string: \K[0-9]+\.[0-9]+' | head -n 1)
@@ -132,64 +139,75 @@ verify_pck() {
 
 # --- Check for PCK updates ---
 update_check() {
-	remote_url="https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/SMB1R.pck"
-	local_pck="$GAMEDIR/SMB1R.pck"
-	etag_file="$GAMEDIR/.SMB1R.pck.etag"
-	SPLASH="splash.png"
+    # URLs for latest files
+    remote_pck_url="https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/SMB1R.pck"
+    remote_bin_url="https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/SMB1R.arm64"
 
-	echo "Checking for PCK updates..."
+    local_pck="$GAMEDIR/SMB1R.pck"
+    local_bin="$GAMEDIR/SMB1R.arm64"
+    etag_pck_file="$GAMEDIR/.SMB1R.pck.etag"
+    etag_bin_file="$GAMEDIR/.SMB1R.arm64.etag"
+    SPLASH="splash.png"
 
-	remote_etag=$(curl -sI -L "$remote_url" | grep -i '^etag:' | cut -d'"' -f2)
+    echo "Checking for updates..."
 
-	if [ -z "$remote_etag" ]; then
-		echo "Could not determine remote ETag. Skipping PCK update check."
-		[ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
-		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 8000 &
-		return
-	fi
+    # --- Helper function to check & download a file ---
+    check_and_update_file() {
+        local remote_url="$1"
+        local local_file="$2"
+        local etag_file="$3"
 
-	download_needed=0
-
-	if [ ! -f "$local_pck" ]; then
-		echo "SMB1R.pck is missing. Will download latest."
-		SPLASH="update.png"
-		download_needed=1
-	elif [ ! -f "$etag_file" ] || [ "$remote_etag" != "$(cat "$etag_file")" ]; then
-		echo "Newer PCK found. Will update."
-		SPLASH="update.png"
-		download_needed=1
-	else
-		echo "SMB1R.pck is up-to-date."
-		[ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
-		$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 8000 &
-	fi
-
-    if [ $download_needed -eq 1 ]; then
-        [ "$CFW_NAME" = "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 1
-        $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/tools/$SPLASH" 16000 &
-        echo "Downloading SMB1R.pck..."
-        if curl -L --max-time 20 --retry 3 -o "$local_pck" "$remote_url"; then
-            chmod +r "$local_pck"
-            if verify_pck "$local_pck"; then
-                echo "$remote_etag" > "$etag_file"
-                echo "Download complete and verified as valid Godot PCK."
-            else
-                echo "Downloaded file is not a valid Godot PCK! Aborting."
-                rm -f "$local_pck"
-                exit 1
-            fi
-        else
-            echo "Failed to download SMB1R.pck — please check your internet connection!"
-            [ ! -f "$local_pck" ] && exit 1
+        remote_etag=$(curl -sI -L "$remote_url" | grep -i '^etag:' | cut -d'"' -f2)
+        if [ -z "$remote_etag" ]; then
+            echo "Could not get remote ETag for $local_file. Skipping."
+            return
         fi
-    fi
+
+        download_needed=0
+        if [ ! -f "$local_file" ]; then
+            echo "$local_file is missing. Will download."
+            download_needed=1
+        elif [ ! -f "$etag_file" ] || [ "$remote_etag" != "$(cat "$etag_file")" ]; then
+            echo "Newer version of $local_file found. Will update."
+            download_needed=1
+        else
+            echo "$local_file is up-to-date."
+            display_splash
+        fi
+
+        if [ $download_needed -eq 1 ]; then
+            SPLASH="update.png" && display_splash
+            echo "Downloading $local_file..."
+            if curl -L --max-time 20 --retry 3 -o "$local_file" "$remote_url"; then
+                chmod +rx "$local_file"
+                echo "$remote_etag" > "$etag_file"
+                echo "$local_file downloaded and updated."
+            else
+                echo "Failed to download $local_file!"
+                [ ! -f "$local_file" ] && exit 1
+            fi
+        fi
+    }
+
+    # Check PCK
+    check_and_update_file "$remote_pck_url" "$local_pck" "$etag_pck_file" "update.png"
+
+    # Check ARM64 binary
+    check_and_update_file "$remote_bin_url" "$local_bin" "$etag_bin_file" "update.png"
 }
+
 
 # Run update check
 update_check
 
-# Run ROM search
-if [ ! -f "$GAMEDIR/config/baserom.nes" ]; then
+# Rom check
+if [ -f "$GAMEDIR/config/baserom.nes" ]; then
+    # Clean up any copied rom from previous run
+    for rom in "$GAMEDIR"/*.nes; do
+        [ -e "$rom" ] && rm -f "$rom"
+    done
+else
+    # If baserom.nes doesn't exist, search and copy ROM
     find_and_copy_rom
 fi
 
