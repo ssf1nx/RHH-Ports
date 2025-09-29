@@ -178,7 +178,7 @@ update_check() {
         if [ $download_needed -eq 1 ]; then
             SPLASH="update.png" && display_splash
             echo "Downloading $local_file..."
-            if curl -L --max-time 20 --retry 3 -o "$local_file" "$remote_url"; then
+            if curl -L -C - --retry 5 --retry-delay 5 --max-time 600 --progress-bar -o "$local_file" "$remote_url"; then
                 chmod +rx "$local_file"
                 echo "$remote_etag" > "$etag_file"
                 echo "$local_file downloaded and updated."
