@@ -1599,7 +1599,7 @@
     "genres": [
       "platformer"
     ],
-    "availability": "paid",
+    "availability": "free",
     "store": [],
     "instructions": "You must provide a copy of Super Mario Bros. for the NES. The launchscript will search for the rom in the port folder and in your `roms/nes` folder.",
     "runtime": [
@@ -1611,7 +1611,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-09-29T21:49:26.749Z",
+    "last_modified": "2025-09-30T16:35:48.502Z",
     "requirements": ""
   },
   {
