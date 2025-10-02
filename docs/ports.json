@@ -934,14 +934,16 @@
     "availability": "free",
     "store": [],
     "instructions": "Download the game from  [GameJolt](https://gamejolt.com/games/MslugSBFan/478697) and put all the files from the `Files` folder (the one with all the audiogroups) into the `ports/mslugsbf/assets` folder.",
-    "runtime": [],
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
     "exp": false,
     "rtr": false,
     "arch": [
-      "armhf"
+      "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-07-08T20:24:28.421Z",
+    "last_modified": "2025-10-02T12:52:14.982Z",
     "requirements": ""
   },
   {
@@ -2039,7 +2041,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-06-25T11:53:18.480Z",
+    "last_modified": "2025-10-02T12:27:16.020Z",
     "requirements": ""
   },
   {
