@@ -23,7 +23,7 @@ For the more technically inclined, here are specific modifications made in order
     - Remove/hide the scale options and the CRT shader options, since CRT shaders do not work on 1x scale
     
 ## Modding
-The UFO50 community has a number of mods that can work with the game. Most of them can be found on the [UFO50 Community Discord](https://50games.fans).
+The UFO50 community has a number of mods that can work with the game. Most of them can be found on the [UFO50 Community Discord](https://50games.fans) or [Gamebanana](https://gamebanana.com/mods/games/23000).
 
 To use them, you will want to do the following:
 
