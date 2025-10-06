@@ -1,48 +1,23 @@
-function scrSetDisplayDefaults(arg0)
+var _dwidth, _dheight;
+
+_dwidth = window_get_width();
+_dheight = window_get_height();
+display_set_gui_size(_dheight * global.screenRatio, _dheight);
+
+if (window_get_fullscreen())
+    display_set_gui_maximize(1, 1, 0, 0);
+
+if (do_screen)
 {
-    var _defaultDispBordered = false;
-    var _defaultFullscreen = true;
-    var _defaultIntegerScale = false;
-    var _defaultScanlines = 0;
-    _defaultFilter = true;
+    if (_dwidth != global.lastWindowWidth || _dheight != global.lastWindowHeight)
+        scrScaleDisplay();
     
-    if (arg0)
-    {
-        scrOpenConfig();
-        global.dispBordered = scrReadConfig("dispBordered", _defaultDispBordered);
-        global.fullscreen = scrReadConfig("fullscreen", _defaultFullscreen);
-        global.integerScale = scrReadConfig("integerScale", _defaultIntegerScale);
-        global.dispFilter = scrReadConfig("filter", _defaultFilter);
-        window_enable_borderless_fullscreen(!global.dispBordered);
-        window_set_fullscreen(global.fullscreen);
-        global.scale = scrReadConfig("scale", global.scaleMax);
-        
-        if (!global.fullscreen)
-        {
-            window_set_size(global.SCREEN_WIDTH * global.scale, global.SCREEN_HEIGHT * global.scale);
-            window_set_showborder(global.dispBordered);
-        }
-        
-        global.scanlines = scrReadConfig("scanlines", _defaultScanlines);
-        scrCloseConfig();
-    }
-    else
-    {
-        global.dispBordered = _defaultDispBordered;
-        global.fullscreen = _defaultFullscreen;
-        global.integerScale = _defaultIntegerScale;
-        global.dispFilter = _defaultFilter;
-        window_enable_borderless_fullscreen(!global.dispBordered);
-        window_set_fullscreen(global.fullscreen);
-        prevFullScreen = window_get_fullscreen();
-        global.scale = global.scaleMax;
-        
-        if (!global.fullscreen)
-        {
-            window_set_size(global.SCREEN_WIDTH * global.scale, global.SCREEN_HEIGHT * global.scale);
-            window_set_showborder(global.dispBordered);
-        }
-        
-        global.scanlines = _defaultScanlines;
-    }
+    gpu_set_tex_filter(global.dispFilter);
+    draw_clear(c_black);
+    draw_surface_stretched(application_surface, global.scaleScreenX, global.scaleScreenY, global.scaleScreenWidth, global.scaleScreenHeight);
+    gpu_set_tex_filter(false);
+}
+else
+{
+    do_screen = true;
 }
