@@ -4,7 +4,7 @@ From Paul Hubans, one of the developers behind UFO 50, MADHOUSE is a horror acti
 WARNING! This game contains depictions of violence and foul language!
 
 ## Installation
-Download the DEMO from Steam and add the game files to `madhouse/assets`. Wishlist the game!
+Download the demo or early access game from Steam and add the game files to `madhouse/assets`.
 
 ## Default Gameplay Controls (Xbox Layout)
 | Button            | Action |

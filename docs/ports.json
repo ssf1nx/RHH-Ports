@@ -897,7 +897,7 @@
       "action",
       "rpg"
     ],
-    "availability": "free",
+    "availability": "paid",
     "store": [
       {
         "name": "Steam",
@@ -905,8 +905,9 @@
         "developerurl": ""
       }
     ],
-    "instructions": "Download the DEMO from Steam and add the game files to `madhouse/assets`. Wishlist the game!",
+    "instructions": "Download the demo or early access game from Steam and add the game files to `madhouse/assets`.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
@@ -915,7 +916,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-09-30T15:56:18.544Z",
+    "last_modified": "2025-10-12T12:46:47.595Z",
     "requirements": "!lowpower"
   },
   {

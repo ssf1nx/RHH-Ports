@@ -13,7 +13,7 @@
     ],
     "desc": "MADHOUSE is a horror action RPG where chibi characters slash and blast enemies in blood-soaked combat. Explore a dreary open world in the story campaign, or fight friends in the chaotic local 4-player versus mode. With retro pixel art and punk horror grit, it delivers macabre, thrilling action. WARNING! This game contains depictions of violence and foul language!",
     "desc_md": null,
-    "inst": "Download the DEMO from Steam and add the game files to `madhouse/assets`. Wishlist the game!",
+    "inst": "Download the demo or early access game from Steam and add the game files to `madhouse/assets`.",
     "inst_md": null,
     "genres": [
       "action",
@@ -23,6 +23,7 @@
     "rtr": false,
     "exp": false,
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
 	],
     "store": [
@@ -32,7 +33,7 @@
         "developerurl": ""
       }
     ],
-    "availability": "free",
+    "availability": "paid",
     "reqs": [
       "!lowpower"
 	],
