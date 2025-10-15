@@ -979,7 +979,7 @@
     "title": "Mystik Belle",
     "description": "A Metroidvania with Point and Click style elements like Psychonauts.\nHelp Belle fix the mystic Walpurgisnacht Brew by finding three rare magical ingredients in order to clear her name.",
     "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/mystikbelle",
-    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/screenshot.jpg",
+    "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/screenshot.png",
     "porter": [
       "Pridetoons",
       "Jeod",
@@ -993,15 +993,16 @@
     "store": [],
     "instructions": "Download the Linux version through Steam with `download_depot 332610 332613 3942707501747355559` and add the contents of the `assets` folder to `mystikbelle/assets`.",
     "runtime": [
+      "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
     "exp": false,
     "rtr": false,
     "arch": [
-      "armhf"
+      "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-09-26T22:09:33.340Z",
+    "last_modified": "2025-10-15T16:23:02.259Z",
     "requirements": ""
   },
   {

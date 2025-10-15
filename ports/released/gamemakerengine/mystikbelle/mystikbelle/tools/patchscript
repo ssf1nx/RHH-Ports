@@ -8,99 +8,168 @@ LOGERR="patcherr.txt"
 > "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
-# Patch failure function
-patch_failure() {
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-    # Exit script, or return if sourced
-    return 1 2>/dev/null || exit 1
-}
-
-# Mount the GMToolkit runtime
-TOOLKIT="$HOME/gmtoolkit"
-RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
-if [ -f "$RUNTIME" ]; then
-    $ESUDO mkdir -p "$TOOLKIT"
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-    $ESUDO mount "$RUNTIME" "$TOOLKIT"
-else
-    echo "This port requires the GMToolkit runtime. Please download it."
-    sleep 2
-    patch_failure
-fi
-
 # Exports
-export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
-export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
 export DATAFILE="mystikbelle.port"
 export TMPDIR="$GAMEDIR/tmp"
 
-# Permissions
-chmod 666 /dev/uinput
-
-cd "$GAMEDIR"
-
-# Set up trap for cleaning TMPDIR on exit
-trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
-
-# Attempt to get SAVEDIR from gmloader.json using jq
-if command -v jq >/dev/null 2>&1; then
-    SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
-else
-    SAVEDIR="$GAMEDIR/saves"
-fi
-
-# Test for commands: python, zip
-PYTHON=$(which python3)
-if [ -z "$PYTHON" ]; then
-    echo "Missing Python!"
-    patch_failure
-fi
-
-ZIP=$(which zip)
-if [ -z "$ZIP" ]; then
-    echo "Missing zip!"
-    patch_failure
-fi
-
-compress_audio() {
-    mkdir -p "$TMPDIR"
-
-    # Run the compression tool
+prepare_system() {
+    # Test for commands: python, zip
     PYTHON=$(which python3)
-    echo "Running GMTools on data and audiogroups."
-    $PYTHON ./tools/gmKtool.py -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"
-
-    if [ $? -eq 0 ]; then
-        echo "Compression completed successfully."
-        mv "$TMPDIR/"* "$DATADIR"
-        echo "Moved compressed files to $DATADIR."
-        rmdir "$TMPDIR"
-        echo "Temporary directory $TMPDIR removed."
-        echo "Audio compression applied successfully."
+    if [ -z "$PYTHON" ]; then
+        echo "Missing Python!"
+        return 1
+    fi
+    
+    # Mount the GMToolkit runtime
+    TOOLKIT="$HOME/gmtoolkit"
+    RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
+    if [ -f "$RUNTIME" ]; then
+        $ESUDO mkdir -p "$TOOLKIT"
+        $ESUDO umount "$TOOLKIT" 2>/dev/null || true
+        $ESUDO mount "$RUNTIME" "$TOOLKIT"
     else
-        echo "Audio compression failed."
-        echo "Cleaning up temporary directory $TMPDIR."
-        rm -rf "$TMPDIR"
+        echo "This port requires the GMToolkit runtime. Please download it."
+        return 1
+    fi
+
+    # Mount the dotnet runtime
+    DOTNETDIR="$HOME/mono"
+    DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
+    if [ -f "$DOTNETFILE" ]; then
+        $ESUDO mkdir -p "$DOTNETDIR"
+        $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
+    else
+        echo "This port requires the Dotnet runtime. Please download it."
+        return 1
+    fi
+    
+    # Attempt to get SAVEDIR from gmloader.json using jq
+    if command -v jq >/dev/null 2>&1; then
+        SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
+    else
+        SAVEDIR="$GAMEDIR/saves"
+    fi
+    
+    # Exports
+    export PYTHON
+    export SAVEDIR
+    export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+    export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
+}
+
+prepare_files() {
+    mkdir -p "$SAVEDIR"
+    
+    # Delete excess files
+    find "$DATADIR" -type f \( \
+        -name "*.gitkeep" -o -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
+        -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
+    \) -exec rm -f {} \;
+
+    # Move splash file if it exists
+    if [ -f "$DATADIR/splash.png" ]; then
+        mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
+    fi
+    
+    # Rename game.unx
+    if [ -f "$DATADIR/game.unx" ]; then
+        mv "$DATADIR/game.unx" "$DATADIR/data.win"
+    fi
+
+    # Check if we're using a prepatched game
+    if unzip -l "$DATAFILE" "assets/*" | grep -q "assets/.*\.dat"; then
+        echo "Prepatched game detected."
+        PREPATCH=1
+        unzip_audiogroups || { cleanup; return 1; }
     fi
 }
 
+# Unzip audiogroups
+unzip_audiogroups() {
+    # Unzip from $DATAFILE into $DATADIR
+    echo "Unzipping ${DATAFILE}..."
+    mkdir -p assets
+    "$controlfolder/7zzs.${DEVICE_ARCH}" e -y "$DATAFILE" "assets/*.dat" -o"$DATADIR"
+    if [ $? -eq 0 ]; then
+        echo "Unzipped successfully to $DATADIR."
+    else
+        echo "Failed to unzip file."
+        return 1
+    fi
+}
+
+# Upgrade the game's bytecode to 16
+upgrade_bytecode() {
+    # Purge cache before operations
+    rm -rf "$TMPDIR/"*
+    
+    # Run script
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+        load "$DATADIR/data.win" \
+        -s "$GAMEDIR/tools/bytecode.csx" \
+        -o "$DATADIR/data2.win"
+
+    if [ $? -ne 0 ]; then
+        echo "[DOTNET]: Couldn't apply bytecode upgrade."
+        return 1
+    else
+        rm -f "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
+        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+    fi
+}
+
+# Toggle GeneralInfo flags via envars - see https://github.com/UnderminersTeam/UndertaleModTool/blob/master/UndertaleModLib/Models/UndertaleGeneralInfo.cs for options
+set_flags() {
+    export SET_FLAGS="Fullscreen"
+    export CLEAR_FLAGS="Scale"
+    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
+        load "$DATADIR/data.win" \
+        -s "$GAMEDIR/tools/toggleflags.csx" \
+        -o "$DATADIR/game.droid"
+        
+    if [ $? -ne 0 ]; then
+        echo "Failed to toggle info flags."
+        return 1
+    else
+        echo "Successfully toggled info flags."
+        rm -f "$DATADIR/data.win"
+        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+    fi
+}
+
+# Zip it all into the .port file
 zip_archive() {
-        zip -r -0 $DATAFILE ./assets/
-        rm -rf ./assets
+    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
+        for f in "$DATADIR"/*; do
+            case "$f" in
+                *.ogg) ;;
+                *) rm -rf "$f" ;;
+            esac
+        done
+    else
+        echo "Failed to create $DATAFILE."
+        return 1
+    fi
+}
+
+# Cleanup function
+cleanup() {
+    rm -rf "$TMPDIR"
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
 }
 
 process_game() {
-    # Delete unnecessary files
-    rm -rf $DATADIR/*.exe $DATADIR/*.dll $DATADIR/.gitkeep
-    mv "$DATADIR/game.unx" "$DATADIR/game.droid"
-    mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
-    echo "Removed unnecessary files"
-    sleep 1
-    echo "Compressing audio..."
-    compress_audio || { patch_failure; return 1; }
+    echo "Preparing system..."
+    prepare_system || { cleanup; return 1; }
+    echo "Preparing game..."
+    prepare_files || { cleanup; return 1; }
+    echo "Upgrading game bytecode..."
+    upgrade_bytecode || { cleanup; return 1; }
+    echo "Toggling GeneralInfo flags..."
+    set_flags || { cleanup; return 1; }
     echo "Finishing up..."
     zip_archive || { patch_failure; return 1; }
 }
@@ -113,6 +182,5 @@ else
     echo "Patching process complete!"
 fi
 
-# Unmount runtimes
-$ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-$ESUDO umount "$TOOLKIT" 2>/dev/null || true
+# Always run cleanup at the end
+cleanup

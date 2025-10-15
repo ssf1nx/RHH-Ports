@@ -19,22 +19,26 @@ get_controls
 # Variables
 GAMEDIR="/$directory/ports/mystikbelle"
 
-# CD and set permissions
+# CD and set logging
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +x -R $GAMEDIR/*
+
+# Setup permissions
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
+$ESUDO chmod +xr "$GAMEDIR/tools/splash"
 
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
-# Check if patchlog.txt to skip patching
-if [ ! -f patchlog.txt ]; then
+# Check if we need to patch the game
+if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/game.unx" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
-        export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
+        export PATCHER_GAME="$(basename "${0%.*}")"
         export PATCHER_TIME="2 to 5 minutes"
         export controlfolder
         export ESUDO
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else
@@ -42,21 +46,16 @@ if [ ! -f patchlog.txt ]; then
     fi
 fi
 
-# Post patcher setup
-export PORT_32BIT="Y" # Declared here since patcher needs 64bit drivers for audio
-[ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
-export LD_LIBRARY_PATH="/usr/lib32:$GAMEDIR/lib:$LD_LIBRARY_PATH"
-
 # Display loading splash
 if [ -f "$GAMEDIR/patchlog.txt" ]; then
-    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1 
-    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 4000 &
+    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
+    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
 fi
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext.armhf" -c "mystikbelle.gptk" &
-pm_platform_helper "$GAMEDIR/gmloadernext.armhf" > /dev/null
-./gmloadernext.armhf -c gmloader.json
+$GPTOKEYB "gmloadernext.aarch64" -c "mystikbelle.gptk" &
+pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
+./gmloadernext.aarch64 -c gmloader.json
 
 # Cleanup
 pm_finish
