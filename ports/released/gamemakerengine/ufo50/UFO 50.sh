@@ -36,6 +36,7 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
         export PATCHER_TIME="20 to 30 minutes"
         export controlfolder
         export ESUDO
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else

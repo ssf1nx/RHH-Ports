@@ -37,6 +37,7 @@ if [ ! -f patchlog.txt ]; then
         export PATCHER_TIME="10 to 15 minutes"
         export controlfolder
         export ESUDO
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else

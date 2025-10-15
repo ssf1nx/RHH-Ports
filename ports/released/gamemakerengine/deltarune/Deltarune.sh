@@ -57,6 +57,7 @@ check_patch() {
             export PATCHER_TIME="a while"
             export controlfolder
             export ESUDO
+            export DEVICE_ARCH
             source "$controlfolder/utils/patcher.txt"
             $ESUDO umount "$DOTNETDIR"
         else

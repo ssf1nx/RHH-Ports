@@ -10,9 +10,7 @@ elif [ -d "$XDG_DATA_HOME/PortMaster/" ]; then
   controlfolder="$XDG_DATA_HOME/PortMaster"
 else
   controlfolder="/roms/ports/PortMaster"
-fi
-
-export controlfolder 
+fi 
 
 source $controlfolder/control.txt
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
@@ -40,6 +38,7 @@ if [ ! -f patchlog.txt ] || [ -f $GAMEDIR/assets/data.win ]; then
         export PATCHER_TIME="2 to 5 minutes"
         export controlfolder
         export ESUDO
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else

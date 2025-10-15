@@ -38,6 +38,7 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
         export PATCHER_TIME="a while"
         export controlfolder
         export ESUDO
+        export DEVICE_ARCH
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else

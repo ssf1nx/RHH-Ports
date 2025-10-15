@@ -20,12 +20,6 @@ prepare_system() {
         echo "Missing Python!"
         return 1
     fi
-
-    ZIP=$(which zip)
-    if [ -z "$ZIP" ]; then
-        echo "Missing zip!"
-        return 1
-    fi
     
     # Mount the GMToolkit runtime
     TOOLKIT="$HOME/gmtoolkit"
@@ -60,7 +54,6 @@ prepare_system() {
     
     # Exports
     export PYTHON
-    export ZIP
     export SAVEDIR
     export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
@@ -78,6 +71,27 @@ prepare_files() {
     # Move splash file if it exists
     if [ -f "$DATADIR/splash.png" ]; then
         mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
+    fi
+
+    # Check if we're using a prepatched game
+    if unzip -l "$DATAFILE" "assets/*" | grep -q "assets/.*\.dat"; then
+        echo "Prepatched game detected."
+        PREPATCH=1
+        unzip_audiogroups || { cleanup; return 1; }
+    fi
+}
+
+# Unzip audiogroups
+unzip_audiogroups() {
+    # Unzip from $DATAFILE into $DATADIR
+    echo "Unzipping ${DATAFILE}..."
+    mkdir -p assets
+    "$controlfolder/7zzs.${DEVICE_ARCH}" e -y "$DATAFILE" "assets/*.dat" -o"$DATADIR"
+    if [ $? -eq 0 ]; then
+        echo "Unzipped successfully to $DATADIR."
+    else
+        echo "Failed to unzip file."
+        return 1
     fi
 }
 
@@ -122,19 +136,36 @@ set_flags() {
     fi
 }
 
+# Compress audio files inside datafile and audiogroups
 compress_audio() {
+    # Purge cache before operations
+    rm -rf "$TMPDIR/"*
+    
     # Test for data.win
     if [ -f "$DATADIR/data.win" ]; then
         mv "$DATADIR/data.win" "$DATADIR/game.droid"
     fi
-    
-    # Do audio compression
-    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
-        mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
+
+    # Run the compression tool
+    PYTHON=$(which python3)
+    if [ "$PREPATCH" != 1 ]; then
+        echo "Running GMTools on data and audiogroups."
+        $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"
+    else
+        echo "Running GMTools on data file only."
+        $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -O 0 -m 1000 -b 64 -r -d "$TMPDIR" "$DATADIR/game.droid"
+    fi
+
+    if [ $? -eq 0 ]; then
+        echo "Compression completed successfully."
+        mv "$TMPDIR/"* "$DATADIR"
+        echo "Moved compressed files to $DATADIR."
+        rm -rf "$TMPDIR"
+        echo "Temporary directory $TMPDIR removed."
         echo "Audio compression applied successfully."
     else
         # Failure
-        echo "Audio compression failed for $GAMEFILE."
+        echo "Audio compression failed."
         rmdir "$TMPDIR"
         return 1
     fi
@@ -142,8 +173,7 @@ compress_audio() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if zip -r -0 "$DATAFILE" ./assets/; then
-        mkdir -p "$SAVEDIR"
+    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
         rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."

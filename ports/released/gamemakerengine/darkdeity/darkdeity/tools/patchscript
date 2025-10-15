@@ -10,7 +10,7 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
-export DATAFILE="PORTFILE.port"
+export DATAFILE="darkdeity.port"
 export TMPDIR="$GAMEDIR/tmp"
 
 prepare_system() {
@@ -18,12 +18,6 @@ prepare_system() {
     PYTHON=$(which python3)
     if [ -z "$PYTHON" ]; then
         echo "Missing Python!"
-        return 1
-    fi
-
-    ZIP=$(which zip)
-    if [ -z "$ZIP" ]; then
-        echo "Missing zip!"
         return 1
     fi
     
@@ -60,7 +54,6 @@ prepare_system() {
     
     # Exports
     export PYTHON
-    export ZIP
     export SAVEDIR
     export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
@@ -147,7 +140,7 @@ compress_audio() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if zip -r -0 "$DATAFILE" ./assets/; then
+    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
         rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."

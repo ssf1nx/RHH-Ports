@@ -20,16 +20,11 @@ prepare_system() {
         echo "Missing Python!"
         return 1
     fi
-
-    ZIP=$(which zip)
-    if [ -z "$ZIP" ]; then
-        echo "Missing zip!"
-        return 1
-    fi
-
-    UNZIP=$(command -v unzip)
-    if [ -z "$UNZIP" ]; then
-        echo "Missing unzip!"
+    
+    # Define 7zzs binary
+    SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
+    if [ ! -x "$SEVENZIP" ]; then
+        echo "7zzs binary not found at $SEVENZIP"
         return 1
     fi
     
@@ -44,18 +39,6 @@ prepare_system() {
         echo "This port requires the GMToolkit runtime. Please download it."
         return 1
     fi
-
-    # Mount the dotnet runtime
-    DOTNETDIR="$HOME/mono"
-    DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
-    if [ -f "$DOTNETFILE" ]; then
-        $ESUDO mkdir -p "$DOTNETDIR"
-        $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
-    else
-        echo "This port requires the Dotnet runtime. Please download it."
-        return 1
-    fi
     
     # Attempt to get SAVEDIR from gmloader.json using jq
     if command -v jq >/dev/null 2>&1; then
@@ -66,87 +49,67 @@ prepare_system() {
     
     # Exports
     export PYTHON
-    export ZIP
-    export UNZIP
     export SAVEDIR
-    export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+    export SEVENZIP
+    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 }
 
 unzip_archives() {
-    # Create am2r and am2rlauncher folders
-    mkdir -p "$DATADIR/am2r" && mkdir -p "$DATADIR/am2rpatch"
+    # Create folders
+    mkdir -p "$DATADIR/am2r" "$DATADIR/am2rpatch"
 
-    # Identify AM2R zip (has data.win in root)
+    # Identify AM2R zip (data.win in root)
     AM2R_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec sh -c '
         for file; do
-            if "$1" -l "$file" | grep -qE "^\s+[0-9]+\s+[0-9-]+\s+[0-9:]+\s+data\.win$"; then
+            if "$1" l "$file" | grep -qE "^\s+[0-9]+\s+[0-9-]+\s+[0-9:]+\s+data\.win$"; then
                 echo "$file"
                 break
             fi
         done
-    ' _ "$UNZIP" {} +)
+    ' _ "$SEVENZIP" {} +)
 
-    # Identify autopatcher zip (has AM2R-Autopatcher-Windows-master/data/ folder)
+    # Identify autopatcher zip (has AM2R-Autopatcher-Windows-master/data/)
     AUTOPATCHER_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec sh -c '
         for file; do
-            if "$1" -l "$file" | grep -q "AM2R-Autopatcher-Windows-master/data/$"; then
+            if "$1" l "$file" | grep -q "AM2R-Autopatcher-Windows-master/data/$"; then
                 echo "$file"
                 break
             fi
         done
-    ' _ "$UNZIP" {} +)
-    
+    ' _ "$SEVENZIP" {} +)
+
     AM2R16B_ZIP="AM2R_1.6b2_windows.zip"
 
-    # Check if AM2R zip was found
     if [ -z "$AM2R_ZIP" ]; then
-        echo "Error: No valid AM2R zip file found in $DATADIR (must have data.win in root)."
+        echo "Error: No valid AM2R zip file found."
         return 1
     fi
 
-    # Check if autopatcher zip was found
-    if [ -z "$AUTOPATCHER_ZIP" ]; then
-        echo "Did not find autopatcher zip. High quality sounds will be missing."
-    fi
-    
-    # Check if 1.6b patch exists
     if [ ! -f "$DATADIR/$AM2R16B_ZIP" ]; then
-        echo "AM2R 1.6b patch not found. Please add it to the assets folder."
+        echo "AM2R 1.6b patch not found."
         return 1
     fi
 
-    # Unzip AM2R zip to its folder
-    $UNZIP "$AM2R_ZIP" -d "$DATADIR/am2r" 2>/dev/null
-
-    # Unzip autopatcher zip to its folder
-    if [ -n "$AUTOPATCHER_ZIP" ]; then
-        $UNZIP "$AUTOPATCHER_ZIP" -d "$DATADIR/am2rpatch" 2>/dev/null
-        export AUTOPATCHER_ZIP
-    fi
+    # Unzip AM2R and autopatcher
+    "$SEVENZIP" x -y "$AM2R_ZIP" -o"$DATADIR/am2r" >/dev/null
+    [ -n "$AUTOPATCHER_ZIP" ] && "$SEVENZIP" x -y "$AUTOPATCHER_ZIP" -o"$DATADIR/am2rpatch" >/dev/null
 }
 
 prepare_files() {
-    # AM2R: Delete unnecessary files
-    rm -rf  "$DATADIR/am2r/"*.exe "$DATADIR/am2r/"*.dll \
-            "$DATADIR/.gitkeep" "$DATADIR/am2r/"*.txt 
-    echo "Removed unnecessary files"
-    
-    # AM2RPATCH: Move files
+    # Remove unnecessary files
+    rm -rf "$DATADIR/am2r/"*.exe "$DATADIR/am2r/"*.dll "$DATADIR/.gitkeep" "$DATADIR/am2r/"*.txt
+
+    # Apply autopatcher files if present
     if [ -n "$AUTOPATCHER_ZIP" ]; then
-        echo "Moving patch files to $DATADIR/am2r"
         cp -rf "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/files_to_copy/"* "$DATADIR/am2r/"
     fi
-    
-    # Unzip the 1.6b archive
-    $UNZIP "$DATADIR/$AM2R16B_ZIP" -d "$DATADIR/am2r16b"
-    
-    # Copy files
-    echo "Moving 1.6b2 files..."
+
+    # Unzip 1.6b patch
+    "$SEVENZIP" x -y "$DATADIR/$AM2R16B_ZIP" -o"$DATADIR/am2r16b" >/dev/null
     cp -rf "$DATADIR/am2r16b/files_to_copy/"* "$DATADIR/am2r/"
-    if [ -n "$AUTOPATCHER_ZIP" ]; then
-        cp -rf "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/HDR_HQ_in-game_music/"* "$DATADIR/am2r/"
-    fi
+    [ -n "$AUTOPATCHER_ZIP" ] && cp -rf "$DATADIR/am2rpatch/AM2R-Autopatcher-Windows-master/data/HDR_HQ_in-game_music/"* "$DATADIR/am2r/"
+
     DATA="$DATADIR/am2r/data.win"
     PATCH="$DATADIR/am2r16b/data.xdelta"
 }
@@ -195,8 +158,7 @@ clean_files() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if zip -r -0 "$DATAFILE" ./assets/; then
-        mkdir -p "$SAVEDIR"
+    if "$SEVENZIP" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
         rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."

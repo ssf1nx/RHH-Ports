@@ -8,46 +8,16 @@ LOGERR="patcherr.txt"
 > "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
-# Patch failure function
-patch_failure() {
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-    # Exit script, or return if sourced
-    return 1 2>/dev/null || exit 1
-}
-
 # Exports
-export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export DATADIR="$GAMEDIR/assets"
 export DATAFILE="madhouse.port"
 export TMPDIR="$GAMEDIR/tmp"
-
-# Permissions
-chmod 666 /dev/uinput
-
-cd "$GAMEDIR"
-
-# Set up trap for cleaning TMPDIR on exit
-trap 'rm -rf "$TMPDIR"; echo "Cleaned up temporary files." >> "$LOGFILE"' 0
-
-# Attempt to get SAVEDIR from gmloader.json using jq
-if command -v jq >/dev/null 2>&1; then
-    SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
-else
-    SAVEDIR="$GAMEDIR/saves"
-fi
 
 prepare_system() {
     # Test for commands: python, zip
     PYTHON=$(which python3)
     if [ -z "$PYTHON" ]; then
         echo "Missing Python!"
-        return 1
-    fi
-
-    ZIP=$(which zip)
-    if [ -z "$ZIP" ]; then
-        echo "Missing zip!"
         return 1
     fi
     
@@ -75,7 +45,16 @@ prepare_system() {
         return 1
     fi
     
+    # Attempt to get SAVEDIR from gmloader.json using jq
+    if command -v jq >/dev/null 2>&1; then
+        SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
+    else
+        SAVEDIR="$GAMEDIR/saves"
+    fi
+    
     # Exports
+    export PYTHON
+    export SAVEDIR
     export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 }
@@ -91,7 +70,7 @@ prepare_files() {
     if unzip -l "$DATAFILE" "assets/*" | grep -q "assets/.*\.dat"; then
         echo "Prepatched game detected."
         PREPATCH=1
-        unzip_audiogroups || { patch_failure; return 1; }
+        unzip_audiogroups || { cleanup; return 1; }
     fi
 }
 
@@ -188,8 +167,7 @@ compress_audio() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if zip -r -0 "$DATAFILE" ./assets/; then
-        mkdir -p "$SAVEDIR"
+    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
         rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."
@@ -197,20 +175,27 @@ zip_archive() {
     fi
 }
 
+# Cleanup function
+cleanup() {
+    rm -rf "$TMPDIR"
+    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
+    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
+}
+
 # Main function
 process_game() {
     echo "Preparing system..."
-    prepare_system || { patch_failure; return 1; }
+    prepare_system || { cleanup; return 1; }
     echo "Preparing game files..."
-    prepare_files || { patch_failure; return 1; }
+    prepare_files || { cleanup; return 1; }
     echo "Adding modified scripts..."
-    replace_code || { patch_failure; return 1; }
+    replace_code || { cleanup; return 1; }
     echo "Toggling GeneralInfo flags..."
-    set_flags || { patch_failure; return 1; }
+    set_flags || { cleanup; return 1; }
     echo "Compressing audio..."
-    compress_audio || { patch_failure; return 1; }
+    compress_audio || { cleanup; return 1; }
     echo "Finishing up..."
-    zip_archive || { patch_failure; return 1; }
+    zip_archive || { cleanup; return 1; }
 }
 
 # Call main
@@ -221,6 +206,5 @@ else
     echo "Patching process complete!"
 fi
 
-# Unmount runtimes
-$ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-$ESUDO umount "$TOOLKIT" 2>/dev/null || true
+# Always run cleanup at the end
+cleanup
