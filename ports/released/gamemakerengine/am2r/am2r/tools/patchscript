@@ -158,7 +158,7 @@ clean_files() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if "$SEVENZIP" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
+    if "$SEVENZIP" a -tzip -aoa -mx=0 "$GAMEDIR/$DATAFILE" "$DATADIR"; then
         rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."

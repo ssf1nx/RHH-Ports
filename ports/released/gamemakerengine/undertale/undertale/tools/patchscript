@@ -10,7 +10,7 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
-export DATAFILE="mslug.port"
+export DATAFILE="undertale.port"
 export TMPDIR="$GAMEDIR/tmp"
 
 prepare_system() {
@@ -18,18 +18,6 @@ prepare_system() {
     PYTHON=$(which python3)
     if [ -z "$PYTHON" ]; then
         echo "Missing Python!"
-        return 1
-    fi
-    
-    # Mount the GMToolkit runtime
-    TOOLKIT="$HOME/gmtoolkit"
-    RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
-    if [ -f "$RUNTIME" ]; then
-        $ESUDO mkdir -p "$TOOLKIT"
-        $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-        $ESUDO mount "$RUNTIME" "$TOOLKIT"
-    else
-        echo "This port requires the GMToolkit runtime. Please download it."
         return 1
     fi
     
@@ -43,8 +31,6 @@ prepare_system() {
     # Exports
     export PYTHON
     export SAVEDIR
-    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-    export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 }
 
 prepare_files() {
@@ -52,7 +38,7 @@ prepare_files() {
     
     # Delete excess files
     find "$DATADIR" -type f \( \
-        -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o -name "*.gitkeep" -o \
+        -name "*.gitkeep" -o -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
     \) -exec rm -f {} \;
 
@@ -60,23 +46,31 @@ prepare_files() {
     if [ -f "$DATADIR/splash.png" ]; then
         mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
     fi
-}
 
-compress_audio() {
-    # Test for data.win
     if [ -f "$DATADIR/data.win" ]; then
         mv "$DATADIR/data.win" "$DATADIR/game.droid"
     fi
-    
-    # Do audio compression
-    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"; then
-        mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
-        echo "Audio compression applied successfully."
-    else
-        # Failure
-        echo "Audio compression failed for $GAMEFILE."
-        rmdir "$TMPDIR"
-        return 1
+}
+
+add_mod() {
+    # Apply PS4 borders mod if 1920x1080 resolution
+    if [ "$DISPLAY_WIDTH" = "1920" ] && [ "$DISPLAY_HEIGHT" = "1080" ]; then
+        FILESUM=$(md5sum "$DATADIR/game.droid" | awk '{ print $1 }')
+        STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
+
+        if [ "$FILESUM" = "$STEAMSUM" ]; then
+            echo "Applying PS4 borders mod..."
+            output=$("$controlfolder/xdelta3" -d -s "$GAMEDIR/assets/game.droid" -f "$GAMEDIR/tools/borders_steam.xdelta" "$DATADIR/game2.droid" 2>&1)
+            if [ $? -eq 0 ]; then
+                echo "Patch applied successfully"
+                echo "$output"
+                rm -rf "$DATADIR/game.droid" && mv "$DATADIR/game2.droid" "$DATADIR/game.droid"
+            else
+                echo "Unable to apply borders mod: $output"
+            fi
+        else
+            echo "MD5 does not match target, cannot apply mod."
+        fi
     fi
 }
 
@@ -93,18 +87,14 @@ zip_archive() {
 # Cleanup function
 cleanup() {
     rm -rf "$TMPDIR"
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
 }
 
 process_game() {
+    echo "Preparing system..."
+    prepare_system || { cleanup; return 1; }
     echo "Preparing game..."
     prepare_files || { cleanup; return 1; }
-
-    echo "Compressing audio..."
-    compress_audio || { cleanup; return 1; }
-
-    sleep 1
+    add_mod || { cleanup; return 1; }
     echo "Finishing up..."
     zip_archive || { cleanup; return 1; }
 }

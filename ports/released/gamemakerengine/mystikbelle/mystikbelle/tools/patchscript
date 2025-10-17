@@ -141,13 +141,8 @@ set_flags() {
 
 # Zip it all into the .port file
 zip_archive() {
-    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEDIR/$DATAFILE" "$DATADIR"; then
-        for f in "$DATADIR"/*; do
-            case "$f" in
-                *.ogg) ;;
-                *) rm -rf "$f" ;;
-            esac
-        done
+    if "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa -mx=0 "$GAMEDIR/$DATAFILE" "$DATADIR"; then
+        rm -rf "$DATADIR"/*
     else
         echo "Failed to create $DATAFILE."
         return 1

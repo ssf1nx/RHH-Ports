@@ -248,7 +248,7 @@ compress_audio() {
 zip_archive() {
     # Copy base.port and zip assets into it
     cp "$INSTALLDIR/base.port" "$INSTALLDIR/$GAMEFILE.zip"
-    cd "$INSTALLDIR" && "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa "$GAMEFILE.zip" assets/
+    cd "$INSTALLDIR" && "$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa -mx=0 "$GAMEFILE.zip" assets/
     cd "$GAMEDIR" || exit
     # Move it to $GAMEDIR/assets
     mv "$INSTALLDIR/$GAMEFILE.zip" "$GAMEDIR/assets/$GAMEFILE"

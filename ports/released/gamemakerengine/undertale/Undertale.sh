@@ -18,59 +18,44 @@ get_controls
 
 # Variables
 GAMEDIR="/$directory/ports/undertale"
-GMLOADER_JSON="$GAMEDIR/gmloader.json"
 
-# CD and set permissions
+# CD and set logging
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+# Setup permissions
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
+$ESUDO chmod +xr "$GAMEDIR/tools/splash"
+
 # Exports
-export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/lib:$GAMEDIR/lib:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-$ESUDO chmod +xwr $GAMEDIR/gmloadernext.aarch64
 
-add_mod() {
-    # Apply PS4 borders mod if 1920x1080 resolution
-    if [ "$DISPLAY_WIDTH" = "1920" ] && [ "$DISPLAY_HEIGHT" = "1080" ]; then
-        FILESUM=$(md5sum "$DATADIR/data.win" | awk '{ print $1 }')
-        STEAMSUM="5903fc5cb042a728d4ad8ee9e949c6eb"
-
-        if [ "$FILESUM" = "$STEAMSUM" ]; then
-            output=$("$controlfolder/xdelta3" -d -s "$GAMEDIR/assets/data.win" -f "$GAMEDIR/mod/borders_steam.xdelta" "$DATADIR/game.droid" 2>&1)
-            if [ $? -eq 0 ]; then
-                echo "Patch applied successfully"
-                echo "$output"
-                rm "$DATADIR/data.win"
-            else
-                echo "Unable to apply borders mod: $output"
-            fi
-        else
-            echo "MD5 does not match target, cannot apply mod."
-        fi
+# Check if we need to patch the game
+if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
+    if [ -f "$controlfolder/utils/patcher.txt" ]; then
+        export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+        export PATCHER_GAME="$(basename "${0%.*}")"
+        export PATCHER_TIME="2 to 5 minutes"
+        export controlfolder
+        export ESUDO
+        export DEVICE_ARCH
+        source "$controlfolder/utils/patcher.txt"
+        $ESUDO kill -9 $(pidof gptokeyb)
+    else
+        echo "This port requires the latest version of PortMaster."
     fi
-}
-
-# Check for linux Undertale version
-[ -f "./assets/game.unx" ] && mv assets/game.unx assets/data.win
-
-# Resolve mods
-add_mod
-
-# Prepare game files
-if [ -f ./assets/data.win ]; then
-	# Rename data.win file
-	mv assets/data.win assets/game.droid
-	# Delete all redundant files
-	rm -f assets/*.{dll,exe,txt}
-	# Zip all game files into the undertale.port
-	zip -r -0 ./undertale.port ./assets/
-	rm -Rf ./assets/
 fi
 
-# Assign configs and load the game
+# Display loading splash
+if [ -f "$GAMEDIR/patchlog.txt" ]; then
+    [ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
+    $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
+fi
+
+# Assign gptokeyb and load the game
 $GPTOKEYB "gmloadernext.aarch64" -c "undertale.gptk" &
-pm_platform_helper "$GAMEDIR/gmloadernext.aarch64"
-./gmloadernext.aarch64 -c "$GMLOADER_JSON"
+pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
+./gmloadernext.aarch64 -c gmloader.json
 
 # Cleanup
 pm_finish
