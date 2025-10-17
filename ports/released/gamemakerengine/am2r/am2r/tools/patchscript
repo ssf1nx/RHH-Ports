@@ -60,24 +60,10 @@ unzip_archives() {
     mkdir -p "$DATADIR/am2r" "$DATADIR/am2rpatch"
 
     # Identify AM2R zip (data.win in root)
-    AM2R_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec sh -c '
-        for file; do
-            if "$1" l "$file" | grep -qE "^\s+[0-9]+\s+[0-9-]+\s+[0-9:]+\s+data\.win$"; then
-                echo "$file"
-                break
-            fi
-        done
-    ' _ "$SEVENZIP" {} +)
+    AM2R_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec "$SEVENZIP" l {} \; | grep -E "^\s*[0-9]+\s+[0-9-]+\s+[0-9:]+\s+data\.win$" | cut -d' ' -f 1 | head -n 1)
 
     # Identify autopatcher zip (has AM2R-Autopatcher-Windows-master/data/)
-    AUTOPATCHER_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec sh -c '
-        for file; do
-            if "$1" l "$file" | grep -q "AM2R-Autopatcher-Windows-master/data/$"; then
-                echo "$file"
-                break
-            fi
-        done
-    ' _ "$SEVENZIP" {} +)
+    AUTOPATCHER_ZIP=$(find "$DATADIR" -maxdepth 1 -type f -name "*.zip" -exec "$SEVENZIP" l {} \; | grep "AM2R-Autopatcher-Windows-master/data/$" | cut -d' ' -f 1 | head -n 1)
 
     AM2R16B_ZIP="AM2R_1.6b2_windows.zip"
 
