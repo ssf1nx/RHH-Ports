@@ -90,10 +90,10 @@ async function loadPorts() {
 			const option = document.createElement('option');
 			option.value = req;
 			option.textContent = ({
-				'!lowpower': 'Needs good CPU',
+				'!lowpower': 'Needs moderate CPU',
 				'!lowres': 'Needs minimum 640x480 resolution',
 				'hires': 'Best on high resolution',
-				'power': 'Needs more CPU power',
+				'power': 'Needs high CPU power',
 				'2gb': 'Needs 2GB RAM',
 				'ultra': 'Needs > 2GB RAM',
 				'opengl': 'Requires mainline OpenGL',
