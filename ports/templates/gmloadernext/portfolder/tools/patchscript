@@ -104,13 +104,13 @@ dump_textures() {
     # Begin texture operations
     dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
+        -e "$DATADIR/textures" "$DATADIR/data2.win"
 
     if [ $? -ne 0 ]; then
         echo "[DOTNET]: Texture dumping failed to apply."
         return 1
     else
-        rm -f "$DATADIR/data.win"
+        rm -f "$DATADIR/data.win" & mv "$DATADIR/data2.win" "$DATADIR/data.win"
         mv "$DATADIR/textures" "$SAVEDIR/textures"
         [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
@@ -130,8 +130,7 @@ set_flags() {
         return 1
     else
         echo "Successfully toggled info flags."
-        rm -f "$DATADIR/data.win"
-        mv "$DATADIR/data2.win" "$DATADIR/data.win"
+        rm -f "$DATADIR/data.win" & mv "$DATADIR/data2.win" "$DATADIR/data.win"
         [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
 }
@@ -166,7 +165,7 @@ compress_audio() {
     else
         # Failure
         echo "Audio compression failed."
-        rmdir "$TMPDIR"
+        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
         return 1
     fi
 }
@@ -181,7 +180,7 @@ zip_archive() {
     fi
 }
 
-# Cleanup function
+# Cleanup
 cleanup() {
     rm -rf "$TMPDIR"
     $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
