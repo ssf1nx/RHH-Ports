@@ -16,7 +16,7 @@
             "platformer"
         ],
         "porter": [
-            "Johnny on Flame",
+           "Johnny on Flame",
 			"Jeod"
         ],
         "image": {
@@ -29,7 +29,9 @@
         },
 		"availability": "free",
         "rtr": false,
-        "runtime": [],
+        "runtime": [
+            "gmtoolkit.squashfs"
+        ],
         "reqs": [],
         "arch": [
             "aarch64"
