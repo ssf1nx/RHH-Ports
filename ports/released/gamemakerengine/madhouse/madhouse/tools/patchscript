@@ -60,32 +60,10 @@ prepare_system() {
 }
 
 # Prepare game data
-# If there are audiogroups in the madhouse.port file, unzip them
 prepare_files() {
     # Delete unnecessary files
     rm -rf $DATADIR/*.exe $DATADIR/*.dll $DATADIR/.gitkeep
     echo "Removed unnecessary files"
-    
-    # Check if we're using a prepatched game
-    if unzip -l "$DATAFILE" "assets/*" | grep -q "assets/.*\.dat"; then
-        echo "Prepatched game detected."
-        PREPATCH=1
-        unzip_audiogroups || { cleanup; return 1; }
-    fi
-}
-
-# Unzip audiogroups
-unzip_audiogroups() {
-    # Unzip from $DATAFILE into $DATADIR
-    echo "Unzipping ${DATAFILE}..."
-    mkdir -p assets
-    unzip -j -o "$DATAFILE" "assets/*.dat" -d "$DATADIR"
-    if [ $? -eq 0 ]; then
-        echo "Unzipped successfully to $DATADIR."
-    else
-        echo "Failed to unzip file."
-        return 1
-    fi
 }
 
 # Replace game code entries for data.win

@@ -483,7 +483,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-10-24T11:22:58.292Z",
+    "last_modified": "2025-10-26T23:22:18.647Z",
     "requirements": ""
   },
   {
@@ -920,7 +920,7 @@
       "aarch64"
     ],
     "min_glibc": "",
-    "last_modified": "2025-10-17T00:54:02.903Z",
+    "last_modified": "2025-10-27T22:42:16.955Z",
     "requirements": "!lowpower"
   },
   {

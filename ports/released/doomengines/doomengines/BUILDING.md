@@ -29,10 +29,10 @@ mkdir build
 cd build
 cmake .. \
 -DCMAKE_BUILD_TYPE=Release \
--DBUILD_SHARED_LIBS=OFF \
+-DBUILD_SHARED_LIBS=ON \
 -DHAVE_GLES2=ON \
 -DHAVE_VULKAN=OFF \
--DFORCE_CROSSCOMPILE=ON \
+-DFORCE_CROSSCOMPILE=OFF \
 -DCMAKE_INSTALL_PREFIX=/usr/local
 
 cmake --build . -j$(nproc)
