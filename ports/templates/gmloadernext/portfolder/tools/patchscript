@@ -57,6 +57,11 @@ prepare_system() {
     export SAVEDIR
     export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
+
+    # These exports help dotnet save memory and hopefully eliminate oomkill issues during patching
+    export DOTNET_gcServer=0
+    export DOTNET_gcLatencyLevel=SustainedLowLatency
+    export DOTNET_GCHighMemPercent=50
 }
 
 prepare_files() {
@@ -110,7 +115,7 @@ dump_textures() {
         echo "[DOTNET]: Texture dumping failed to apply."
         return 1
     else
-        rm -f "$DATADIR/data.win" & mv "$DATADIR/data2.win" "$DATADIR/data.win"
+        rm -f "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
         mv "$DATADIR/textures" "$SAVEDIR/textures"
         [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
@@ -130,7 +135,7 @@ set_flags() {
         return 1
     else
         echo "Successfully toggled info flags."
-        rm -f "$DATADIR/data.win" & mv "$DATADIR/data2.win" "$DATADIR/data.win"
+        rm -f "$DATADIR/data.win" && mv "$DATADIR/data2.win" "$DATADIR/data.win"
         [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
 }
