@@ -6,7 +6,6 @@ LOGERR="patcherr.txt"
 
 # Redirect output and error to the log file
 > "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
-echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
