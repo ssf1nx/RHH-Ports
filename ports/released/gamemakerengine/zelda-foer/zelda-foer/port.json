@@ -1,0 +1,37 @@
+{
+  "version": 4,
+  "name": "zelda-foer.zip",
+  "items": [
+    "The Legend of Zelda - The Faces of Evil Remastered.sh",
+    "zelda-foer"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Legend of Zelda - The Faces of Evil Remastered",
+    "porter": [
+      "Jeod",
+      "Jareth247"
+    ],
+    "desc": "Zelda: Wand of Gamelon and Link: Faces of Evil have been remastered using the original assets, and includes widescreen, cutscene subtitles, unlockables, and a Remastered Mode for less frustrating gameplay. The cutscenes are still the same old memey goodness you know and love!",
+    "desc_md": null,
+    "inst": "Download **FOER v1.4.2 (Android).zip** from https://archive.org/details/foer-wogr-patched-12-9-20 and add to `zelda-foer/assets`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}

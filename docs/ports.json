@@ -2848,6 +2848,96 @@
         }
     },
     {
+        "version": 4,
+        "name": "zelda-foer.zip",
+        "items": [
+            "The Legend of Zelda - The Faces of Evil Remastered.sh",
+            "zelda-foer"
+        ],
+        "items_opt": [],
+        "attr": {
+            "title": "The Legend of Zelda - The Faces of Evil Remastered",
+            "porter": [
+                "Jeod",
+                "Jareth247"
+            ],
+            "desc": "Zelda: Wand of Gamelon and Link: Faces of Evil have been remastered using the original assets, and includes widescreen, cutscene subtitles, unlockables, and a Remastered Mode for less frustrating gameplay. The cutscenes are still the same old memey goodness you know and love!",
+            "desc_md": null,
+            "inst": "Download **FOER v1.4.2 (Android).zip** from https://archive.org/details/foer-wogr-patched-12-9-20 and add to `zelda-foer/assets`.",
+            "inst_md": null,
+            "genres": [
+                "action",
+                "adventure"
+            ],
+            "image": null,
+            "rtr": false,
+            "exp": false,
+            "runtime": [
+                "gmtoolkit.squashfs"
+            ],
+            "store": [],
+            "availability": "free",
+            "reqs": [],
+            "arch": [
+                "aarch64"
+            ],
+            "min_glibc": ""
+        },
+        "source": {
+            "date_added": "2025-11-07",
+            "date_updated": "2025-11-07",
+            "release_id": "20251107T213622",
+            "url": "ports/released/gamemakerengine/zelda-foer/zelda-foer",
+            "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda-foer",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png"
+        }
+    },
+    {
+        "version": 4,
+        "name": "zelda-wogr.zip",
+        "items": [
+            "The Legend of Zelda - Wand of Gamelon Remastered.sh",
+            "zelda-wogr"
+        ],
+        "items_opt": [],
+        "attr": {
+            "title": "The Legend of Zelda - Wand of Gamelon Remastered",
+            "porter": [
+                "Jeod",
+                "Jareth247"
+            ],
+            "desc": "Zelda: Wand of Gamelon and Link: Faces of Evil have been remastered using the original assets, and includes widescreen, cutscene subtitles, unlockables, and a Remastered Mode for less frustrating gameplay. The cutscenes are still the same old memey goodness you know and love!",
+            "desc_md": null,
+            "inst": "Download **WOGR v1.4.2 (Android).zip** from https://archive.org/details/foer-wogr-patched-12-9-20 and add to `zelda-wogr/assets`.",
+            "inst_md": null,
+            "genres": [
+                "action",
+                "adventure"
+            ],
+            "image": null,
+            "rtr": false,
+            "exp": false,
+            "runtime": [
+                "gmtoolkit.squashfs"
+            ],
+            "store": [],
+            "availability": "free",
+            "reqs": [],
+            "arch": [
+                "aarch64"
+            ],
+            "min_glibc": ""
+        },
+        "source": {
+            "date_added": "2025-11-07",
+            "date_updated": "2025-11-07",
+            "release_id": "20251107T213717",
+            "url": "ports/released/gamemakerengine/zelda-wogr/zelda-wogr",
+            "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda-wogr",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png"
+        }
+    },
+    {
         "version": 2,
         "name": "zeldaxd-mercurischess.zip",
         "items": [
@@ -3389,9 +3479,9 @@
             ]
         },
         "source": {
-            "date_added": "2025-10-31",
-            "date_updated": "2025-10-31",
-            "release_id": "20251031T023709",
+            "date_added": "2025-11-07",
+            "date_updated": "2025-11-07",
+            "release_id": "20251107T204752",
             "url": "ports/released/gamemakerengine/undertaleyellow/utyellow",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertaleyellow",
             "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleyellow/utyellow/screenshot.png"

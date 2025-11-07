@@ -1,0 +1,37 @@
+{
+  "version": 4,
+  "name": "zelda-wogr.zip",
+  "items": [
+    "The Legend of Zelda - Wand of Gamelon Remastered.sh",
+    "zelda-wogr"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Legend of Zelda - Wand of Gamelon Remastered",
+    "porter": [
+      "Jeod",
+      "Jareth247"
+    ],
+    "desc": "Zelda: Wand of Gamelon and Link: Faces of Evil have been remastered using the original assets, and includes widescreen, cutscene subtitles, unlockables, and a Remastered Mode for less frustrating gameplay. The cutscenes are still the same old memey goodness you know and love!",
+    "desc_md": null,
+    "inst": "Download **WOGR v1.4.2 (Android).zip** from https://archive.org/details/foer-wogr-patched-12-9-20 and add to `zelda-wogr/assets`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
