@@ -49,7 +49,18 @@ async function loadPorts() {
         // ------------------------------
         const reqSet = new Set();
         ports.forEach(p => (p.attr?.reqs || []).forEach(r => reqSet.add(r.replace(/^analog_/, 'analog').toLowerCase())));
-        const reqOrder = ['!lowpower','power','!lowres','hires','2gb','ultra','opengl','wide','analog','!arkos'];
+        const reqOrder = [
+            '!lowpower',
+            'power',
+            '!lowres',
+            'hires',
+            '2gb',
+            'ultra',
+            'opengl',
+            'wide',
+            'analog',
+            '!arkos'
+        ];
         const reqMap = {
             '!lowpower':'Needs moderate CPU',
             '!lowres':'Needs minimum 640x480 resolution',
@@ -93,14 +104,14 @@ async function loadPorts() {
             countDisplay.textContent = countText;
 
             container.innerHTML = filtered.map(port => {
-                const title = port.attr?.title || port.name;
-                const desc = port.attr?.desc || '';
-                const screenshot = port.source?.screenshot_url || '';
+                const title = port.attr.title || port.name;
+                const desc = port.attr.desc || '';
+                const screenshot = port.source.screenshot_url || '';
                 const detailsHref = `${GITHUB_REPO_BASE}/${port.source.url}`;
 
                 // Use last folder of download_url as filename
                 let downloadFolderName = 'download';
-                if (port.source?.download_url) {
+                if (port.source.download_url) {
                     downloadFolderName = port.source.download_url.replace(/\/+$/, '').split('/').pop();
                 }
                 const downloadHref = `https://download-directory.github.io/?url=${encodeURIComponent(port.source.download_url)}&filename=${encodeURIComponent(downloadFolderName)}`;
@@ -140,7 +151,7 @@ async function loadPorts() {
                 if (genre !== 'all' && !p.attr?.genres?.includes(genre)) return false;
                 if (availability !== 'all' && p.attr?.availability !== availability) return false;
                 if (req !== 'all' && !(p.attr?.reqs || []).map(r => r.toLowerCase()).includes(req.toLowerCase())) return false;
-                if (query && !(p.attr?.title || '').toLowerCase().includes(query)) return false;
+                if (query && !(p.attr.title || '').toLowerCase().includes(query)) return false;
                 return true;
             });
 
