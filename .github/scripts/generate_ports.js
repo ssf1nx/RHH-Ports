@@ -57,9 +57,7 @@ async function processDir(currentDir) {
             const downloadDir = path.relative(baseDir, path.dirname(subDir)).split(path.sep).join('/');
 
             data.source = {
-                date_added: new Date(latestMtime || Date.now()).toISOString().split('T')[0],
                 date_updated: new Date(latestMtime || Date.now()).toISOString().split('T')[0],
-                release_id: new Date(latestMtime || Date.now()).toISOString().replace(/[-:]/g, '').split('.')[0],
                 url: `ports/released/${relativeDir}`,
                 download_url: `${GITHUB_REPO_BASE}/${downloadDir}`,
                 screenshot_url: `${GITHUB_RAW_BASE}/${relativeDir}/${screenshotFile.name}`

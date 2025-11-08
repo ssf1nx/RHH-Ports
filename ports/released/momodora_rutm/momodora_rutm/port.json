@@ -40,7 +40,8 @@
     ],
     "availability": "paid",
     "reqs": [
-      "power"
+      "power",
+      "wide"
 	],
     "arch": [
       "armhf"
