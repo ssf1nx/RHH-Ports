@@ -26,6 +26,9 @@ BOX86="$GAMEDIR/box86/box86"
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+# Permissions
+chmod +xwr -R "$BOX86"
+
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/libs.armhf:/usr/lib32:$LD_LIBRARY_PATH"
