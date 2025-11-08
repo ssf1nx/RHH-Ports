@@ -30,9 +30,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/air/air",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/air",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/screenshot.png",
+            "size": 759212,
+            "md5": "7bb1cf80871f4bebbfb0d4915b7f1b4d"
         }
     },
     {
@@ -80,9 +81,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/am2r/am2r",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/am2r",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
+            "size": 11971378,
+            "md5": "e9a70330f0738f8c55513151a8f8929f"
         }
     },
     {
@@ -129,9 +131,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
+            "size": 11757724,
+            "md5": "0cf6e386ce876874a86e9d17bb2350e1"
         }
     },
     {
@@ -185,9 +188,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/aurascope/aurascope",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/aurascope",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
+            "size": 15512408,
+            "md5": "adeb61bee205ce31e387ee6cc3b37306"
         }
     },
     {
@@ -219,9 +223,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/benboquest/benboquest",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/benboquest",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/screenshot.png",
+            "size": 48786931,
+            "md5": "0f8ede33c0fa49c55d0ac1462c210b18"
         }
     },
     {
@@ -255,9 +260,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/clannad/clannad",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/clannad",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/screenshot.png",
+            "size": 399942,
+            "md5": "67b40fea6195f7ee5f9433903ae6243f"
         }
     },
     {
@@ -290,9 +296,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/tomoyo_after/tomoyo_after",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/tomoyo_after",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/screenshot.png",
+            "size": 355933,
+            "md5": "712a954366a2023669b9927d09cbb7cd"
         }
     },
     {
@@ -332,9 +339,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/darkdeity/darkdeity",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/darkdeity",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
+            "size": 23482402,
+            "md5": "45dbbd752c728d8dbff703bdb9e2957e"
         }
     },
     {
@@ -374,9 +382,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/darkdeity2/darkdeity2",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/darkdeity2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
+            "size": 24514491,
+            "md5": "2b6c92007f6215b09e4f68af41430c9c"
         }
     },
     {
@@ -417,9 +426,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/deadcells/deadcells",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/deadcells",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/deadcells/deadcells/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/deadcells/deadcells/screenshot.png",
+            "size": 34057522,
+            "md5": "da00c7d4249351c36384f053cf787579"
         }
     },
     {
@@ -474,9 +484,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/deltarune/deltarune",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/deltarune",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
+            "size": 20541304,
+            "md5": "99b86c1056b32a0f55c431d42a5d2d1a"
         }
     },
     {
@@ -514,9 +525,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/descent-1-2/descent/descent",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent-1-2/descent",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png",
+            "size": 21163469,
+            "md5": "19f3806568cdc116cb3df36ba9846576"
         }
     },
     {
@@ -554,9 +566,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/descent-1-2/descent2/descent2",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent-1-2/descent2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png",
+            "size": 22266880,
+            "md5": "68e5423c33a3024d587df5e5f23517b6"
         }
     },
     {
@@ -592,9 +605,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/descent3/descent3",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/descent3",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/screenshot.png",
+            "size": 19832996,
+            "md5": "f8b59fc25f065a8665b3d42570d82250"
         }
     },
     {
@@ -632,9 +646,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/digitaltamersreborn",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
+            "size": 241272390,
+            "md5": "f436ac3c73387915c4aee64706f8d1bd"
         }
     },
     {
@@ -681,9 +696,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/dokimonquest/dokimon",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/dokimonquest",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimonquest/dokimon/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimonquest/dokimon/screenshot.png",
+            "size": 142006749,
+            "md5": "e101fc05d46e836d905580163697ea46"
         }
     },
     {
@@ -721,9 +737,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/doomengines/doomengines",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/doomengines",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
+            "size": 174401599,
+            "md5": "3b263ab7cda816bd02b107acb067b8be"
         }
     },
     {
@@ -761,9 +778,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/fzeropocket/f-zeropocket",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/fzeropocket",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fzeropocket/f-zeropocket/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fzeropocket/f-zeropocket/screenshot.png",
+            "size": 75714065,
+            "md5": "1949c102c3b19c961da4423ee3fa4047"
         }
     },
     {
@@ -810,9 +828,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
+            "size": 19822084,
+            "md5": "87b4b54aca14a7b8792d0ce42c4de060"
         }
     },
     {
@@ -859,9 +878,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/gunsoffury/gunsoffury",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/gunsoffury",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
+            "size": 23588672,
+            "md5": "3dfd1ab302c7fbc748bf653b0406fc66"
         }
     },
     {
@@ -904,9 +924,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/gyakutenlive/gyakutenlive",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/gyakutenlive",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
+            "size": 12563974,
+            "md5": "6356b11694b09af71e82117bfaa29bda"
         }
     },
     {
@@ -938,9 +959,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/hallowseve/hallowseve",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/hallowseve",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/screenshot.png",
+            "size": 772364,
+            "md5": "dfb54ce5a619cc5ac8dab079a83100f8"
         }
     },
     {
@@ -992,9 +1014,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/haque/haque",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/haque",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
+            "size": 11871374,
+            "md5": "2c4dc9545ee70a8655e58292f54c1ad7"
         }
     },
     {
@@ -1047,9 +1070,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/hollow_knight/hollow_knight",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/hollow_knight",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight/hollow_knight/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight/hollow_knight/screenshot.png",
+            "size": 30241492,
+            "md5": "b4073f7ea81888b0e0335439b28b69a3"
         }
     },
     {
@@ -1103,9 +1127,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/hollow_knight_silksong/hollow_knight_silksong",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/hollow_knight_silksong",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight_silksong/hollow_knight_silksong/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
+            "size": 29795292,
+            "md5": "3733368ac629297315f3fc0e9e78f1a2"
         }
     },
     {
@@ -1158,9 +1183,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/islesofseaandsky/iosas",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/islesofseaandsky",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/islesofseaandsky/iosas/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/islesofseaandsky/iosas/screenshot.png",
+            "size": 24148046,
+            "md5": "ba3735366bacdd606adfaaa1a4d928c3"
         }
     },
     {
@@ -1194,9 +1220,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/kanon/kanon",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/kanon",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/screenshot.png",
+            "size": 346738,
+            "md5": "d98666808fa57c7060c26858394219b6"
         }
     },
     {
@@ -1230,9 +1257,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/littlebusters/littlebusters",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/littlebusters",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/screenshot.png",
+            "size": 539460,
+            "md5": "35fc1b3baa327749214ab9c41258b10e"
         }
     },
     {
@@ -1269,9 +1297,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/oracles-randomizer-ng/oracles-randomizer-ng",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/oracles-randomizer-ng",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png",
+            "size": 12252552,
+            "md5": "7b827f49ad0fd0295d3f98d4a764d912"
         }
     },
     {
@@ -1313,9 +1342,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/lunarlux/lunarlux",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/lunarlux",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
+            "size": 23243622,
+            "md5": "a7063d7d2a35a4368dc8d364dffa5e10"
         }
     },
     {
@@ -1364,9 +1394,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/madhouse/madhouse",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/madhouse",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
+            "size": 23592661,
+            "md5": "23a67bf45fc79a0ab29d2e46198696ac"
         }
     },
     {
@@ -1405,9 +1436,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/metalslugsbfanthology/mslugsbf",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/metalslugsbfanthology",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/metalslugsbfanthology/mslugsbf/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/metalslugsbfanthology/mslugsbf/screenshot.png",
+            "size": 12324809,
+            "md5": "d99317668c8a43f85a9dfb1fa9d973d7"
         }
     },
     {
@@ -1441,9 +1473,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/mimisdeliverydash/mimisdeliverydash",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/mimisdeliverydash",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mimisdeliverydash/mimisdeliverydash/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mimisdeliverydash/mimisdeliverydash/screenshot.png",
+            "size": 19949855,
+            "md5": "787ea0a040b941aff9a620d854161730"
         }
     },
     {
@@ -1498,9 +1531,10 @@
         },
         "source": {
             "date_updated": "2025-11-08",
-            "url": "ports/released/momodora_rutm/momodora_rutm",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/momodora_rutm",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/momodora_rutm/momodora_rutm/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/momodora_rutm/momodora_rutm/screenshot.png",
+            "size": 29194037,
+            "md5": "f8f214931101f1b0331f2b9b1f5f9ab6"
         }
     },
     {
@@ -1539,9 +1573,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/mystikbelle/mystikbelle",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/mystikbelle",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
+            "size": 12198859,
+            "md5": "9b12ad8e9e863ce7d069438d8762faff"
         }
     },
     {
@@ -1585,9 +1620,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/nubbysnumberfactory",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png",
+            "size": 49597611,
+            "md5": "d24fe09e1c32f6744d357236a4415eb4"
         }
     },
     {
@@ -1619,9 +1655,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/oceansheart/oceansheart",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/oceansheart",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/screenshot.png",
+            "size": 3432744,
+            "md5": "e64efff79a3587b8174a8ae4d094cd91"
         }
     },
     {
@@ -1653,9 +1690,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/osanasrevenge/osanasrevenge",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/osanasrevenge",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/screenshot.png",
+            "size": 696781,
+            "md5": "87a61e194e6394808404bd7b282e4bd8"
         }
     },
     {
@@ -1703,9 +1741,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/outridermako/outridermako",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/outridermako",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
+            "size": 22744472,
+            "md5": "88da90f6ae2f222d5a642f1dae11cf7d"
         }
     },
     {
@@ -1755,9 +1794,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/pizzatower/pizzatower",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pizzatower",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
+            "size": 14679689,
+            "md5": "4d0ada220826aa1dd4921af59b246f56"
         }
     },
     {
@@ -1790,9 +1830,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/rlvm/planetarian/planetarian",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/rlvm/planetarian",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/screenshot.png",
+            "size": 270740,
+            "md5": "3a80ea4efe3317453222869bb1422f49"
         }
     },
     {
@@ -1831,9 +1872,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/pvznd/pvznd",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pvznd",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/screenshot.png",
+            "size": 11612020,
+            "md5": "cd90afef25f26b0832d5bbe18f973e98"
         }
     },
     {
@@ -1868,9 +1910,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/pocketcrystalleague",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/screenshot.png",
+            "size": 40138177,
+            "md5": "129d567ad535abc091763fa7725bcc26"
         }
     },
     {
@@ -1908,9 +1951,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/pokewilds/pokewilds",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/pokewilds",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/screenshot.png",
+            "size": 3055549,
+            "md5": "28cb7f6554a393861876e561dbe6c3c9"
         }
     },
     {
@@ -1949,9 +1993,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/RomM/RomM",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/RomM",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/RomM/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/RomM/screenshot.png",
+            "size": 18289665,
+            "md5": "382d8807b8b223633575eb1aae52e1c7"
         }
     },
     {
@@ -1986,9 +2031,10 @@
         },
         "source": {
             "date_updated": "2025-11-06",
-            "url": "ports/released/shipofharkinian/soh",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/shipofharkinian",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian/soh/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian/soh/screenshot.png",
+            "size": 69776429,
+            "md5": "1fee7efe41308ffeb6115aa5fd733d60"
         }
     },
     {
@@ -2023,9 +2069,10 @@
         },
         "source": {
             "date_updated": "2025-11-04",
-            "url": "ports/released/shipofharkinian2/soh2",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/shipofharkinian2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian2/soh2/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/shipofharkinian2/soh2/screenshot.png",
+            "size": 31289452,
+            "md5": "db3cea34017b2abb4d71587b56f36b50"
         }
     },
     {
@@ -2083,9 +2130,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/shrineslegacy/shrineslegacy",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/shrineslegacy",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
+            "size": 23784059,
+            "md5": "993f0281b99408f32d3423428f9496b3"
         }
     },
     {
@@ -2121,9 +2169,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/sonic-collection/sonic.1/sonic1",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.1",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic1/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic1/screenshot.jpg",
+            "size": 1969456,
+            "md5": "8686a006b878ee4fef647f48f31b81a9"
         }
     },
     {
@@ -2159,9 +2208,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/sonic-collection/sonic.2/sonic2",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic2/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic2/screenshot.jpg",
+            "size": 1921469,
+            "md5": "aa2cdd117b8992e94b68aa8ebc19f83d"
         }
     },
     {
@@ -2196,9 +2246,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/sonic-collection/sonic3air/sonic3air",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic3air",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/screenshot.png",
+            "size": 144806985,
+            "md5": "b628dea6f516ab37816cf557f57b100c"
         }
     },
     {
@@ -2234,9 +2285,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/sonic-collection/sonic.cd/soniccd",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.cd",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/soniccd/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/soniccd/screenshot.jpg",
+            "size": 1060526,
+            "md5": "02cdc90989b45f7eff0e3d84dbb03219"
         }
     },
     {
@@ -2272,9 +2324,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/sonic-collection/sonic.mania/sonicmania",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.mania",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonicmania/screenshot.jpg"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonicmania/screenshot.jpg",
+            "size": 6276857,
+            "md5": "f82cddbacda9b05654ba0a638bebf665"
         }
     },
     {
@@ -2308,9 +2361,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/sonictimetwisted",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/screenshot.png",
+            "size": 9847298,
+            "md5": "33040123d6979642bef3e9a70b393b09"
         }
     },
     {
@@ -2350,9 +2404,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/sonictt16b/sonictt16b",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/sonictt16b",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
+            "size": 10406508,
+            "md5": "1913f000c63f6f19ce65bd71b80417ce"
         }
     },
     {
@@ -2403,9 +2458,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/spinelasher/spinelasher",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/spinelasher",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
+            "size": 23521679,
+            "md5": "509afd9e6b7a73b725e7f76715a9bd78"
         }
     },
     {
@@ -2443,9 +2499,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/starship/starship",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/starship",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/starship/starship/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/starship/starship/screenshot.png",
+            "size": 17339006,
+            "md5": "272c43bcccf8d7b3e9e39d9f4ddb95e9"
         }
     },
     {
@@ -2485,9 +2542,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/steamlink/steamlink",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/steamlink",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/steamlink/steamlink/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/steamlink/steamlink/screenshot.png",
+            "size": 52329319,
+            "md5": "f6e34795c552be7a57e4ee0a2c37099d"
         }
     },
     {
@@ -2526,9 +2584,10 @@
         },
         "source": {
             "date_updated": "2025-10-26",
-            "url": "ports/released/smb1r/smb1r",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/smb1r",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png",
+            "size": 132647699,
+            "md5": "f3f9dd2403272be74a139feb417a598a"
         }
     },
     {
@@ -2571,9 +2630,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/superstartrek/superstartrek",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/superstartrek",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png",
+            "size": 47290504,
+            "md5": "d011864f4fc723dbcd55193069fa687e"
         }
     },
     {
@@ -2612,9 +2672,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/tenjutsu48h/tenjutsu48h",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/tenjutsu48h",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/tenjutsu48h/tenjutsu48h/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/tenjutsu48h/tenjutsu48h/screenshot.png",
+            "size": 104816576,
+            "md5": "e5a527e6a5d5cb0e3c3a30182942f3bb"
         }
     },
     {
@@ -2666,9 +2727,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
+            "size": 19710889,
+            "md5": "0c41f408ed771a350d770f6c9c854a82"
         }
     },
     {
@@ -2717,9 +2779,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/thegirlfromarkanya/thegirlfromarkanya",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/thegirlfromarkanya",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/thegirlfromarkanya/thegirlfromarkanya/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
+            "size": 21980380,
+            "md5": "a617adb30ad4f96ad57d5275bc59803f"
         }
     },
     {
@@ -2760,9 +2823,10 @@
         },
         "source": {
             "date_updated": "2025-11-07",
-            "url": "ports/released/gamemakerengine/zelda-foer/zelda-foer",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda-foer",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
+            "size": 9458380,
+            "md5": "e9c9b67b0a9bacf8816830e56c5bdf0a"
         }
     },
     {
@@ -2803,9 +2867,10 @@
         },
         "source": {
             "date_updated": "2025-11-07",
-            "url": "ports/released/gamemakerengine/zelda-wogr/zelda-wogr",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda-wogr",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
+            "size": 9536950,
+            "md5": "b42e18fb47da639e6d431b2476314ca4"
         }
     },
     {
@@ -2836,9 +2901,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldaxd-mercurischess",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png",
+            "size": 598782,
+            "md5": "3c0aca7f8f189176fdaa354e8329ce7d"
         }
     },
     {
@@ -2869,9 +2935,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zelda-mercurischest/zelda-mercurischest",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mercurischest",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png",
+            "size": 617548,
+            "md5": "92b17b87c40e0bb66aaffaa107aec5d3"
         }
     },
     {
@@ -2902,9 +2969,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mysteryofsolarusdx",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png",
+            "size": 691282,
+            "md5": "f420c3a71b160fdf33b567714d6b1acc"
         }
     },
     {
@@ -2935,9 +3003,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-mysteryofsolarusxd",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
+            "size": 596971,
+            "md5": "e919fb18df09ef77457168844017e60b"
         }
     },
     {
@@ -2968,9 +3037,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zelda-roth-se/zelda-roth-se",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-roth-se",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png",
+            "size": 598922,
+            "md5": "8dd9588052022e96172f17e7ac531baf"
         }
     },
     {
@@ -3001,9 +3071,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zelda-bookofmudora",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png",
+            "size": 608135,
+            "md5": "d823b0b61b72bf7be7ac849f3876597b"
         }
     },
     {
@@ -3034,9 +3105,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zeldoschallenge/zeldoschallenge",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldoschallenge",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png",
+            "size": 625082,
+            "md5": "6290cabc466f19fa16e17df7e7751c88"
         }
     },
     {
@@ -3067,9 +3139,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/zeldoschallenge2/zeldoschallenge2",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/zeldoschallenge2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png",
+            "size": 1101857,
+            "md5": "16a39e49702c53093860beb9cb8e3ed9"
         }
     },
     {
@@ -3120,9 +3193,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/triga/triga",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/triga",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
+            "size": 12779160,
+            "md5": "3c0cde64ddeb43980add4e3bbfeef03e"
         }
     },
     {
@@ -3154,9 +3228,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/tunics/tunics",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/tunics",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics/tunics/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics/tunics/screenshot.png",
+            "size": 7638628,
+            "md5": "6497cdc77c87ff299c482348ba324352"
         }
     },
     {
@@ -3193,9 +3268,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/ufo50/ufo50",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/ufo50",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
+            "size": 23832761,
+            "md5": "cfe26f41ed0d16e1226b6818e06c487f"
         }
     },
     {
@@ -3240,9 +3316,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/undertale/undertale",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertale",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
+            "size": 19077965,
+            "md5": "9253e9cb1018566cd2d9e20dca55ac9c"
         }
     },
     {
@@ -3287,9 +3364,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertaleredyellow",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
+            "size": 23458318,
+            "md5": "30a446ed27ad5e54ddfa6cfa41508877"
         }
     },
     {
@@ -3325,9 +3403,10 @@
         },
         "source": {
             "date_updated": "2025-11-07",
-            "url": "ports/released/gamemakerengine/undertaleyellow/utyellow",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/undertaleyellow",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleyellow/utyellow/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleyellow/utyellow/screenshot.png",
+            "size": 19784488,
+            "md5": "706e1f971f04dc116c452a0febe2a64a"
         }
     },
     {
@@ -3383,9 +3462,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/valhalla/valhalla",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/valhalla",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
+            "size": 11568410,
+            "md5": "77a4631f2f8b80c430a2610f88043629"
         }
     },
     {
@@ -3426,9 +3506,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/victoryheatrally/vhr",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/victoryheatrally",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/victoryheatrally/vhr/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/victoryheatrally/vhr/screenshot.png",
+            "size": 23912381,
+            "md5": "9175b5c0659798d40dc384bef3158f95"
         }
     },
     {
@@ -3464,9 +3545,10 @@
         },
         "source": {
             "date_updated": "2025-11-02",
-            "url": "ports/released/wolfenstein3d/wolf3d",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/wolfenstein3d",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolfenstein3d/wolf3d/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolfenstein3d/wolf3d/screenshot.png",
+            "size": 16747473,
+            "md5": "c193c080e797471ff3c2636fca164493"
         }
     },
     {
@@ -3496,9 +3578,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/solarus/yarntown/yarntown",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/solarus/yarntown",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/screenshot.png",
+            "size": 803986,
+            "md5": "c28819dd26985dbf2c3a79986b5c0d45"
         }
     },
     {
@@ -3536,9 +3619,10 @@
         },
         "source": {
             "date_updated": "2025-10-31",
-            "url": "ports/released/gamemakerengine/zelda2enhanced/ziiaol",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/gamemakerengine/zelda2enhanced",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/ziiaol/screenshot.png"
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/ziiaol/screenshot.png",
+            "size": 17875155,
+            "md5": "53e8a836b15430bce8b6440ea51b53d7"
         }
     }
 ]
