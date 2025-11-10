@@ -17,7 +17,7 @@ source $controlfolder/control.txt
 get_controls
 
 # Set variables
-GAMEDIR="/$directory/ports/tunics"
+GAMEDIR="/$directory/ports/tunics!"
 
 # CD and set logging
 cd $GAMEDIR

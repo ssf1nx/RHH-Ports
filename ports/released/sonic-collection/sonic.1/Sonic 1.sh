@@ -17,7 +17,7 @@ get_controls
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 
 # Set variables
-GAMEDIR="/$directory/ports/sonic1"
+GAMEDIR="/$directory/ports/sonic.1"
 
 # CD and set permissions
 cd $GAMEDIR

@@ -1959,7 +1959,7 @@
     },
     {
         "version": 4,
-        "name": "romm.zip",
+        "name": "RomM.zip",
         "items": [
             "RomM App.sh",
             "RomM"
@@ -1992,11 +1992,11 @@
             "min_glibc": ""
         },
         "source": {
-            "date_updated": "2025-11-09",
+            "date_updated": "2025-11-10",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/RomM",
             "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/RomM/screenshot.png",
             "size": 18289665,
-            "md5": "382d8807b8b223633575eb1aae52e1c7"
+            "md5": "c85ede5db627b1efb4dfd99f2d8bf274"
         }
     },
     {
@@ -2170,7 +2170,7 @@
         "source": {
             "date_updated": "2025-10-31",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.1",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic1/screenshot.jpg",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.jpg",
             "size": 1969456,
             "md5": "8686a006b878ee4fef647f48f31b81a9"
         }
@@ -2209,7 +2209,7 @@
         "source": {
             "date_updated": "2025-10-31",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.2",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic2/screenshot.jpg",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.jpg",
             "size": 1921469,
             "md5": "aa2cdd117b8992e94b68aa8ebc19f83d"
         }
@@ -2286,7 +2286,7 @@
         "source": {
             "date_updated": "2025-10-31",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.cd",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/soniccd/screenshot.jpg",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
             "size": 1060526,
             "md5": "02cdc90989b45f7eff0e3d84dbb03219"
         }
@@ -2325,7 +2325,7 @@
         "source": {
             "date_updated": "2025-10-31",
             "download_url": "https://github.com/JeodC/RHH-Ports/tree/main/ports/released/sonic-collection/sonic.mania",
-            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonicmania/screenshot.jpg",
+            "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
             "size": 6276857,
             "md5": "f82cddbacda9b05654ba0a638bebf665"
         }
