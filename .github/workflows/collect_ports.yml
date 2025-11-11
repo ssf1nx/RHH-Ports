@@ -131,7 +131,7 @@ jobs:
             if [ -n "$ASSET_ID" ]; then
               echo "Deleting existing asset $NAME ($ASSET_ID)"
               gh api -X DELETE repos/${GITHUB_REPOSITORY}/releases/assets/$ASSET_ID
-              sleep 3
+              sleep 5
             fi
           done
 
