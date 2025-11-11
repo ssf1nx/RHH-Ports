@@ -114,7 +114,7 @@ async function loadPorts() {
                 if (port.source.download_url) {
                     downloadFolderName = port.source.download_url.replace(/\/+$/, '').split('/').pop();
                 }
-                const downloadHref = `https://download-directory.github.io/?url=${encodeURIComponent(port.source.download_url)}&filename=${encodeURIComponent(downloadFolderName)}`;
+                const downloadHref = port.source.download_url;
 
                 const reqs = (port.attr?.reqs || []).join(', ');
                 const genres = (port.attr?.genres || []).join(', ');

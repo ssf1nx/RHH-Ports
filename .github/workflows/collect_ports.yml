@@ -1,0 +1,128 @@
+name: Release Ports
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Runs every 12 hours
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force update all ports'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+  push:
+    paths:
+      - 'docs/ports.json'
+
+concurrency:
+  group: release-ports
+  cancel-in-progress: true
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare environment
+        run: mkdir -p temp_ports
+
+      # ------------------------------------------------------
+      # Determine which ports need to be zipped
+      - name: Determine changed ports
+        id: changedports
+        run: |
+          set -e
+          ZIP_DIR="$GITHUB_WORKSPACE/temp_ports"
+
+          # Initialize output variable to track whether any zips were created
+          echo "changed=false" >> $GITHUB_OUTPUT
+
+          # If 'force' input is true, zip all ports
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "Force update: including all ports"
+            # Find all directories containing a .sh file (top-level port dir)
+            mapfile -t ports < <(find ports/released -type f -name "*.sh" -exec dirname {} \;)
+          else
+            echo "Detecting ports changed in last commit"
+            # Get list of files changed in the last commit
+            mapfile -t changed_files < <(git diff --name-only HEAD~1 HEAD)
+            ports=()
+            # Loop through changed files, include their parent directory as a candidate port
+            for f in "${changed_files[@]}"; do
+              if [[ "$f" == ports/released/* ]]; then
+                dir=$(dirname "$f")
+                ports+=("$dir")
+              fi
+            done
+          fi
+
+          # Remove duplicate directories
+          mapfile -t ports < <(printf "%s\n" "${ports[@]}" | sort -u)
+
+          # ------------------------------------------------------
+          # Validate and zip each port
+          for staging_dir in "${ports[@]}"; do
+            portname=$(basename "$staging_dir")
+            echo "→ Processing $portname"
+
+            # Look for the inner folder (contains the port data)
+            portdir=$(find "$staging_dir" -mindepth 1 -maxdepth 1 -type d | head -n1)
+            if [ ! -d "$portdir" ]; then
+              echo "  Skipping $portname: no inner folder"
+              continue
+            fi
+
+            # Inner folder must contain port.json
+            if [ ! -f "$portdir/port.json" ]; then
+              echo "  Skipping $portname: missing port.json"
+              continue
+            fi
+
+            # Inner folder must contain at least one screenshot
+            screenshot=$(find "$portdir" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" \) | head -n1)
+            if [ ! -f "$screenshot" ]; then
+              echo "  Skipping $portname: no screenshot found"
+              continue
+            fi
+
+            # ------------------------------------------------------
+            # Create the zip file:
+            #   - All contents of the port folder (including .sh + inner folder)
+            #   - Preserve folder structure
+            echo "  📦 Zipping port → $ZIP_DIR/${portname}.zip"
+            (
+              cd "$staging_dir"
+              zip -r -q "$ZIP_DIR/${portname}.zip" . 
+            )
+
+            # Mark that at least one zip was created
+            echo "changed=true" >> $GITHUB_OUTPUT
+          done
+
+      # ------------------------------------------------------
+      # Upload zip files to GitHub release if any were created
+      - name: Upload to release
+        if: steps.changedports.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ports-latest
+          name: Ports
+          overwrite_files: true
+          generate_release_notes: false
+          files: temp_ports/*.zip
+
+      # ------------------------------------------------------
+      # Cleanup temporary files
+      - name: Cleanup
+        if: always()
+        run: rm -rf temp_ports

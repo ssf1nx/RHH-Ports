@@ -8,7 +8,7 @@ const ports = [];
 
 // -----------------------------------------------------------------------------
 // Configuration
-const GITHUB_REPO_BASE = 'https://github.com/JeodC/RHH-Ports/tree/main/ports/released';
+const GITHUB_REPO_BASE = 'https://github.com/JeodC/RHH-Ports';
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released';
 const PORTS_JSON_FILE = './docs/ports.json';
 
@@ -93,11 +93,11 @@ async function processDir(currentDir, baseDir) {
         const data = JSON.parse(portRaw);
 
         const relativeDir = path.relative(baseDir, subDir).split(path.sep).join('/');
-        const downloadDir = path.relative(baseDir, path.dirname(subDir)).split(path.sep).join('/');
+        const zipName = path.basename(subDir);
 
         data.source = {
             date_updated: new Date(latestMtime || Date.now()).toISOString().split('T')[0],
-            download_url: `${GITHUB_REPO_BASE}/${downloadDir}`,
+            download_url: `${GITHUB_REPO_BASE}/releases/download/ports-latest/${zipName}.zip`,
             screenshot_url: `${GITHUB_RAW_BASE}/${relativeDir}/${screenshotFile.name}`,
             size: totalSize,
             md5: md5
