@@ -107,7 +107,7 @@ jobs:
 
             # Remove any existing entry for this port, then add new
             TMP=$(mktemp)
-            jq --arg portname "$PORTNAME" 'map(select((.name | split(".")[0]) != $portname)) + [$PORT_JSON_MERGED]' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
+            jq --arg portname "$PORTNAME" --argjson portjson "$PORT_JSON_MERGED" 'map(select((.name | split(".")[0]) != $portname)) + [$portjson]' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
           done
 
       - name: Sort ports by title
