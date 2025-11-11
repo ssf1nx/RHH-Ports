@@ -69,24 +69,17 @@ jobs:
             PORTNAME=$(basename "$STAGING_DIR")
             echo "→ Processing $PORTNAME"
 
-            # Find port.json recursively inside outer directory
             PORT_JSON=$(find "$STAGING_DIR" -type f -name "port.json" | head -n1)
             [ -f "$PORT_JSON" ] || { echo "  Skipping $PORTNAME: missing port.json"; continue; }
 
-            # Zip outer directory
             echo "  📦 Zipping port → $ZIP_DIR/${PORTNAME}.zip"
             (cd "$STAGING_DIR" && zip -r -q "$ZIP_DIR/${PORTNAME}.zip" .)
 
             PORTDIR=$(dirname "$PORT_JSON")
-
-            # Find screenshot in inner folder
             SCREENSHOT=$(find "$PORTDIR" -maxdepth 1 -type f \( -iname "screenshot*.png" -o -iname "screenshot*.jpg" -o -iname "screenshot*.jpeg" \) | head -n1)
             [ -f "$SCREENSHOT" ] || { echo "  Skipping $PORTNAME: no screenshot found"; continue; }
-
-            # Find README in inner folder
             README=$(find "$PORTDIR" -maxdepth 1 -type f \( -iname "README.md" -o -iname "readme.md" \) | head -n1)
 
-            # Define sources
             ZIP_PATH="$ZIP_DIR/${PORTNAME}.zip"
             MD5=$(md5sum "$ZIP_PATH" | awk '{print $1}')
             SIZE=$(stat -c %s "$ZIP_PATH")
@@ -95,7 +88,6 @@ jobs:
             README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
             DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/ports-latest/${PORTNAME}.zip"
 
-            # Merge port.json with source info
             ORIGINAL_JSON=$(cat "$PORT_JSON")
             PORT_JSON_MERGED=$(jq -n \
               --argjson original "$ORIGINAL_JSON" \
@@ -108,7 +100,6 @@ jobs:
               '$original + {source: {date_updated: $date_updated, download_url: $download_url, screenshot_url: $screenshot_url, size: ($size|tonumber), md5: $md5}}'
             )
 
-            # Remove any existing entry for this port, then add new
             TMP=$(mktemp)
             jq --arg portname "$PORTNAME" --argjson portjson "$PORT_JSON_MERGED" 'map(select((.name | split(".")[0]) != $portname)) + [$portjson]' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
           done
@@ -129,21 +120,29 @@ jobs:
             NAME=$(basename "$FILE")
             ASSET_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets --jq ".[] | select(.name==\"$NAME\") | .id")
             if [ -n "$ASSET_ID" ]; then
-              echo "Deleting existing asset $NAME ($ASSET_ID)"
+              echo "Deleting previously uploaded asset $NAME ($ASSET_ID)"
               gh api -X DELETE repos/${GITHUB_REPOSITORY}/releases/assets/$ASSET_ID
               sleep 5
             fi
           done
 
-      - name: Create release and upload zips
+      - name: Upload zips with retries
         if: ${{ steps.ports.outputs.Ports != '' }}
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ports-latest
-          name: Ports
-          overwrite_files: true
-          generate_release_notes: false
-          files: temp_ports/*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          MAX_RETRIES=3
+          for FILE in temp_ports/*.zip; do
+            NAME=$(basename "$FILE")
+            ATTEMPT=1
+            until [ $ATTEMPT -gt $MAX_RETRIES ]; do
+              echo "Uploading $NAME (attempt $ATTEMPT)..."
+              gh release upload ports-latest "$FILE" --clobber && break
+              echo "Failed to upload $NAME, retrying in 5s..."
+              sleep 5
+              ATTEMPT=$((ATTEMPT+1))
+            done
+          done
 
       - name: Commit ports.json
         run: |
