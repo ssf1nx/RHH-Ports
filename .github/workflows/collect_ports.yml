@@ -49,7 +49,7 @@ jobs:
           if [ "${{ github.event.inputs.force }}" = "true" ]; then
             mapfile -t PORTS < <(find ports/released -type f -name "*.sh" -exec dirname {} \;)
           else
-            mapfile -t CHANGED < <(git diff --name-only HEAD~1 HEAD)
+            mapfile -t CHANGED < <(git diff --name-only HEAD^ HEAD)
             PORTS=()
             for f in "${CHANGED[@]}"; do
               if [[ "$f" == ports/released/* ]]; then
@@ -58,9 +58,11 @@ jobs:
             done
           fi
           mapfile -t PORTS < <(printf "%s\n" "${PORTS[@]}" | sort -u)
+          echo "Found ${#PORTS[@]} ports to process."
           echo "Ports=${PORTS[*]}" >> $GITHUB_OUTPUT
 
       - name: Process ports
+        if: ${{ steps.ports.outputs.Ports != '' }}
         run: |
           ZIP_DIR="$GITHUB_WORKSPACE/temp_ports"
           PORTS_JSON="$GITHUB_WORKSPACE/docs/ports.json"
@@ -85,7 +87,13 @@ jobs:
             SIZE=$(stat -c %s "$ZIP_PATH")
             DATE_UPDATED=$(date -u +"%Y-%m-%d")
             SCREENSHOT_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${SCREENSHOT#"$GITHUB_WORKSPACE/"}"
-            README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
+
+            if [ -f "$README" ]; then
+              README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
+            else
+              README_URL=""
+            fi
+
             DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/ports-latest/${PORTNAME}.zip"
 
             ORIGINAL_JSON=$(cat "$PORT_JSON")
@@ -97,11 +105,13 @@ jobs:
               --arg screenshot_url "$SCREENSHOT_URL" \
               --arg size "$SIZE" \
               --arg md5 "$MD5" \
-              '$original + {source: {date_updated: $date_updated, download_url: $download_url, screenshot_url: $screenshot_url, size: ($size|tonumber), md5: $md5}}'
+              '$original + {source: {date_updated: $date_updated, download_url: $download_url, screenshot_url: $screenshot_url, readme_url: $readme_url, size: ($size|tonumber), md5: $md5}}'
             )
 
             TMP=$(mktemp)
-            jq --arg portname "$PORTNAME" --argjson portjson "$PORT_JSON_MERGED" 'map(select((.name | split(".")[0]) != $portname)) + [$portjson]' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
+            jq --arg portname "$PORTNAME" --argjson portjson "$PORT_JSON_MERGED" \
+              'map(select((.name | split(".")[0]) != $portname)) + [$portjson]' \
+              "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
           done
 
       - name: Sort ports by title
@@ -109,13 +119,22 @@ jobs:
           PORTS_JSON="$GITHUB_WORKSPACE/docs/ports.json"
           TMP=$(mktemp)
           jq 'sort_by(.attr.title)' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
+          
+      - name: Ensure release exists
+        if: ${{ steps.ports.outputs.Ports != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          gh release view ports-latest --json id &>/dev/null || \
+          gh release create ports-latest --title "Ports" --notes "Automated release"
 
-      - name: Delete conflicting release assets
+      - name: Delete conflicting assets
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
         if: ${{ steps.ports.outputs.Ports != '' }}
         run: |
-          RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/ports-latest --jq '.id')
+          RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/ports-latest --jq '.id' || echo "")
+          [ -z "$RELEASE_ID" ] && { echo "No release found, skipping asset deletion"; exit 0; }
           for FILE in temp_ports/*.zip; do
             NAME=$(basename "$FILE")
             ASSET_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets --jq ".[] | select(.name==\"$NAME\") | .id")
@@ -149,8 +168,10 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add docs/ports.json
-          git commit -m "Update ports.json"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Update ports.json"
+            git push
+          fi
 
       - name: Cleanup
         if: always()
