@@ -38,10 +38,8 @@ jobs:
 
       - name: Prepare environment
         run: |
-          ZIP_DIR="$GITHUB_WORKSPACE/temp_ports"
-          mkdir -p "$ZIP_DIR"
-          PORTS_JSON="$GITHUB_WORKSPACE/docs/ports.json"
-          [ -f "$PORTS_JSON" ] || echo "[]" > "$PORTS_JSON"
+          mkdir -p "$GITHUB_WORKSPACE/temp_ports"
+          [ -f "$GITHUB_WORKSPACE/docs/ports.json" ] || echo "[]" > "$GITHUB_WORKSPACE/docs/ports.json"
 
       - name: Determine ports to process
         id: ports
@@ -57,9 +55,10 @@ jobs:
               fi
             done
           fi
+
           mapfile -t PORTS < <(printf "%s\n" "${PORTS[@]}" | sort -u)
-          echo "Found ${#PORTS[@]} ports to process."
           echo "Ports=${PORTS[*]}" >> $GITHUB_OUTPUT
+          echo "Found ${#PORTS[@]} changed paths."
 
       - name: Process ports
         if: ${{ steps.ports.outputs.Ports != '' }}
@@ -67,38 +66,53 @@ jobs:
           ZIP_DIR="$GITHUB_WORKSPACE/temp_ports"
           PORTS_JSON="$GITHUB_WORKSPACE/docs/ports.json"
 
-          for STAGING_DIR in ${{ steps.ports.outputs.Ports }}; do
+          for CHANGED_PATH in ${{ steps.ports.outputs.Ports }}; do
+            echo "→ Searching from $CHANGED_PATH"
+
+            SEARCH_DIR="$CHANGED_PATH"
+            PORT_JSON=""
+            while [ "$SEARCH_DIR" != "$GITHUB_WORKSPACE" ]; do
+              if [ -f "$SEARCH_DIR/port.json" ]; then
+                PORT_JSON="$SEARCH_DIR/port.json"
+                break
+              fi
+              if [[ "$SEARCH_DIR" == *"ports/released" ]]; then
+                break
+              fi
+              SEARCH_DIR=$(dirname "$SEARCH_DIR")
+            done
+
+            if [ -z "$PORT_JSON" ]; then
+              echo "  Skipping $CHANGED_PATH: no port.json found (searched upward)"
+              continue
+            fi
+
+            # The staging dir is the directory *above* the one containing port.json
+            PORT_JSON_DIR=$(dirname "$PORT_JSON")
+            STAGING_DIR=$(dirname "$PORT_JSON_DIR")
             PORTNAME=$(basename "$STAGING_DIR")
-            echo "→ Processing $PORTNAME"
 
-            PORT_JSON=$(find "$STAGING_DIR" -type f -name "port.json" | head -n1)
-            [ -f "$PORT_JSON" ] || { echo "  Skipping $PORTNAME: missing port.json"; continue; }
-
-            echo "  📦 Zipping port → $ZIP_DIR/${PORTNAME}.zip"
-            (cd "$STAGING_DIR" && zip -r -q "$ZIP_DIR/${PORTNAME}.zip" .)
-
-            PORTDIR=$(dirname "$PORT_JSON")
-            SCREENSHOT=$(find "$PORTDIR" -maxdepth 1 -type f \( -iname "screenshot*.png" -o -iname "screenshot*.jpg" -o -iname "screenshot*.jpeg" \) | head -n1)
-            [ -f "$SCREENSHOT" ] || { echo "  Skipping $PORTNAME: no screenshot found"; continue; }
-            README=$(find "$PORTDIR" -maxdepth 1 -type f \( -iname "README.md" -o -iname "readme.md" \) | head -n1)
+            echo "  ✅ Found port.json in: $PORT_JSON_DIR"
+            echo "  📦 Staging directory: $STAGING_DIR"
+            echo "  📄 Port name: $PORTNAME"
 
             ZIP_PATH="$ZIP_DIR/${PORTNAME}.zip"
+            echo "  Zipping → $ZIP_PATH"
+            (cd "$STAGING_DIR" && zip -r -q "$ZIP_PATH" .)
+
+            SCREENSHOT=$(find "$PORT_JSON_DIR" -maxdepth 1 -type f \( -iname "screenshot*.png" -o -iname "screenshot*.jpg" -o -iname "screenshot*.jpeg" \) | head -n1)
+            [ -f "$SCREENSHOT" ] || { echo "  Skipping $PORTNAME: no screenshot found"; continue; }
+            README=$(find "$PORT_JSON_DIR" -maxdepth 1 -type f \( -iname "README.md" -o -iname "readme.md" \) | head -n1)
+
             MD5=$(md5sum "$ZIP_PATH" | awk '{print $1}')
             SIZE=$(stat -c %s "$ZIP_PATH")
             DATE_UPDATED=$(date -u +"%Y-%m-%d")
             SCREENSHOT_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${SCREENSHOT#"$GITHUB_WORKSPACE/"}"
-
-            if [ -f "$README" ]; then
-              README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
-            else
-              README_URL=""
-            fi
-
+            README_URL=""
+            [ -f "$README" ] && README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
             DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/ports-latest/${PORTNAME}.zip"
 
             ORIGINAL_JSON=$(cat "$PORT_JSON")
-
-            # Load existing entry if present
             EXISTING_ENTRY=$(jq -c --arg name "$PORTNAME" '.[] | select((.name | split(".")[0]) == $name)' "$PORTS_JSON" || echo "")
             if [ -n "$EXISTING_ENTRY" ]; then
               OLD_MD5=$(echo "$EXISTING_ENTRY" | jq -r '.source.md5 // empty')
@@ -108,7 +122,6 @@ jobs:
               OLD_SIZE=""
             fi
 
-            # Decide whether to bump the date_updated
             if [ "$MD5" != "$OLD_MD5" ] || [ "$SIZE" != "$OLD_SIZE" ]; then
               DATE_UPDATED=$(date -u +"%Y-%m-%d")
             else
@@ -129,16 +142,15 @@ jobs:
 
             TMP=$(mktemp)
             jq --arg portname "${PORTNAME}.zip" --argjson portjson "$PORT_JSON_MERGED" \
-            'map(select(.name != $portname)) + [$portjson]' \
-            "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
+              'map(select(.name != $portname)) + [$portjson]' \
+              "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
           done
 
       - name: Sort ports by title
         run: |
-          PORTS_JSON="$GITHUB_WORKSPACE/docs/ports.json"
-          TMP=$(mktemp)
-          jq 'sort_by(.attr.title)' "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
-          
+          jq 'sort_by(.attr.title)' "$GITHUB_WORKSPACE/docs/ports.json" > "$GITHUB_WORKSPACE/docs/ports.tmp" &&
+          mv "$GITHUB_WORKSPACE/docs/ports.tmp" "$GITHUB_WORKSPACE/docs/ports.json"
+
       - name: Ensure release exists
         if: ${{ steps.ports.outputs.Ports != '' }}
         env:
@@ -148,9 +160,9 @@ jobs:
           gh release create ports-latest --title "Ports" --notes "Automated release"
 
       - name: Delete conflicting assets
+        if: ${{ steps.ports.outputs.Ports != '' }}
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
-        if: ${{ steps.ports.outputs.Ports != '' }}
         run: |
           RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/ports-latest --jq '.id' || echo "")
           [ -z "$RELEASE_ID" ] && { echo "No release found, skipping asset deletion"; exit 0; }
@@ -158,7 +170,7 @@ jobs:
             NAME=$(basename "$FILE")
             ASSET_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets --jq ".[] | select(.name==\"$NAME\") | .id")
             if [ -n "$ASSET_ID" ]; then
-              echo "Deleting previously uploaded asset $NAME ($ASSET_ID)"
+              echo "Deleting old asset $NAME"
               gh api -X DELETE repos/${GITHUB_REPOSITORY}/releases/assets/$ASSET_ID
               sleep 5
             fi
