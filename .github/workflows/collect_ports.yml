@@ -109,9 +109,9 @@ jobs:
             )
 
             TMP=$(mktemp)
-            jq --arg portname "$PORTNAME" --argjson portjson "$PORT_JSON_MERGED" \
-              'map(select((.name | split(".")[0]) != $portname)) + [$portjson]' \
-              "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
+            jq --arg portname "${PORTNAME}.zip" --argjson portjson "$PORT_JSON_MERGED" \
+            'map(select(.name != $portname)) + [$portjson]' \
+            "$PORTS_JSON" > "$TMP" && mv "$TMP" "$PORTS_JSON"
           done
 
       - name: Sort ports by title
