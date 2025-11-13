@@ -2225,85 +2225,6 @@
   },
   {
     "version": 3,
-    "name": "sonic.1.zip",
-    "items": [
-      "Sonic 1.sh",
-      "sonic1"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Sonic 1",
-      "porter": [
-        "Christian_Haitian",
-        "Jeod"
-      ],
-      "desc": "Sonic the Hedgehog 1 decompilation by Rubberduckycooly.",
-      "desc_md": null,
-      "inst": "Add your own Data.rsdk file to the ports/sonic1 folder.",
-      "inst_md": null,
-      "genres": [
-        "platformer"
-      ],
-      "availability": "paid",
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": null,
-      "reqs": [],
-      "arch": [
-        "aarch64"
-      ]
-    },
-    "source": {
-      "date_updated": "2025-11-13",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
-      "size": 966648,
-      "md5": "0bddde8289970d5eca43da17d4840c6a"
-    }
-  },
-  {
-    "version": 3,
-    "name": "sonic.2.zip",
-    "items": [
-      "Sonic 2.sh",
-      "sonic2"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Sonic 2",
-      "porter": [
-        "Christian_Haitian",
-        "Jeod"
-      ],
-      "desc": "Sonic the Hedgehog 2 decompilation by Rubberduckycooly.",
-      "desc_md": null,
-      "inst": "Add your own Data.rsdk file to the ports/sonic2 folder.",
-      "inst_md": null,
-      "genres": [
-        "platformer"
-      ],
-      "availability": "paid",
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": null,
-      "reqs": [],
-      "arch": [
-        "aarch64"
-      ]
-    },
-    "source": {
-      "date_updated": "2025-11-11",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.jpg",
-      "size": 918755,
-      "md5": "45fcf85ff84c583b3e0486ea6a6b2f40"
-    }
-  },
-  {
-    "version": 3,
     "name": "sonic.2.zip",
     "items": [
       "Sonic 2.sh",
@@ -2413,90 +2334,12 @@
       ]
     },
     "source": {
-      "date_updated": "2025-11-11",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
-      "size": 596149,
-      "md5": "74dd1bc0e9f1325656c42487aa146533"
-    }
-  },
-  {
-    "version": 3,
-    "name": "sonic.cd.zip",
-    "items": [
-      "Sonic CD.sh",
-      "soniccd"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Sonic CD",
-      "porter": [
-        "Christian_Haitian",
-        "Jeod"
-      ],
-      "desc": "Sonic CD decompilation by Rubberduckycooly.",
-      "desc_md": null,
-      "inst": "Add your own Data.rsdk file to the ports/soniccd folder.",
-      "inst_md": null,
-      "genres": [
-        "platformer"
-      ],
-      "availability": "paid",
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": null,
-      "reqs": [],
-      "arch": [
-        "aarch64"
-      ]
-    },
-    "source": {
       "date_updated": "2025-11-13",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "size": 596149,
       "md5": "38f54134c7bf97c2f59e274a5db83783"
-    }
-  },
-  {
-    "version": 3,
-    "name": "sonic.mania.zip",
-    "items": [
-      "Sonic Mania.sh",
-      "sonicmania"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Sonic Mania",
-      "porter": [
-        "TheGammaSqueeze",
-        "Jeod"
-      ],
-      "desc": "Sonic Mania decompilation by Rubberduckycooly.",
-      "desc_md": null,
-      "inst": "Add your own Data.rsdk file to the ports/sonicmania folder.",
-      "inst_md": null,
-      "genres": [
-        "platformer"
-      ],
-      "availability": "paid",
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": null,
-      "reqs": [],
-      "arch": [
-        "aarch64"
-      ]
-    },
-    "source": {
-      "date_updated": "2025-11-11",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.mania.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
-      "size": 2568618,
-      "md5": "2182f6e2896d3abfd504a7ff56687282"
     }
   },
   {
