@@ -57,6 +57,7 @@ jobs:
               fi
             done
           fi
+
           mapfile -t PORTS < <(printf "%s\n" "${PORTS[@]}" | sort -u)
           echo "Found ${#PORTS[@]} ports to process."
           echo "Ports=${PORTS[*]}" >> $GITHUB_OUTPUT
@@ -71,8 +72,25 @@ jobs:
             PORTNAME=$(basename "$STAGING_DIR")
             echo "→ Processing $PORTNAME"
 
-            PORT_JSON=$(find "$STAGING_DIR" -type f -name "port.json" | head -n1)
-            [ -f "$PORT_JSON" ] || { echo "  Skipping $PORTNAME: missing port.json"; continue; }
+            # Recursively walk upward to find port.json
+            SEARCH_DIR="$STAGING_DIR"
+            PORT_JSON=""
+            while [ "$SEARCH_DIR" != "$(dirname "$GITHUB_WORKSPACE")" ]; do
+              if [ -f "$SEARCH_DIR/port.json" ]; then
+                PORT_JSON="$SEARCH_DIR/port.json"
+                break
+              fi
+              # Stop walking above ports/released
+              if [[ "$SEARCH_DIR" == *"ports/released" ]]; then
+                break
+              fi
+              SEARCH_DIR=$(dirname "$SEARCH_DIR")
+            done
+
+            if [ -z "$PORT_JSON" ]; then
+              echo "  Skipping $PORTNAME: missing port.json (searched upward)"
+              continue
+            fi
 
             echo "  📦 Zipping port → $ZIP_DIR/${PORTNAME}.zip"
             (cd "$STAGING_DIR" && zip -r -q "$ZIP_DIR/${PORTNAME}.zip" .)
@@ -108,7 +126,7 @@ jobs:
               OLD_SIZE=""
             fi
 
-            # Decide whether to bump the date_updated
+            # Determine if updated
             if [ "$MD5" != "$OLD_MD5" ] || [ "$SIZE" != "$OLD_SIZE" ]; then
               DATE_UPDATED=$(date -u +"%Y-%m-%d")
             else
@@ -148,9 +166,9 @@ jobs:
           gh release create ports-latest --title "Ports" --notes "Automated release"
 
       - name: Delete conflicting assets
+        if: ${{ steps.ports.outputs.Ports != '' }}
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
-        if: ${{ steps.ports.outputs.Ports != '' }}
         run: |
           RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/ports-latest --jq '.id' || echo "")
           [ -z "$RELEASE_ID" ] && { echo "No release found, skipping asset deletion"; exit 0; }

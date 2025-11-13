@@ -220,6 +220,7 @@ set_flags() {
 dump_textures() {
     # Purge cache before operations
     [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+    [ -d "$SAVEDIR/textures" ] && rm -rf "$SAVEDIR/textures"
 
     # Begin texture operations
     if ! dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
