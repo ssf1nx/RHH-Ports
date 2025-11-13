@@ -97,6 +97,25 @@ jobs:
             DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/ports-latest/${PORTNAME}.zip"
 
             ORIGINAL_JSON=$(cat "$PORT_JSON")
+
+            # Load existing entry if present
+            EXISTING_ENTRY=$(jq -c --arg name "$PORTNAME" '.[] | select((.name | split(".")[0]) == $name)' "$PORTS_JSON" || echo "")
+            if [ -n "$EXISTING_ENTRY" ]; then
+              OLD_MD5=$(echo "$EXISTING_ENTRY" | jq -r '.source.md5 // empty')
+              OLD_SIZE=$(echo "$EXISTING_ENTRY" | jq -r '.source.size // empty')
+            else
+              OLD_MD5=""
+              OLD_SIZE=""
+            fi
+
+            # Decide whether to bump the date_updated
+            if [ "$MD5" != "$OLD_MD5" ] || [ "$SIZE" != "$OLD_SIZE" ]; then
+              DATE_UPDATED=$(date -u +"%Y-%m-%d")
+            else
+              DATE_UPDATED=$(echo "$EXISTING_ENTRY" | jq -r '.source.date_updated // empty')
+              [ -z "$DATE_UPDATED" ] && DATE_UPDATED=$(date -u +"%Y-%m-%d")
+            fi
+
             PORT_JSON_MERGED=$(jq -n \
               --argjson original "$ORIGINAL_JSON" \
               --arg date_updated "$DATE_UPDATED" \
