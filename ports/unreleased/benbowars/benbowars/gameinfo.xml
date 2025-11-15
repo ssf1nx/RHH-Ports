@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./BenboWARS.sh</path>
+		<name>BenboWARS</name>
+		<desc>A brand new Indie Adventure. The War on Videogames Rages on. It's the Brand New Game. The Only and Only....The BenboWARS</desc>
+		<image>./benbowars/cover.png</image>
+		<releasedate>2026</releasedate>
+		<developer>Mr. Videogames</developer>
+		<genre>Action, Adventure, Indie</genre>
+	</game>
+</gamelist>

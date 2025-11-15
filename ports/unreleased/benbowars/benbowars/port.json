@@ -1,0 +1,43 @@
+{
+  "version": 4,
+  "name": "benbowars.zip",
+  "items": [
+    "BenboWARS.sh",
+    "benbowars"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "BenboWARS",
+    "porter": [
+      "Jeod",
+    ],
+    "desc": "A brand new Indie Adventure. The War on Videogames Rages on. It's the Brand New Game. The Only and Only....The BenboWARS",
+    "desc_md": null,
+    "inst": "Download the game and add all files to `benbowars/assets/`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/3516350/BENBOWARS/",
+        "developerurl": ""
+      },
+    ],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
