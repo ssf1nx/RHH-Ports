@@ -1255,6 +1255,58 @@
   },
   {
     "version": 4,
+    "name": "koboo_prologue.zip",
+    "items": [
+      "Koboo The Tree Spirit - Prologue.sh",
+      "koboo_prologue"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Koboo The Tree Spirit : Prologue",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Explore the free prologue of Koboo: The Tree Spirit! An action rogue-lite platformer where you battle against towering hunters as a tiny spirit. Forge powerful synergies, battle seemingly gigantic bosses and rebuild your home.",
+      "desc_md": null,
+      "inst": "Add all game files to `koboo_prologue/assets/`.",
+      "inst_md": null,
+      "genres": [
+        "action",
+        "adventure",
+        "rpg"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [
+        "dotnet-8.0.12.squashfs",
+        "gmtoolkit.squashfs"
+      ],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2194820/Koboo_The_Tree_Spirit__Prologue/",
+          "developerurl": ""
+        }
+      ],
+      "availability": "free",
+      "reqs": [],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2025-11-19T13:42",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
+      "size": 6598476,
+      "md5": "6d9cc522c8fc3aee39522587b2b0811c"
+    }
+  },
+  {
+    "version": 4,
     "name": "oracles-randomizer-ng.zip",
     "items": [
       "LOZ Oracles Randomizer NG.sh",
