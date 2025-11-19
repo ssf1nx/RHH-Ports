@@ -45,7 +45,7 @@ run_patcher() {
 # Check if we need to download Steamlink
 if [ "$DEVICE_ARCH" == "aarch64" ]; then
     LIBARCH="/usr/lib/"
-    CDN_URL="http://cdn.origin.steamstatic.com/steamlink/rpi/bookworm/arm64/public_build.txt"
+    CDN_URL="https://media.steampowered.com/steamlink/rpi/bookworm/arm64/public_build.txt"
     CDN_TXT=$(curl -s "$CDN_URL")
     PACKAGE_URL=$(echo "$CDN_TXT" | grep -o 'https://[^[:space:]]*')
     PACKAGE_VERSION=$(echo "$PACKAGE_URL" | grep 'steamlink-rpi-bookworm-arm64-[0-9]\+\.[0-9]\+\.[0-9]\+\(\.[0-9]\+\)\?' | sed -n 's/.*steamlink-rpi-bookworm-arm64-\([0-9.]*\).*/\1/p')
