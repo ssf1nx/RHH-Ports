@@ -1290,19 +1290,21 @@
         }
       ],
       "availability": "free",
-      "reqs": [],
+      "reqs": [
+        "!lowres"
+      ],
       "arch": [
         "aarch64"
       ],
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2025-11-19T13:42",
+      "date_updated": "2025-11-20T14:51",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
-      "size": 6598476,
-      "md5": "6d9cc522c8fc3aee39522587b2b0811c"
+      "size": 6598481,
+      "md5": "168ca5a901b17fc50b2dbbeb6b60963f"
     }
   },
   {
@@ -1422,12 +1424,12 @@
       ]
     },
     "source": {
-      "date_updated": "2025-11-13T22:28",
+      "date_updated": "2025-11-20T16:01",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
-      "size": 7593240,
-      "md5": "488a01c21f8ae60f30888f0594c8a61e"
+      "size": 7592719,
+      "md5": "eccf51c4c203f404f004d4d091686b21"
     }
   },
   {

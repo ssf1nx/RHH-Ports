@@ -10,7 +10,7 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
-export DATAFILE="lubarlux.port"
+export DATAFILE="lunarlux.port"
 export TMPDIR="$GAMEDIR/tmp"
 
 prepare_system() {
@@ -32,18 +32,6 @@ prepare_system() {
         echo "This port requires the GMToolkit runtime. Please download it."
         return 1
     fi
-
-    # Mount the dotnet runtime
-    DOTNETDIR="$HOME/mono"
-    DOTNETFILE="$controlfolder/libs/dotnet-8.0.12.squashfs"
-    if [ -f "$DOTNETFILE" ]; then
-        $ESUDO mkdir -p "$DOTNETDIR"
-        $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
-        $ESUDO mount "$DOTNETFILE" "$DOTNETDIR"
-    else
-        echo "This port requires the Dotnet runtime. Please download it."
-        return 1
-    fi
     
     # Attempt to get SAVEDIR from gmloader.json using jq
     if command -v jq >/dev/null 2>&1; then
@@ -55,7 +43,7 @@ prepare_system() {
     # Exports
     export PYTHON
     export SAVEDIR
-    export PATH="$DOTNETDIR:$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
+    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
     export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 }
 
@@ -71,26 +59,6 @@ prepare_files() {
     # Move splash file if it exists
     if [ -f "$DATADIR/splash.png" ]; then
         mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
-    fi
-}
-
-# Toggle GeneralInfo flags via envars - see https://github.com/UnderminersTeam/UndertaleModTool/blob/master/UndertaleModLib/Models/UndertaleGeneralInfo.cs for options
-set_flags() {
-    export SET_FLAGS="Fullscreen"
-    export CLEAR_FLAGS="Scale"
-    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        load "$DATADIR/data.win" \
-        -s "$GAMEDIR/tools/toggleflags.csx" \
-        -o "$DATADIR/data2.win"
-        
-    if [ $? -ne 0 ]; then
-        echo "Failed to toggle info flags."
-        return 1
-    else
-        echo "Successfully toggled info flags."
-        rm -f "$DATADIR/data.win"
-        mv "$DATADIR/data2.win" "$DATADIR/data.win"
-        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
     fi
 }
 
@@ -125,18 +93,14 @@ zip_archive() {
 # Cleanup function
 cleanup() {
     rm -rf "$TMPDIR"
-    $ESUDO umount "$DOTNETDIR" 2>/dev/null || true
     $ESUDO umount "$TOOLKIT" 2>/dev/null || true
 }
 
 process_game() {
     echo "Preparing game..."
+    prepare_system || { cleanup; return 1; }
     prepare_files || { cleanup; return 1; }
-    echo "Toggling GeneralInfo flags..."
-    set_flags || { cleanup; return 1; }
-    echo "Compressing audio..."
     compress_audio || { cleanup; return 1; }
-    echo "Finishing up..."
     zip_archive || { cleanup; return 1; }
 }
 
