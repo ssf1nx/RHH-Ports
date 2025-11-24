@@ -274,21 +274,26 @@ cleanup() {
     $ESUDO umount "$TOOLKIT" 2>/dev/null || true
 }
 
+# Helper for dotnet funcs
+modify_datafile() {
+    dump_code || return 1
+    echo "Modifying gml scripts..."
+    modify_code || return 1
+    echo "Repacking gml scripts..."
+    replace_code || return 1
+    echo "Toggling GeneralInfo flags..."
+    set_flags || return 1
+    echo "Externalizing textures..."
+    dump_textures || return 1
+}
+
 process_game() {
     echo "Preparing system..."
     prepare_system || { cleanup; return 1; }
     echo "Preparing game..."
     prepare_files || { cleanup; return 1; }
-    dump_code || { cleanup; return 1; }
-    echo "Modifying gml scripts..."
-    modify_code || { cleanup; return 1; }
-    echo "Repacking gml scripts..."
-    replace_code || { cleanup; return 1; }
-    echo "Toggling GeneralInfo flags..."
-    set_flags || { cleanup; return 1; }
-    echo "Externalizing textures..."
-    dump_textures || { cleanup; return 1; }
-    sleep 1
+    #echo "Performing datafile edits..."
+    #modify_datafile || { cleanup; return 1; }
     echo "Compressing audio..."
     compress_audio || { cleanup; return 1; }
     sleep 1
