@@ -17,7 +17,7 @@ source $controlfolder/control.txt
 get_controls
 
 # Variables
-GAMEDIR="/$directory/ports/portfolder"
+GAMEDIR="/$directory/ports/tinymon"
 
 # CD and set logging
 cd $GAMEDIR
@@ -53,7 +53,7 @@ if [ -f "$GAMEDIR/patchlog.txt" ]; then
 fi
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "gmloadernext.aarch64" -c "game.gptk" &
+$GPTOKEYB "gmloadernext.aarch64" -c "tinymon.gptk" &
 pm_platform_helper "$GAMEDIR/gmloadernext.aarch64" >/dev/null
 ./gmloadernext.aarch64 -c gmloader.json
 

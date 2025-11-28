@@ -33,6 +33,11 @@ prepare_files() {
     if [ -f "$DATADIR/splash.png" ]; then
         mv "$DATADIR/splash.png" "$GAMEDIR/splash.png"
     fi
+    
+    # Rename data.win
+    if [ -f "$DATADIR/data.win" ]; then
+        mv "$DATADIR/data.win" "$DATADIR/game.droid"
+    fi
 }
 
 # Zip it all into the .port file
