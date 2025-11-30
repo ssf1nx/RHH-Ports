@@ -5,3 +5,8 @@ If using SMAPI you can add mods to `gamedata/Mods`.
 
 # Notes
 This port is untested on weaker devices. Retroid Pocket 5 / Mini / Flip 2 family and AYN Odin 2 family under Rocknix are known to perform well.
+
+# Thanks
+ConcernedApe -- The game  
+a9ix -- ValleyCore  
+NoaHimesaka1873 -- SMAPI contrib to ValleyCore  
