@@ -2614,7 +2614,8 @@
       "availability": "paid",
       "reqs": [
         "hires",
-        "4gb"
+        "power",
+        "ultra"
       ],
       "arch": [
         "aarch64"
@@ -2622,12 +2623,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2025-11-30T01:36",
+      "date_updated": "2025-11-30T02:10",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valleycore.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/README.md",
-      "size": 574351,
-      "md5": "c044e4fd35d779ba1cc9cf3ee7c7f596"
+      "size": 574875,
+      "md5": "63ebd43b9a17baa8dc5a5e868f94d0d4"
     }
   },
   {
