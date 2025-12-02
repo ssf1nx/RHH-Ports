@@ -1477,12 +1477,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2025-11-13T22:28",
+      "date_updated": "2025-12-01T00:34",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
-      "size": 7394955,
-      "md5": "f0a2e417012b6a90f9040919a126b82a"
+      "size": 7394998,
+      "md5": "e5fa95518206d6465321d382252114a1"
     }
   },
   {
