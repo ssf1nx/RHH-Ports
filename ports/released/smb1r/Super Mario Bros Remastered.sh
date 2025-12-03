@@ -20,7 +20,7 @@ get_controls
 # Paths
 GAMEDIR="/$directory/ports/smb1r"
 CONFDIR="$GAMEDIR/config"
-GPTK="$GAMEDIR/tools/mario-gp.gptk"
+GPTK="$GAMEDIR/tools/mario-kb.gptk"
 
 # CD and set up log and permissions
 cd "$GAMEDIR"
@@ -249,7 +249,7 @@ fi
 
 # Launch game
 $GPTOKEYB "SMB1R.arm64" -c "$GPTK" &
-$ESUDO env $weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
+$ESUDO env CRUSTY_BLOCK_INPUT=1 $weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
 	./SMB1R.arm64 \
 	--resolution ${DISPLAY_WIDTH}x${DISPLAY_HEIGHT} -f \
 	--main-pack SMB1R.pck
