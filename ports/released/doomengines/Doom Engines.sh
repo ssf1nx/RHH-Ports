@@ -76,11 +76,16 @@ else
     exit
 fi
 
-# Modify resolution in config files
+# Sanitize SAVEDIR folder
+SAVEDIR="$(basename "$FILE")"
+SAVEDIR="${SAVEDIR%.*}"
+
+# Modify resolution ad save dir in config files
 gzdoom_configs="$GZDOOM1 $GZDOOM2 $GZDOOM3 $GZDOOM4"
 for config in $gzdoom_configs; do
     sed -i "s/^vid_defheight=[0-9]\+/vid_defheight=$DISPLAY_HEIGHT/" "$config"
     sed -i "s/^vid_defwidth=[0-9]\+/vid_defwidth=$DISPLAY_WIDTH/" "$config"
+    sed -i "s|^save_dir=.*|save_dir=./configs/gzdoom/saves/$SAVEDIR|" "$config"
 done
 
 crispy_configs="$CRISPY1 $CRISPY2 $CRISPY3 $CRISPY4"
