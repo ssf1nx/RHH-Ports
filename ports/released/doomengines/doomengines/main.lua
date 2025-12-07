@@ -61,7 +61,13 @@ local radioButtonXPercentage = 0.60      -- Radio button X position (range 0.00 
 local fontSizeScaleFactor = 1.0          -- Scale factor for font size relative to button size
 local radioFile = "launcher/radio.txt"
 local radioContent = readFromFile(radioFile)
-local selectedRadioOption = (radioContent == "1" and 1) or (radioContent == "2" and 2) or 1
+local radioLabels = { "Crispy Doom", "GZ Doom", "UZ Doom" }
+local saved = tonumber(radioContent)
+if saved and saved >= 1 and saved <= #radioLabels then
+    selectedRadioOption = saved
+else
+    selectedRadioOption = 1
+end
 
 -- Input globals
 local inputCooldown = 0.2
@@ -443,11 +449,13 @@ function handleDefaultMenuInput(gamepad)
         selectNextOption()  -- Move down in the menu
         playUISound("toggle")
     elseif (gamepad and gamepad:isGamepadDown("leftshoulder")) then
-        selectedRadioOption = 1  -- "Crispy Doom" selected
+        selectedRadioOption = selectedRadioOption - 1
+        if selectedRadioOption < 1 then selectedRadioOption = #radioLabels end
         selectRadioOption()
         playUISound("toggle")
     elseif (gamepad and gamepad:isGamepadDown("rightshoulder")) then
-        selectedRadioOption = 2  -- "GZ Doom" selected
+        selectedRadioOption = selectedRadioOption + 1
+        if selectedRadioOption > #radioLabels then selectedRadioOption = 1 end
         selectRadioOption()
         playUISound("toggle")
     elseif love.keyboard.isDown("return") or (gamepad and gamepad:isGamepadDown("a")) then
@@ -606,12 +614,11 @@ function drawRadioButtons()
     local radioY = windowHeight * radioButtonYPercentage
 
     -- Draw each radio button and its label
-    for i, label in ipairs({"Crispy Doom", "GZ Doom"}) do
+    for i, label in ipairs(radioLabels) do
         local buttonX = radioX + (i - 1) * (radioButtonSize + radioButtonSpacing)
 
         -- Draw outer circle
         love.graphics.circle("line", buttonX, radioY, radioButtonSize / 2)
-
         -- Draw filled inner circle if selected
         if selectedRadioOption == i then
             love.graphics.circle("fill", buttonX, radioY, radioButtonSize / 4)
@@ -624,7 +631,7 @@ function drawRadioButtons()
     -- Draw the instruction text below the buttons
     local helpText = "Use L/R to select an engine"
     local helpTextWidth = love.graphics.getFont():getWidth(helpText)
-    local buttonsWidth = #({"Crispy Doom", "GZ Doom"}) * (radioButtonSize + radioButtonSpacing) - radioButtonSpacing
+    local buttonsWidth = #radioLabels * (radioButtonSize + radioButtonSpacing) - radioButtonSpacing
     local buttonsCenterX = radioX + buttonsWidth / 2
     local helpTextX = buttonsCenterX - helpTextWidth / 2 + (windowWidth * 0.03)
     love.graphics.print(helpText, helpTextX, radioY + fontSize)
@@ -636,7 +643,7 @@ end
 function handleSelection()
     -- Define mappings and file paths
     local selectedGame = menus[selectedMenu][selectedOption]
-    local radioOptions = { "crispydoom", "gzdoom" }
+    local radioOptions = { "crispydoom", "gzdoom", "uzdoom" }
     local selectedGameFile = "selected_game.txt"
     local radioFile = "launcher/radio.txt"
 

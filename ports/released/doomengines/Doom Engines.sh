@@ -146,11 +146,9 @@ if [ "$ENGINE_BASE" = "crispydoom" ]; then
         *) ENGINE="crispy/crispydoom" ;;
     esac
 elif [ "$ENGINE" = "gzdoom" ]; then
-    # If the CPU is weak use the lite version
-    case "$DEVICE_CPU" in
-        "RK3326"|"A133PLUS"|"H700"|"S922X") ENGINE="gzdoom_4.14.2-lite/$ENGINE" ;;
-        *) ENGINE="gzdoom_4.14.2/$ENGINE" ;;
-    esac
+    ENGINE="gzdoom_4.14.2/$ENGINE"
+elif [ "$ENGINE" = "uzdoom" ]; then
+    ENGINE="uzdoom_4.14.3/$ENGINE"
 fi
 
 # Switch INI if it's empty
