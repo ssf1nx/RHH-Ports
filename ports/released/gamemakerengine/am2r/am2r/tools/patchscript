@@ -62,7 +62,14 @@ unzip_archives() {
     AM2R_ZIP=""
     AUTOPATCHER_ZIP=""
     AM2R16B_ZIP="AM2R_1.6b2_windows.zip"
+    
+    # Bail early if we don't have 1.6b
+    if [ ! -f "$DATADIR/$AM2R16B_ZIP" ]; then
+        echo "AM2R 1.6b patch not found."
+        return 1
+    fi
 
+    # Determine authenticity of other zips
     for zip in "$DATADIR"/*.zip; do
 
         # Identify AM2R zip (data.win in root)
@@ -82,18 +89,13 @@ unzip_archives() {
     if [ -n "$AM2R_ZIP" ]; then
         echo "AM2R zip detected: $AM2R_ZIP"
     else
-        echo "No valid AM2R zip found."
+        echo "No valid AM2R 1.1 zip found."
     fi
 
     if [ -n "$AUTOPATCHER_ZIP" ]; then
         echo "Autopatcher zip detected: $AUTOPATCHER_ZIP"
     else
-        echo "No Autopatcher zip found."
-    fi
-    
-    if [ ! -f "$DATADIR/$AM2R16B_ZIP" ]; then
-        echo "AM2R 1.6b patch not found."
-        return 1
+        echo "No Autopatcher zip found. Will proceed without HQ audio."
     fi
 
     # Unzip AM2R and autopatcher
@@ -126,7 +128,8 @@ apply_xdelta() {
         if [ $? -eq 0 ]; then
             echo "Patch applied successfully"
             echo "$output"
-            rm -rf "$DATA" && rm -rf "$DATADIR/am2rpatch"
+            rm -rf "$DATA"
+            [ -n "$AUTOPATCHER_ZIP" ] && rm -rf "$DATADIR/am2rpatch"
         else
             # If this happens, it's not AM2R 1.1
             echo "Failed to apply patch"
