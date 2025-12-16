@@ -51,7 +51,7 @@ fi
 # --- end OpenGL check ---
 
 # Assign gptokeyb and load the game
-$GPTOKEYB "tfe" -c "tfe.gptk" &
+$GPTOKEYB "tfe" -c "$GAMEDIR/tfe.gptk" &
 pm_platform_helper "$GAMEDIR/tfe" >/dev/null
 ./tfe --game DARK
 
