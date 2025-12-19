@@ -22,7 +22,7 @@ GAMEDIR="/$directory/ports/ziiaol"
 # CD and set permissions
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.aarch64"
+$ESUDO chmod +xwr "$GAMEDIR/gmloadernext.armhf"
 $ESUDO chmod +xr "$GAMEDIR/tools/splash"
 
 # Exports
