@@ -2576,6 +2576,55 @@
   },
   {
     "version": 4,
+    "name": "theforceengine.zip",
+    "items": [
+      "Star Wars - The Force Engine.sh",
+      "theforceengine"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Star Wars : Dark Forces (TFE)",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Dark Forces with The Force Engine to enable widescreen support, custom settings, and mods!",
+      "desc_md": null,
+      "inst": "Copy your `Star Wars: Dark Forces` .GOB files and `LFD` folder to `theforceengine/darkforces`. You can also copy `enhanced.gob` from the remaster.",
+      "inst_md": null,
+      "genres": [
+        "fps"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [],
+      "store": [
+        {
+          "name": "",
+          "gameurl": "",
+          "developerurl": ""
+        }
+      ],
+      "availability": "paid",
+      "reqs": [
+        "opengl"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2025-12-29T21:55",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/theforceengine.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/README.md",
+      "size": 9698190,
+      "md5": "2662bd5af3561dff83ef9809d96fd731"
+    }
+  },
+  {
+    "version": 4,
     "name": "valleycore.zip",
     "items": [
       "Stardew Valley (Valleycore).sh",
