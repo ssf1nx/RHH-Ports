@@ -3272,12 +3272,12 @@
       "reqs": []
     },
     "source": {
-      "date_updated": "2026-01-01T17:45",
+      "date_updated": "2026-01-01T17:59",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusxd.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/README.md",
       "size": 341897,
-      "md5": "fee037590864fc34df24dbbe9198c1ce"
+      "md5": "39bd7cc45a8a5559259bf5394fff36ce"
     }
   },
   {
