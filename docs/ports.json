@@ -1753,6 +1753,58 @@
     }
   },
   {
+    "version": 4,
+    "name": "ooo.zip",
+    "items": [
+      "Ooo.sh",
+      "ooo"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Ooo",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "A Bomb Caterpillar's Big Adventure! \"Öoo\" is a charming yet mysterious exploration puzzle platformer where you discover creative ways to use bombs!",
+      "desc_md": null,
+      "inst": "Copy game data to the assets folder.",
+      "inst_md": null,
+      "genres": [
+        "rpg"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [
+        "dotnet-8.0.12.squashfs",
+        "gmtoolkit.squashfs"
+      ],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2721890/oo/",
+          "developerurl": ""
+        }
+      ],
+      "availability": "paid",
+      "reqs": [
+        "power"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-01-01T19:46",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
+      "size": 7071604,
+      "md5": "0facb7d4e00dec8b607b4fca558bf2d1"
+    }
+  },
+  {
     "version": 2,
     "name": "osanasrevenge.zip",
     "items": [
@@ -1838,6 +1890,47 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "size": 7174936,
       "md5": "e39bb6fb4515ed4fb15cab9f93fbc830"
+    }
+  },
+  {
+    "version": 3,
+    "name": "picayune.zip",
+    "items": [
+      "Picayune Dreams.sh",
+      "picayune"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Picayune Dreams",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Picayune Dreams is a roguelike blend of bullet heaven horde survival, and bullet hell gameplay. Adrift across the endless void, you must fend off thousands of nightmarish and otherwordly creatures. Uncover a mysterious and surreal story. And don't forget. You mu [TRANSMISSION INTERRUPTED...]",
+      "desc_md": null,
+      "inst": "Purchase the game on Steam and with steamcmd do `download_depot 2088840 2088841 8486760071155312825`. Add game files to `picayune/assets`.",
+      "inst_md": null,
+      "genres": [
+        "shooter"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": null,
+      "reqs": [
+        "analog_2",
+        "hires"
+      ],
+      "arch": [
+        "aarch64"
+      ]
+    },
+    "source": {
+      "date_updated": "2026-01-01T19:46",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
+      "size": 7496163,
+      "md5": "89f88193a3a9f18644da87fc6d4c94cb"
     }
   },
   {
@@ -2095,6 +2188,59 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/README.md",
       "size": 2183170,
       "md5": "d7517fe95647f73988ee0c6966a05540"
+    }
+  },
+  {
+    "version": 4,
+    "name": "rolusoutskirts.zip",
+    "items": [
+      "Rolus in the Outskirts",
+      "rolusoutskirts"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Rolus in the Outskirts",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "The top-down adventure game where nothing ever seems to go your way. Soak in the atmosphere as you wander around the middle of nowhere, looking for one thing: a dollar-menu cheeseburger. WARNING: contains depictions of violence, suicide, and language.",
+      "desc_md": null,
+      "inst": "Download the demo from Steam: https://store.steampowered.com/app/3008890/Rolus_in_the_Outskirts and add the data to `rolusoutskirts/assets`.",
+      "inst_md": null,
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [
+        "dotnet-8.0.12.squashfs",
+        "gmtoolkit.squashfs"
+      ],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/3008890/Rolus_in_the_Outskirts/",
+          "developerurl": "rolus.net"
+        }
+      ],
+      "availability": "free",
+      "reqs": [
+        "2GB"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-01-01T19:46",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
+      "size": 7517244,
+      "md5": "2979dd28313c189995ddfda61d37d4fb"
     }
   },
   {
