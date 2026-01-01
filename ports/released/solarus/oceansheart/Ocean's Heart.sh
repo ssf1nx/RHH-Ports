@@ -49,6 +49,7 @@ fi
 $ESUDO mkdir -p "$solarus_dir"
 $ESUDO umount "$solarus_file" || true
 $ESUDO mount "$solarus_file" "$solarus_dir"
+PATH="$solarus_dir:$PATH"
 
 # Run the game
 $GPTOKEYB "$runtime" -c "oceansheart.gptk" & 
