@@ -66,6 +66,7 @@ async function loadPorts() {
         // ------------------------------
         // Populate Requirements Dropdown
         // ------------------------------
+
         // Define mappings with multiple keys per value
         const mappings = [
             { keys: ['!lowpower'], value: 'Needs moderate CPU' },
@@ -76,32 +77,38 @@ async function loadPorts() {
             { keys: ['4gb','ultra'], value: 'Needs > 2GB RAM' },
             { keys: ['opengl'], value: 'Requires mainline OpenGL' },
             { keys: ['wide'], value: 'Requires widescreen' },
-            { keys: ['analog1, analog2'], value: 'Requires analog sticks' },
+            { keys: ['analog1', 'analog2'], value: 'Requires analog sticks' },
             { keys: ['!arkos'], value: 'Won’t run on ArkOS' }
         ];
 
-        // Generate reqMap
+        // Generate keyword → value map
         const reqMap = {};
         mappings.forEach(entry => entry.keys.forEach(k => reqMap[k] = entry.value));
 
-        // Define display order (pick first key from each mapping)
+        // Generate display order using the first key from each mapping
         const reqOrder = mappings.flatMap(entry => entry.keys);
 
-        // Build unique set from ports
+        // Build unique set of keywords from ports
         const reqSet = new Set();
-        ports.forEach(p => (p.attr?.reqs || []).forEach(r => reqSet.add(r.replace(/^analog_/, 'analog').toLowerCase())));
+        ports.forEach(p => (p.attr?.reqs || []).forEach(r =>
+            reqSet.add(r.replace(/^analog_/, 'analog').toLowerCase())
+        ));
 
-        // Sort using reqOrder
-        const allReqs = Array.from(reqSet).sort((a,b) => {
-            const iA = reqOrder.indexOf(a), iB = reqOrder.indexOf(b);
-            if(iA===-1 && iB===-1) return a.localeCompare(b);
-            if(iA===-1) return 1;
-            if(iB===-1) return -1;
-            return iA-iB;
-        });
+        // Map keywords to descriptions and deduplicate
+        const allReqs = Array.from(reqSet)
+            .map(k => reqMap[k] || k)          // map to descriptions
+            .filter((v, i, a) => a.indexOf(v) === i) // remove duplicates
+            .sort((a,b) => {
+                const getIndex = desc => {
+                    const entry = mappings.find(m => m.value === desc);
+                    if(!entry) return 999; // unknown descriptions go last
+                    return reqOrder.indexOf(entry.keys[0]);
+                };
+                return getIndex(a) - getIndex(b);
+            });
 
         // Populate dropdown
-        populateDropdown(requirementsDropdown, allReqs, r => reqMap[r] || r);
+        populateDropdown(requirementsDropdown, allReqs, r => r);
 
         // ------------------------------
         // Add "Most Downloaded" option to sort dropdown if missing
