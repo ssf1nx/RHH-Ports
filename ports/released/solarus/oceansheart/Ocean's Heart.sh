@@ -14,9 +14,7 @@ fi
 
 source $controlfolder/control.txt
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
-
 get_controls
-
 
 # Set variables
 GAMEDIR="/$directory/ports/oceansheart"
@@ -24,11 +22,8 @@ runtime="solarus-1.6.5"
 solarus_dir="$HOME/portmaster-solarus"
 solarus_file="$controlfolder/libs/${runtime}.squashfs"
 
-> "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-
 cd $GAMEDIR
-
-export DEVICE_ARCH="${DEVICE_ARCH:-aarch64}"
+> "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 if [ -f "${controlfolder}/libgl_${CFW_NAME}.txt" ]; then 
   source "${controlfolder}/libgl_${CFW_NAME}.txt"
@@ -54,16 +49,9 @@ fi
 $ESUDO mkdir -p "$solarus_dir"
 $ESUDO umount "$solarus_file" || true
 $ESUDO mount "$solarus_file" "$solarus_dir"
-PATH="$solarus_dir:$PATH"
-
-# Setup controls
-$ESUDO chmod 666 /dev/tty0
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
-$GPTOKEYB "$runtime" -c "oceansheart.gptk" & 
 
 # Run the game
-echo "Loading, please wait... (might take a while!)" > /dev/tty0
+$GPTOKEYB "$runtime" -c "oceansheart.gptk" & 
 "$runtime" $GAMEDIR/*.solarus
 
 # Cleanup

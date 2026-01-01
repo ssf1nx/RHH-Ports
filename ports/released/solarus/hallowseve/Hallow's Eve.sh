@@ -45,14 +45,8 @@ $ESUDO umount "$solarus_file" || true
 $ESUDO mount "$solarus_file" "$solarus_dir"
 PATH="$solarus_dir:$PATH"
 
-# Setup controls
-$ESUDO chmod 666 /dev/tty0
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
-$GPTOKEYB "$runtime" -c "hallowseve.gptk" & 
-
 # Run the game
-echo "Loading, please wait... (might take a while!)" > /dev/tty0
+$GPTOKEYB "$runtime" -c "hallowseve.gptk" & 
 "$runtime" $GAMEDIR/*.solarus 2>&1 | tee -a ./"log.txt"
 
 # Cleanup

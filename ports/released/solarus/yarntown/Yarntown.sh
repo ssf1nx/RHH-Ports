@@ -26,6 +26,7 @@ solarus_file="$controlfolder/libs/${runtime}.squashfs"
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/libs:$solarus_dir"
 
 cd $GAMEDIR
+> "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Check for runtime
 if [ ! -f "$controlfolder/libs/${runtime}.squashfs" ]; then
@@ -44,15 +45,9 @@ $ESUDO umount "$solarus_file" || true
 $ESUDO mount "$solarus_file" "$solarus_dir"
 PATH="$solarus_dir:$PATH"
 
-# Setup controls
-$ESUDO chmod 666 /dev/tty0
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
-$GPTOKEYB "$runtime" -c "yarntown.gptk" & 
-
 # Run the game
-echo "Loading, please wait... (might take a while!)" > /dev/tty0
-"$runtime" $GAMEDIR/*.solarus 2>&1 | tee -a ./"log.txt"
+$GPTOKEYB "$runtime" -c "yarntown.gptk" & 
+"$runtime" $GAMEDIR/*.solarus
 $ESUDO kill -9 $(pidof gptokeyb)
 
 # Cleanup
