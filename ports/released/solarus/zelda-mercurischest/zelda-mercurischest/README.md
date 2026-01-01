@@ -12,8 +12,7 @@ This game is currently in development with a demo available. Download the demo f
 |START|Menus|
 
 ## Thanks
-Cebion  
-Testers and Devs from the PortMaster Discord  
+Solarus Team 
 
 
 
