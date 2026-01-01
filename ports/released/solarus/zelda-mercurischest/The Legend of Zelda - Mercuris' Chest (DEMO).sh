@@ -53,7 +53,8 @@ fi
 
 # Run the game
 $GPTOKEYB "$runtime" -c "zmc.gptk" & 
-./solarus-2.0.2 "$GAMEDIR/"*.solarus
+pm_platform_helper "$runtime" > /dev/null
+./"$runtime" "$GAMEDIR/"*.solarus
 
 # Cleanup
 pm_finish

@@ -47,6 +47,7 @@ PATH="$solarus_dir:$PATH"
 
 # Run the game
 $GPTOKEYB "$runtime" -c "zroth.gptk" & 
+pm_platform_helper "$runtime" > /dev/null
 "$runtime" $GAMEDIR/*.solarus
 
 # Cleanup

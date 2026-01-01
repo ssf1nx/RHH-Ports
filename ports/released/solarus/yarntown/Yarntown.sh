@@ -47,8 +47,8 @@ PATH="$solarus_dir:$PATH"
 
 # Run the game
 $GPTOKEYB "$runtime" -c "yarntown.gptk" & 
+pm_platform_helper "$runtime" > /dev/null
 "$runtime" $GAMEDIR/*.solarus
-$ESUDO kill -9 $(pidof gptokeyb)
 
 # Cleanup
 pm_finish

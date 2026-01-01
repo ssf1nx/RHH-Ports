@@ -28,6 +28,7 @@ export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/libs"
 
 # Run the game
 $GPTOKEYB "solarus-run" -c "tunics.gptk" & 
+pm_platform_helper "$runtime" > /dev/null
 "$GAMEDIR/solarus-run" "$GAMEDIR/"*.solarus
 
 # Cleanup

@@ -47,7 +47,8 @@ PATH="$solarus_dir:$PATH"
 
 # Run the game
 $GPTOKEYB "$runtime" -c "zxdmc.gptk" & 
-"$runtime" $GAMEDIR/*.solarus 2>&1 | tee -a ./"log.txt"
+pm_platform_helper "$runtime" > /dev/null
+"$runtime" $GAMEDIR/*.solarus
 
 # Cleanup
 pm_finish

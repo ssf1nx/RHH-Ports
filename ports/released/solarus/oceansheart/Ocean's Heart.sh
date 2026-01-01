@@ -52,6 +52,7 @@ $ESUDO mount "$solarus_file" "$solarus_dir"
 
 # Run the game
 $GPTOKEYB "$runtime" -c "oceansheart.gptk" & 
+pm_platform_helper "$runtime" > /dev/null
 "$runtime" $GAMEDIR/*.solarus
 
 # Cleanup
