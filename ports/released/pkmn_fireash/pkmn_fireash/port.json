@@ -1,0 +1,34 @@
+{
+  "version": 4,
+  "name": "pkmn_fireash.zip",
+  "items": [
+    "Pokemon Fire Ash.sh",
+    "pkmn_fireash"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Pokemon Fire Ash",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Pokémon Fire Ash is a fan-made Pokémon game that follows the journey of Ash Ketchum through multiple regions just like in the Pokémon anime series.",
+    "desc_md": null,
+    "inst": "Download the [Windows bundle](https://pokemonfireash.net/windows/) and add the zip file to the `pkmn_fireash` folder. On first launch the game will be unzipped for you.",
+    "inst_md": null,
+    "genres": [
+      "adventure",
+      "rpg"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [],
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
