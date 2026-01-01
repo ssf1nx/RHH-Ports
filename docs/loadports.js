@@ -9,27 +9,31 @@ async function loadPorts() {
     const GITHUB_REPO_OWNER = 'JeodC';
     const GITHUB_REPO_NAME = 'RHH-Ports';
 
+    const mappings = [
+        { keys: ['!lowpower'], value: 'Needs moderate CPU' },
+        { keys: ['!lowres'], value: 'Needs minimum 640x480 resolution' },
+        { keys: ['hires'], value: 'Best on high resolution' },
+        { keys: ['power'], value: 'Needs high CPU power' },
+        { keys: ['2gb'], value: 'Needs 2GB RAM' },
+        { keys: ['4gb', 'ultra'], value: 'Needs > 2GB RAM' },
+        { keys: ['opengl'], value: 'Requires mainline OpenGL' },
+        { keys: ['wide'], value: 'Requires widescreen' },
+        { keys: ['analog_1', 'analog_2', 'analog_1|analog_2'], value: 'Requires analog sticks' },
+        { keys: ['!arkos'], value: 'Won’t run on ArkOS' }
+    ];
+
     try {
-        // ------------------------------
-        // Load ports.json
-        // ------------------------------
-        const res = await fetch('ports.json');
+        // Fetch data concurrently for speed
+        const [res, apiRes] = await Promise.all([
+            fetch('ports.json'),
+            fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases`).catch(() => null)
+        ]);
+
         if (!res.ok) throw new Error('Failed to load ports.json');
         const ports = await res.json();
+        const releases = apiRes && apiRes.ok ? await apiRes.json() : [];
 
-        if (!ports.length) {
-            container.textContent = 'No ports found.';
-            return;
-        }
-
-        // ------------------------------
-        // Fetch GitHub releases for download counts
-        // ------------------------------
-        const apiRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases`);
-        if (!apiRes.ok) throw new Error('Failed to fetch GitHub releases');
-        const releases = await apiRes.json();
-
-        // Map asset download counts by filename
+        // Map asset download counts
         const downloadCounts = {};
         releases.forEach(release => {
             release.assets.forEach(asset => {
@@ -37,9 +41,7 @@ async function loadPorts() {
             });
         });
 
-        // ------------------------------
-        // Populate Dropdown Helper
-        // ------------------------------
+        // --- Dropdown Population ---
         const populateDropdown = (dropdown, values, mapFn = v => v) => {
             values.forEach(v => {
                 const opt = document.createElement('option');
@@ -49,63 +51,26 @@ async function loadPorts() {
             });
         };
 
-        // ------------------------------
-        // Populate Genre Dropdown
-        // ------------------------------
         const genreSet = new Set(ports.flatMap(p => p.attr?.genres || []));
         populateDropdown(genreDropdown, Array.from(genreSet).sort(), g => g.charAt(0).toUpperCase() + g.slice(1));
 
-        // ------------------------------
-        // Populate Availability Dropdown
-        // ------------------------------
         const availabilitySet = new Set(ports.map(p => p.attr?.availability).filter(Boolean));
         populateDropdown(availabilityDropdown, Array.from(availabilitySet).sort(), a =>
             ({ full: 'Ready to run', demo: 'Demo files included', free: 'Free, files needed' }[a.toLowerCase()] || a)
         );
 
-        // ------------------------------
-        // Populate Requirements Dropdown
-        // ------------------------------
-
-        // Define mappings with multiple keys per value
-        const mappings = [
-            { keys: ['!lowpower'], value: 'Needs moderate CPU' },
-            { keys: ['!lowres'], value: 'Needs minimum 640x480 resolution' },
-            { keys: ['hires'], value: 'Best on high resolution' },
-            { keys: ['power'], value: 'Needs high CPU power' },
-            { keys: ['2gb'], value: 'Needs 2GB RAM' },
-            { keys: ['4gb','ultra'], value: 'Needs > 2GB RAM' },
-            { keys: ['opengl'], value: 'Requires mainline OpenGL' },
-            { keys: ['wide'], value: 'Requires widescreen' },
-            { keys: ['analog_1', 'analog_2', 'analog_1|analog_2'], value: 'Requires analog sticks' },
-            { keys: ['!arkos'], value: 'Won’t run on ArkOS' }
-        ];
-
-        // Build key → label lookup
         const keyToLabel = {};
-        mappings.forEach(m =>
-            m.keys.forEach(k => keyToLabel[k.toLowerCase()] = m.value)
-        );
+        mappings.forEach(m => m.keys.forEach(k => keyToLabel[k.toLowerCase()] = m.value));
 
-        // Collect unique requirement labels from ports
         const reqLabels = new Set();
-        ports.forEach(p => {
-            (p.attr?.reqs || []).forEach(r => {
-                const label = keyToLabel[r.toLowerCase()];
-                if (label) reqLabels.add(label);
-            });
-        });
+        ports.forEach(p => (p.attr?.reqs || []).forEach(r => {
+            const label = keyToLabel[r.toLowerCase()];
+            if (label) reqLabels.add(label);
+        }));
 
-        // Populate dropdown (preserve mapping order)
-        const orderedReqs = mappings
-            .map(m => m.value)
-            .filter(v => reqLabels.has(v));
-
+        const orderedReqs = mappings.map(m => m.value).filter(v => reqLabels.has(v));
         populateDropdown(requirementsDropdown, orderedReqs);
 
-        // ------------------------------
-        // Add "Most Downloaded" option to sort dropdown if missing
-        // ------------------------------
         if (![...sortDropdown.options].some(o => o.value === 'most_downloaded')) {
             const opt = document.createElement('option');
             opt.value = 'most_downloaded';
@@ -113,64 +78,37 @@ async function loadPorts() {
             sortDropdown.appendChild(opt);
         }
 
-        // ------------------------------
-        // Sorting Function
-        // ------------------------------
-        const sortPorts = (list, method) => {
-            if (method === 'most_recent') {
-                return [...list].sort((a,b) => new Date(b.source?.date_updated) - new Date(a.source?.date_updated));
-            } else if (method === 'most_downloaded') {
-                return [...list].sort((a,b) => {
-                    const fileA = a.source.download_url ? a.source.download_url.split('/').pop() : '';
-                    const fileB = b.source.download_url ? b.source.download_url.split('/').pop() : '';
-                    const countA = downloadCounts[fileA] || 0;
-                    const countB = downloadCounts[fileB] || 0;
-                    return countB - countA;
-                });
-            } else {
-                return [...list].sort((a,b) => (a.attr?.title || '').localeCompare(b.attr?.title || ''));
-            }
-        };
-
-        // ------------------------------
-        // Render Ports Function
-        // ------------------------------
+        // --- Core Functions ---
         const renderPorts = (filtered) => {
             const genreVal = genreDropdown.value;
             const availabilityVal = availabilityDropdown.value;
             const reqVal = requirementsDropdown.value;
 
             let countText = `${filtered.length} released ports`;
-            if (genreVal !== 'all') countText += ` in genre "${genreDropdown.selectedOptions[0].text}"`;
-            if (availabilityVal !== 'all') countText += ` with availability "${availabilityDropdown.selectedOptions[0].text}"`;
-            if (reqVal !== 'all') countText += ` requiring "${reqVal}"`;
+            if (genreVal !== 'all') countText += ` in "${genreDropdown.selectedOptions[0].text}"`;
             countDisplay.textContent = countText;
 
             container.innerHTML = filtered.map(port => {
                 const title = port.attr.title || port.name;
-                const desc = port.attr.desc || '';
                 const screenshot = port.source.screenshot_url || '';
-                const detailsHref = port.source.readme_url || '';
                 const downloadHref = port.source.download_url || '';
-                
                 const filename = downloadHref ? downloadHref.split('/').pop() : '';
                 const downloadCount = downloadCounts[filename] || 0;
-
                 const reqs = (port.attr?.reqs || []).join(', ');
                 const genres = (port.attr?.genres || []).join(', ');
 
                 return `
                     <div class="port-card">
-                        <img src="${screenshot}" alt="${title} screenshot">
+                        <img src="${screenshot}" alt="${title} screenshot" loading="lazy">
                         <div class="port-info">
                             <h2 class="port-title">${title}</h2>
-                            <p class="port-desc">${desc}</p>
+                            <p class="port-desc">${port.attr.desc || ''}</p>
                             <div class="port-footer">
                                 <p class="download-count"><strong>Downloads since last update:</strong> ${downloadCount}</p>
                                 ${reqs ? `<div class="port-reqs">${reqs}</div>` : ''}
                                 ${genres ? `<div class="port-genres">${genres}</div>` : ''}
                                 <div class="port-buttons">
-                                    <a class="details-link" href="${detailsHref}" target="_blank" rel="noopener noreferrer">Details</a>
+                                    <a class="details-link" href="${port.source.readme_url || ''}" target="_blank" rel="noopener noreferrer">Details</a>
                                     <a class="download-link" href="${downloadHref}" target="_blank" rel="noopener noreferrer">Download</a>
                                 </div>
                             </div>
@@ -179,34 +117,50 @@ async function loadPorts() {
             }).join('');
         };
 
-        // ------------------------------
-        // Filter + Display Update
-        // ------------------------------
         const updateDisplay = () => {
             const genre = genreDropdown.value;
             const availability = availabilityDropdown.value;
-            const req = requirementsDropdown.value;
+            const reqLabel = requirementsDropdown.value;
             const query = searchBar.value.trim().toLowerCase();
 
             const filtered = ports.filter(p => {
+                const pReqs = (p.attr?.reqs || []).map(r => r.toLowerCase());
                 if (genre !== 'all' && !p.attr?.genres?.includes(genre)) return false;
                 if (availability !== 'all' && p.attr?.availability !== availability) return false;
-                if (req !== 'all' && !(p.attr?.reqs || []).map(r => r.toLowerCase()).includes(req.toLowerCase())) return false;
+                
+                // Fixed requirements check
+                if (reqLabel !== 'all') {
+                    const mapsToSelected = pReqs.some(key => keyToLabel[key] === reqLabel);
+                    if (!mapsToSelected) return false;
+                }
+
                 if (query && !(p.attr.title || '').toLowerCase().includes(query)) return false;
                 return true;
             });
 
-            renderPorts(sortPorts(filtered, sortDropdown.value));
+            // Sorting
+            const method = sortDropdown.value;
+            const sorted = [...filtered].sort((a, b) => {
+                if (method === 'most_recent') {
+                    return new Date(b.source?.date_updated) - new Date(a.source?.date_updated);
+                } else if (method === 'most_downloaded') {
+                    const countA = downloadCounts[a.source.download_url?.split('/').pop()] || 0;
+                    const countB = downloadCounts[b.source.download_url?.split('/').pop()] || 0;
+                    return countB - countA;
+                }
+                return (a.attr?.title || '').localeCompare(b.attr?.title || '');
+            });
+
+            renderPorts(sorted);
         };
 
-        // ------------------------------
-        // Initial Render & Event Listeners
-        // ------------------------------
-        updateDisplay();
+        // Listeners
         [searchBar, genreDropdown, availabilityDropdown, requirementsDropdown, sortDropdown]
             .forEach(el => el.addEventListener('input', updateDisplay));
 
-    } catch(err) {
+        updateDisplay();
+
+    } catch (err) {
         container.textContent = 'Error loading ports: ' + err.message;
     }
 }
