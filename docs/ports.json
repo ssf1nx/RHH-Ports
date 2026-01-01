@@ -1780,12 +1780,12 @@
       "reqs": []
     },
     "source": {
-      "date_updated": "2025-11-13T22:28",
+      "date_updated": "2026-01-01T17:45",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/osanasrevenge.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/README.md",
-      "size": 377503,
-      "md5": "80c6fcfe345bebf60e15bfaaab35b0b1"
+      "size": 372784,
+      "md5": "1cdf7d19f9fa4119ffe67b50605de72c"
     }
   },
   {
@@ -3141,6 +3141,321 @@
     }
   },
   {
+    "version": 2,
+    "name": "zeldaxd-mercurischess.zip",
+    "items": [
+      "The Legend of Zelda - Mercuris Chess.sh",
+      "zeldaxd-mercurischess/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Mercuris Chess",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "The sequel to Mystery of Solarus XD. While Link and Zelda were away, a rich businessman bought Hyrule! There begins your next adventure, in a world where everything has a price and where truth and lies become undistinguishable.",
+      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-xd2-mercuris-chess/ and put in the ports/zeldaxd-mercurischess folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldaxd-mercurischess.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/README.md",
+      "size": 368865,
+      "md5": "7751ea5914fcd02f3d002c4862c46ddd"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zelda-mercurischest.zip",
+    "items": [
+      "The Legend of Zelda - Mercuris' Chest (DEMO).sh",
+      "zeldaxd-mercurischess/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Mercuris' Chest (DEMO)",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Link is kidnapped and brought to an unknown region! A priest explains that Link's heroic skills are needed to combat a birdlike foe and defend a legendary chest, which contains a dangerous weapon. Who is this foe, and what's in the chest? And why does this region feel so...familiar?",
+      "inst": "This game is currently in development with a demo available. Download the demo from https://solarus-games.org/games/the-legend-of-zelda-mercuris-chest/ and place in the `ports/zelda-mercurischest` folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mercurischest.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/README.md",
+      "size": 2579075,
+      "md5": "8bd9c85a1cf84267560032722a3a6cbd"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zelda-mysteryofsolarusdx.zip",
+    "items": [
+      "The Legend of Zelda - Mystery of Solarus DX.sh",
+      "zelda-mysteryofsolarusdx/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Mystery of Solarus DX",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "The Legend of Zelda: Mystery of Solarus DX is set to be a direct sequel to The Legend of Zelda: A Link to the Past on SNES, using the same graphics and game mechanisms. Mystery of Solarus DX was the first game made with the Solarus engine and in fact, Solarus was primarily designed for this game.",
+      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-dx/ and put in the ports/zelda-mysteryofsolarus folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusdx.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/README.md",
+      "size": 373842,
+      "md5": "4c6d8ba579f027a807fb9d5c39beaac9"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zelda-mysteryofsolarusxd.zip",
+    "items": [
+      "The Legend of Zelda - Mystery of Solarus XD.sh",
+      "zelda-mysteryofsolarusxd/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Mystery of Solarus XD",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "The Legend of Zelda: Mystery of Solarus XD is a parodic game that we released on April 1st, 2011. Though it’s a big April 1st joke, it’s a real, full game with two huge dungeons and 5-10 hours of playing.\n\nIt was developed in a very short period of time, thanks to coffee, beer and pizzas. Though the development has been rushed to ship on time, the game is complete, with lots of jokes, references and quirky NPCs.",
+      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-xd/ and put in the ports/zelda-mysteryofsolarusxd folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusxd.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/README.md",
+      "size": 341897,
+      "md5": "fee037590864fc34df24dbbe9198c1ce"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zelda-roth-se.zip",
+    "items": [
+      "The Legend of Zelda - Return of the Hylain.sh",
+      "zelda-roth-se/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Return of the Hylain SE",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "After Link’s victory over Ganon in A Link to the Past, no one knows what Link’s wish to the Triforce was. But this wish reunified the Light World and the Dark World and brought the Seven Wise Men’s descendants back to life. Peace was back in Hyrule. But unfortunately, this wish also ressurected Ganon and his henchmen. He was preparing his revenge, but he couldn’t do anything without the Triforce.\n\nOne night, a familiar voice speaks to Link in his sleep…",
+      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-return-of-the-hylian-se/ and put in the ports/zelda-roth-sefolder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-roth-se.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/README.md",
+      "size": 365097,
+      "md5": "74370c5b3f0898bb99ed4a32833a90d8"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zelda-bookofmudora.zip",
+    "items": [
+      "The Legend of Zelda - Book of Mudora.sh",
+      "zelda-bookofmudora/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : The Book of Mudora",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Link’s newest quest is set a few generations after Twilight Princess and spans two different continents of Hyrule. Explore eight unique temples and defeat enemies and bosses in order to gain powerful items to assist you in your goal. Explore many areas of Hyrule and assist different races in their conflicts.",
+      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-book-of-mudora/ and put in the ports/zelda-bookofmudora folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-bookofmudora.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/README.md",
+      "size": 377752,
+      "md5": "1e6b05a60305d79f59643ae76724b4da"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zeldo-labors.zip",
+    "items": [
+      "The Legend of Zelda - Labors of Zeldo.sh",
+      "zeldoschallenge/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : The Labors of Zeldo",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "In The Labors of Zeldo, you can explore the unreleased projects that ZeldoRetro made using the Solarus Engine. Games, retranscriptions of existing contents or simple tests, ZeldoREtro is offering you to play them in a totally playable and enjoyable version.",
+      "inst": "Download the game from https://www.solarus-games.org/games/the-labors-of-zeldo/ and put in the `ports/zeldo-labors` folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldo-labors.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/README.md",
+      "size": 652899,
+      "md5": "8426dcef43f3d26cd504ea4996537d87"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zeldoschallenge.zip",
+    "items": [
+      "The Legend of Zelda - Zeldo's Challenge.sh",
+      "zeldoschallenge/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Zeldo's Challenge",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "This game is then the first entry in ZeldoRetro’s series Le Défi de Zeldo (Zeldo’s Challenge). This first chapter is named La Revanche du Bingo (Bingo’s Revenge), and is much less ambitious than its sequel. It contains only one dungeon, and no overworld to explore, which makes the game rather short. You may beat it under an hour.",
+      "inst": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-1/ and put in the ports/zeldoschallenge folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/README.md",
+      "size": 395927,
+      "md5": "490ce947c20df7c78d0797937128f3f9"
+    }
+  },
+  {
+    "version": 2,
+    "name": "zeldoschallenge2.zip",
+    "items": [
+      "The Legend of Zelda - Zeldo's Challenge 2.sh",
+      "zeldoschallenge2/"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "The Legend of Zelda : Zeldo's Challenge 2",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "After having touched the Trophy of Victory won at the end of the first chapter’s dungeon, Link is teleported in High-rule, a parallel world where multiple video games universes are mixed up. Link must go to the Tower of Memories where Zeldo is waiting for him to get his revenge!",
+      "inst": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-2/ and put in the ports/zeldoschallenge2 folder.",
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "availability": "free",
+      "image": "screenshot.png",
+      "rtr": false,
+      "exp": false,
+      "runtime": "solarus-1.6.5.squashfs",
+      "reqs": []
+    },
+    "source": {
+      "date_updated": "2026-01-01T17:45",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge2.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/README.md",
+      "size": 595267,
+      "md5": "3f3ba8bf71c2f082ba0242d0315fb006"
+    }
+  },
+  {
     "version": 3,
     "name": "zeldadoi.zip",
     "items": [
@@ -3184,286 +3499,6 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/README.md",
       "size": 42845184,
       "md5": "9e1f8d17e308e59fa3a1bab1bec06ecf"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zeldaxd-mercurischess.zip",
-    "items": [
-      "The Legend of Zelda: Mercuris Chess.sh",
-      "zeldaxd-mercurischess/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Mercuris Chess",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "The sequel to Mystery of Solarus XD. While Link and Zelda were away, a rich businessman bought Hyrule! There begins your next adventure, in a world where everything has a price and where truth and lies become undistinguishable.",
-      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-xd2-mercuris-chess/ and put in the ports/zeldaxd-mercurischess folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldaxd-mercurischess.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/README.md",
-      "size": 281212,
-      "md5": "f9940830d724b9ae668bb41e3bd8f09a"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zelda-mercurischest.zip",
-    "items": [
-      "The Legend of Zelda: Mercuris' Chest (DEMO).sh",
-      "zeldaxd-mercurischess/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Mercuris' Chest (DEMO)",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Link is kidnapped and brought to an unknown region! A priest explains that Link's heroic skills are needed to combat a birdlike foe and defend a legendary chest, which contains a dangerous weapon. Who is this foe, and what's in the chest? And why does this region feel so...familiar?",
-      "inst": "This game is currently in development with a demo available. Download the demo from https://solarus-games.org/games/the-legend-of-zelda-mercuris-chest/ and place in the `ports/zelda-mercurischest` folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2026-01-01T01:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mercurischest.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/README.md",
-      "size": 2578367,
-      "md5": "b9049ba1b4362aec1b408a17550652ee"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zelda-mysteryofsolarusdx.zip",
-    "items": [
-      "The Legend of Zelda: Mystery of Solarus DX.sh",
-      "zelda-mysteryofsolarusdx/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Mystery of Solarus DX",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "The Legend of Zelda: Mystery of Solarus DX is set to be a direct sequel to The Legend of Zelda: A Link to the Past on SNES, using the same graphics and game mechanisms. Mystery of Solarus DX was the first game made with the Solarus engine and in fact, Solarus was primarily designed for this game.",
-      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-dx/ and put in the ports/zelda-mysteryofsolarus folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusdx.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/README.md",
-      "size": 373620,
-      "md5": "6f889b9ef76691ec197ea51761ec8766"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zelda-mysteryofsolarusxd.zip",
-    "items": [
-      "The Legend of Zelda: Mystery of Solarus XD.sh",
-      "zelda-mysteryofsolarusxd/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Mystery of Solarus XD",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "The Legend of Zelda: Mystery of Solarus XD is a parodic game that we released on April 1st, 2011. Though it’s a big April 1st joke, it’s a real, full game with two huge dungeons and 5-10 hours of playing.\n\nIt was developed in a very short period of time, thanks to coffee, beer and pizzas. Though the development has been rushed to ship on time, the game is complete, with lots of jokes, references and quirky NPCs.",
-      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-xd/ and put in the ports/zelda-mysteryofsolarusxd folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusxd.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/README.md",
-      "size": 279418,
-      "md5": "6187ddf4129b2f1e715edc1f0586939a"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zelda-roth-se.zip",
-    "items": [
-      "The Legend of Zelda: Return of the Hylain.sh",
-      "zelda-roth-se/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Return of the Hylain SE",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "After Link’s victory over Ganon in A Link to the Past, no one knows what Link’s wish to the Triforce was. But this wish reunified the Light World and the Dark World and brought the Seven Wise Men’s descendants back to life. Peace was back in Hyrule. But unfortunately, this wish also ressurected Ganon and his henchmen. He was preparing his revenge, but he couldn’t do anything without the Triforce.\n\nOne night, a familiar voice speaks to Link in his sleep…",
-      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-return-of-the-hylian-se/ and put in the ports/zelda-roth-sefolder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-roth-se.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/README.md",
-      "size": 281198,
-      "md5": "55dd828d250cb10bd60e2794b2aa806d"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zelda-bookofmudora.zip",
-    "items": [
-      "The Legend of Zelda: The Book of Mudora.sh",
-      "zelda-bookofmudora/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: The Book of Mudora",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Link’s newest quest is set a few generations after Twilight Princess and spans two different continents of Hyrule. Explore eight unique temples and defeat enemies and bosses in order to gain powerful items to assist you in your goal. Explore many areas of Hyrule and assist different races in their conflicts.",
-      "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-book-of-mudora/ and put in the ports/zelda-bookofmudora folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-bookofmudora.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/README.md",
-      "size": 287543,
-      "md5": "90609e10cec88d70099b54a0809fd1b7"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zeldoschallenge.zip",
-    "items": [
-      "The Legend of Zelda: Zeldo's Challenge.sh",
-      "zeldoschallenge/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Zeldo's Challenge",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "This game is then the first entry in ZeldoRetro’s series Le Défi de Zeldo (Zeldo’s Challenge). This first chapter is named La Revanche du Bingo (Bingo’s Revenge), and is much less ambitious than its sequel. It contains only one dungeon, and no overworld to explore, which makes the game rather short. You may beat it under an hour.",
-      "inst": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-1/ and put in the ports/zeldoschallenge folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/README.md",
-      "size": 307002,
-      "md5": "af51586773244247e75ea08d2f9f23c9"
-    }
-  },
-  {
-    "version": 2,
-    "name": "zeldoschallenge2.zip",
-    "items": [
-      "The Legend of Zelda: Zeldo's Challenge 2.sh",
-      "zeldoschallenge2/"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "The Legend of Zelda: Zeldo's Challenge 2",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "After having touched the Trophy of Victory won at the end of the first chapter’s dungeon, Link is teleported in High-rule, a parallel world where multiple video games universes are mixed up. Link must go to the Tower of Memories where Zeldo is waiting for him to get his revenge!",
-      "inst": "Download the game from https://solarus-games.org/games/defi-de-zeldo-ch-2/ and put in the ports/zeldoschallenge2 folder.",
-      "genres": [
-        "action",
-        "adventure"
-      ],
-      "availability": "free",
-      "image": "screenshot.png",
-      "rtr": false,
-      "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
-      "reqs": []
-    },
-    "source": {
-      "date_updated": "2025-11-13T22:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/README.md",
-      "size": 772715,
-      "md5": "fb48e5d70c8ddca300e0a36da8b6e18b"
     }
   },
   {
