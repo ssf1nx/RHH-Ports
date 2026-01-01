@@ -16,13 +16,16 @@
     "inst": "Purchase the game on Steam and with steamcmd do `download_depot 2088840 2088841 8486760071155312825`. Add game files to `picayune/assets`.",
     "inst_md": null,
     "genres": [
-      "other"
+      "shooter"
     ],
     "image": null,
     "rtr": false,
     "exp": false,
     "runtime": null,
-    "reqs": ["analog_2"],
+    "reqs": [
+	"analog_2",
+	"hires"
+	],
     "arch": [
       "aarch64"
     ]
