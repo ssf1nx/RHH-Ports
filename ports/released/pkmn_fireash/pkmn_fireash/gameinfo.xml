@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Pokemon Fire Ash.sh</path>
+		<name>Pokémon : Fire Ash</name>
+		<desc>Pokémon Fire Ash is a fan-made Pokémon game that follows the journey of Ash Ketchum through multiple regions just like in the Pokémon anime series.</desc>
+		<image>./pkmn_fireash/cover.png</image>
+		<releasedate>20170906</releasedate>
+		<developer>Reinhartmax, FireAsh Team</developer>
+		<genre>Adventure</genre>
+	</game>
+</gamelist>
