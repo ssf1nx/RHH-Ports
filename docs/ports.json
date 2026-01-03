@@ -2709,6 +2709,51 @@
   },
   {
     "version": 4,
+    "name": "unleashedrecomp.zip",
+    "items": [
+      "Sonic Unleashed Recomp.sh",
+      "unleashedrecomp"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Sonic Unleashed Recompiled",
+      "porter": [
+        "Jeod",
+        "kotzebuedog"
+      ],
+      "desc": "Unleashed Recompiled is an unofficial PC port of the Xbox 360 version of Sonic Unleashed created through the process of static recompilation. The port offers numerous built-in enhancements such as high resolutions, ultrawide support, high frame rates, improved performance and modding. You must build UnleashedRecomp yourself in order to use this port, since building requires paid game assets.",
+      "desc_md": null,
+      "inst": "The recomp installer does not support a headless window system and will crash on trying to open a file browser window to locate game assets. After installing this wrapper, you must build UnleashedRecomp and then install the game files from a desktop installation. The folder structure has been created for convenience--simply copy the *same* folders from your desktop installation to `ports/unleashedrecomp`.",
+      "inst_md": null,
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [],
+      "store": [],
+      "availability": "paid",
+      "reqs": [
+        "ultra"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-01-03T00:42",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/unleashedrecomp.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/README.md",
+      "size": 1149847,
+      "md5": "d27f9602982aa6d9bec87153bf08ae56"
+    }
+  },
+  {
+    "version": 4,
     "name": "spinelasher.zip",
     "items": [
       "Spine Lasher.sh",
