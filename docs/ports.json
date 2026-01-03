@@ -2744,12 +2744,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-03T00:42",
+      "date_updated": "2026-01-03T23:02",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/unleashedrecomp.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/README.md",
-      "size": 1149847,
-      "md5": "d27f9602982aa6d9bec87153bf08ae56"
+      "size": 1150513,
+      "md5": "a5b8a60bb1ad15ba2829cc9129809174"
     }
   },
   {
