@@ -34,13 +34,15 @@ cmake -B $BUILD_DIR_UNIVERSAL \
   -DSPIRV_BUILD_TESTS=ON \
   -DCMAKE_BUILD_TYPE=Release
 
-ninja -C $BUILD_DIR_UNIVERSAL
+ninja -C $BUILD_DIR_UNIVERSAL -j$(nproc)
 ```
 
 This will take some time. Once the build is complete copy the library to the appropriate directory.
 
 ```
+mkdir -p ../bin/arm64/dxc
 cp "$BUILD_DIR_UNIVERSAL/bin/dxc-3.7" ../bin/arm64/dxc
+mkdir -p ../lib/arm64
 cp "$BUILD_DIR_UNIVERSAL/lib/libdxcompiler.so" ../lib/arm64/libdxcompiler.so
 ```
 
@@ -50,7 +52,7 @@ Now you can build the UnleashedRecomp binary:
 cd ../../../../../
 export VCPKG_FORCE_SYSTEM_BINARIES=1
 cmake . --preset linux-release -DVCPKG_TARGET_TRIPLET=arm64-linux
-cmake --build ./out/build/linux-release --target UnleashedRecomp
+cmake --build ./out/build/linux-release --target UnleashedRecomp --parallel $(nproc)
 ```
 
 Build will be in `out/build/linux-release`.
