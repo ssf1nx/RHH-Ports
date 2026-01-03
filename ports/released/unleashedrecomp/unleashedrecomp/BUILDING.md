@@ -1,5 +1,4 @@
 # Building Sonic Unleashed Recomp
-
 You need some specific files to compile `UnleashedRecomp`. Use an existing release from [UnleashedRecomp Repo](https://github.com/hedge-dev/UnleashedRecomp/releases) and install the game. Then get the following files:
 
 ```
