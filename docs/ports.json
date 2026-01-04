@@ -434,12 +434,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:32",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deadcells.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/deadcells/deadcells/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/deadcells/deadcells/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/deadcells/deadcells/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/deadcells/deadcells/README.md",
       "size": 9760847,
-      "md5": "9cb45179e940ab0854a6a324c933d2ab"
+      "md5": "0ade719e399f1f0ee04f5b2adcc8134e"
     }
   },
   {
@@ -1092,12 +1092,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight/hollow_knight/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight/hollow_knight/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight/hollow_knight/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight/hollow_knight/README.md",
       "size": 7172477,
-      "md5": "f932e0b5fb7946215d55b43f777c8c62"
+      "md5": "7011f61814fb64fb5f10c5626d27772a"
     }
   },
   {
@@ -1150,12 +1150,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight_silksong.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/hollow_knight_silksong/hollow_knight_silksong/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight_silksong/hollow_knight_silksong/README.md",
       "size": 6731347,
-      "md5": "b6fdb6418edbac9af02a2923b43a121c"
+      "md5": "da71a9e1c71f322127750c5855f68172"
     }
   },
   {
@@ -1340,12 +1340,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oracles-randomizer-ng.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/oracles-randomizer-ng/oracles-randomizer-ng/README.md",
-      "size": 6554009,
-      "md5": "0583e5a8ca5a70dac6ced17a80470d91"
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/README.md",
+      "size": 6554004,
+      "md5": "9161a61326ef8e9d19f1b35cbffbebf8"
     }
   },
   {
@@ -1617,12 +1617,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/momodora_rutm/momodora_rutm/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/momodora_rutm/momodora_rutm/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/README.md",
       "size": 8469829,
-      "md5": "23042fb72e98831adfcb16336938996a"
+      "md5": "4092245ae850268d14e92b7fa37e0c9c"
     }
   },
   {
@@ -2278,12 +2278,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:32",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/RomM.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/RomM/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/RomM/RomM/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/RomM/RomM/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/RomM/RomM/README.md",
       "size": 4713219,
-      "md5": "43fe967b3da7da899f05ae3500991fa3"
+      "md5": "480fb2dc02272874618031f55cf3d147"
     }
   },
   {
@@ -2991,12 +2991,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/steamlink.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/steamlink/steamlink/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/steamlink/steamlink/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/README.md",
       "size": 21541869,
-      "md5": "bdfb114afb75f0d25bd1e430c82b1c51"
+      "md5": "27bbdb1b9f66016757e8701d86b2cc69"
     }
   },
   {
@@ -3124,12 +3124,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tenjutsu48h.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/tenjutsu48h/tenjutsu48h/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/tenjutsu48h/tenjutsu48h/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/tenjutsu48h/tenjutsu48h/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/tenjutsu48h/tenjutsu48h/README.md",
       "size": 26368631,
-      "md5": "70564948bab655559fcdae60da8b31da"
+      "md5": "b1ac606bc59f691b26b8ff62c9a86412"
     }
   },
   {
@@ -3233,12 +3233,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:33",
+      "date_updated": "2026-01-04T20:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/thegirlfromarkanya.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/thegirlfromarkanya/thegirlfromarkanya/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/thegirlfromarkanya/thegirlfromarkanya/README.md",
       "size": 5713085,
-      "md5": "c5c17d978f986655b86074b721c35104"
+      "md5": "67f9f7b103ebcf2fd64b15fb5d711d24"
     }
   },
   {
