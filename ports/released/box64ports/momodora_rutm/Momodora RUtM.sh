@@ -72,7 +72,7 @@ $ESUDO mount "$controlfolder/libs/${weston_runtime}.squashfs" "$weston_dir"
 cd "$GAMEDIR/gamedata"
 $GPTOKEYB "MomodoraRUtM" -c "$GAMEDIR/momodora.gptk" & 
 pm_platform_helper "$GAME" > /dev/null
-$ESUDO env WRAPPED_LIBRARY_PATH="$GAMEDIR/libs.armhf" $weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
+$ESUDO env WRAPPED_LIBRARY_PATH="$GAMEDIR/libs.armhf" $weston_dir/westonwrap32.sh headless noop kiosk crusty_x11egl \
 "$BOX86" "$GAME"
 
 # Clean up
