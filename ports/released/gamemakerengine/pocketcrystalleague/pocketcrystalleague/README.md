@@ -1,5 +1,5 @@
 ## Installation
-Ready to run! Download from the PortMaster GUI on your handheld.
+Ready to run!
 
 ## Default Gameplay Controls
 | Button | Action |
@@ -11,7 +11,7 @@ Ready to run! Download from the PortMaster GUI on your handheld.
 |Y|End turn / Open all cards|
 
 ## Building
-This game is [open source](https://gitlab.com/moodytail/pokecards) and can be compiled with Game Maker. This port uses alternate music tracks. Music is externalized for more seamless streaming audio.
+This game is [open source](https://gitlab.com/moodytail/pokecards) and can be compiled with GameMaker. This port uses alternate music tracks.
 
 ## Thanks
 moodytail -- The game  
@@ -19,4 +19,4 @@ JohnnyOnFlame -- GMLoaderNext
 The Noble Demon -- [Mason's Lab/World Map Arrangement](https://www.youtube.com/watch?v=hFPaaxFTP9w), [Normal Duel Arrangement](https://www.youtube.com/watch?v=2HwAGxS0F4U), [Club Master Duel Arrangement](https://www.youtube.com/watch?v=eXhFe3y95PQ)  
 Nick Roeslein Oleksiak -- [Grandmaster Duel Arrangement](https://www.youtube.com/watch?v=14c3vyfk2wg)  
 Zame & Pascal van den Bos -- [Ronald's Theme](https://www.youtube.com/watch?v=Y8KYfvhbIgo)  
-Testers and Devs from the PortMaster Discord  
+TAYL0M -- Berry bug fix and sell icons    
