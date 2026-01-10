@@ -1608,8 +1608,7 @@
       ],
       "availability": "paid",
       "reqs": [
-        "power",
-        "wide"
+        "power"
       ],
       "arch": [
         "armhf"
@@ -1617,12 +1616,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-10T19:33",
+      "date_updated": "2026-01-10T19:56",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/README.md",
-      "size": 8469907,
-      "md5": "d22d71fb4953a1708a792832021029cb"
+      "size": 8469903,
+      "md5": "199de173e928516ce28f8787a655cf3a"
     }
   },
   {
