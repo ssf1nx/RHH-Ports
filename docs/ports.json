@@ -1617,12 +1617,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-08T15:35",
+      "date_updated": "2026-01-10T19:33",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/README.md",
-      "size": 8469833,
-      "md5": "b8cf70c49e930f3fc8567d6756a2de78"
+      "size": 8469907,
+      "md5": "d22d71fb4953a1708a792832021029cb"
     }
   },
   {
