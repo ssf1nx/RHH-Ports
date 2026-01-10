@@ -81,7 +81,8 @@ replace_code() {
     if dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" replace "$DATADIR/data.win" -o "$DATADIR/data2.win" "${CODEARGS[@]}"; then
         echo "Successfully replaced gml scripts."
         mv -f "$DATADIR/data2.win" "$DATADIR/data.win"
-        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+        rm -rf "$TMPDIR"/* 2>/dev/null || true
+        return 0
     else
         echo "Failed to replace gml scripts."
         return 1
@@ -104,7 +105,8 @@ set_flags() {
         echo "Successfully toggled info flags."
         rm -f "$DATADIR/data.win"
         mv "$DATADIR/data2.win" "$DATADIR/data.win"
-        [ -d "$TMPDIR" ] && rm -rf "$TMPDIR"/*
+        rm -rf "$TMPDIR"/* 2>/dev/null || true
+        return 0
     fi
 }
 
@@ -120,13 +122,8 @@ compress_audio() {
 
     # Run the compression tool
     PYTHON=$(which python3)
-    if [ "$PREPATCH" != 1 ]; then
-        echo "Running GMTools on data and audiogroups."
-        $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"
-    else
-        echo "Running GMTools on data file only."
-        $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -O 0 -m 1000 -b 64 -r -d "$TMPDIR" "$DATADIR/game.droid"
-    fi
+    echo "Running GMTools on data and audiogroups."
+    $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"
 
     if [ $? -eq 0 ]; then
         echo "Compression completed successfully."

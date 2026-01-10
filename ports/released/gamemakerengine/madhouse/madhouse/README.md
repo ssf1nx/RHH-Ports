@@ -3,8 +3,8 @@ From Paul Hubans, one of the developers behind UFO 50, MADHOUSE is a horror acti
 
 WARNING! This game contains depictions of violence and foul language!
 
-## Installation
-Download Steam depot `download_depot 3727130 3727131 3105184862972630903` and add the game files to `madhouse/assets`. Later versions not yet functional.
+## Installation Notes
+This early access game uses a later GM engine runtime, and you need to use the `gmtoolkit.squashfs` runtime from my `runtimes` folder to patch it. Copy `gmtoolkit.squashfs` to your `PortMaster/libs` folder and replace the existing version if installed.
 
 ## Default Gameplay Controls (Xbox Layout)
 | Button            | Action |
