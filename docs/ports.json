@@ -2410,7 +2410,7 @@
       ],
       "availability": "paid",
       "reqs": [
-        "power"
+        "ultra"
       ],
       "arch": [
         "aarch64"
@@ -2418,12 +2418,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-01T18:32",
+      "date_updated": "2026-01-10T16:06",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
-      "size": 7694118,
-      "md5": "f6dba8ab31c255642acc76be3d83e39f"
+      "size": 7694113,
+      "md5": "7018bab63a784600cb0201e3c25821e4"
     }
   },
   {
