@@ -27,7 +27,8 @@ ASPECT_Y=${ASPECT_Y:-3}
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 rm -rf "$GAMEDIR/config/gamelog.txt"
-$ESUDO chmod +x -R $GAMEDIR/*
+$ESUDO chmod +x $GAME.compat
+$ESUDO chmod +x $GAME.aarch64
 
 # Set config dir
 bind_directories ~/.$GAME $GAMEDIR/config
@@ -51,8 +52,8 @@ export TEXTINPUTNUMBERSONLY="Y"
 # Edit .cfg file with updated resolution and aspect ratio
 sed -i "s/^ResolutionX=[0-9]\{1,4\}/ResolutionX=$DISPLAY_WIDTH/g" "$GAMEDIR/config/descent.cfg"
 sed -i "s/^ResolutionY=[0-9]\{1,4\}/ResolutionY=$DISPLAY_HEIGHT/g" "$GAMEDIR/config/descent.cfg"
-sed -i "s/^AspectX=[0-9]\{1,2\}/AspectX=$ASPECT_Y/g" "$GAMEDIR/config/descent.cfg"
-sed -i "s/^AspectY=[0-9]\{1,2\}/AspectY=$ASPECT_X/g" "$GAMEDIR/config/descent.cfg"
+sed -i "s/^AspectX=[0-9]\{1,2\}/AspectX=$ASPECT_X/g" "$GAMEDIR/config/descent.cfg"
+sed -i "s/^AspectY=[0-9]\{1,2\}/AspectY=$ASPECT_Y/g" "$GAMEDIR/config/descent.cfg"
 
 # Use compatibility binary if low glibc
 if [ $CFW_GLIBC -lt 234 ]; then
