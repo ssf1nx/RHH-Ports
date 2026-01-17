@@ -434,12 +434,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-04T20:29",
+      "date_updated": "2026-01-17T19:16",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deadcells.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/deadcells/deadcells/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/deadcells/deadcells/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/deadcells/deadcells/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/deadcells/deadcells/README.md",
       "size": 9760847,
-      "md5": "0ade719e399f1f0ee04f5b2adcc8134e"
+      "md5": "ccb30ed2f334f6916fb8fc49e1a7b9fa"
     }
   },
   {
@@ -758,6 +758,49 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "size": 94203127,
       "md5": "3afd43fa0b44fa06b734d72c3d248653"
+    }
+  },
+  {
+    "version": 4,
+    "name": "droidtoolbox.zip",
+    "items": [
+      "Droid Toolbox.sh",
+      "droidtoolbox"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Droid Toolbox",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Droid Toolbox is an application that allows controlling Disney's Droid Depot interactive droids using Bluetoothctl and BlueZ.",
+      "desc_md": null,
+      "inst": "Ready to run",
+      "inst_md": null,
+      "genres": [
+        "app"
+      ],
+      "image": null,
+      "rtr": true,
+      "exp": false,
+      "runtime": [],
+      "store": [],
+      "availability": "full",
+      "reqs": [
+        "analog_2"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-01-17T19:16",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/droidtoolbox.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/droidtoolbox/droidtoolbox/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/droidtoolbox/droidtoolbox/README.md",
+      "size": 11376418,
+      "md5": "5383c198080e01da34884c314621ad84"
     }
   },
   {
@@ -1092,12 +1135,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-04T20:29",
+      "date_updated": "2026-01-17T19:16",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight/hollow_knight/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight/hollow_knight/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/README.md",
       "size": 7172477,
-      "md5": "7011f61814fb64fb5f10c5626d27772a"
+      "md5": "136bc03dcc5b7658866dafb513575278"
     }
   },
   {
@@ -1150,12 +1193,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-04T20:29",
+      "date_updated": "2026-01-17T19:16",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight_silksong.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/hollow_knight_silksong/hollow_knight_silksong/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/README.md",
       "size": 6731347,
-      "md5": "da71a9e1c71f322127750c5855f68172"
+      "md5": "ecd72495d49c68a4ae4c43de96569529"
     }
   },
   {
@@ -1616,12 +1659,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-10T19:56",
+      "date_updated": "2026-01-17T19:16",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/momodora_rutm/momodora_rutm/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/README.md",
       "size": 8469903,
-      "md5": "199de173e928516ce28f8787a655cf3a"
+      "md5": "4e9ba7797807086dba132160640dbe46"
     }
   },
   {
@@ -3123,12 +3166,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-04T20:29",
+      "date_updated": "2026-01-17T19:17",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tenjutsu48h.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/tenjutsu48h/tenjutsu48h/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/tenjutsu48h/tenjutsu48h/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/tenjutsu48h/tenjutsu48h/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/tenjutsu48h/tenjutsu48h/README.md",
       "size": 26368631,
-      "md5": "b1ac606bc59f691b26b8ff62c9a86412"
+      "md5": "efe5a90a00d0134d58626ac56cdd322f"
     }
   },
   {
@@ -3232,12 +3275,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-04T20:29",
+      "date_updated": "2026-01-17T19:17",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/thegirlfromarkanya.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/box64ports/thegirlfromarkanya/thegirlfromarkanya/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/thegirlfromarkanya/thegirlfromarkanya/README.md",
       "size": 5713085,
-      "md5": "67f9f7b103ebcf2fd64b15fb5d711d24"
+      "md5": "8b0a774824873f3b70e019c39bf3e11b"
     }
   },
   {
