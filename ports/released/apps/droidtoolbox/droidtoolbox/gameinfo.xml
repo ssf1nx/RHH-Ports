@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Droid Toolbox.sh</path>
+		<name>Droid Toolbox</name>
+        <desc>Droid Toolbox is an application that allows controlling Disney's Droid Depot interactive droids using Bluetoothctl and BlueZ.</desc>
+		<image>./droidtoolbox/screenshot.png</image>
+		<releasedate>20260117</releasedate>
+        <developer>Jeod</developer>
+        <genre>Application</genre>
+	</game>
+</gamelist>

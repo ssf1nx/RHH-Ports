@@ -1,0 +1,35 @@
+{
+  "version": 4,
+  "name": "droidtoolbox.zip",
+  "items": [
+    "Droid Toolbox.sh",
+    "droidtoolbox"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Droid Toolbox",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Droid Toolbox is an application that allows controlling Disney's Droid Depot interactive droids using Bluetoothctl and BlueZ.",
+    "desc_md": null,
+    "inst": "Ready to run",
+    "inst_md": null,
+    "genres": [
+      "app"
+    ],
+    "image": null,
+    "rtr": true,
+    "exp": false,
+    "runtime": [],
+    "store": [],
+    "availability": "full",
+    "reqs": [
+	  "analog_2"
+	],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": ""
+  }
+}
