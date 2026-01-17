@@ -752,12 +752,12 @@
       ]
     },
     "source": {
-      "date_updated": "2026-01-01T18:32",
+      "date_updated": "2026-01-17T23:15",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
-      "size": 94203127,
-      "md5": "3afd43fa0b44fa06b734d72c3d248653"
+      "size": 94855735,
+      "md5": "941d5677ac714241aa359f817b2028cf"
     }
   },
   {
