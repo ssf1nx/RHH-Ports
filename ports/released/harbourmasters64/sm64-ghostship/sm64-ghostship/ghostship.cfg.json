@@ -1,0 +1,38 @@
+{
+    "CVars": {
+        "gAdvancedResolution": {
+            "Enabled": 1
+        },
+        "gControlNav": 1,
+        "gControllers": {
+        },
+        "gEnhancements": {
+            "DisableLOD": 1,
+            "FixKoopaRaceMusic": 1,
+            "Mods": {
+                "AlternateAssets": 1
+            }
+        },
+        "gOpenWindows": {
+            "Menu": 1,
+            "ModalWindow": 1,
+            "Notifications": 1
+        },
+        "gSettings": {
+            "MatchRefreshRate": 1,
+            "Menu": {
+                "ActiveHeader": "Dev Tools",
+                "DevToolsSidebarSection": "General",
+                "EnhancementsSidebarSection": "Gameplay",
+                "SettingsSidebarSection": "Notifications"
+            }
+        }
+    },
+    "Window": {
+        "AudioBackend": "sdl",
+        "Backend": {
+            "Id": 1,
+            "Name": "OpenGL"
+        }
+    }
+}

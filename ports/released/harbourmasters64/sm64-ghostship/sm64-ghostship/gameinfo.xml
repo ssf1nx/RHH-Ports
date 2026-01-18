@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./SM64 - Ghostship.sh</path>
+		<name>SM64 : Ghostship</name>
+		<desc>A source port of Super Mario 64 by the reputable HarbourMasters64.</desc>
+		<image>./sm64-ghostship/cover.png</image>
+		<releasedate>20260118</releasedate>
+		<developer>Nintendo</developer>
+		<publisher>Harbour Masters</publisher>
+		<genre>Adventure</genre>
+	</game>
+<gamelist>
