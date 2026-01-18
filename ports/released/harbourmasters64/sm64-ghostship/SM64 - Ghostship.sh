@@ -17,7 +17,7 @@ source $controlfolder/control.txt
 get_controls
 
 # Set variables
-GAMEDIR="/$directory/ports/ghostship"
+GAMEDIR="/$directory/ports/sm64-ghostship"
 
 # Exports
 export LD_LIBRARY_PATH="$GAMEDIR/libs:$LD_LIBRARY_PATH"
@@ -105,5 +105,5 @@ pm_platform_helper "$GAMEDIR/Ghostship" > /dev/null
 ./Ghostship
 
 # Cleanup
-pm_cleanup
 rm -rf logs
+pm_cleanup
