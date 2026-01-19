@@ -2984,12 +2984,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-14T14:18",
+      "date_updated": "2026-01-19T00:19",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valleycore.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/README.md",
-      "size": 2081265,
-      "md5": "010497c294e98dad9e7d93b4c2c9b197"
+      "size": 2081381,
+      "md5": "fc1c03c9c4d4fbf1869149187e13f401"
     }
   },
   {
