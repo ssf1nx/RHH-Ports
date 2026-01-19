@@ -65,8 +65,19 @@ sys_requirements_check() {
         return 1
     fi
 
-    if ! glxinfo | grep "OpenGL version string" >/dev/null 2>&1; then
+    if ! glxinfo | grep -q "OpenGL version string"; then
         echo "Valleycore does not support the libMali graphics driver. Switch to Panfrost to continue."
+        return 1
+    fi
+    
+    # Correct game assets
+    file_info=$(file "$GAMEDIR/gamedata/Stardew Valley")
+
+    if echo "$file_info" | grep -q "PE32"; then
+        echo "Please use the Linux 64-bit version of the game. See the README for details."
+        return 1
+    elif ! echo "$file_info" | grep -q "ELF 64-bit.*x86-64"; then
+        echo "Please use the Linux 64-bit version of the game. See the README for details."
         return 1
     fi
 }
