@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "simpsons_hnr.zip",
+  "items": [
+    "The Simpsons Hit and Run.sh",
+    "simpsons_hnr"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Simpsons : Hit and Run.sh",
+    "porter": [
+      "R36SWiki.com",
+	  "Jeod"
+    ],
+    "desc": "There are strange happenings in Springfield. People are missing, very mysterious crop circles are appearing, and hidden cameras are being exposed. When Homer notices a black van with a satellite dish parked outside the Simpsons house, he decides to investigate further into these odd events.",
+    "inst": "See readme for installation details.",
+    "genres": [
+	  "action",
+      "adventure",
+	  "racing"
+    ],
+	"availability": "paid",
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": null,
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ]
+  }
+}
