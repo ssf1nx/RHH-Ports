@@ -7,12 +7,12 @@
   ],
   "items_opt": [],
   "attr": {
-    "title": "The Simpsons : Hit and Run.sh",
+    "title": "The Simpsons : Hit and Run",
     "porter": [
       "R36SWiki.com",
 	  "Jeod"
     ],
-    "desc": "There are strange happenings in Springfield. People are missing, very mysterious crop circles are appearing, and hidden cameras are being exposed. When Homer notices a black van with a satellite dish parked outside the Simpsons house, he decides to investigate further into these odd events.",
+    "desc": "There are strange happenings in Springfield. People are missing, very mysterious crop circles are appearing, and hidden cameras are being exposed. When Homer notices a black van with a satellite dish parked outside the Simpsons house, he decides to investigate further into these odd events.\n The source code for Simpsons: Hit and Run is known to be leaked, not officially released. As such, *YOU* the *USER* are responsible for using this port and obtaining the game executable and game assets required for it to run. PortMaster has not endorsed this port. I am not affiliated with PortMaster, and I personally see no problem with hosting a cleaned up launchscript and a shim. That said, I will not offer support for issues with this port and I also have no problems removing this wrapper.",
     "inst": "See readme for installation details.",
     "genres": [
 	  "action",
