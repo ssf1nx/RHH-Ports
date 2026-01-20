@@ -39,6 +39,9 @@ Some of the ports in this repository have minimum requirements. Be sure to check
 ## Runtimes
 Some of my ports require runtimes--mounted squashfs files that contain common scripts, programs, etc. These are found in the `runtimes` folder of this repository and should be placed in `PortMaster/libs` on your device.
 
+## Troubleshooting
+If you've run into a problem with one or more of these ports, feel free to raise an [issue](https://github.com/JeodC/RHH-Ports/issues) on this page. Please do not bother PortMaster community--they are not obligated to assist you and I'm unaffiliated.
+
 ## Keeping up
 You can keep up with ports that I consider "complete" by checking the [commit history](https://github.com/JeodC/RHH-Ports/commits/main). I always prepend my commits with `[PORTNAME]` so it's easy to see what the commit most affects.
 
