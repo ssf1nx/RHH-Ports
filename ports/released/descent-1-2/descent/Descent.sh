@@ -52,8 +52,10 @@ export TEXTINPUTNUMBERSONLY="Y"
 # Edit .cfg file with updated resolution and aspect ratio
 sed -i "s/^ResolutionX=[0-9]\{1,4\}/ResolutionX=$DISPLAY_WIDTH/g" "$GAMEDIR/config/descent.cfg"
 sed -i "s/^ResolutionY=[0-9]\{1,4\}/ResolutionY=$DISPLAY_HEIGHT/g" "$GAMEDIR/config/descent.cfg"
-sed -i "s/^AspectX=[0-9]\{1,2\}/AspectX=$ASPECT_X/g" "$GAMEDIR/config/descent.cfg"
-sed -i "s/^AspectY=[0-9]\{1,2\}/AspectY=$ASPECT_Y/g" "$GAMEDIR/config/descent.cfg"
+
+# Aspect ratio is swapped because it's too stretched on widescreen otherwise
+sed -i "s/^AspectX=[0-9]\{1,2\}/AspectX=$ASPECT_Y/g" "$GAMEDIR/config/descent.cfg"
+sed -i "s/^AspectY=[0-9]\{1,2\}/AspectY=$ASPECT_X/g" "$GAMEDIR/config/descent.cfg"
 
 # Use compatibility binary if low glibc
 if [ $CFW_GLIBC -lt 234 ]; then
