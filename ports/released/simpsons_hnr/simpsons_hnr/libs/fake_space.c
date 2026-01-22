@@ -1,9 +1,18 @@
-// This shim resolves a bug in https://github.com/ZenoArrows/The-Simpsons-Hit-and-Run/blob/master/libs/radcore/src/radfile/win32/win32drive.cpp#L605
-
-// Modern SD Cards, when large, will cause an integer overflow and make the game think the drive is full
-// This shim tricks the game into reading a drive with 512MB free space, more than enough for save files
-// Autosaves will still give an error, but manual saving works
+// ============================================================================
+//  Simpsons: Hit & Run – Fake Disk Space Shim
+//
+//  HACK: The game’s disk space math explodes on modern large SD cards and decides
+//  the drive is full. This shim reports a safe, boring 512MB drive instead.
+//
+//  Manual saves work. Autosaves still complain.
+//
+// In a game full of big, stinky hacks… what’s one more?
+//
 // Compile with gcc -fPIC -shared -o libfakespace.so fake_space.c -ldl on debian bullseye
+//
+//  Related bug:
+//  https://github.com/ZenoArrows/The-Simpsons-Hit-and-Run/blob/master/libs/radcore/src/radfile/win32/win32drive.cpp#L605
+// ============================================================================
 
 #define _GNU_SOURCE
 #include <dlfcn.h>
