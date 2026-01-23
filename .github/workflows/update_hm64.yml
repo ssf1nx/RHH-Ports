@@ -12,37 +12,40 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PORTS_REPO_PAT }}
+
+      - name: Set Variables
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "ZIP_URL=${{ github.event.inputs.zip_url }}" >> $GITHUB_ENV
+            echo "PORT_NAME=${{ github.event.inputs.port_name }}" >> $GITHUB_ENV
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+          else
+            echo "ZIP_URL=${{ github.event.client_payload.zip_url }}" >> $GITHUB_ENV
+            echo "VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_ENV
+            URL="${{ github.event.client_payload.zip_url }}"
+            FILE=$(basename "$URL")
+            echo "PORT_NAME=${FILE%.*}" >> $GITHUB_ENV
+          fi
 
       - name: Download and Overwrite
         run: |
-          ZIP_URL="${{ github.event.client_payload.zip_url }}"
-          ZIP_FILE=$(basename "$ZIP_URL")
-          PORT_NAME="${ZIP_FILE%.*}"
           BASE_DIR="ports/released/harbourmasters64"
           TARGET_DIR="$BASE_DIR/$PORT_NAME"
           
           mkdir -p "$TARGET_DIR"
+          curl -L -o "temp_port.zip" "$ZIP_URL"
           
-          # Download the asset
-          curl -L -o "$ZIP_FILE" "$ZIP_URL"
-          
-          # Extract everything to ensure no files are missed
-          unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
-          
-          # Use find to locate and remove any folder named 'src' 
-          # This handles the nested structure (sm64-ghostship/sm64-ghostship/src) perfectly
+          unzip -o "temp_port.zip" -d "$TARGET_DIR"
           find "$TARGET_DIR" -type d -name "src" -exec rm -rf {} +
           
-          # Cleanup the downloaded zip
-          rm "$ZIP_FILE"
-          
-          echo "PORT_NAME=$PORT_NAME" >> $GITHUB_ENV
+          rm "temp_port.zip"
 
       - name: Commit Changes
         run: |
           RAW_NAME="${{ env.PORT_NAME }}"
           UPPER_NAME="${RAW_NAME^^}"
-          VER="${{ github.event.client_payload.version }}"
           
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
@@ -51,6 +54,6 @@ jobs:
           if git diff --quiet && git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "[$UPPER_NAME] Update to $VER"
+            git commit -m "[$UPPER_NAME] Update to ${{ env.VERSION }}"
             git push
           fi
