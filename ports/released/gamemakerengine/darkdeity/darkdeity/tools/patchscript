@@ -88,7 +88,7 @@ dump_textures() {
     # Begin texture operations
     dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
         dump "$DATADIR/data.win" \
-        -e "$DATADIR/textures" "$DATADIR/game.droid"
+        -e "$DATADIR/textures" "$DATADIR/data2.win"
 
     if [ $? -ne 0 ]; then
         echo "[DOTNET]: Texture dumping failed to apply."
@@ -96,6 +96,7 @@ dump_textures() {
     else
         rm -f "$DATADIR/data.win"
         mv "$DATADIR/textures" "$SAVEDIR/textures"
+        mv "$DATADIR/data2.win" "$DATADIR/data.win"
         if [ -n "$TMPDIR" ] && [ -d "$TMPDIR" ]; then
             rm -rf "$TMPDIR"/*
         fi
