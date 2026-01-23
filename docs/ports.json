@@ -2396,12 +2396,12 @@
       ]
     },
     "source": {
-      "date_updated": "2026-01-20T12:11",
+      "date_updated": "2026-01-23T12:42",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
-      "size": 45735571,
-      "md5": "258c858e0f2f2ba0657a8a3ec019b596"
+      "size": 45735535,
+      "md5": "2aded20b5d72e96d34458c6eb58015be"
     }
   },
   {
@@ -2435,12 +2435,12 @@
       ]
     },
     "source": {
-      "date_updated": "2026-01-20T12:11",
+      "date_updated": "2026-01-23T12:42",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
-      "size": 13132634,
-      "md5": "e951d9fd24caae2535d2731ee7573dfa"
+      "size": 13132602,
+      "md5": "8daf94a6b6df30429e5aa7ac83617b6b"
     }
   },
   {
