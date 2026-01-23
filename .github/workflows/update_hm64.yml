@@ -23,10 +23,17 @@ jobs:
           
           mkdir -p "$TARGET_DIR"
           
+          # Download the asset
           curl -L -o "$ZIP_FILE" "$ZIP_URL"
           
-          unzip -o "$ZIP_FILE" -d "$TARGET_DIR" -x "*/src/*" "*/src"
+          # Extract everything to ensure no files are missed
+          unzip -o "$ZIP_FILE" -d "$TARGET_DIR"
           
+          # Use find to locate and remove any folder named 'src' 
+          # This handles the nested structure (sm64-ghostship/sm64-ghostship/src) perfectly
+          find "$TARGET_DIR" -type d -name "src" -exec rm -rf {} +
+          
+          # Cleanup the downloaded zip
           rm "$ZIP_FILE"
           
           echo "PORT_NAME=$PORT_NAME" >> $GITHUB_ENV
