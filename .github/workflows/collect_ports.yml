@@ -15,6 +15,10 @@ on:
   push:
     paths:
       - 'ports/released/**'
+  workflow_run:
+    workflows: ["Update HM64 Port"]
+    types:
+      - completed
 
 concurrency:
   group: release-ports
@@ -25,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    if: |
+      github.event_name != 'workflow_run' || 
+      github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
