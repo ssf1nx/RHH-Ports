@@ -9,26 +9,43 @@ rm -rf $LOGFILE
 exec > >(tee -a "$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
+# Test if regenerating o2r
+if [ -n "$REGEN" ] && [ ! -f "$GAMEDIR/tools/assets.zip" ]; then
+    echo "[OTRGEN] Attempt to regenerate o2r with old assets!"
+    echo "[OTRGEN] Copy tools/assets.zip and remove the old tools/assets directory!"
+    echo "Patching process failed!"
+    exit 1
+fi
+
+# Check if we need to unzip the assets archive
+if [ -f "$GAMEDIR/tools/assets.zip" ]; then
+    echo "Unzipping assets archive..."
+    if ! unzip -q -o "$GAMEDIR/tools/assets.zip" -d "$GAMEDIR/tools/"; then
+        echo "[OTRGEN] Couldn't unzip assets folder."
+    else
+        rm -rf "$GAMEDIR/tools/assets.zip"
+    fi
+fi
+
 # Function handle the ROM file.
 process_rom() {
-    cd $GAMEDIR/tools
-    local input_file="$1"
-    if [[ ! -f "../$input_file" ]]; then
-        echo "Error: File $input_file not found!"
+    cd "$GAMEDIR/tools"
+    input_file="$1"
+    if [ ! -f "../baseroms/$input_file" ]; then
+        echo "[OTRGEN] Error: File $input_file not found!"
         exit 1
     fi
 
     # Run the extraction
     echo "Extracting data from $input_file..."
-    if ./torch o2r "../$input_file" >/dev/null 2>&1; then
-        echo "Extraction complete. O2R generated."
+    if ./torch o2r "../baseroms/$input_file" -a "$GAMEDIR/tools/portVersion" >/dev/null 2>&1; then
+        echo "[OTRGEN] Extraction complete. O2R generated."
         mv sm64.o2r ../sm64.o2r
-        rm -rf ../*.*64
     else
-        echo "Error: Extraction failed for $input_file."
+        echo "[OTRGEN] Error: Extraction failed for $input_file."
         exit 1
     fi
-    cd $GAMEDIR
+    cd "$GAMEDIR"
 }
 
 # Function to convert N64 ROM to Z64 format
@@ -46,15 +63,15 @@ convert_n64() {
 
     case "$word" in
         "37804012")
-            echo "Detected Big Endian format. Converting to Z64..."
+            echo "[OTRGEN] Detected Big Endian format. Converting to Z64..."
             dd if="$rom_file" of="$output_file" conv=swab 2>/dev/null || return 1
             ;;
         "40123780")
-            echo "Detected Little Endian format. Converting to Z64..."
+            echo "[OTRGEN] Detected Little Endian format. Converting to Z64..."
             dd if="$rom_file" of="$output_file" conv=swab,notrunc bs=4 2>/dev/null || return 1
             ;;
         "80371240")
-            echo "ROM already uses Z64 byte ordering. Copying as-is."
+            echo "[OTRGEN] ROM already uses Z64 byte ordering. Copying as-is."
             cp "$rom_file" "$output_file" || return 1
             ;;
         *)
@@ -63,37 +80,31 @@ convert_n64() {
             ;;
     esac
 
-    echo "Conversion complete. Saved as $output_file."
+    echo "[OTRGEN] Conversion complete. Saved as $output_file."
 }
 
-# Main Logic
-find_rom() {
-    find . -maxdepth 1 \( -name "*.z64" -o -name "*.n64" \) -print -quit
-}
+# Main logic
+rom_file=$(find "$GAMEDIR/baseroms" -maxdepth 1 \( -name "*.z64" -o -name "*.n64" \) -print -quit)
 
-rom_file=$(find_rom)
-
-if [[ -z "$rom_file" ]]; then
-    echo "No ROM file (*.z64 or *.n64) found in the current directory."
-    sleep 2
+if [ -z "$rom_file" ]; then
+    echo "[OTRGEN] No ROM file found in baseroms!"
     exit 1
 fi
 
 echo "Processing $rom_file..."
-if [[ "$rom_file" == *.n64 ]]; then
-    if convert_n64 "$rom_file"; then
+
+case "$rom_file" in
+    *.n64)
+        convert_n64 "$rom_file" || {
+            echo "[OTRGEN] Conversion failed. Exiting."
+            exit 1
+        }
         process_rom "rom.z64"
-    else
-        echo "Error: Conversion failed. Exiting."
-        sleep 2
-        exit 1
-    fi
-else
-    mv "$rom_file" "rom.z64" || exit 1
-    process_rom "rom.z64"
-fi
+        ;;
+    *.z64)
+        process_rom "$(basename "$rom_file")"
+        ;;
+esac
 
 # Cleanup
-echo "Cleaning up temporary files..."
-rm -f ./placeholder
 echo "Patching process complete!"

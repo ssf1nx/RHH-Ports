@@ -65,26 +65,28 @@ mv "$temp_file" "$input_file"
 # Close the menu if open
 sed -i 's/"Menu": *1/"Menu": 0/' ghostship.cfg.json
 
-# Check if we need to unzip the assets archive
-if [ -f "$GAMEDIR/tools/assets.zip" ]; then
-    if ! unzip -o "$GAMEDIR/tools/assets.zip" -d "$GAMEDIR/tools/"; then
-        pm_message "Couldn't unzip assets folder."
-    else
-        rm -rf "$GAMEDIR/tools/assets.zip"
+# Warn if sm64.o2r is older than Ghostship or ghostship.o2r
+if [ -f "$GAMEDIR/sm64.o2r" ]; then
+    if [ -f "$GAMEDIR/Ghostship" ] && [ "$GAMEDIR/Ghostship" -nt "$GAMEDIR/sm64.o2r" ] \
+       || [ -f "$GAMEDIR/ghostship.o2r" ] && [ "$GAMEDIR/ghostship.o2r" -nt "$GAMEDIR/sm64.o2r" ]; then
+        echo "Notice: sm64.o2r is older than Ghostship and/or ghostship.o2r. Forcing regeneration."
+        rm -f "$GAMEDIR/sm64.o2r"
+        REGEN=1
+        export REGEN
     fi
 fi
 
 # Check if we need to generate any o2r files
 if [ ! -f "$GAMEDIR/sm64.o2r" ]; then
     # Ensure we have a rom file before attempting to generate o2r
-    if ls *.*64 1> /dev/null 2>&1; then
+    if ls "$GAMEDIR/baseroms/"*.*64 1> /dev/null 2>&1; then
         if [ -f "$controlfolder/utils/patcher.txt" ]; then
             export PATCHER_FILE="$GAMEDIR/tools/otrgen"
             export PATCHER_GAME="$(basename "${0%.*}")"
             export PATCHER_TIME="5 to 10 minutes"
             export controlfolder
             source "$controlfolder/utils/patcher.txt"
-            $ESUDO kill -9 $(pidof gptokeyb)
+            pid=$(pidof gptokeyb) && [ -n "$pid" ] && $ESUDO kill -9 $pid
         else
             pm_message "This port requires the latest version of PortMaster."
         fi
@@ -99,6 +101,11 @@ if [ ! -f "$GAMEDIR/sm64.o2r" ]; then
     exit 1
 fi
 
+# Get the o2r version
+bytes=$(unzip -p sm64.o2r portVersion | dd bs=1 skip=1 count=6 2>/dev/null | od -An -t u2)
+version=$(echo $bytes | awk '{print $1"."$2"."$3}')
+echo "[LOG] sm64.o2r version: $version"
+
 # Run the game
 $GPTOKEYB "Ghostship" -c "ghostship.gptk" & 
 pm_platform_helper "$GAMEDIR/Ghostship" > /dev/null
@@ -106,4 +113,4 @@ pm_platform_helper "$GAMEDIR/Ghostship" > /dev/null
 
 # Cleanup
 rm -rf logs
-pm_cleanup
+pm_finish
