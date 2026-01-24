@@ -26,14 +26,12 @@ jobs:
 
           curl -L -o temp.zip "$ZIP_URL"
           
-          # Unzip directly into target; -o overwrites existing files
           unzip -o temp.zip -d "$TARGET_DIR"
           
-          # Remove only the src directory
           find "$TARGET_DIR" -type d -name "src" -exec rm -rf {} +
+          find "$TARGET_DIR" -path "*/tools/.gitkeep" -delete
           rm temp.zip
 
-          # Store variables for the commit step
           echo "UPPER_NAME=${PORT_NAME^^}" >> $GITHUB_ENV
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
