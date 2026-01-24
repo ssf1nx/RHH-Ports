@@ -11,7 +11,7 @@ You must generate your `sm64.o2r` file with a rom that has one of the following 
 
 You can verify your rom at https://www.romhacking.net/hash.
 
-Legally obtain your rom and place it in `ports/ghostship`, then start the port. Texture pack files can be added to the `ports/ghostship/mods` folder.
+Legally obtain your rom and place it in `ports/ghostship/baseroms`, then start the port. Texture pack files can be added to the `ports/ghostship/mods` folder.
 
 Logs are recorded automatically as `ports/ghostship/log.txt`. Please provide a log if you report an issue. HarbourMasters is not affiliated with PortMaster or RHH-Ports and this distribution is not officially supported by them. *Please report an issue to the RHH-Ports repository before going to HarbourMasters!*
 

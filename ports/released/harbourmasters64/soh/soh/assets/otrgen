@@ -60,7 +60,7 @@ process_roms() {
 }
 
 unzip_assets || { echo "Patching process failed!"; exit 1; }
-process_roms || { echo "Patching process failed!"; return 1; }
+process_roms || { echo "Patching process failed!"; exit 1; }
 
 # Run soh.elf with all ROM arguments
 eval "$GAMEDIR/soh.elf" $ARGS > "$GAMEDIR/otrlog.txt"

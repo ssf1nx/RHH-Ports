@@ -11,7 +11,7 @@ The supported ROMs are:
 
  You can verify you have dumped a supported copy of the game by using the SHA-1 File Checksum Online at https://www.romhacking.net/hash/. The hash for a US 1.1 ROM is SHA-1: 09F0D105F476B00EFA5303A3EBC42E60A7753B7A.
 
-Legally obtain your rom and place it in `ports/starship`, then start the port. Texture pack files can be added to the `ports/starship/mods` folder.
+Legally obtain your rom and place it in `ports/starship/baseroms`, then start the port. Texture pack files can be added to the `ports/starship/mods` folder.
 
 Logs are recorded automatically as `ports/starship/log.txt`. Please provide a log if you report an issue. HarbourMasters is not affiliated with PortMaster or RHH-Ports and this distribution is not officially supported by them. *Please report an issue to the RHH-Ports repository before going to HarbourMasters!*
 ## Menu Navigation
