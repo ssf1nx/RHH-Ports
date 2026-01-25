@@ -5,6 +5,7 @@
 		<name>Pokémon : Fire Ash</name>
 		<desc>Pokémon Fire Ash is a fan-made Pokémon game that follows the journey of Ash Ketchum through multiple regions just like in the Pokémon anime series.</desc>
 		<image>./pkmn_fireash/cover.png</image>
+		<thumbnail>./pkmn_fireash/thumb.png</thumbnail>
 		<releasedate>20170906</releasedate>
 		<developer>Reinhartmax, FireAsh Team</developer>
 		<genre>Adventure</genre>

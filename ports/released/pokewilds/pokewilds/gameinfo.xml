@@ -5,6 +5,7 @@
 		<name>Pokéwilds</name>
 		<desc>Explore a procedurally generated Pokémon world! In this Minecraft-like retro style game, use Pokémon to gather resources and build your home. Explore enough and you might uncover a few mysteries!</desc>
 		<image>./pokewilds/cover.png</image>
+		<thumbnail>./pokewilds/thumb.png</thumbnail>
 		<releasedate>20240117</releasedate>
 		<developer>Pokéwilds Team</developer>
 		<genre>RPG</genre>

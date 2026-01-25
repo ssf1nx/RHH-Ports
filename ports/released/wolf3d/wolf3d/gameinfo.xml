@@ -3,6 +3,7 @@
 		<name>Wolfenstein 3D</name>
 		<desc>Wolfenstein 3D using LZ Wolf and EC Wolf for mod support.</desc>
 		<image>./wolf3d/cover.png</image>
+		<thumbnail>./wolf3d/thumb.png</thumbnail>
 		<releasedate>19920505</releasedate>
 		<developer>id Software</developer>
 		<publisher>Various</publisher>

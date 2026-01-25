@@ -5,6 +5,7 @@
 		<name>Koboo The Tree Spirit : Prologue</name>
 		<desc>Explore the free prologue of Koboo: The Tree Spirit! An action rogue-lite platformer where you battle against towering hunters as a tiny spirit. Forge powerful synergies, battle seemingly gigantic bosses and rebuild your home.</desc>
 		<image>./koboo_prologue/cover.png</image>
+		<thumbnail>./koboo_prologue/thumb.png</thumbnail>
 		<releasedate>20240625</releasedate>
 		<developer>Jerome Labelle, Simon Labelle</developer>
 		<genre>Action, Adventure, Indie, RPG</genre>

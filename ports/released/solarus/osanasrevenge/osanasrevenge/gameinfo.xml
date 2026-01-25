@@ -5,6 +5,7 @@
     <name>Osana's Revenge</name>
     <desc>Osana's Revenge is a top down shooter filled with memes and private jokes arisen from Yandere Simulator drama and development setbacks, in particular, its first rival (Osana Najimi) being delayed for multiple years.</desc>
     <image>./osanasrevenge/cover.png</image>
+    <thumbnail>./osanasrevenge/thumb.png</thumbnail>
     <developer>Metaquarius</developer>
     <releasedate>20221017</releasedate>
     <genre>Action, Adventure</genre>

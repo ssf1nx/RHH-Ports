@@ -5,6 +5,7 @@
 		<name>LOZ Oracles Randomizer NG</name>
 		<desc>A randomizer tool for Oracle of Ages/Seasons! Randomized roms are generated on-device. No external tools needed!</desc>
 		<image>./oracles-randomizer-ng/cover.png</image>
+		<thumbnail>./oracles-randomizer-ng/thumb.png</thumbnail>
 		<releasedate>05282024</releasedate>
 		<developer>Stewmath, Jangler</developer>
 		<genre>App</genre>

@@ -5,6 +5,7 @@
 		<name>Hollow Knight: Silksong</name>
 		<desc>Discover a vast, haunted kingdom in Hollow Knight: Silksong! Explore, fight and survive as you ascend to the peak of a land ruled by silk and song.</desc>
 		<image>./hollow_knight_silksong/cover.png</image>
+		<thumbnail>./hollow_knight_silksong/thumb.png</thumbnail>
 		<releasedate>20250904</releasedate>
 		<developer>Team Cherry</developer>
 		<genre>Action, Adventure</genre>

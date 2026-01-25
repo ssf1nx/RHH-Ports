@@ -5,6 +5,7 @@
 		<name>Sonic Unleashed : Recompiled</name>
 		<desc>Unleashed Recompiled is an unofficial PC port of the Xbox 360 version of Sonic Unleashed created through the process of static recompilation. The port offers numerous built-in enhancements such as high resolutions, ultrawide support, high frame rates, improved performance and modding.</desc>
 		<image>./unleashedrecomp/cover.png</image>
+		<thumbnail>./unleashedrecomp/thumb.png</thumbnail>
 		<releasedate>20250301</releasedate>
 		<developer>Sega</developer>
 		<genre>Action</genre>

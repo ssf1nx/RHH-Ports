@@ -5,6 +5,7 @@
 		<name>The Legend of Zelda : The Faces of Evil Remastered</name>
 		<desc>Zelda: Wand of Gamelon and Link: Faces of Evil have been remastered using the original assets, and includes widescreen, cutscene subtitles, unlockables, and a Remastered Mode for less frustrating gameplay. The cutscenes are still the same old memey goodness you know and love!</desc>
 		<image>./zelda-foer/cover.png</image>
+		<thumbnail>./zelda-foer/thumb.png</thumbnail>
 		<releasedate>20201127</releasedate>
 		<developer>Dopply, Nintendo</developer>
 		<genre>Action, Adventure</genre>

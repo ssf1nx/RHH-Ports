@@ -5,6 +5,7 @@
         <name>VA-11 Hall-A: Cyberpunk Bartender Action</name>
         <desc>VA-11 HALL-A: Cyberpunk Bartender Action is a booze em' up about waifus, technology, and post-dystopia life.</desc>
         <image>./valhalla/cover.png</image>
+        <thumbnail>./valhalla/thumb.png</thumbnail>
         <developer>Sukeban Games</developer>
         <releasedate>20160621</releasedate>
         <genre>Adventure, Indie, Simulation</genre>

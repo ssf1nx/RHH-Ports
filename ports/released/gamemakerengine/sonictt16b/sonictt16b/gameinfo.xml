@@ -5,6 +5,7 @@
 		<name>Sonic Triple Trouble: 16-Bit</name>
 		<desc>What if Sonic Triple Trouble had been originally released on the Sega Genesis / MegaDrive, after Sonic 3 &amp; Knuckles?</desc>
 		<image>./sonictt16b/cover.png</image>
+		<thumbnail>./sonictt16b/thumb.png</thumbnail>
 		<releasedate>20220802</releasedate>
 		<developer>Noah Copeland</developer>
 		<genre>Platform</genre>

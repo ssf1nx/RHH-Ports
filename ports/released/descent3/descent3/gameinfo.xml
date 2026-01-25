@@ -5,6 +5,7 @@
     <name>Descent III</name>
     <desc>Play the exciting final installment in the Descent trilogy! Saved by amateur do-gooders, the Material Defender sets out to stop the robot virus and Dravis' evil plans once and for all! Pilot through 3D space, navigating through familiar indoor mines and outdoor open space terrain. It's a big universe, but fortunately they threw in a guidebot.</desc>
     <image>./descent3/cover.png</image>
+    <thumbnail>./descent3/thumb.png</thumbnail>
     <releasedate>19990617T000000</releasedate>
     <developer>Outrage</developer>
     <publisher>Interplay</publisher>

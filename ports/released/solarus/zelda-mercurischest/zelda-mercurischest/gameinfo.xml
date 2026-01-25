@@ -5,6 +5,7 @@
     <name>The Legend of Zelda : Mercuris' Chest</name>
     <desc>Link was quietly taking a nap in his house, when suddenly 2 strangers kidnapped him and brought him to an unknown kingdom. When he finally woke up, a priest explained that they need Link’s help to fight against a giant bird who tries to steal a legendary chest, containing a dangerous weapon. What’s in this chest? And who is that mysterious bird warrior? And why this kingdom seems so familiar, but also so different? You will discover everything by playing Mercuris’ Chest!</desc>
     <image>./zelda-mercurischest/cover.png</image>
+    <thumbnail>./zelda-mercurischest/thumb.png</thumbnail>
     <developer>Solarus Team</developer>
     <releasedate>20251222</releasedate>
     <genre>Action, Adventure</genre>

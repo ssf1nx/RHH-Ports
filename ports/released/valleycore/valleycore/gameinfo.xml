@@ -5,6 +5,7 @@
 		<name>Stardew Valley (Valleycore)</name>
 		<desc>Valleycore brings arm64 compatibility to Stardew Valley and SMAPI! Play with mods!</desc>
 		<image>./valleycore/cover.png</image>
+		<thumbnail>./valleycore/thumb.png</thumbnail>
 		<releasedate>20160226T000000</releasedate>
 		<developer>ConcernedApe</developer>
         <genre>Simulation</genre>

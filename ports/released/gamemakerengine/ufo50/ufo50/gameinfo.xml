@@ -5,6 +5,7 @@
 		<name>UFO 50</name>
 		<desc>UFO 50 is a collection of 50 single and multiplayer games that span a variety of genres, from platformers and shoot 'em ups to puzzle games, roguelites, and RPGs. Our goal is to combine a familiar 8-bit aesthetic with new ideas and modern game design.]</desc>
 		<image>./ufo50/cover.png</image>
+		<thumbnail>./ufo50/thumb.png</thumbnail>
 		<releasedate>20240918</releasedate>
 		<developer>Mossmouth</developer>
 		<genre>Action, Adventure, Indie, RPG, Strategy</genre>

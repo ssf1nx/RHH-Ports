@@ -5,6 +5,7 @@
 		<name></name>
 		<desc></desc>
 		<image>./portname/cover.png</image>
+		<thumbnail>./portname/thumb.png</thumbnail>
 		<releasedate></releasedate>
 		<developer></developer>
 		<genre></genre>

@@ -13,5 +13,6 @@ Although only one Undertale save file can be kept at a time, the game remembers 
     <releasedate>20170915T000000</releasedate>
     <publisher>Fangamer</publisher>
     <image>./undertale/cover.png</image>
+    <thumbnail>./undertale/thumb.png</thumbnail>
   </game>
 </gameList>

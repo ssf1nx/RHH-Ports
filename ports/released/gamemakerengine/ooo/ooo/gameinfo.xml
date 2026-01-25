@@ -5,6 +5,7 @@
 		<name>Ooo</name>
 		<desc>A Bomb Caterpillar's Big Adventure! "Öoo" is a charming yet mysterious exploration puzzle platformer where you discover creative ways to use bombs!</desc>
 		<image>./ooo/cover.png</image>
+		<thumbnail>./ooo/thumb.png</thumbnail>
 		<releasedate>20250807</releasedate>
 		<developer>Tiny Cactus Studios</developer>
 		<genre>Puzzle</genre>

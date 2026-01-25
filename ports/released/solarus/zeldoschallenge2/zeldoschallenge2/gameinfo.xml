@@ -5,6 +5,7 @@
     <name>The Legend of Zelda : Zeldo's Challenge 2</name>
     <desc>Set after the 2017 one-dungeon first chapter, Link is teleported to High-rule, a world blending multiple game universes. He must reach the Tower of Memories, where Zeldo awaits to exact his revenge.</desc>
     <image>./zeldoschallenge2/cover.png</image>
+    <thumbnail>./zeldoschallenge2/thumb.png</thumbnail>
     <developer>	ZeldoRetro</developer>
     <releasedate>20190510</releasedate>
     <genre>Action, Adventure</genre>

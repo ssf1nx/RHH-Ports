@@ -5,6 +5,7 @@
         <name>Planetarian</name>
         <desc>Planetarian is a visual novel set in a post-apocalyptic world where a lone survivor encounters a malfunctioning robot attendant named Yumemi Hoshino in an abandoned planetarium. Through their interactions, themes of hope, humanity, and the enduring power of memories are explored.</desc>
         <image>./planetarian/cover.png</image>
+        <thumbnail>./planetarian/thumb.png</thumbnail>
 		<releasedate>20041129T000000</releasedate>
 		<developer>Key</developer>
 		<publisher>VisualArts</publisher>

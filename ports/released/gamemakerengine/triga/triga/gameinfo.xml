@@ -5,6 +5,7 @@
 		<name>Triga</name>
 		<desc>Slap triangular tiles down in this cause and effect, chain reactive, radically funky puzzle experience! Collect as many golden triangles as you can to unlock new levels, but don't sweat it if you aren't a triangle-brained genius: Each stage has 3 goals ranging from casual fun, to extreme puzzling!</desc>
 		<image>./triga/cover.png</image>
+		<thumbnail>./triga/thumb.png</thumbnail>
 		<releasedate>20220519</releasedate>
 		<developer>Cicada Games</developer>
 		<genre>Puzzle</genre>

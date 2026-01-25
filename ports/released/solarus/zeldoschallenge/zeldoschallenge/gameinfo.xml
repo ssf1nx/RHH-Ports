@@ -5,6 +5,7 @@
     <name>The Legend of Zelda : Zeldo's Challenge</name>
     <desc>ZeldoRetro’s first entry in Le Défi de Zeldo, La Revanche du Bingo, is a short, single-dungeon Zelda game made in 2017. Much smaller than its sequel, it can be completed in under an hour.</desc>
     <image>./zeldoschallenge/cover.png</image>
+    <thumbnail>./zeldoschallenge/thumb.png</thumbnail>
     <developer>	ZeldoRetro</developer>
     <releasedate>20190510</releasedate>
     <genre>Action, Adventure</genre>

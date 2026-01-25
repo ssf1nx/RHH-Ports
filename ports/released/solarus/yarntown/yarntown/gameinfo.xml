@@ -4,5 +4,6 @@
     <path>./Yarntown.sh</path>
     <name>Yarntown</name>
     <image>./yarntown/cover.png</image>
+    <thumbnail>./yarntown/thumb.png</thumbnail>
   </game>
 </gameList>

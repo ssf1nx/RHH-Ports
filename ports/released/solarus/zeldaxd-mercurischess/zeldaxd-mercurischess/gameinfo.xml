@@ -5,6 +5,7 @@
     <name>The Legend of Zelda XD : Mercuris Chess</name>
     <desc>Months after locking Zelda in his cave, Link faces a new challenge as the wealthy Mr. Grump takes over the kingdom. A new adventure begins in a world where everything has a price and truth and lies blur.</desc>
     <image>./zeldaxd-mercurischess/cover.png</image>
+    <thumbnail>./zeldaxd-mercurischess/thumb.png</thumbnail>
     <developer>Solarus Team</developer>
     <releasedate>20170401</releasedate>
     <genre>Action, Adventure</genre>

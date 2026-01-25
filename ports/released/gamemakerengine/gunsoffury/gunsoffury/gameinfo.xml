@@ -5,6 +5,7 @@
 		<name>Guns of Fury</name>
 		<desc>Guns of Fury is a retro-inspired action platformer that combines the run &amp; gun and Metroidvania genres. Explore a vast interconnected world, gain new abilities and weapons, battle epic bosses and stop the plans of an evil corporation before it’s too late!</desc>
 		<image>./gunsoffury/cover.png</image>
+		<thumbnail>./gunsoffury/thumb.png</thumbnail>
 		<releasedate>20250213</releasedate>
 		<developer>Gelato Games Ltd</developer>
 		<genre>Action, Adventure, Indie</genre>

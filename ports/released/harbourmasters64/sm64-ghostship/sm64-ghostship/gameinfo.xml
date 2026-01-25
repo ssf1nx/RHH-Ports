@@ -5,6 +5,7 @@
 		<name>SM64 : Ghostship</name>
 		<desc>A source port of Super Mario 64 by the reputable HarbourMasters64.</desc>
 		<image>./sm64-ghostship/cover.png</image>
+		<thumbnail>./sm64-ghostship/thumb.png</thumbnail>
 		<releasedate>20260118</releasedate>
 		<developer>Nintendo</developer>
 		<publisher>Harbour Masters</publisher>

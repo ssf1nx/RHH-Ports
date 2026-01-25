@@ -13,5 +13,6 @@ The game adds leaderboards for the Single Player and Time Attack modes. It also 
     <publisher>SEGA</publisher>
     <genre>Platform</genre>
     <image>./soniccd/cover.png</image>
+    <thumbnail>./soniccd/thumb.png</thumbnail>
   </game>
 </gameList>

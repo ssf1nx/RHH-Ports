@@ -5,6 +5,7 @@
     <name>The Legend of Zelda : Mystery of Solarus XD</name>
     <desc>Link wakes up with no memory of the previous night, missing his sword, shield, and Princess Zelda. Thus begins his journey… or, more accurately, his epic hangover.</desc>
     <image>./zelda-mysteryofsolarusxd/cover.png</image>
+    <thumbnail>./zelda-mysteryofsolarusxd/thumb.png</thumbnail>
     <developer>Solarus Team</developer>
     <releasedate>20110401</releasedate>
     <genre>Action, Adventure</genre>

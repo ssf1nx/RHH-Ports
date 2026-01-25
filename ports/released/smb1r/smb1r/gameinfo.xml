@@ -5,6 +5,7 @@
 		<name>Super Mario Bros. Remastered</name>
 		<desc>A fan remake of Super Mario Bros., Super Mario Bros.: The Lost Levels, Super Mario Bros. Special and All Night Nippon: Super Mario Bros. Fully recreated from the ground up! Requires original nes rom for assets.</desc>
 		<image>./smb1r/cover.png</image>
+		<thumbnail>./smb1r/thumb.png</thumbnail>
 		<releasedate>20250913</releasedate>
 		<developer>JHDev2006</developer>
 		<genre>Platformer</genre>

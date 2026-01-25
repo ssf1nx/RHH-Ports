@@ -5,6 +5,7 @@
 		<name>Shrine's Legacy</name>
 		<desc>Follow a pair of heroes as they try to unite the elements of magic, restore the Sword of Shrine, and save the world in both single player and co-op action.</desc>
 		<image>./shrineslegacy/cover.png</image>
+		<thumbnail>./shrineslegacy/thumb.png</thumbnail>
 		<releasedate>20251007</releasedate>
 		<developer>Positive Concept Games</developer>
 		<genre>RPG</genre>

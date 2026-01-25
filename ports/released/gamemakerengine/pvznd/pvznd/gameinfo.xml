@@ -5,6 +5,7 @@
 		<name>Plants vs Zombies : Neighborhood Defense</name>
 		<desc>Plants vs zombies Neighborhood defense is a PVZ fangame with high difficulty and new content! +90 levels, hard mode, versus mode, vasebreaker, endless zone and more!</desc>
 		<image>./pvznd/cover.png</image>
+		<thumbnail>./pvznd/thumb.png</thumbnail>
 		<releasedate>20231031</releasedate>
 		<developer>CrisDevelop</developer>
 		<genre>Strategy</genre>

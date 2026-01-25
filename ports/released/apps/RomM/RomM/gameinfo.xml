@@ -5,6 +5,7 @@
     <name>RomM App</name>
     <desc>An app for custom firmwares that connects to your RomM instance and allows you to fetch games wirelessly from your handheld device.</desc>
     <image>./RomM/cover.png</image>
+    <thumbnail>./RomM/thumb.png</thumbnail>
     <releasedate>2025</releasedate>
     <developer>RomM Team</developer>
   </game>

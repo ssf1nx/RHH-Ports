@@ -5,6 +5,7 @@
     <name>The Legend of Zelda : Book of Mudora</name>
     <desc>Link’s newest quest is set a few generations after Twilight Princess and spans two different continents of Hyrule. Explore eight unique temples and defeat enemies and bosses in order to gain powerful items to assist you in your goal. Explore many areas of Hyrule and assist different races in their conflicts.</desc>
     <image>./zelda-bookofmudora/cover.png</image>
+    <thumbnail>./zelda-bookofmudora/thumb.png</thumbnail>
     <developer>Matt Wright</developer>
     <releasedate>20170815</releasedate>
     <genre>Action, Adventure</genre>

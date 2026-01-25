@@ -5,6 +5,7 @@
 		<name>Dead Cells</name>
 		<desc>Dead Cells is a roguelite, metroidvania inspired, action-platformer. You'll explore a sprawling, ever-changing castle... assuming you’re able to fight your way past its keepers in 2D souls-lite combat. No checkpoints. Kill, die, learn, repeat.</desc>
 		<image>./deadcells/cover.png</image>
+		<thumbnail>./deadcells/thumb.png</thumbnail>
 		<releasedate>20180806</releasedate>
 		<developer>Motion Twin</developer>
 		<genre>Action, Adventure, Indie</genre>

@@ -5,6 +5,7 @@
 		<name>Super Star Trek</name>
 		<desc>Super Star Trek (1978) with 25th Anniversary pixel art! Find and destroy all enemies before time runs out! Manage your shields and energy well, or you will be stranded as the enemies destroy the Federation...</desc>
 		<image>./superstartrek/cover.png</image>
+		<thumbnail>./superstartrek/thumb.png</thumbnail>
 		<releasedate>06232025</releasedate>
 		<developer>Mike Mayfield, Bom Leedom, Emabolo, Jeod</developer>
 		<genre>Strategy</genre>
