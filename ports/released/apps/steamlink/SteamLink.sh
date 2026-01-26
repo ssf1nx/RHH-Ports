@@ -108,7 +108,30 @@ export QT_QPA_PLATFORM="eglfs"
 export SDL_VIDEO_DRIVER="x11"
 export SDL_VIDEO_FORCE_EGL="1"
 
+# Check for dual screens
+handle_sway_outputs() {
+    if [ -n "$SWAYSOCK" ]; then
+        IS_SWAY=1
+        PRIMARY_OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.active==true) | .name' | head -n1)
+        SECONDARY_OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.active==true) | .name' | tail -n +2 | head -n1)
+        
+        echo "$SECONDARY_OUTPUT" > /tmp/steamlink_disabled_output
+        [ -n "$SECONDARY_OUTPUT" ] && swaymsg output "$SECONDARY_OUTPUT" disable > /dev/null
+    else
+        IS_SWAY=0
+    fi
+}
+
+restore_sway_outputs() {
+    if [ "$IS_SWAY" -eq 1 ]; then
+        SECONDARY_OUTPUT=$(cat /tmp/steamlink_disabled_output)
+        [ -n "$SECONDARY_OUTPUT" ] && swaymsg output "$SECONDARY_OUTPUT" enable > /dev/null
+        rm -f /tmp/steamlink_disabled_output
+    fi
+}
+
 # Get screen resolution for libhandecoder
+handle_sway_outputs
 export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"
 
 # Start the game
@@ -122,4 +145,5 @@ $ESUDO $weston_dir/westonwrap.sh cleanup
 if [[ "$PM_CAN_MOUNT" != "N" ]]; then
     $ESUDO umount "${weston_dir}"
 fi
+restore_sway_outputs
 pm_finish
