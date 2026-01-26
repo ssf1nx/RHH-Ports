@@ -33,6 +33,7 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/libs.${DEVICE_ARCH}"
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+# Permissions
 chmod +x "$GAMEDIR/config/download"
 chmod +x "$GAMEDIR/bin/bsdtar"
 
@@ -52,16 +53,8 @@ if [ "$DEVICE_ARCH" == "aarch64" ]; then
     CDN_TXT=$(curl -s "$CDN_URL")
     PACKAGE_URL=$(echo "$CDN_TXT" | grep -o 'https://[^[:space:]]*')
     PACKAGE_VERSION=$(echo "$PACKAGE_URL" | grep 'steamlink-rpi-bookworm-arm64-[0-9]\+\.[0-9]\+\.[0-9]\+\(\.[0-9]\+\)\?' | sed -n 's/.*steamlink-rpi-bookworm-arm64-\([0-9.]*\).*/\1/p')
-elif [ "$DEVICE_ARCH" == "armhf" ]; then
-    LIBARCH="/usr/lib32/"
-    echo "Armhf support is not yet implemented."
-    exit 1
-    #CDN_URL="http://cdn.origin.steamstatic.com/steamlink/rpi/bullseye/arm64/public_build.txt"
-    #CDN_TXT=$(curl -s "$CDN_URL")
-    #PACKAGE_URL=$(echo "$CDN_TXT" | grep -oP '(?<=https://)[^\s]*')
-    #PACKAGE_VERSION=$(echo "$PACKAGE_URL" | grep -oP 'steamlink-rpi-bullseye-arm64-([0-9]+\.[0-9]+\.[0-9]+(?:\.[0-9]+)?)' | cut -d'-' -f4)
 else
-    pm_message "Unable to determine architecture!"
+    echo "Architecture mismatch: $DEVICE_ARCH!"
 fi
 
 # If fetching build info fails, check if we have an existing shell binary
@@ -82,68 +75,108 @@ else
     run_patcher
 fi
 
-# Mount Weston runtime
-weston_dir=/tmp/weston
-$ESUDO mkdir -p "${weston_dir}"
-weston_runtime="weston_pkg_0.2"
-if [ ! -f "$controlfolder/libs/${weston_runtime}.squashfs" ]; then
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
-    sleep 5
-    exit 1
-  fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${weston_runtime}.squashfs"
-fi
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${weston_dir}"
-fi
-$ESUDO mount "$controlfolder/libs/${weston_runtime}.squashfs" "${weston_dir}"
-
 # Exports post-setup
 QT_VERSION=$(ls -d $GAMEDIR/Qt-* 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
 game_libs="$LD_LIBRARY_PATH:$GAMEDIR/Qt-${QT_VERSION}/lib"
 game_preload="$GAMEDIR/libs.${DEVICE_ARCH}/libhandecoder.so"
 game_executable="./"bin/shell.${DEVICE_ARCH}""
-export QT_QPA_PLATFORM="eglfs"
-export SDL_VIDEO_DRIVER="x11"
-export SDL_VIDEO_FORCE_EGL="1"
+export QT_QPA_PLATFORM=eglfs
+unset SDL_VIDEO_DRIVER
+unset SDL_VIDEO_FORCE_EGL
 
 # Check for dual screens
 handle_sway_outputs() {
-    if [ -n "$SWAYSOCK" ]; then
-        IS_SWAY=1
-        PRIMARY_OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.active==true) | .name' | head -n1)
-        SECONDARY_OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.active==true) | .name' | tail -n +2 | head -n1)
-        
-        echo "$SECONDARY_OUTPUT" > /tmp/steamlink_disabled_output
-        [ -n "$SECONDARY_OUTPUT" ] && swaymsg output "$SECONDARY_OUTPUT" disable > /dev/null
-    else
+    if [ -z "$SWAYSOCK" ]; then
         IS_SWAY=0
+        return
     fi
+
+    IS_SWAY=1
+
+    # Pick primary: internal panel preferred
+    PRIMARY_OUTPUT=$(
+        swaymsg -t get_outputs -r 2>/dev/null | jq -r '
+            .[]
+            | select(.active == true)
+            | select(.name | test("^(eDP|DSI|LVDS)"))
+            | .name
+        ' | head -n1
+    )
+
+    # Fallback to first active output
+    if [ -z "$PRIMARY_OUTPUT" ]; then
+        PRIMARY_OUTPUT=$(
+            swaymsg -t get_outputs -r 2>/dev/null | jq -r '
+                .[]
+                | select(.active == true)
+                | .name
+            ' | head -n1
+        )
+    fi
+
+    # Abort safely if nothing active
+    if [ -z "$PRIMARY_OUTPUT" ]; then
+        IS_SWAY=0
+        return
+    fi
+
+    # Collect ALL secondary active outputs
+    SECONDARY_OUTPUTS=$(
+        swaymsg -t get_outputs -r 2>/dev/null | jq -r '
+            .[]
+            | select(.active == true)
+            | select(.name != "'"$PRIMARY_OUTPUT"'")
+            | .name
+        '
+    )
+
+    # Nothing to disable → done
+    [ -z "$SECONDARY_OUTPUTS" ] && return
+
+    # Persist list for restore
+    printf '%s\n' $SECONDARY_OUTPUTS > /tmp/steamlink_disabled_outputs
+
+    # Disable every secondary output
+    while read -r out; do
+        swaymsg output "$out" disable >/dev/null
+    done <<< "$SECONDARY_OUTPUTS"
 }
 
 restore_sway_outputs() {
-    if [ "$IS_SWAY" -eq 1 ]; then
-        SECONDARY_OUTPUT=$(cat /tmp/steamlink_disabled_output)
-        [ -n "$SECONDARY_OUTPUT" ] && swaymsg output "$SECONDARY_OUTPUT" enable > /dev/null
-        rm -f /tmp/steamlink_disabled_output
-    fi
+    [ "$IS_SWAY" -ne 1 ] && return
+    [ ! -f /tmp/steamlink_disabled_outputs ] && return
+
+    while read -r out; do
+        swaymsg output "$out" enable >/dev/null
+    done < /tmp/steamlink_disabled_outputs
+
+    rm -f /tmp/steamlink_disabled_outputs
 }
 
-# Get screen resolution for libhandecoder
+# Get display resolution for libhandecoder
 handle_sway_outputs
-export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"
+trap restore_sway_outputs EXIT
+
+if [ "$IS_SWAY" -eq 1 ]; then
+    RES=$(swaymsg -t get_outputs | \
+        awk -v out="$PRIMARY_OUTPUT" '
+        $0 ~ "\"name\": \""out"\"" {f=1}
+        f && /"current_mode"/ {getline; getline; print; exit}
+        ')
+    WIDTH=$(echo "$RES" | grep -o '"width":[0-9]*' | grep -o '[0-9]*')
+    HEIGHT=$(echo "$RES" | grep -o '"height":[0-9]*' | grep -o '[0-9]*')
+    export HDCD_RESOLUTION="${WIDTH}x${HEIGHT}"
+else
+    export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"
+fi
 
 # Start the game
 pm_platform_helper "$GAMEDIR/bin/shell.${DEVICE_ARCH} " >/dev/null
-$ESUDO env WRAPPED_LIBRARY_PATH=$game_libs WRAPPED_PRELOAD=$game_preload \
-$weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
-$GAMEDIR/$game_executable
+$ESUDO env \
+LD_LIBRARY_PATH="$game_libs" \
+LD_PRELOAD="$game_preload" \
+"$GAMEDIR/bin/shell.${DEVICE_ARCH}"
 
 # Cleanup
-$ESUDO $weston_dir/westonwrap.sh cleanup
-if [[ "$PM_CAN_MOUNT" != "N" ]]; then
-    $ESUDO umount "${weston_dir}"
-fi
 restore_sway_outputs
 pm_finish
