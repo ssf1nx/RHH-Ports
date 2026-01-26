@@ -33,6 +33,9 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/libs.${DEVICE_ARCH}"
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
+chmod +x "$GAMEDIR/config/download"
+chmod +x "$GAMEDIR/bin/bsdtar"
+
 run_patcher() {
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         source "$controlfolder/utils/patcher.txt"
