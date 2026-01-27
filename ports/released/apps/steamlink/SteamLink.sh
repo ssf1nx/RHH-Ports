@@ -23,18 +23,19 @@ if [ ! -f "$GAMEDIR/config/SteamLink.conf" ]; then
     bind_directories ~/".config/Valve Corporation" "$GAMEDIR/config"
 fi
 
-# Patcher GUI exports
+# Exports
 export PATCHER_FILE="$GAMEDIR/config/download"
 export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
 export PATCHER_TIME="a few minutes"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/libs.${DEVICE_ARCH}"
+export QT_VERSION=$(ls -d $GAMEDIR/Qt-* 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
 
 # CD and set log
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Permissions
-chmod +x "$GAMEDIR/config/download"
+chmod +x -R "$GAMEDIR/config"
 chmod +x "$GAMEDIR/bin/bsdtar"
 
 run_patcher() {
@@ -75,108 +76,29 @@ else
     run_patcher
 fi
 
-# Exports post-setup
-QT_VERSION=$(ls -d $GAMEDIR/Qt-* 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
-game_libs="$LD_LIBRARY_PATH:$GAMEDIR/Qt-${QT_VERSION}/lib"
-game_preload="$GAMEDIR/libs.${DEVICE_ARCH}/libhandecoder.so"
-game_executable="./"bin/shell.${DEVICE_ARCH}""
-export QT_QPA_PLATFORM=eglfs
-unset SDL_VIDEO_DRIVER
-unset SDL_VIDEO_FORCE_EGL
+# --- Display Setup Block ---
+# Define default fallbacks (No-op)
+setup_display() { export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"; }
+cleanup_display() { :; }
 
-# Check for dual screens
-handle_sway_outputs() {
-    if [ -z "$SWAYSOCK" ]; then
-        IS_SWAY=0
-        return
-    fi
-
-    IS_SWAY=1
-
-    # Pick primary: internal panel preferred
-    PRIMARY_OUTPUT=$(
-        swaymsg -t get_outputs -r 2>/dev/null | jq -r '
-            .[]
-            | select(.active == true)
-            | select(.name | test("^(eDP|DSI|LVDS)"))
-            | .name
-        ' | head -n1
-    )
-
-    # Fallback to first active output
-    if [ -z "$PRIMARY_OUTPUT" ]; then
-        PRIMARY_OUTPUT=$(
-            swaymsg -t get_outputs -r 2>/dev/null | jq -r '
-                .[]
-                | select(.active == true)
-                | .name
-            ' | head -n1
-        )
-    fi
-
-    # Abort safely if nothing active
-    if [ -z "$PRIMARY_OUTPUT" ]; then
-        IS_SWAY=0
-        return
-    fi
-
-    # Collect ALL secondary active outputs
-    SECONDARY_OUTPUTS=$(
-        swaymsg -t get_outputs -r 2>/dev/null | jq -r '
-            .[]
-            | select(.active == true)
-            | select(.name != "'"$PRIMARY_OUTPUT"'")
-            | .name
-        '
-    )
-
-    # Nothing to disable → done
-    [ -z "$SECONDARY_OUTPUTS" ] && return
-
-    # Persist list for restore
-    printf '%s\n' $SECONDARY_OUTPUTS > /tmp/steamlink_disabled_outputs
-
-    # Disable every secondary output
-    while read -r out; do
-        swaymsg output "$out" disable >/dev/null
-    done <<< "$SECONDARY_OUTPUTS"
-}
-
-restore_sway_outputs() {
-    [ "$IS_SWAY" -ne 1 ] && return
-    [ ! -f /tmp/steamlink_disabled_outputs ] && return
-
-    while read -r out; do
-        swaymsg output "$out" enable >/dev/null
-    done < /tmp/steamlink_disabled_outputs
-
-    rm -f /tmp/steamlink_disabled_outputs
-}
-
-# Get display resolution for libhandecoder
-handle_sway_outputs
-trap restore_sway_outputs EXIT
-
-if [ "$IS_SWAY" -eq 1 ]; then
-    RES=$(swaymsg -t get_outputs | \
-        awk -v out="$PRIMARY_OUTPUT" '
-        $0 ~ "\"name\": \""out"\"" {f=1}
-        f && /"current_mode"/ {getline; getline; print; exit}
-        ')
-    WIDTH=$(echo "$RES" | grep -o '"width":[0-9]*' | grep -o '[0-9]*')
-    HEIGHT=$(echo "$RES" | grep -o '"height":[0-9]*' | grep -o '[0-9]*')
-    export HDCD_RESOLUTION="${WIDTH}x${HEIGHT}"
+# Source the correct helper
+if [ -n "$SWAYSOCK" ] && [ -f "$GAMEDIR/config/helper_sway" ]; then
+    echo "[STEAMLINK] Sway detected, sourcing helper_sway"
+    source "$GAMEDIR/config/helper_sway"
 else
-    export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"
+    echo "[STEAMLINK] No sway detected, sourcing helper_x11"
+    source "$GAMEDIR/config/helper_x11"
 fi
+
+# Execute hooks
+setup_display
+trap cleanup_display EXIT
+# ---------------------------
 
 # Start the game
 pm_platform_helper "$GAMEDIR/bin/shell.${DEVICE_ARCH} " >/dev/null
-$ESUDO env \
-LD_LIBRARY_PATH="$game_libs" \
-LD_PRELOAD="$game_preload" \
-"$GAMEDIR/bin/shell.${DEVICE_ARCH}"
+launch_app
 
 # Cleanup
-restore_sway_outputs
+cleanup_display
 pm_finish

@@ -1,0 +1,75 @@
+#!/bin/bash
+# helper_x11.sh - sourced if running in an X11 environment
+
+# Mount Weston runtime
+weston_dir=/tmp/weston
+$ESUDO mkdir -p "${weston_dir}"
+weston_runtime="weston_pkg_0.2"
+if [ ! -f "$controlfolder/libs/${weston_runtime}.squashfs" ]; then
+  if [ ! -f "$controlfolder/harbourmaster" ]; then
+    pm_message "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info."
+    sleep 5
+    exit 1
+  fi
+  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${weston_runtime}.squashfs"
+fi
+if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+    $ESUDO umount "${weston_dir}"
+fi
+$ESUDO mount "$controlfolder/libs/${weston_runtime}.squashfs" "${weston_dir}"
+
+setup_display() {
+    # Pick primary: internal panel preferred
+    PRIMARY_OUTPUT=$(xrandr | grep " connected primary" | awk '{ print $1 }')
+    
+    # Fallback to first active
+    [ -z "$PRIMARY_OUTPUT" ] && PRIMARY_OUTPUT=$(xrandr | grep " connected" | head -n1 | awk '{ print $1 }')
+
+    # Disable secondaries
+    SECONDARY_OUTPUTS=$(xrandr | grep " connected" | grep -v "$PRIMARY_OUTPUT" | awk '{ print $1 }')
+    
+    if [ -n "$SECONDARY_OUTPUTS" ]; then
+        echo "$SECONDARY_OUTPUTS" > /tmp/steamlink_disabled_outputs
+        while read -r out; do
+            xrandr --output "$out" --off
+        done <<< "$SECONDARY_OUTPUTS"
+    fi
+
+    # Set Resolution
+    RES=$(xrandr | grep "^$PRIMARY_OUTPUT" | grep -oP '\d+x\d+(?=\+)')
+    
+    if [ -n "$RES" ]; then
+        export HDCD_RESOLUTION="$RES"
+    else
+        export HDCD_RESOLUTION="${DISPLAY_WIDTH}x${DISPLAY_HEIGHT}"
+    fi
+}
+
+cleanup_display() {
+    [ ! -f /tmp/steamlink_disabled_outputs ] && return
+
+    # Re-enable everything that was turned off
+    # Note: X11 usually needs '--auto' to wake a screen back up
+    while read -r out; do
+        xrandr --output "$out" --auto
+    done < /tmp/steamlink_disabled_outputs
+
+    rm -f /tmp/steamlink_disabled_outputs
+    
+    $ESUDO $weston_dir/westonwrap.sh cleanup
+    if [[ "$PM_CAN_MOUNT" != "N" ]]; then
+        $ESUDO umount "${weston_dir}"
+    fi
+}
+
+launch_app() {
+    $ESUDO env \
+    WRAPPED_LIBRARY_PATH="$LD_LIBRARY_PATH:$GAMEDIR/Qt-${QT_VERSION}/lib" \
+    WRAPPED_PRELOAD="$GAMEDIR/libs.${DEVICE_ARCH}/libhandecoder.so" \
+    $weston_dir/westonwrap.sh headless noop kiosk crusty_x11egl \
+    "$GAMEDIR/bin/shell.${DEVICE_ARCH}"
+}
+
+export QT_QPA_PLATFORM="eglfs"
+export SDL_VIDEO_DRIVER="x11"
+export SDL_VIDEO_FORCE_EGL="1"
