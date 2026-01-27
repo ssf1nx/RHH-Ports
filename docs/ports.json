@@ -3070,12 +3070,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-25T17:28",
+      "date_updated": "2026-01-27T12:44",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/starship.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/README.md",
-      "size": 6673502,
-      "md5": "8b479542f278892d32ca670bf180cb53"
+      "size": 6672895,
+      "md5": "b4efe3c1ce309f96824cf237d284c47a"
     }
   },
   {
