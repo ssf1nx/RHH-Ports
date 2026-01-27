@@ -18,6 +18,7 @@ Steam Link has been tested to work on the following devices thus far:
 [x] - Retroid Pocket Mini  
 [x] - Retroid Pocket 5  
 [x] - Ayn Odin 2  
+[x] - Ayn Thor
 
 ## Thanks
 A million thanks to [Noxwell](https://github.com/beebono/handecoder) for their work on this, where the previous version of this wrapper was not functioning.
