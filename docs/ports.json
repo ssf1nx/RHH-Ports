@@ -3214,49 +3214,6 @@
   },
   {
     "version": 4,
-    "name": "tenjutsu48h.zip",
-    "items": [
-      "Tenjutsu",
-      "tenjutsu48h"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Tenjutsu",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Your dojo has been attacked by mysterious armed men in black. You have to take it back! Fight enemies, collect DEATH MARKS (ie. skulls) and tag enemies with these marks. Every 10 seconds, marked enemies will die. Some stronger enemies will require more marks to get rid of.",
-      "desc_md": null,
-      "inst": "Ready to run!",
-      "inst_md": null,
-      "genres": [
-        "action"
-      ],
-      "image": null,
-      "rtr": true,
-      "exp": false,
-      "runtime": [],
-      "store": [],
-      "availability": "full",
-      "reqs": [
-        "opengl"
-      ],
-      "arch": [
-        "aarch64"
-      ],
-      "min_glibc": ""
-    },
-    "source": {
-      "date_updated": "2026-01-25T17:27",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tenjutsu48h.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/tenjutsu48h/tenjutsu48h/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/tenjutsu48h/tenjutsu48h/README.md",
-      "size": 26368646,
-      "md5": "17e2f8299a171ff4911d38f305efede7"
-    }
-  },
-  {
-    "version": 4,
     "name": "friendsofringo.zip",
     "items": [
       "The Friends of Ringo Ishikawa.sh",
