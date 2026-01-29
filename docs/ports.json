@@ -588,7 +588,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/README.md",
       "size": 15516345,
-      "md5": "b4c89a325f0a01020fca2d6cf656e4e7"
+      "md5": "b4c89a325f0a01020fca2d6cf656e4e7",
+      "last_commit": "[DESCENT] Consistent gptk between two games"
     }
   },
   {
@@ -630,7 +631,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/README.md",
       "size": 15183417,
-      "md5": "d01ab6e464f6eff9f1ea64287b097578"
+      "md5": "d01ab6e464f6eff9f1ea64287b097578",
+      "last_commit": "[DESCENT] Consistent gptk between two games"
     }
   },
   {
@@ -806,7 +808,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "size": 94871024,
-      "md5": "8a2d306b31788394cb871b61b34f15ca"
+      "md5": "8a2d306b31788394cb871b61b34f15ca",
+      "last_commit": "[DARKOS][DOOMENGINES] Add libcairo and libFLAC"
     }
   },
   {
@@ -2370,7 +2373,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/README.md",
       "size": 11196262,
-      "md5": "f86f9d0627371bad1c2ab4d30c668041"
+      "md5": "f86f9d0627371bad1c2ab4d30c668041",
+      "last_commit": "[SM64-GHOSTSHIP] Update to 1.0.2"
     }
   },
   {
@@ -2409,7 +2413,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
       "size": 45748836,
-      "md5": "b081a35247bbd8651fc2f38ff726b76b"
+      "md5": "b081a35247bbd8651fc2f38ff726b76b",
+      "last_commit": "[SOH] v9.1.2"
     }
   },
   {
@@ -2448,7 +2453,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
       "size": 13147245,
-      "md5": "b0c6daec96c82545a7c1d0083d758db5"
+      "md5": "b0c6daec96c82545a7c1d0083d758db5",
+      "last_commit": "[SOH/SOH2] Clean up patch files and log to assets/otrlog.txt for cleaner base folder"
     }
   },
   {
@@ -3127,7 +3133,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/README.md",
       "size": 67778974,
-      "md5": "e848989e84a8be203905aa9d3585f447"
+      "md5": "e848989e84a8be203905aa9d3585f447",
+      "last_commit": "[SMB1R] Block gamepad input entirely (thanks Ganimoth!)"
     }
   },
   {
@@ -4190,7 +4197,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/README.md",
       "size": 7926373,
-      "md5": "1dbc3ef7f856aa26f328feb653c536b4"
+      "md5": "1dbc3ef7f856aa26f328feb653c536b4",
+      "last_commit": "[DARKOS][WOLF3D] Add libcairo to fix symbol lookup error"
     }
   },
   {
