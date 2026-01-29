@@ -243,6 +243,7 @@ class Pharos:
                         size=src.get("size"),
                         date_updated=src.get("date_updated"),
                     )
+                    bottle.last_commit = src.get("last_commit", "")
                     bottle.md5 = src.get("md5")
                     local_md5 = local_md5s.get(bottle.name)
                     bottle.update_available = bool(local_md5 and bottle.md5 and local_md5 != bottle.md5)
