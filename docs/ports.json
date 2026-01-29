@@ -234,12 +234,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-25T23:43",
+      "date_updated": "2026-01-29T17:18",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/banjorecompiled.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/retro64/banjorecompiled/banjorecompiled/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/retro64/banjorecompiled/banjorecompiled/README.md",
-      "size": 8700469,
-      "md5": "176684d19b28435141e05d74eb69bfca",
+      "size": 8704050,
+      "md5": "f5257e01defd7b60cf5d824a33e50666",
       "last_commit": "[BANJO] Bump to v1.0.1-dev"
     }
   },
