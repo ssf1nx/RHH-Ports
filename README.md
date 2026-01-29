@@ -17,7 +17,7 @@ Whether you're new to retro handhelds, a developer who came across this reposito
 </div>
 
 ## Port Installation
-You can use the [https://jeodc.github.io/RHH-Ports](https://jeodc.github.io/RHH-Ports/) website frontend to download specific ports, or use the [Pharos App]([https://github.com/JeodC/Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip)) on your retro handheld.
+You can use the [https://jeodc.github.io/RHH-Ports](https://jeodc.github.io/RHH-Ports/) website frontend to download specific ports, or use the [Pharos App](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) on your retro handheld.
 
 If you use the website frontend, clicking the blue Download button on a port will download a zip archive of the port, which you can then copy to `PortMaster/autoinstall` folder.
 
