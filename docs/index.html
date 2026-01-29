@@ -48,24 +48,30 @@
 
 	<main>
         <!-- Autoinstall Instructions -->
-        <section id="autoinstall" class="instructions">
-            <h2 style="text-align: center;">Installing Ports</h2>
-            <p>
-                Clicking a download button will download a zip archive of the port, which
-                you can then copy to the PortMaster <code>autoinstall</code> folder for your platform.
-            </p>
-            <div style="text-align: left; margin-left: 1rem;">
-                AmberELEC, ROCKNIX, uOS, Jelos: <code>/roms/ports/PortMaster/autoinstall/</code></br>
-                muOS: <code>/mmc/MUOS/PortMaster/autoinstall/</code></br>
-                ArkOS: <code>/roms/tools/PortMaster/autoinstall/</code></br>
-                Knulli: <code>/userdata/system/.local/share/PortMaster/autoinstall/</code></br>
-            </div>
-            <p>
-                Once copied, running the PortMaster application will install the port for you. For ports requiring external data, please see the port's README.md by clicking on the blue Details button for the port in question.
-            </p>
-		    <p>
-		        Tip: For a more modern, user-friendly experience, consider using <a href="https://github.com/JeodC/Pharos">Pharos</a>. Pharos automatically handles repository parsing, downloads, and installation, making it easier to manage ports and applications outside of PortMaster.
-		    </p>
+        <section id="autoinstall" class="instructions-accordion">
+            <details>
+                <summary>
+                    <h2>Installing Ports <small>(Click to expand)</small></h2>
+                </summary>
+                <div class="instructions-content">
+                    <p>
+                        Clicking a download button will download a zip archive of the port, which
+                        you can then copy to the PortMaster <code>autoinstall</code> folder for your platform.
+                    </p>
+                    <div class="path-list">
+                        AmberELEC, ROCKNIX, uOS, Jelos: <code>/roms/ports/PortMaster/autoinstall/</code><br>
+                        muOS: <code>/mmc/MUOS/PortMaster/autoinstall/</code><br>
+                        ArkOS: <code>/roms/tools/PortMaster/autoinstall/</code><br>
+                        Knulli: <code>/userdata/system/.local/share/PortMaster/autoinstall/</code><br>
+                    </div>
+                    <p>
+                        Once copied, running the PortMaster application will install the port for you. For ports requiring external data, please see the port's README.md by clicking on the blue Details button for the port in question.
+                    </p>
+                    <p>
+                        Tip: For a more modern, user-friendly experience, consider using <a href="https://github.com/JeodC/Pharos">Pharos</a>. Pharos automatically handles repository parsing, downloads, and installation.
+                    </p>
+                </div>
+            </details>
         </section>
 
 		<!-- Port Counter -->

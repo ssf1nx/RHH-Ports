@@ -111,16 +111,11 @@ async function loadPorts() {
                                 <p class="download-count"><strong>Downloads since last update:</strong> ${downloadCount}</p>
                                 ${reqs ? `<div class="port-reqs">${reqs}</div>` : ''}
                                 ${genres ? `<div class="port-genres">${genres}</div>` : ''}
+                                ${displayCommit ? `<div class="port-commit-banner" title="${displayCommit}">${displayCommit}</div>` : ''}
                                 <div class="port-buttons">
                                     <a class="details-link" href="${port.source.readme_url || ''}" target="_blank" rel="noopener noreferrer">Details</a>
                                     <a class="download-link" href="${downloadHref}" target="_blank" rel="noopener noreferrer">Download</a>
                                 </div>
-                                
-                                ${displayCommit ? `
-                                    <div class="port-commit-banner" title="${displayCommit}">
-                                        ${displayCommit}
-                                    </div>
-                                ` : ''}
                             </div>
                         </div>
                     </div>`;
