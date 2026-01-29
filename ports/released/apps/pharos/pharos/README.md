@@ -1,12 +1,12 @@
 <div align=center>
-<img width="320" height="317" alt="image" src="https://github.com/user-attachments/assets/7d0102c2-2f2d-482b-8bf9-48d79abed207" />
+<img width="320" height="317" alt="image" src="https://raw.githubusercontent.com/JeodC/RHH-Ports/refs/heads/main/ports/released/apps/pharos/pharos/cover.png" />
 </div>
 
 # Pharos
 Named after the Lighthouse of Alexandria, **Pharos** is a browser application designed to provide an alternative interface for installing ports and wine-arm64 wrappers. Pharos follows GitHub repository links listed in a configurable file `.sources` and presents eligible items hosted on those repositories.
 
 <div align=center>
-<img width="400" height="300" alt="pharos2" src="https://github.com/user-attachments/assets/0e75aa7e-7668-45b1-88ea-3431d96f7032" />
+<img width="400" height="300" alt="pharos2" src="https://raw.githubusercontent.com/JeodC/RHH-Ports/refs/heads/main/ports/released/apps/pharos/pharos/screenshot.png" />
 </div>
 
 ## How It Works
