@@ -24,7 +24,7 @@
     "runtime": [
       "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
-	],
+    ],
     "store": [
       {
         "name": "Steam",

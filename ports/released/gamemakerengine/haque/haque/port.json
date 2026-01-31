@@ -25,7 +25,7 @@
     "exp": false,
     "runtime": [
       "gmtoolkit.squashfs"
-	],
+    ],
     "store": [
       {
         "name": "Steam",

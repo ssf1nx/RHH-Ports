@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "pocketcrystalleague.zip",
   "items": [
     "Pocket Crystal League.sh",
@@ -18,15 +18,16 @@
     "genres": [
       "casino/card"
     ],
-	"availability": "full",
     "image": null,
     "rtr": true,
     "exp": false,
-    "runtime": null,
-    "reqs": [
-    ],
+    "runtime": [],
+    "store": [],
+    "availability": "full",
+    "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "lunarlux.zip",
   "items": [
     "Lunar Lux.sh",
@@ -17,22 +17,24 @@
     "inst_md": null,
     "genres": [
       "action",
-	  "adventure",
-	  "rpg"
+      "adventure",
+      "rpg"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": true,
     "exp": false,
     "runtime": [
       "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
-	],
+    ],
+    "store": [],
+    "availability": "paid",
     "reqs": [
-	  "!lowres"
-	],
+      "!lowres"
+    ],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

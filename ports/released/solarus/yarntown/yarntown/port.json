@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "yarntown.zip",
   "items": [
     "Yarntown.sh",
@@ -12,15 +12,20 @@
       "Jeod"
     ],
     "desc": "You’ve come on the night of the hunt. The streets of this cursed, gothic town are overrun with beasts, and what has become of the men who tried to hunt them before. Explore the twisting roads, go toe to toe with powerful foes, and uncover Yarntown’s dark secrets.",
+    "desc_md": null,
     "inst": "Download game from https://solarus-games.org/games/yarntown/ and put the .solarus file in ports/yarntown.",
+    "inst_md": null,
     "genres": [
       "action"
     ],
-	"availability": "free",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "solarus-1.6.5.squashfs",
-    "reqs": []
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [],
+    "min_glibc": null
   }
 }

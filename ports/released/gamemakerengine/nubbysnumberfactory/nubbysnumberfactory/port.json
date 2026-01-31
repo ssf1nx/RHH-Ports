@@ -31,7 +31,7 @@
     "availability": "free",
     "reqs": [
       "!lowres"
-	],
+    ],
     "arch": [
       "aarch64"
     ],

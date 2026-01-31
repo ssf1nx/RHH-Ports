@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "vhr.zip",
   "items": [
     "Victory Heat Rally.sh",
@@ -16,10 +16,9 @@
     "inst": "Purchase the game on Steam and add the game data to `ports/vhr/assets`.",
     "inst_md": null,
     "genres": [
-	  "arcade",
+      "arcade",
       "racing"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,
@@ -27,11 +26,14 @@
       "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
+    "store": [],
+    "availability": "paid",
     "reqs": [
-	  "power"
-	],
+      "power"
+    ],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

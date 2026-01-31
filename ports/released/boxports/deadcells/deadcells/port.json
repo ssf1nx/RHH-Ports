@@ -17,7 +17,7 @@
     "inst_md": null,
     "genres": [
       "action",
-	  "adventure"
+      "adventure"
     ],
     "image": null,
     "rtr": true,
@@ -28,7 +28,7 @@
     "reqs": [
       "opengl",
       "ultra"
-	],
+    ],
     "arch": [
       "aarch64"
     ],

@@ -25,8 +25,8 @@
     "store": [],
     "availability": "full",
     "reqs": [
-	  "analog_2"
-	],
+      "analog_2"
+    ],
     "arch": [
       "aarch64"
     ],

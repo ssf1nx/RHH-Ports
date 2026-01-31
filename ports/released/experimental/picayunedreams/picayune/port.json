@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "picayune.zip",
   "items": [
     "Picayune Dreams.sh",
@@ -21,13 +21,16 @@
     "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": null,
+    "runtime": [],
+    "store": [],
+    "availability": "",
     "reqs": [
-	"analog_2",
-	"hires"
-	],
+      "analog_2",
+      "hires"
+    ],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

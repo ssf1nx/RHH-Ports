@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "zelda-bookofmudora.zip",
   "items": [
     "The Legend of Zelda - Book of Mudora.sh",
@@ -12,16 +12,21 @@
       "Jeod"
     ],
     "desc": "Link’s newest quest is set a few generations after Twilight Princess and spans two different continents of Hyrule. Explore eight unique temples and defeat enemies and bosses in order to gain powerful items to assist you in your goal. Explore many areas of Hyrule and assist different races in their conflicts.",
+    "desc_md": null,
     "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-book-of-mudora/ and put in the ports/zelda-bookofmudora folder.",
+    "inst_md": null,
     "genres": [
       "action",
-	  "adventure"
+      "adventure"
     ],
-	"availability": "free",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "solarus-1.6.5.squashfs",
-    "reqs": []
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [],
+    "min_glibc": null
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "darkdeity.zip",
   "items": [
     "Dark Deity.sh",
@@ -18,7 +18,6 @@
     "genres": [
       "strategy"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,
@@ -26,11 +25,14 @@
       "dotnet-8.0.12.squashfs",
       "gmtoolkit.squashfs"
     ],
+    "store": [],
+    "availability": "paid",
     "reqs": [
-	  "2GB"
-	],
+      "2GB"
+    ],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

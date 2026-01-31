@@ -1,35 +1,39 @@
 {
-    "version": 2,
-    "name": "mystikbelle.zip",
-    "items": [
-        "Mystik Belle.sh",
-        "mystikbelle"
+  "version": 4,
+  "name": "mystikbelle.zip",
+  "items": [
+    "Mystik Belle.sh",
+    "mystikbelle"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Mystik Belle",
+    "porter": [
+      "Pridetoons",
+      "Jeod",
+      "Cebion"
     ],
-    "items_opt": [],
-    "attr": {
-        "title": "Mystik Belle",
-        "porter": [
-            "Pridetoons",
-			"Jeod",
-            "Cebion"
-        ],
-        "desc": "A Metroidvania with Point and Click style elements like Psychonauts.\nHelp Belle fix the mystic Walpurgisnacht Brew by finding three rare magical ingredients in order to clear her name.",
-        "inst": "Download the Linux version through Steam with `download_depot 332610 332613 3942707501747355559` and add the contents of the `assets` folder to `mystikbelle/assets`.",
-        "genres": [
-            "action",
-            "platformer"
-        ],
-		"availability": "paid",
-        "image": null,
-        "rtr": false,
-        "exp": false,
-		"runtime": [
-          "dotnet-8.0.12.squashfs",
-		  "gmtoolkit.squashfs"
-		],
-        "reqs": [],
-        "arch": [
-            "aarch64"
-        ]
-    }
+    "desc": "A Metroidvania with Point and Click style elements like Psychonauts.\nHelp Belle fix the mystic Walpurgisnacht Brew by finding three rare magical ingredients in order to clear her name.",
+    "desc_md": null,
+    "inst": "Download the Linux version through Steam with `download_depot 332610 332613 3942707501747355559` and add the contents of the `assets` folder to `mystikbelle/assets`.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "platformer"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "dotnet-8.0.12.squashfs",
+      "gmtoolkit.squashfs"
+    ],
+    "store": [],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": null
+  }
 }

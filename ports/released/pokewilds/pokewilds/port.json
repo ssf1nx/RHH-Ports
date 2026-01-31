@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "pokewilds.zip",
   "items": [
     "Pokewilds.sh",
@@ -19,16 +19,18 @@
     "genres": [
       "rpg"
     ],
-	"availability": "free",
     "image": null,
     "rtr": false,
     "exp": false,
     "runtime": "zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs",
+    "store": [],
+    "availability": "free",
     "reqs": [
-	  "ultra"
-	],
+      "ultra"
+    ],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

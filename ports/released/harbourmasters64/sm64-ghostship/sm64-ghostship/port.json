@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "sm64-ghostship.zip",
   "items": [
     "SM64 - Ghostship.sh",
@@ -12,18 +12,22 @@
       "Jeod"
     ],
     "desc": "A source port of Super Mario 64 by the reputable HarbourMasters64.",
+    "desc_md": null,
     "inst": "Follow the guide in the readme to generate your sm64.o2r file.",
+    "inst_md": null,
     "genres": [
       "adventure"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": null,
+    "runtime": [],
+    "store": [],
+    "availability": "paid",
     "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

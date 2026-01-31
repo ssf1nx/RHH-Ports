@@ -9,7 +9,7 @@
   "attr": {
     "title": "BenboWARS",
     "porter": [
-      "Jeod",
+      "Jeod"
     ],
     "desc": "A brand new Indie Adventure. The War on Videogames Rages on. It's the Brand New Game. The Only and Only....The BenboWARS",
     "desc_md": null,
@@ -31,7 +31,7 @@
         "name": "Steam",
         "gameurl": "https://store.steampowered.com/app/3516350/BENBOWARS/",
         "developerurl": ""
-      },
+      }
     ],
     "availability": "free",
     "reqs": [],

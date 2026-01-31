@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "tomoyo_after.zip",
   "items": [
     "Clannad Tomoyo After.sh.sh",
@@ -12,18 +12,22 @@
       "Jeod"
     ],
     "desc": "Tomoyo After continues the story of Tomoyo Sakagami after the events of Clannad, focusing on her relationship with Tomoya Okazaki and the challenges they face together. It explores themes of love, loss, and redemption against a backdrop of personal growth and emotional healing.",
+    "desc_md": null,
     "inst": "Add your game assets to `ports/tomoyo_after/gamedata`.",
+    "inst_md": null,
     "genres": [
       "visual-novel"
     ],
-	"availability": "paid",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "rlvm.squashfs",
-	"arch": [
-		"aarch64"
-	],
-    "reqs": []
+    "store": [],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": null
   }
 }

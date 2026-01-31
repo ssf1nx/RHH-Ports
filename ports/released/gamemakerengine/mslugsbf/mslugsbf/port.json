@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "mslugsbf.zip",
   "items": [
     "Metal Slug FB Fanthology.sh",
@@ -20,16 +20,18 @@
       "arcade",
       "platformer"
     ],
-	"availability": "free",
     "image": null,
     "rtr": false,
     "exp": false,
     "runtime": [
       "gmtoolkit.squashfs"
-	],
+    ],
+    "store": [],
+    "availability": "free",
     "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

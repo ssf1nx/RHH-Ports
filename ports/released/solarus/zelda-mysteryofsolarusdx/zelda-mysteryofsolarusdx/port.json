@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "zelda-mysteryofsolarusdx.zip",
   "items": [
     "The Legend of Zelda - Mystery of Solarus DX.sh",
@@ -12,16 +12,21 @@
       "Jeod"
     ],
     "desc": "The Legend of Zelda: Mystery of Solarus DX is set to be a direct sequel to The Legend of Zelda: A Link to the Past on SNES, using the same graphics and game mechanisms. Mystery of Solarus DX was the first game made with the Solarus engine and in fact, Solarus was primarily designed for this game.",
+    "desc_md": null,
     "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-mystery-of-solarus-dx/ and put in the ports/zelda-mysteryofsolarus folder.",
+    "inst_md": null,
     "genres": [
       "action",
-	  "adventure"
+      "adventure"
     ],
-	"availability": "free",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "solarus-1.6.5.squashfs",
-    "reqs": []
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [],
+    "min_glibc": null
   }
 }

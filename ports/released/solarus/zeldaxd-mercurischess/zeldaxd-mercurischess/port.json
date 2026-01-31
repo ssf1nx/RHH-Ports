@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "zeldaxd-mercurischess.zip",
   "items": [
     "The Legend of Zelda - Mercuris Chess.sh",
@@ -12,16 +12,21 @@
       "Jeod"
     ],
     "desc": "The sequel to Mystery of Solarus XD. While Link and Zelda were away, a rich businessman bought Hyrule! There begins your next adventure, in a world where everything has a price and where truth and lies become undistinguishable.",
+    "desc_md": null,
     "inst": "Download the game from https://solarus-games.org/games/the-legend-of-zelda-xd2-mercuris-chess/ and put in the ports/zeldaxd-mercurischess folder.",
+    "inst_md": null,
     "genres": [
       "action",
-	  "adventure"
+      "adventure"
     ],
-	"availability": "free",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "solarus-1.6.5.squashfs",
-    "reqs": []
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [],
+    "min_glibc": null
   }
 }

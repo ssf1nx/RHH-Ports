@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 4,
   "name": "planetarian.zip",
   "items": [
     "Planetarian.sh",
@@ -12,18 +12,22 @@
       "Jeod"
     ],
     "desc": "Planetarian is a visual novel set in a post-apocalyptic world where a lone survivor encounters a malfunctioning robot attendant named Yumemi Hoshino in an abandoned planetarium. Through their interactions, themes of hope, humanity, and the enduring power of memories are explored.",
+    "desc_md": null,
     "inst": "Add your game assets to `ports/planetarian/gamedata`.",
+    "inst_md": null,
     "genres": [
       "visual-novel"
     ],
-	"availability": "paid",
     "image": "screenshot.png",
     "rtr": false,
     "exp": false,
     "runtime": "rlvm.squashfs",
-	"arch": [
-		"aarch64"
-	],
-    "reqs": []
+    "store": [],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": null
   }
 }

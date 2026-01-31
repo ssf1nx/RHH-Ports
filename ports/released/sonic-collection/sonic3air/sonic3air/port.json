@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "sonic3air.zip",
   "items": [
     "Sonic 3 AIR.sh",
@@ -18,14 +18,16 @@
     "genres": [
       "platformer"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": null,
+    "runtime": [],
+    "store": [],
+    "availability": "paid",
     "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

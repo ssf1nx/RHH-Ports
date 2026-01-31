@@ -24,8 +24,8 @@
     "rtr": false,
     "exp": false,
     "runtime": [
-	  "weston_pkg_0.2.squashfs"
-	],
+      "weston_pkg_0.2.squashfs"
+    ],
     "store": [
       {
         "name": "Steam",
@@ -41,7 +41,7 @@
     "availability": "paid",
     "reqs": [
       "power"
-	],
+    ],
     "arch": [
       "armhf"
     ],

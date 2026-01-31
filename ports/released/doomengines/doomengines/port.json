@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "doomengines.zip",
   "items": [
     "Doom Engines.sh",
@@ -10,9 +10,9 @@
     "title": "Doom Engines",
     "porter": [
       "Slayer366",
-	  "DDRSoul",
+      "DDRSoul",
       "Jeod",
-	  "Speedrun"
+      "Speedrun"
     ],
     "desc": "Doom engines! A Love2D launcher makes selecting games and mods easy. See the readme for instructions and details.\n\nIncludes shareware demo files and freedoom.",
     "desc_md": null,
@@ -21,14 +21,16 @@
     "genres": [
       "fps"
     ],
-	"availability": "demo",
     "image": null,
     "rtr": true,
     "exp": false,
-    "runtime": null,
+    "runtime": [],
+    "store": [],
+    "availability": "demo",
     "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

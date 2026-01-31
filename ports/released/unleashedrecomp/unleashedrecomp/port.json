@@ -27,8 +27,8 @@
     "store": [],
     "availability": "paid",
     "reqs": [
-	  "ultra"
-	],
+      "ultra"
+    ],
     "arch": [
       "aarch64"
     ],

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "name": "ufo50.zip",
   "items": [
     "UFO 50.sh",
@@ -18,16 +18,18 @@
     "genres": [
       "arcade"
     ],
-	"availability": "paid",
     "image": null,
     "rtr": false,
     "exp": false,
     "runtime": [
       "gmtoolkit.squashfs"
-	],
+    ],
+    "store": [],
+    "availability": "paid",
     "reqs": [],
     "arch": [
       "aarch64"
-    ]
+    ],
+    "min_glibc": null
   }
 }

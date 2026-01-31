@@ -23,7 +23,7 @@
     "exp": false,
     "runtime": [
       "gmtoolkit.squashfs"
-	],
+    ],
     "store": [],
     "availability": "free",
     "reqs": [],
