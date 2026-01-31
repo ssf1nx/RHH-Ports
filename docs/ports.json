@@ -2492,13 +2492,13 @@
       ]
     },
     "source": {
-      "date_updated": "2026-01-25T17:28",
+      "date_updated": "2026-01-31T04:26",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
-      "size": 13147245,
-      "md5": "b0c6daec96c82545a7c1d0083d758db5",
-      "last_commit": "[SOH/SOH2] Clean up patch files and log to assets/otrlog.txt for cleaner base folder"
+      "size": 13845548,
+      "md5": "f74c7cc263b00046c61ab9fd00ffda5c",
+      "last_commit": "[SOH2] Update to 4.0.0"
     }
   },
   {
