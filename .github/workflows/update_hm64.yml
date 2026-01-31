@@ -2,6 +2,10 @@ name: Update HM64 Port
 on:
   repository_dispatch:
     types: [hm64_update]
+    
+concurrency:
+  group: hm64-port-update
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -19,8 +23,11 @@ jobs:
 
           ZIP_URL="${{ github.event.client_payload.zip_url }}"
           VERSION="${{ github.event.client_payload.version }}"
-          PORT_NAME=$(basename "$ZIP_URL" .zip)
+          PORT_NAME=$(basename "${ZIP_URL%%\?*}" .zip)
           TARGET_DIR="ports/released/harbourmasters64/$PORT_NAME"
+          
+          : "${ZIP_URL:?zip_url missing}"
+          : "${VERSION:?version missing}"
 
           mkdir -p "$TARGET_DIR"
 
@@ -30,6 +37,7 @@ jobs:
           
           find "$TARGET_DIR" -type d -name "src" -exec rm -rf {} +
           find "$TARGET_DIR" -path "*/tools/.gitkeep" -delete
+          find "$TARGET_DIR" -path "*/assets/.gitkeep" -delete
           rm temp.zip
 
           echo "UPPER_NAME=${PORT_NAME^^}" >> $GITHUB_ENV
@@ -39,7 +47,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add .
+          git add ports/released/harbourmasters64
 
           if git diff --staged --quiet; then
             echo "No changes to commit"
