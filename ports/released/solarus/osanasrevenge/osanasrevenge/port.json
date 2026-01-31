@@ -23,7 +23,9 @@
     "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": "solarus-run",
+    "runtime": [
+      "solarus-run"
+    ],
     "store": [],
     "availability": "free",
     "reqs": [],

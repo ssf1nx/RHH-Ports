@@ -19,10 +19,12 @@
       "action",
       "adventure"
     ],
-    "image": "screenshot.png",
+    "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": "",
+    "runtime": [
+      ""
+    ],
     "store": [],
     "availability": "free",
     "reqs": [],

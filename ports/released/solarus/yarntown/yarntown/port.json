@@ -18,10 +18,12 @@
     "genres": [
       "action"
     ],
-    "image": "screenshot.png",
+    "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": "solarus-1.6.5.squashfs",
+    "runtime": [
+      "solarus-1.6.5.squashfs"
+    ],
     "store": [],
     "availability": "free",
     "reqs": [],

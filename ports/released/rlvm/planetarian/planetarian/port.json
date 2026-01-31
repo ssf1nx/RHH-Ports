@@ -18,10 +18,12 @@
     "genres": [
       "visual-novel"
     ],
-    "image": "screenshot.png",
+    "image": null,
     "rtr": false,
     "exp": false,
-    "runtime": "rlvm.squashfs",
+    "runtime": [
+      "rlvm.squashfs"
+    ],
     "store": [],
     "availability": "paid",
     "reqs": [],

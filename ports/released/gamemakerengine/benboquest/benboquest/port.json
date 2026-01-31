@@ -20,7 +20,7 @@
     ],
     "image": null,
     "rtr": true,
-    "exp": null,
+    "exp": false,
     "runtime": [],
     "store": [],
     "availability": "full",
