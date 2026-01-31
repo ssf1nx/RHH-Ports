@@ -56,7 +56,7 @@ async function loadPorts() {
 
         const availabilitySet = new Set(ports.map(p => p.attr?.availability).filter(Boolean));
         populateDropdown(availabilityDropdown, Array.from(availabilitySet).sort(), a =>
-            ({ full: 'Ready to run', demo: 'Demo files included', free: 'Free, files needed' }[a.toLowerCase()] || a)
+            ({ full: 'Ready to run', demo: 'Demo files included', free: 'Free, files needed', paid: "Paid, files needed" }[a.toLowerCase()] || a)
         );
 
         const keyToLabel = {};
