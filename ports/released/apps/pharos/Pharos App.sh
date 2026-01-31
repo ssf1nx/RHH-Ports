@@ -56,19 +56,6 @@ use_runtime() {
     python="${python_dir}/bin/python3"
 }
 
-restart_frontend() {
-    # List of services to restart
-    SERVICES="emustation ${UI_SERVICE} emulationstation"
-
-    for svc in $SERVICES; do
-      # Check if the service unit exists
-      if [ -f "/etc/systemd/system/${svc}.service" ] || [ -f "/lib/systemd/system/${svc}.service" ]; then
-        echo "Restarting $svc..."
-        $ESUDO systemctl restart "$svc"
-      fi
-    done
-}
-
 # Default to system python3
 python=$(which python3)
 
@@ -89,8 +76,4 @@ pm_platform_helper "$python" >/dev/null
 timeout 15 $python main.py "$GAMEDIR/.sources" > "${LOG_FILE}" 2>&1 || true
 
 # Cleanup
-pkill -9 -f "main.py" 2>/dev/null || true
-pkill -9 -f "python" 2>/dev/null || true
-sleep 1
-#restart_frontend
 pm_finish

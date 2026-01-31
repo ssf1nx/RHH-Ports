@@ -26,9 +26,9 @@ def initialise_logging() -> None:
     log_dir = os.path.join(BASE_PATH, "logs")
     os.makedirs(log_dir, exist_ok=True)
 
-    # Delete oldest logs if more than 10 exist
+    # Delete oldest logs if more than 5 exist
     log_files = sorted(glob.glob(os.path.join(log_dir, "*.txt")), key=os.path.getmtime)
-    while len(log_files) >= 10:
+    while len(log_files) >= 5:
         os.remove(log_files[0])
         log_files.pop(0)
 
