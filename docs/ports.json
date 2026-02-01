@@ -2907,13 +2907,13 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-01T14:04",
+      "date_updated": "2026-02-01T21:23",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.mania.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/README.md",
-      "size": 2531986,
-      "md5": "159170ffbcc303a826b8ce4d7053e081",
-      "last_commit": "[SONICMANIA] Update settings.ini, remove portmaster branding"
+      "size": 2532022,
+      "md5": "ab412782277f42a8dee2a0f4950edead",
+      "last_commit": "[SONICMANIA] Adjust build steps"
     }
   },
   {
