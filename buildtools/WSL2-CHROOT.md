@@ -8,16 +8,32 @@ Open wsl2 by typing `wsl`. Now we will prepare the host. Run the following insid
 ```
 # Update and install bootstrap tools
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y qemu-user-static binfmt-support debootstrap curl
+sudo apt install -y \
+  qemu-user-static \
+  binfmt-support \
+  debootstrap \
+  debian-archive-keyring \
+  curl
+
 
 # Install Docker Engine (Native WSL2)
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 sudo usermod -aG docker $USER
+
+# Create the chroot directory
 sudo mkdir -p /mnt/arm64-bullseye
 ```
 
-Download the base system: `sudo debootstrap --arch=arm64 --variant=minbase bullseye /mnt/arm64-bullseye http://deb.debian.org/debian/`
+Download the base system:
+```
+sudo debootstrap \
+  --arch=arm64 \
+  --variant=minbase \
+  bullseye \
+  /mnt/arm64-bullseye \
+  http://deb.debian.org/debian/
+```
 
 Link the emulator: `sudo cp /usr/bin/qemu-aarch64-static /mnt/arm64-bullseye/usr/bin/`
 

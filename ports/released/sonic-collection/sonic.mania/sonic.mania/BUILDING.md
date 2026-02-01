@@ -1,6 +1,19 @@
 ## Building Sonic Mania & RSDKv5
 This guide assumes you will be using WSL2 or similar with debian bullseye chroot. The Plus content is disabled in distributions and must be built by the end user.
 
+Install dependencies:
+
+```
+apt install -y \
+  build-essential \
+  cmake \
+  libglew-dev \
+  libglfw3-dev \
+  libtheora-dev \
+  libdrm-dev \
+  libgbm-dev
+```
+
 If you do use WSL2 with debian bullseye chroot, the bundled SDL2 will be quite old. Your build will benefit from using a newer SDL2 installed prior to building Sonic Mania:
 
 ```
@@ -16,7 +29,6 @@ cd ../..
 
 To build Mania:
 ```
-apt install build-essential cmake libglew-dev libglfw3-dev libtheora-dev libdrm-dev libgbm-dev
 git clone --recursive https://github.com/RSDKModding/Sonic-Mania-Decompilation
 cd Sonic-Mania-Decompilation
 
