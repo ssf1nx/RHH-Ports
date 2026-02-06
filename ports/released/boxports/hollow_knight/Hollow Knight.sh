@@ -94,14 +94,11 @@ $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 30000 &
 # Use x11 for game but not for splash
 export SDL_VIDEODRIVER="x11"
 
+# Use custom gptokeyb to fix d-pad
+export GPTOKEYB="$GAMEDIR/tools/gptokeyb $ESUDOKILL"
+
 # Run it
 $GPTOKEYB $GAME xbox360 & 
-
-# Unity has an older SDL with other GUID syntax, and only configured controllers are ignored,
-# so here we create a bare minimum config and ignore the system controller
-export SDL_GAMECONTROLLERCONFIG="03000000202000000130000001000000,,"
-export SDL_GAMECONTROLLER_IGNORE_DEVICES=0x2020/0x3001
-
 pm_platform_helper $GAME > /dev/null
 $BOX64 $GAME -force-opengl -screen-fullscreen 1 -screen-width $DISPLAY_WIDTH -screen-height $DISPLAY_HEIGHT
 
