@@ -1249,13 +1249,13 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
+      "date_updated": "2026-02-06T02:22",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/README.md",
-      "size": 7189204,
-      "md5": "726b26c71810b0c1782fe8fc887396cd",
-      "last_commit": "Normalize all port.json files for version 4"
+      "size": 6668850,
+      "md5": "6289864bf6d366eac10ed81f6eb4ecba",
+      "last_commit": "[HOLLOWKNIGHT] Update artwork"
     }
   },
   {
