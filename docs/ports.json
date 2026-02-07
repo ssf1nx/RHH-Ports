@@ -2586,13 +2586,13 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-05T19:00",
+      "date_updated": "2026-02-07T18:17",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
-      "size": 45748843,
-      "md5": "73cae8324f2cc342639d0bb582703575",
-      "last_commit": "Update README.md"
+      "size": 46145706,
+      "md5": "571e555b954e707394f52ccf2b9a1024",
+      "last_commit": "[SOH] Update to 9.1.2"
     }
   },
   {
