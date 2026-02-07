@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Pokemon Tectonic.sh</path>
+		<name>Pokémon : Tectonic</name>
+		<desc>Pokémon Tectonic is a fan-made Pokémon RPG set in the underground-focused Makya region. It features a nonlinear story, extensive side quests, and a major rebalance of Pokémon, moves, and abilities so every Pokémon is viable. The game includes Pokémon up to Generation 8, regional forms, new evolutions, and quality-of-life improvements, with a strong emphasis on strategy and exploration.</desc>
+		<image>./pkmn_tectonic/cover.png</image>
+		<thumbnail>./pkmn_tectonic/thumb.png</thumbnail>
+		<releasedate>20231112</releasedate>
+		<developer>Tectonic Team</developer>
+		<genre>Adventure</genre>
+	</game>
+</gamelist>
