@@ -27,7 +27,7 @@ export SDL_GAMECONTROLLERCONFIG=$sdl_controllerconfig
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 $ESUDO chmod +x "$GAMEDIR/soh.elf"
-$ESUDO chmod +x "$GAMEDIR/assets/otrgen"
+$ESUDO chmod +x "$GAMEDIR/tools/otrgen"
 
 # Close the menu if open
 sed -i 's/"Menu": *1/"Menu": 0/' shipofharkinian.json
@@ -72,7 +72,7 @@ otr_check() {
         # Ensure we have a rom file before attempting to generate otr
         if ls "$GAMEDIR/baseroms/"*.*64 1> /dev/null 2>&1; then
             if [ -f "$controlfolder/utils/patcher.txt" ]; then
-                export PATCHER_FILE="$GAMEDIR/assets/otrgen"
+                export PATCHER_FILE="$GAMEDIR/tools/otrgen"
                 export PATCHER_GAME="$(basename "${0%.*}")"
                 export PATCHER_TIME="5 to 10 minutes"
                 export controlfolder
