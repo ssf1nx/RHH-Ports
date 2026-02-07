@@ -13,7 +13,7 @@
     ],
     "desc": "Pokémon Fire Ash is a fan-made Pokémon game that follows the journey of Ash Ketchum through multiple regions just like in the Pokémon anime series.",
     "desc_md": null,
-    "inst": "Download the [Windows bundle](https://pokemonfireash.net/windows/) and add the zip file to the `pkmn_fireash` folder. On first launch the game will be unzipped for you.",
+    "inst": "Download the Windows bundle from https://pokemonfireash.net/windows and add the zip file to the `pkmn_fireash` folder. On first launch the game will be unzipped for you.",
     "inst_md": null,
     "genres": [
       "adventure",
