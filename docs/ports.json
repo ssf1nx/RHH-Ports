@@ -2412,6 +2412,49 @@
   },
   {
     "version": 4,
+    "name": "pkmn_tectonic.zip",
+    "items": [
+      "Pokemon Tectonic.sh",
+      "pkmn_tectonic"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Pokemon Tectonic",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Pokémon Tectonic is a fan-made Pokémon RPG set in the underground-focused Makya region. It features a nonlinear story, extensive side quests, and a major rebalance of Pokémon, moves, and abilities so every Pokémon is viable. The game includes Pokémon up to Generation 8, regional forms, new evolutions, and quality-of-life improvements, with a strong emphasis on strategy and exploration.",
+      "desc_md": null,
+      "inst": "Use the direct download option from https://www.tectonic-game.com and add the zip file to the `pkmn_tectonic` folder. On first launch the game will be unzipped for you.",
+      "inst_md": null,
+      "genres": [
+        "adventure",
+        "rpg"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [],
+      "store": [],
+      "availability": "free",
+      "reqs": [],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-02-07T23:31",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_tectonic.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/README.md",
+      "size": 12691671,
+      "md5": "aa249f8cc756cd395ccd1d5f5f8837d9",
+      "last_commit": "[PKMNTECTONIC] Fix port.json"
+    }
+  },
+  {
+    "version": 4,
     "name": "pokewilds.zip",
     "items": [
       "Pokewilds.sh",
