@@ -2586,13 +2586,13 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-07T18:34",
+      "date_updated": "2026-02-07T18:46",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
-      "size": 45285495,
-      "md5": "5d1288cad43dbbee5cdc15ea7b6e6f20",
-      "last_commit": "[SOH] Clean files"
+      "size": 45285724,
+      "md5": "dbc165bcbfaecd0a389d2c6c96298d41",
+      "last_commit": "[SOH] Move otrgen and make it more robust"
     }
   },
   {
