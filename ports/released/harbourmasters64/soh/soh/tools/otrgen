@@ -5,7 +5,7 @@ GAMEDIR="$PWD"
 BASEROMS_DIR="$GAMEDIR/baseroms"
 ARGS=""
 i=1
-> "$GAMEDIR/patchlog.txt" && exec > >(tee "$GAMEDIR/patchlog.txt") 2>&1
+> "$GAMEDIR/tools/otrlog.txt" && exec > >(tee "$GAMEDIR/tools/otrlog.txt") 2>&1
 
 # Exports
 export LD_LIBRARY_PATH="$GAMEDIR/libs:$LD_LIBRARY_PATH"
