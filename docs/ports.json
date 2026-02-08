@@ -3295,12 +3295,12 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
+      "date_updated": "2026-02-08T01:59",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/starship.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/README.md",
-      "size": 6672896,
-      "md5": "aada34527a8f0a2524f87b71ff227ac8",
+      "size": 6672625,
+      "md5": "ed77fdababa659e92f31735cf4567e9b",
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
