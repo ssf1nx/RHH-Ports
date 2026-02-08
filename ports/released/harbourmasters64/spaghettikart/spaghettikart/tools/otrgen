@@ -34,6 +34,9 @@ unzip_assets() {
 # Function handle the ROM file.
 process_rom() {
     cd "$GAMEDIR/tools"
+    echo "[OTRGEN] Current directory is $PWD"
+    echo "[OTRGEN] Current files:"
+    ls
     local input_file="$1"
     if [ ! -f "../baseroms/$input_file" ]; then
         echo "[OTRGEN] Error: File $input_file not found!"
@@ -41,21 +44,27 @@ process_rom() {
     fi
 
     # Run the extraction
-    echo "Extracting data from $input_file..."
-    if ./torch o2r "../baseroms/$input_file" >/dev/null 2>&1; then
+    echo "Extracting data from ../baseroms/$input_file..."
+    if do_torch "../baseroms/$input_file"; then
         echo "[OTRGEN] Extraction complete. O2R generated."
         mv mk64.o2r ../mk64.o2r
     else
-        echo "[OTRGEN] Error: Extraction failed for $input_file."
+        echo "[OTRGEN] Error: Extraction failed for ../baseroms/$input_file."
         exit 1
     fi
     cd "$GAMEDIR"
 }
 
+do_torch() {
+    local rom_file="../baseroms/$1"
+    ./torch header -o "../baseroms/$1"
+    ./torch o2r "../baseroms/$1" --additional-files meta/mods.toml
+}
+
 # Function to convert N64 ROM to Z64 format
 convert_n64() {
     local rom_file="$1"
-    local output_file="rom.z64"
+    local output_file="baseroms/rom.z64"
 
     if [[ ! -f "$rom_file" ]]; then
         echo "Error: File $rom_file not found!"

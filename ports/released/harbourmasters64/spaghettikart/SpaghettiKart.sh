@@ -30,9 +30,10 @@ cd $GAMEDIR
 # Permissions
 $ESUDO chmod +x "$GAMEDIR/Spaghettify"
 $ESUDO chmod +x "$GAMEDIR/tools/otrgen"
+$ESUDO chmod +x "$GAMEDIR/tools/torch"
 
 # Close the menu if open
-sed -i 's/"Menu": *1/"Menu": 0/' ghostship.cfg.json
+sed -i 's/"Menu": *1/"Menu": 0/' spaghetti.cfg.json
 
 # Warn if mk64.o2r is older than Spaghettify or spaghetti.o2r
 if [ -f "$GAMEDIR/mk64.o2r" ]; then
