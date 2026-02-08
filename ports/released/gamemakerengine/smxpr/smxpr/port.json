@@ -15,7 +15,10 @@
     "desc_md": null,
     "inst": "",
     "inst_md": null,
-    "genres": [],
+    "genres": [
+      "action",
+      "adventure"
+    ],
     "image": null,
     "rtr": true,
     "exp": false,
