@@ -3395,6 +3395,46 @@
   },
   {
     "version": 4,
+    "name": "smxpr.zip",
+    "items": [
+      "Super Mario XP Remastered.sh",
+      "smxpr"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Super Mario XP Remastered",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Originally developed by a japanese with the nickname of CnC Darkside back in 2001, Super Mario XP mix both Mario and Castlevania mechanics. Making a cool and original playstyle with it. Play through the original 7 stages and find new secrets and levels added to the game.",
+      "desc_md": null,
+      "inst": "",
+      "inst_md": null,
+      "genres": [],
+      "image": null,
+      "rtr": true,
+      "exp": false,
+      "runtime": [],
+      "store": [],
+      "availability": "full",
+      "reqs": [],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-02-08T00:32",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smxpr.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/README.md",
+      "size": 24537894,
+      "md5": "d0d7418fdbe4bbb3992c8aeb420282da",
+      "last_commit": "[SMXPR] Release"
+    }
+  },
+  {
+    "version": 4,
     "name": "superstartrek.zip",
     "items": [
       "Super Star Trek.sh",
