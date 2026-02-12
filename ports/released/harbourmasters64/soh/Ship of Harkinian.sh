@@ -23,14 +23,14 @@ GAMEDIR="/$directory/ports/soh"
 export LD_LIBRARY_PATH="$GAMEDIR/libs":$LD_LIBRARY_PATH
 export SDL_GAMECONTROLLERCONFIG=$sdl_controllerconfig
 
+export PLAYERNAME="Player"
+export ROOMID="rhh-ports"
+
 # CD and set log
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 $ESUDO chmod +x "$GAMEDIR/soh.elf"
 $ESUDO chmod +x "$GAMEDIR/tools/otrgen"
-
-# Close the menu if open
-sed -i 's/"Menu": *1/"Menu": 0/' shipofharkinian.json
 
 # -------------------- BEGIN FUNCTIONS --------------------
 
@@ -94,11 +94,26 @@ otr_check() {
     fi
 }
 
+edit_json() {
+    # Close the menu if open
+    sed -i 's/"Menu":[[:space:]]*1/"Menu": 0/' shipofharkinian.json
+
+    # Set player name (string)
+    sed -i "s/\"Name\":[[:space:]]*\"[^\"]*\"/\"Name\": \"${PLAYERNAME}\"/" shipofharkinian.json
+
+    # Set room id (string)
+    sed -i "s/\"RoomId\":[[:space:]]*\"[^\"]*\"/\"RoomId\": \"${ROOMID}\"/" shipofharkinian.json
+}
+
 # --------------------- END FUNCTIONS ---------------------
 
 # Perform functions
 otr_check
 
+# Edit json
+edit_json
+
+# Edit imgui
 if [ -f "imgui.ini" ]; then
     imgui_reset
 fi

@@ -22,6 +22,11 @@ The port uses SDL controller mapping and controls can be remapped from the imgui
 ## Mods
 You can find a ton of mods at [GameBanana](https://gamebanana.com/mods/games/16121?_aFilters%5BGeneric_Name%5D=contains%2C3ds&_sSort=Generic_MostDownloaded).  
 
+## Anchor
+This version of Ship of Harkinian is a nightly build with Anchor support. You can modify your name and room id in the launchscript, and then connect to Anchor from the imgui menu. In the global public room, you can see other players as you play through independent save files. If you create your own room, you can play cooperatively.
+
+Anchor is a largely untested and undocumented feature, at least from the port's perspective. I welcome any and all documentation for using Anchor to its fullest extent.
+
 ## Thanks
 Nintendo for the game  
 HarbourMasters for the native pc port  
