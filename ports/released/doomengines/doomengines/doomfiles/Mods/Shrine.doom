@@ -1,0 +1,4 @@
+ENGINE=gzdoom_4.14.2/gzdoom
+IWAD=iwads/official/doom2.wad
+MOD=mods/Shrine-Patched.pk3
+-- end --
