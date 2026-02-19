@@ -852,13 +852,13 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
+      "date_updated": "2026-02-19T23:29",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
-      "size": 94871037,
-      "md5": "274f8cfd6f29b6c820919ccaa57ce706",
-      "last_commit": "Normalize all port.json files for version 4"
+      "size": 94871329,
+      "md5": "35ff650d5854075331798b50c95f2ede",
+      "last_commit": "[DOOMENGINES] Add Shrine mod"
     }
   },
   {
