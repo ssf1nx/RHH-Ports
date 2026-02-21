@@ -1,6 +1,47 @@
 [
   {
     "version": 4,
+    "name": "pksinew.zip",
+    "items": [
+      "PKsinew.sh",
+      "pksinew"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "",
+      "porter": [
+        "Cambotz",
+        "Jeod"
+      ],
+      "desc": "PKsinew is a companion app/frontend launcher for Gen 3 Pokémon games that lets you track your progress across all 5 GBA games, obtain event items, and more.",
+      "desc_md": null,
+      "inst": "Check the README for details on using the app.",
+      "inst_md": null,
+      "genres": [],
+      "image": null,
+      "rtr": true,
+      "exp": false,
+      "runtime": [],
+      "store": [],
+      "availability": "free",
+      "reqs": [],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "date_updated": "2026-02-21T04:39",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pksinew.zip",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pksinew/pksinew/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pksinew/pksinew/README.md",
+      "size": 64579652,
+      "md5": "7a801f12777f55ab872c864cbadab33c",
+      "last_commit": "[RELEASE] PKsinew app"
+    }
+  },
+  {
+    "version": 4,
     "name": "am2r.zip",
     "items": [
       "AM2R.sh",
