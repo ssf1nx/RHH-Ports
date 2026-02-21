@@ -4409,13 +4409,13 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-07T01:14",
+      "date_updated": "2026-02-21T13:33",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
-      "size": 7618113,
-      "md5": "377100d004de6cdb5be0ead7b95a3018",
-      "last_commit": "[UFO50] Clarify latest version is compatible in README."
+      "size": 7615705,
+      "md5": "81d5b65bfbb8898ce0a3fb8197c366c5",
+      "last_commit": "[UFO50] Update to support latest v1.8.35"
     }
   },
   {
