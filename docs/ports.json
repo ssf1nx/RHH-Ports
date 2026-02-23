@@ -50,7 +50,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
       "size": 5261478,
       "md5": "a8acf50684b5b6bab7d026018013699c",
-      "last_commit": "[AM2R] Add 3:2 aspect ratio patch"
+      "last_commit": "[AM2R] Add 3:2 aspect ratio patch",
+      "lifetime_downloads": 32
     }
   },
   {
@@ -93,7 +94,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/README.md",
       "size": 743869,
       "md5": "ebedd9d187022f705a03b99e3ed443f2",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 13
     }
   },
   {
@@ -145,7 +147,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "size": 4904777,
       "md5": "e210b7285462318a52cd68c9c62f2a9c",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 17
     }
   },
   {
@@ -204,7 +207,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "size": 5027435,
       "md5": "71d207539eb741c7f70653b318345382",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 8
     }
   },
   {
@@ -249,7 +253,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/retro64/banjorecompiled/banjorecompiled/README.md",
       "size": 8708338,
       "md5": "1278e049b056f67060fa7498513b82fc",
-      "last_commit": "[BANJO] Bump to v1.0.1 release"
+      "last_commit": "[BANJO] Bump to v1.0.1 release",
+      "lifetime_downloads": 52
     }
   },
   {
@@ -291,7 +296,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/README.md",
       "size": 36908892,
       "md5": "3d37676784be72ae787fb6d22bc59826",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 4
     }
   },
   {
@@ -334,7 +340,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/README.md",
       "size": 382971,
       "md5": "cc05fc563e40186f0b97f46ff6782bbf",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 4
     }
   },
   {
@@ -423,7 +430,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "size": 8122548,
       "md5": "e78c47a4564e3da0bd253af72c029e94",
-      "last_commit": "[DARKDEITY] Fix patchscript and gmtoolkit errors"
+      "last_commit": "[DARKDEITY] Fix patchscript and gmtoolkit errors",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -470,7 +478,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "size": 8418797,
       "md5": "4ba7b316192e9a0e35377ec1b0c621b7",
-      "last_commit": "[DARKDEITY2] Fix patchscript and gmtoolkit errors"
+      "last_commit": "[DARKDEITY2] Fix patchscript and gmtoolkit errors",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -516,7 +525,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/deadcells/deadcells/README.md",
       "size": 9776428,
       "md5": "0c7cf4a6287da08a7e22553915122626",
-      "last_commit": "[TEARSCAPE] Release Tearscape port"
+      "last_commit": "[TEARSCAPE] Release Tearscape port",
+      "lifetime_downloads": 57
     }
   },
   {
@@ -576,7 +586,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "size": 6507640,
       "md5": "ca9df4940505332692242d8798adca38",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 25
     }
   },
   {
@@ -623,7 +634,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/README.md",
       "size": 15516364,
       "md5": "f40c4ea4e9648db32a68adc683b04f4d",
-      "last_commit": "[DESCENT] Consistent gptk between two games"
+      "last_commit": "[DESCENT] Consistent gptk between two games",
+      "lifetime_downloads": 6
     }
   },
   {
@@ -670,7 +682,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/README.md",
       "size": 15183436,
       "md5": "c90bef073d7b84ddf8c327bea5dd2100",
-      "last_commit": "[DESCENT] Consistent gptk between two games"
+      "last_commit": "[DESCENT] Consistent gptk between two games",
+      "lifetime_downloads": 4
     }
   },
   {
@@ -715,7 +728,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/README.md",
       "size": 7398826,
       "md5": "2769a4613683da9aa4eb3d524cbd474c",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 5
     }
   },
   {
@@ -761,7 +775,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
       "size": 220690043,
       "md5": "9f942ef4f7ea0e63ee357d83a2d4d62e",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -813,7 +828,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "size": 104546294,
       "md5": "06dd4c0e6439ef0a53db1ad58f7955e6",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 4
     }
   },
   {
@@ -858,7 +874,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "size": 94871329,
       "md5": "35ff650d5854075331798b50c95f2ede",
-      "last_commit": "[DOOMENGINES] Add Shrine mod"
+      "last_commit": "[DOOMENGINES] Add Shrine mod",
+      "lifetime_downloads": 5
     }
   },
   {
@@ -902,7 +919,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/droidtoolbox/droidtoolbox/README.md",
       "size": 11315344,
       "md5": "1f15ad1a1cb92a7e1f3fa5a503df1057",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 4
     }
   },
   {
@@ -947,7 +965,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/README.md",
       "size": 41455213,
       "md5": "05d74c91193ed511e14d4cf6c89fcab9",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 6
     }
   },
   {
@@ -999,7 +1018,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
       "size": 6370632,
       "md5": "0b3296409ea58cf77e2666a93322a1b1",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 11
     }
   },
   {
@@ -1051,7 +1071,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "size": 7498415,
       "md5": "357e0816726d530e671cc922e1d24a7b",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 22
     }
   },
   {
@@ -1099,7 +1120,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "size": 5503273,
       "md5": "d6f0667ce5999092962af94be21a6614",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -1140,7 +1162,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/README.md",
       "size": 470014,
       "md5": "a20742e73a7c0245e0a189b68cacb770",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -1197,7 +1220,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "size": 5016950,
       "md5": "5ef345d9fa808696be8b3eead78ba3ca",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 3
     }
   },
   {
@@ -1255,7 +1279,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/README.md",
       "size": 6696335,
       "md5": "e4a9b10673a71a4ca0ff00ba302ceaaa",
-      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
+      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad",
+      "lifetime_downloads": 93
     }
   },
   {
@@ -1314,7 +1339,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/README.md",
       "size": 6774803,
       "md5": "3f35117b5de399f4c030d16cb032f194",
-      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
+      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad",
+      "lifetime_downloads": 76
     }
   },
   {
@@ -1372,7 +1398,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "size": 7948056,
       "md5": "48218f32be36a642562f15af304e7f3e",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 7
     }
   },
   {
@@ -1415,7 +1442,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/README.md",
       "size": 335386,
       "md5": "6c037c569e5f01abca200e3c162ea38d",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 2
     }
   },
   {
@@ -1469,7 +1497,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
       "size": 6614869,
-      "md5": "0190427b57da5c43babac2c40a6190af"
+      "md5": "0190427b57da5c43babac2c40a6190af",
+      "lifetime_downloads": 7
     }
   },
   {
@@ -3664,7 +3693,8 @@
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "size": 6269466,
       "md5": "3a542cb92b574f5c664a539a56d1238f",
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Normalize all port.json files for version 4",
+      "lifetime_downloads": 16
     }
   },
   {
