@@ -172,7 +172,7 @@ jobs:
               '$o + {source:{
                 screenshot_url:$screenshot_url,
                 readme_url:$readme_url,
-                download_url:$download_url
+                download_url:$download_url,
                 date_updated:$d,
                 md5:$m,
                 size:($s|tonumber),
