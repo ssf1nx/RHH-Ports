@@ -153,8 +153,8 @@ async function loadPorts() {
                 if (method === 'most_recent') {
                     return new Date(b.source?.date_updated) - new Date(a.source?.date_updated);
                 } else if (method === 'most_downloaded') {
-                    const countA = downloadCounts[a.source.download_url?.split('/').pop()] || 0;
-                    const countB = downloadCounts[b.source.download_url?.split('/').pop()] || 0;
+                    const countA = a.source?.lifetime_downloads || 0;
+                    const countB = b.source?.lifetime_downloads || 0;
                     return countB - countA;
                 }
                 return (a.attr?.title || '').localeCompare(b.attr?.title || '');
