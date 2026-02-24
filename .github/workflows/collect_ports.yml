@@ -149,11 +149,11 @@ jobs:
             # Check if entry already exists (match by canonical name)
             EXISTING=$(jq -c --arg name "$CANONICAL_NAME" '.[] | select(.name == $name)' "$PORTS_JSON" 2>/dev/null || echo "")
 
-            if [[ -n "$EXISTING_ENTRY" ]]; then
-              OLD_MD5=$(echo "$EXISTING_ENTRY" | jq -r '.source.md5 // empty')
-              OLD_SIZE=$(echo "$EXISTING_ENTRY" | jq -r '.source.size // empty')
+            if [[ -n "$EXISTING" ]]; then
+              OLD_MD5=$(echo "$EXISTING" | jq -r '.source.md5 // empty')
+              OLD_SIZE=$(echo "$EXISTING" | jq -r '.source.size // empty')
               if [[ "$MD5" == "$OLD_MD5" && "$SIZE" == "$OLD_SIZE" ]]; then
-                DATE_UPDATED=$(echo "$EXISTING_ENTRY" | jq -r '.source.date_updated')
+                DATE_UPDATED=$(echo "$EXISTING" | jq -r '.source.date_updated')
               fi
             fi
 
