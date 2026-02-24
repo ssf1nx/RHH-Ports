@@ -22,14 +22,7 @@
         "adventure",
         "platformer"
       ],
-      "image": {
-        "screenshot": "screenshot.jpg",
-        "covers": [
-          "cover.png"
-        ],
-        "thumbnail": null,
-        "video": null
-      },
+      "image": null,
       "rtr": false,
       "exp": false,
       "runtime": [
@@ -44,14 +37,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/am2r.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
-      "size": 5261478,
-      "md5": "a8acf50684b5b6bab7d026018013699c",
-      "last_commit": "[AM2R] Add 3:2 aspect ratio patch",
-      "lifetime_downloads": 32
+      "date_updated": "2026-02-23T23:56",
+      "md5": "1553d1771aef65cd348b5a222b0d72fb",
+      "size": 5261428,
+      "lifetime_downloads": 32,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -75,10 +65,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
-      "exp": true,
-      "runtime": "rlvm.squashfs",
+      "exp": false,
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -88,14 +80,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/air.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/README.md",
-      "size": 743869,
-      "md5": "ebedd9d187022f705a03b99e3ed443f2",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 13
+      "date_updated": "2026-02-23T23:57",
+      "md5": "d67bce7c43187bf339ca2d19b72eae85",
+      "size": 743858,
+      "lifetime_downloads": 13,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -141,14 +130,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "4faf408ad4841328e139c33b905790df",
       "size": 4904777,
-      "md5": "e210b7285462318a52cd68c9c62f2a9c",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 17
+      "lifetime_downloads": 17,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -201,14 +187,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "c951a2b4fe48f6c8cebc808f3341a522",
       "size": 5027435,
-      "md5": "71d207539eb741c7f70653b318345382",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 8
+      "lifetime_downloads": 8,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -247,14 +230,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/banjorecompiled.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/retro64/banjorecompiled/banjorecompiled/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/retro64/banjorecompiled/banjorecompiled/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "5f27b4f16fa62fc2d6be828a261e97fb",
       "size": 8708338,
-      "md5": "1278e049b056f67060fa7498513b82fc",
-      "last_commit": "[BANJO] Bump to v1.0.1 release",
-      "lifetime_downloads": 52
+      "lifetime_downloads": 52,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -279,7 +259,7 @@
       ],
       "image": null,
       "rtr": true,
-      "exp": null,
+      "exp": false,
       "runtime": [],
       "store": [],
       "availability": "full",
@@ -290,14 +270,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/benboquest.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/README.md",
-      "size": 36908892,
-      "md5": "3d37676784be72ae787fb6d22bc59826",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 4
+      "date_updated": "2026-02-23T23:56",
+      "md5": "5fc8e95ff481eff7e883742b63ff7ce6",
+      "size": 36908896,
+      "lifetime_downloads": 4,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -321,10 +298,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "rlvm.squashfs",
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -334,14 +313,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/clannad.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/README.md",
-      "size": 382971,
-      "md5": "cc05fc563e40186f0b97f46ff6782bbf",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 4
+      "date_updated": "2026-02-23T23:57",
+      "md5": "6a9f1689a7b1845cce1ee91bed13bada",
+      "size": 382964,
+      "lifetime_downloads": 4,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -364,10 +340,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "rlvm.squashfs",
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -377,13 +355,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tomoyo_after.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/README.md",
-      "size": 342912,
-      "md5": "0a5d8975f217cad02c01716f5c33d43d",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "cf4bf1adfa433bac1e1cfbe0bc6684b4",
+      "size": 342904,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -424,14 +400,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "1ade7a921a77c3e23439d5523350e79e",
       "size": 8122548,
-      "md5": "e78c47a4564e3da0bd253af72c029e94",
-      "last_commit": "[DARKDEITY] Fix patchscript and gmtoolkit errors",
-      "lifetime_downloads": 3
+      "lifetime_downloads": 3,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -472,14 +445,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "4269b5f43d62cd4c833c7c697fd29157",
       "size": 8418797,
-      "md5": "4ba7b316192e9a0e35377ec1b0c621b7",
-      "last_commit": "[DARKDEITY2] Fix patchscript and gmtoolkit errors",
-      "lifetime_downloads": 3
+      "lifetime_downloads": 3,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -519,14 +489,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-05T13:04",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deadcells.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/deadcells/deadcells/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/deadcells/deadcells/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "7d79416346513e9e147dae7d3382c885",
       "size": 9776428,
-      "md5": "0c7cf4a6287da08a7e22553915122626",
-      "last_commit": "[TEARSCAPE] Release Tearscape port",
-      "lifetime_downloads": 57
+      "lifetime_downloads": 57,
+      "last_commit": "[TEARSCAPE] Release Tearscape port"
     }
   },
   {
@@ -580,14 +547,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "e447bf3a562b92a3cd1811fc6d34e5a2",
       "size": 6507640,
-      "md5": "ca9df4940505332692242d8798adca38",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 25
+      "lifetime_downloads": 25,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -613,7 +577,7 @@
       "genres": [
         "fps"
       ],
-      "image": "descent.screenshot.png",
+      "image": null,
       "rtr": true,
       "exp": false,
       "runtime": [],
@@ -628,14 +592,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/README.md",
-      "size": 15516364,
-      "md5": "f40c4ea4e9648db32a68adc683b04f4d",
-      "last_commit": "[DESCENT] Consistent gptk between two games",
-      "lifetime_downloads": 6
+      "date_updated": "2026-02-23T23:56",
+      "md5": "ddeaa6affdeb1cd5f9f5dea4b4ba3471",
+      "size": 15516354,
+      "lifetime_downloads": 6,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -661,7 +622,7 @@
       "genres": [
         "fps"
       ],
-      "image": "descent2.screenshot.png",
+      "image": null,
       "rtr": true,
       "exp": false,
       "runtime": [],
@@ -676,14 +637,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/README.md",
-      "size": 15183436,
-      "md5": "c90bef073d7b84ddf8c327bea5dd2100",
-      "last_commit": "[DESCENT] Consistent gptk between two games",
-      "lifetime_downloads": 4
+      "date_updated": "2026-02-23T23:56",
+      "md5": "6eb0fee484912ca0bcbefeda422802ad",
+      "size": 15183426,
+      "lifetime_downloads": 4,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -722,14 +680,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent3.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "fc3f7b6414f90ea2de178ca7b20fa7c5",
       "size": 7398826,
-      "md5": "2769a4613683da9aa4eb3d524cbd474c",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 5
+      "lifetime_downloads": 5,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -769,14 +724,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/digitaltamersreborn.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "138926f47062a60ea29c8afbf99c4a88",
       "size": 220690043,
-      "md5": "9f942ef4f7ea0e63ee357d83a2d4d62e",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 3
+      "lifetime_downloads": 3,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -822,14 +774,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "58833f989cb49a51f114cdecf5e2b2e6",
       "size": 104546294,
-      "md5": "06dd4c0e6439ef0a53db1ad58f7955e6",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 4
+      "lifetime_downloads": 4,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -868,14 +817,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-19T23:29",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "31ac51ef98b36e3270b04d454a291fe0",
       "size": 94871329,
-      "md5": "35ff650d5854075331798b50c95f2ede",
-      "last_commit": "[DOOMENGINES] Add Shrine mod",
-      "lifetime_downloads": 5
+      "lifetime_downloads": 5,
+      "last_commit": "[DOOMENGINES] Add Shrine mod"
     }
   },
   {
@@ -913,14 +859,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:15",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/droidtoolbox.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/droidtoolbox/droidtoolbox/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/droidtoolbox/droidtoolbox/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "7ec415ff4e3e018f4db09a073931f611",
       "size": 11315344,
-      "md5": "1f15ad1a1cb92a7e1f3fa5a503df1057",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 4
+      "lifetime_downloads": 4,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -959,14 +902,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/f-zeropocket.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "96795d3aef90c81514d3a20ddd4a4cbb",
       "size": 41455213,
-      "md5": "05d74c91193ed511e14d4cf6c89fcab9",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 6
+      "lifetime_downloads": 6,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1012,14 +952,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fadingafternoon.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "a092c040d53230cffe6eddd62a13c448",
       "size": 6370632,
-      "md5": "0b3296409ea58cf77e2666a93322a1b1",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 11
+      "lifetime_downloads": 11,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1065,14 +1002,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "85855890ea70b2c1d3c7f797696622ab",
       "size": 7498415,
-      "md5": "357e0816726d530e671cc922e1d24a7b",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 22
+      "lifetime_downloads": 22,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1114,14 +1048,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "c53483029b11bdc7e123debe138d64e3",
       "size": 5503273,
-      "md5": "d6f0667ce5999092962af94be21a6614",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 3
+      "lifetime_downloads": 3,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1145,10 +1076,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -1156,14 +1089,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hallowseve.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/README.md",
-      "size": 470014,
-      "md5": "a20742e73a7c0245e0a189b68cacb770",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 3
+      "date_updated": "2026-02-23T23:57",
+      "md5": "b9f1018717b8d89db2274c7bed578aa0",
+      "size": 470006,
+      "lifetime_downloads": 3,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -1214,14 +1144,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "37d457d4492cca48b45ac5b630c4a519",
       "size": 5016950,
-      "md5": "5ef345d9fa808696be8b3eead78ba3ca",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 3
+      "lifetime_downloads": 3,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1273,14 +1200,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-06T02:31",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "2cab1a42ddd76d0d4df45477f9b96381",
       "size": 6696335,
-      "md5": "e4a9b10673a71a4ca0ff00ba302ceaaa",
-      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad",
-      "lifetime_downloads": 93
+      "lifetime_downloads": 93,
+      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
     }
   },
   {
@@ -1333,14 +1257,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-06T02:31",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight_silksong.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "c92951796159e6ca33e30f32f0a9ed77",
       "size": 6774803,
-      "md5": "3f35117b5de399f4c030d16cb032f194",
-      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad",
-      "lifetime_downloads": 76
+      "lifetime_downloads": 76,
+      "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
     }
   },
   {
@@ -1392,14 +1313,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "bb6c51b037f749621d115e6c7be8acca",
       "size": 7948056,
-      "md5": "48218f32be36a642562f15af304e7f3e",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 7
+      "lifetime_downloads": 7,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -1423,10 +1341,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
-      "exp": true,
-      "runtime": "rlvm.squashfs",
+      "exp": false,
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -1436,14 +1356,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/kanon.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/README.md",
-      "size": 335386,
-      "md5": "6c037c569e5f01abca200e3c162ea38d",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 2
+      "date_updated": "2026-02-23T23:57",
+      "md5": "0b0a80d614d6d2947b8eba9d1ce58775",
+      "size": 335376,
+      "lifetime_downloads": 2,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -1492,13 +1409,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-25T17:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "684e98d0099116d2f118415365d84c0e",
       "size": 6614869,
-      "md5": "0190427b57da5c43babac2c40a6190af",
-      "lifetime_downloads": 7
+      "lifetime_downloads": 7,
+      "last_commit": "Insert thumbnail into all gameinfo.xml files"
     }
   },
   {
@@ -1534,12 +1449,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:15",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oracles-randomizer-ng.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "7654179fa1f6d61d33b78eb14799562e",
       "size": 6554020,
-      "md5": "932638ab88cdf35b6e40745141139ebc",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1564,10 +1477,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "rlvm.squashfs",
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -1577,13 +1492,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/littlebusters.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/README.md",
-      "size": 517360,
-      "md5": "582eb8daf775204a2d70103b10c8cd2f",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "3ae1f8c5ba3451c6678eed287c2d6487",
+      "size": 517354,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -1626,12 +1539,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "408cf70f0dc8bc6f6df968f50ab5ce3f",
       "size": 7610158,
-      "md5": "849d17b3d4dc7960f6ab007abc86ba09",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1680,12 +1591,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "82592a470f03da545229a546a53b335e",
       "size": 7401818,
-      "md5": "7126ed9b277fb98767574a454ad1ff32",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1726,12 +1635,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mslugsbf.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mslugsbf/mslugsbf/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mslugsbf/mslugsbf/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "2a126adde2e69b2af6a89d2f1848264e",
       "size": 5460477,
-      "md5": "064be6e50f2751136ef290ece6de77f8",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1759,7 +1666,7 @@
         "platformer",
         "puzzle"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
       "runtime": [],
@@ -1770,13 +1677,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mimisdeliverydash.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mimisdeliverydash/mimisdeliverydash/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mimisdeliverydash/mimisdeliverydash/README.md",
-      "size": 17811332,
-      "md5": "3d280b7c4373a89d5054529a3b7bb7b9",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:56",
+      "md5": "eca26ed306d7c69dc648001ae67032bc",
+      "size": 17811323,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -1829,12 +1734,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "245b3c1fc23c5415f906151452a79dcf",
       "size": 8486477,
-      "md5": "921f36c1711df34ec870f19102119b02",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1877,12 +1780,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "e050abb88f1e56fcdb7f53332fed4cc6",
       "size": 5335206,
-      "md5": "e07e71419d7bd12f28efea5d81d84126",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1926,12 +1827,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/nubbysnumberfactory.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "1d847c7c219e7a5b4187735087d92b4a",
       "size": 33778920,
-      "md5": "c4e94d92ab8bcc303526d5bc834d809e",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1956,10 +1855,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -1967,13 +1868,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oceansheart.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/README.md",
-      "size": 1183027,
-      "md5": "4297a883862d8ea193b0ea8f49d05912",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "0b18f31eeca494cc0b2381fec894fe8f",
+      "size": 1183020,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -2020,12 +1919,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "887fdbf59154310205c1355b98c782ab",
       "size": 7090168,
-      "md5": "ef1814907377457eb0b383ab41a71d5b",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2054,7 +1951,9 @@
       "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-run",
+      "runtime": [
+        "solarus-run"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -2062,13 +1961,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/osanasrevenge.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/README.md",
-      "size": 372849,
-      "md5": "3768adf36bea50bd35ce89e896bdddf0",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "8dae28d3d12d2a8cbb413f9130cf71e5",
+      "size": 372851,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -2115,12 +2012,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "adba743505c504500e7df78d7f327a32",
       "size": 7193510,
-      "md5": "6d286a0d17b58b870d32ef70d0cad392",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2156,12 +2051,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-22T13:35",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pksinew.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pksinew/pksinew/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pksinew/pksinew/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "783a892377af884cfecafde5005ef221",
       "size": 64584723,
-      "md5": "797605d21877899f34b9cc2f9175c111",
+      "lifetime_downloads": 0,
       "last_commit": "[OKSINEW] Bug fixes"
     }
   },
@@ -2200,12 +2093,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-08T18:08",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "0dc0c6bab1d79835cbd8af97989572f7",
       "size": 3202328,
-      "md5": "58be7278164c0d7ae0ef74bd601f84a1",
+      "lifetime_downloads": 0,
       "last_commit": "[PHAROS] Block wine bottle downloads if roms/windows is not present"
     }
   },
@@ -2245,12 +2136,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "84f012ba8515a55489c2c6560cd16831",
       "size": 7513288,
-      "md5": "e10543765559eb9a03301d73e0bb0188",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2300,12 +2189,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "67ba361e0c030d8e60efcb3e89cb5a66",
       "size": 11538774,
-      "md5": "94afe4a96c100764d0d16aff204ee8aa",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2329,10 +2216,12 @@
       "genres": [
         "visual-novel"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "rlvm.squashfs",
+      "runtime": [
+        "rlvm.squashfs"
+      ],
       "store": [],
       "availability": "paid",
       "reqs": [],
@@ -2342,13 +2231,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/planetarian.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/README.md",
-      "size": 260267,
-      "md5": "de367a206da58790e85e2d9f598aab12",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "03000105fb76fd09cd5234b14cc5662e",
+      "size": 260259,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -2386,12 +2273,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pvznd.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "0ac44437dc827d3acdd3b2d66204ae9a",
       "size": 4749045,
-      "md5": "a5119744d68b7e90808d20884c8d2fd5",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2428,12 +2313,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pocketcrystalleague.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "978ad3ae244643759cf6957323606202",
       "size": 21658228,
-      "md5": "a362872c06d1d81c65046eb29165195f",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2471,12 +2354,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-07T23:34",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_fireash.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_fireash/pkmn_fireash/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_fireash/pkmn_fireash/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "70e37c90d6a2ad0233483c68ded65943",
       "size": 12539488,
-      "md5": "922f8e8ab75270a5a73c19aa5f954280",
+      "lifetime_downloads": 0,
       "last_commit": "[FIREASH] Restore port.json"
     }
   },
@@ -2514,12 +2395,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-07T23:31",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_tectonic.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "84a85ab7f9f83a4f6bf640194c47f7b1",
       "size": 12691671,
-      "md5": "aa249f8cc756cd395ccd1d5f5f8837d9",
+      "lifetime_downloads": 0,
       "last_commit": "[PKMNTECTONIC] Fix port.json"
     }
   },
@@ -2547,7 +2426,9 @@
       "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs",
+      "runtime": [
+        "zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [
@@ -2559,13 +2440,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pokewilds.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/README.md",
-      "size": 2196443,
-      "md5": "8caf81ec8477062f215992e5c0b5cde3",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "0dc5041169dec668ae872cee785075b1",
+      "size": 2196446,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -2613,12 +2492,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "2b16268ea79b4c74603b0978f2e8b83c",
       "size": 7531966,
-      "md5": "c878ebc5080c444316c713c7df3086ab",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2655,12 +2532,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sm64-ghostship.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "7d809096d0192e09c6e25a8f4d42e102",
       "size": 11196282,
-      "md5": "f5106006282fa8ead0b85cbcbee43d1e",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2699,12 +2574,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-12T01:28",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "8ec77c30045ecaab50868f874b483596",
       "size": 51295134,
-      "md5": "7ce10d0b47ac95ec54a84984180c775b",
+      "lifetime_downloads": 0,
       "last_commit": "[SOH] Bump to nightly with Anchor support"
     }
   },
@@ -2743,12 +2616,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-07T20:46",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "be7507d2d7725779ef2db20665edea1d",
       "size": 14066154,
-      "md5": "ee5011a782b280f17a425a09fd0a3e50",
+      "lifetime_downloads": 0,
       "last_commit": "[SOH2] Update to 4.0.0"
     }
   },
@@ -2806,12 +2677,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "ff6d880ee2022e79da13dd840ac16d2f",
       "size": 7710727,
-      "md5": "5a00b2e676f0e0bcc454b2b1bb5c17be",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2849,12 +2718,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "cdf527b0b279fdda7e460b264636f6e1",
       "size": 966673,
-      "md5": "d987f8dd8c22f6a64cfc84ae10931d1c",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2892,12 +2759,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "a92da44250d335e0261c92e8ea6cbfff",
       "size": 918779,
-      "md5": "f66c147d570c9776cf727b8766d7c725",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2934,12 +2799,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic3air.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "bd3b1ea10c6b1dcca931348c96704b00",
       "size": 137549708,
-      "md5": "f5a925d9b8ae2af58e35c36a143bea6a",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -2977,12 +2840,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "de36230ef9968bb5a44306f014ab32c2",
       "size": 596175,
-      "md5": "a713c4804a5b8bcfb76265225794798b",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3020,12 +2881,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-01T21:23",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.mania.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "6276fccdd83257ff1a1cf32c09f55806",
       "size": 2532022,
-      "md5": "ab412782277f42a8dee2a0f4950edead",
+      "lifetime_downloads": 0,
       "last_commit": "[SONICMANIA] Adjust build steps"
     }
   },
@@ -3063,12 +2922,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictimetwisted.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "a17fc01febf256dcc96164a940baec01",
       "size": 99464558,
-      "md5": "62e25e6878001ee4ed2b542b22b240ba",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3096,7 +2953,7 @@
         "arcade",
         "platformer"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
       "runtime": [
@@ -3112,13 +2969,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
-      "size": 3567175,
-      "md5": "8732d0ad2cab61b648a3c1db7874781a",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:56",
+      "md5": "8604464a7f20363142cd413613735c5c",
+      "size": 3567166,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -3158,12 +3013,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/unleashedrecomp.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/unleashedrecomp/unleashedrecomp/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "679024a2daa4ccbef5abae3d9be79993",
       "size": 1167541,
-      "md5": "afba61a1284e9e91bdaf7e573c4e0da6",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3200,12 +3053,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-11T00:59",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spaghettikart.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "05316a0420eeb31fbae968cc2b2262d4",
       "size": 28988870,
-      "md5": "294ed15cdbb4f68c072ba797e4072c7f",
+      "lifetime_downloads": 0,
       "last_commit": "[SPAGHETTIKART] Add gamecontrollerdb.txt"
     }
   },
@@ -3256,12 +3107,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "a0d9076c4c183830e1425a00cb813c32",
       "size": 7421419,
-      "md5": "d62d2ec30756a7ce3f9ef77c856ef4c1",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3306,12 +3155,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/theforceengine.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "8b052d63f47b136d688cfabebdcc591c",
       "size": 9713702,
-      "md5": "2961640c8b0153add7a69507b2de8bf7",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3338,7 +3185,7 @@
       ],
       "image": null,
       "rtr": false,
-      "exp": true,
+      "exp": false,
       "runtime": [],
       "store": [
         {
@@ -3364,13 +3211,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valleycore.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/valleycore/valleycore/README.md",
-      "size": 2097466,
-      "md5": "ad41124e83f78b1b1dbe98448b514f01",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "574f611bcc56a2374c876b4321dc6701",
+      "size": 2097463,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -3407,12 +3252,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-08T01:59",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/starship.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "931f7975f8971323b9bac460372504a5",
       "size": 6672625,
-      "md5": "ed77fdababa659e92f31735cf4567e9b",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3452,12 +3295,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:15",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/steamlink.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/README.md",
+      "date_updated": "2026-02-23T23:55",
+      "md5": "4b1e229b0cb0a3b5e99bed9a7b78f0b7",
       "size": 21555096,
-      "md5": "09f3382b8efe270291f3fefe3160576a",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3496,12 +3337,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smb1r.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "475bdef65032d93c3ecc77d3374726e7",
       "size": 67778971,
-      "md5": "b2286b6de4518bfc263bc8f94cfffd61",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3539,12 +3378,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-08T17:40",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mariokartzx.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mariokartzx/mariokartzx/screenshot.png",
-      "readme_url": "",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "7074f305dd55da1010ea8b3d380fb3c9",
       "size": 5029317,
-      "md5": "6651541581c3a38d98e1eb86137a6608",
+      "lifetime_downloads": 0,
       "last_commit": "[MKZX] Release"
     }
   },
@@ -3582,12 +3419,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-02-08T02:04",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smxpr.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "09ee0211f5498f1bcb0a1482c8ad8899",
       "size": 24537887,
-      "md5": "d2959d37713417304dd56f6874a840c1",
+      "lifetime_downloads": 0,
       "last_commit": "[SMXPR] Add genre"
     }
   },
@@ -3630,12 +3465,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/superstartrek.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "29e4fcb4878e551aab84c463e9f2457c",
       "size": 31105162,
-      "md5": "bba851f05ebd71490e14d18093e05bee",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3687,14 +3520,11 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "b936fd1e043050ec48d4e950d4803505",
       "size": 6269466,
-      "md5": "3a542cb92b574f5c664a539a56d1238f",
-      "last_commit": "Normalize all port.json files for version 4",
-      "lifetime_downloads": 16
+      "lifetime_downloads": 16,
+      "last_commit": "Normalize all port.json files for version 4"
     }
   },
   {
@@ -3742,12 +3572,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/thegirlfromarkanya.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/thegirlfromarkanya/thegirlfromarkanya/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/thegirlfromarkanya/thegirlfromarkanya/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "cb092fb4a6e80a16eba7912c1703427d",
       "size": 5729467,
-      "md5": "fd4b4a329eacbbfa49c49a634d684d3d",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3788,12 +3616,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "c8f5dbc756447d9055d11d52fb8578f6",
       "size": 2611818,
-      "md5": "01734020806b356c67218c778380e508",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3834,12 +3660,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "6fa374c0513486a0b0007a138d247b81",
       "size": 2690517,
-      "md5": "31b3fb4aeab801ee1b463a737f5657f6",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -3864,10 +3688,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -3875,13 +3701,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldaxd-mercurischess.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/README.md",
-      "size": 384187,
-      "md5": "3fe0d1498da8c3e0eac2867ed94f3498",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "2836d913d2271ce911a6e0fac3bc1fe9",
+      "size": 384181,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -3905,10 +3729,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "",
+      "runtime": [
+        ""
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -3916,13 +3742,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mercurischest.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/README.md",
-      "size": 2634929,
-      "md5": "9a8da4ddb15faa84c75f05b5f42307ba",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "0c85c73476b326f44679a23e71ba7866",
+      "size": 2634921,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -3946,10 +3770,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -3957,13 +3783,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusdx.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/README.md",
-      "size": 389916,
-      "md5": "0e150fd19162090456b46ddee9c232ff",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "260c7f3aa4e1e9aae6f8b3641864a34a",
+      "size": 389908,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -3987,10 +3811,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -3998,13 +3824,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusxd.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/README.md",
-      "size": 357699,
-      "md5": "a99352bb0b8864e3eed7bdca2a768017",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "2e6992af73dd6b1897b5374890e31263",
+      "size": 357688,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4028,10 +3852,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4039,13 +3865,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-roth-se.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/README.md",
-      "size": 380751,
-      "md5": "bdfd4998a195fd40928870e6133872c4",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "54203f3998b5a3ae9e045dee73b89490",
+      "size": 380745,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4069,10 +3893,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4080,13 +3906,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-bookofmudora.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/README.md",
-      "size": 392653,
-      "md5": "50905be1fcd496f26a254c57933ef8f0",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "8fd1e14c3e5c0b76ee154314d9ce3a6c",
+      "size": 392646,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4110,10 +3934,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4121,13 +3947,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldo-labors.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/README.md",
-      "size": 666239,
-      "md5": "429b9c465490f44278cf512ea121f2c9",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "f2f0b5079bf04a759bfa9aaa3dcf2fc7",
+      "size": 666232,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4151,10 +3975,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4162,13 +3988,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/README.md",
-      "size": 411755,
-      "md5": "e6ae4e3184685ae75ce9c4241948c9e7",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "e5b7ce0cd94d1dcab04be03183afabb2",
+      "size": 411748,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4192,10 +4016,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4203,13 +4029,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge2.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/README.md",
-      "size": 610566,
-      "md5": "b1ef0a4d2d7c3cad9e8cf6c633c2361d",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "48e7f2575e04dfaceba7eeb6222b59c6",
+      "size": 610557,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4253,12 +4077,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldadoi.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "90b0770fd730458a83f3d5b0843b8fab",
       "size": 42862495,
-      "md5": "02b83f7ffd03afc075ded08a3363965c",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4298,12 +4120,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/simpsons_hnr.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/simpsons_hnr/simpsons_hnr/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/simpsons_hnr/simpsons_hnr/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "929e56dbc351b051ec484fa18b1b33c2",
       "size": 323035,
-      "md5": "c22d02c22e022e48264e496bac5d90e8",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4354,12 +4174,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
+      "date_updated": "2026-02-23T23:56",
+      "md5": "4d5236fb5bad142b77333c4bf841070e",
       "size": 5904854,
-      "md5": "a4d7300bb3295e50b6fe716c6fb6b966",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4384,10 +4202,12 @@
         "action",
         "adventure"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4395,13 +4215,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tunics!.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics!/tunics!/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics!/tunics!/README.md",
-      "size": 2422394,
-      "md5": "126536ee2968459495162c76650f733c",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "26e08d90b66b18ca0ccc78694e2a6c30",
+      "size": 2422386,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4439,12 +4257,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-02-21T13:33",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "ac56112816f997edc1d2e33ef013cd24",
       "size": 7615705,
-      "md5": "81d5b65bfbb8898ce0a3fb8197c366c5",
+      "lifetime_downloads": 0,
       "last_commit": "[UFO50] Update to support latest v1.8.35"
     }
   },
@@ -4489,12 +4305,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:16",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "a5a96815c34a8f6b1f3b0e47c197fa3b",
       "size": 11825029,
-      "md5": "43b663ddf5efe4ce527fb90215fac8dc",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4539,12 +4353,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "85a00a701f46ca9cec81038644c5fb8e",
       "size": 12250999,
-      "md5": "16705b33dc008a9182ad71f88d5e046e",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4568,7 +4380,7 @@
       "genres": [
         "rpg"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
       "runtime": [
@@ -4584,13 +4396,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
-      "size": 6226822,
-      "md5": "eb210082fe1d64d2b6dede8a0aec0d11",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "fdfb87c97686ccb72bb1184ae064b715",
+      "size": 6226813,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4645,12 +4455,10 @@
       "min_glibc": ""
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "e7d56236abaf97a820331729d4d7e2e0",
       "size": 4715775,
-      "md5": "c797e09e0212a7baea61d6f0a891c59e",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4693,12 +4501,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "b23af7fe1a51495525a24896f81108f1",
       "size": 7844497,
-      "md5": "69d41f1f84227097e838aad1d7dbb28a",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4736,12 +4542,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/wolf3d.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "6adebabc0e6c98c2f02455452271890b",
       "size": 7926385,
-      "md5": "b5cca1e400c849b29a5b49f233826668",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -4765,10 +4569,12 @@
       "genres": [
         "action"
       ],
-      "image": "screenshot.png",
+      "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": "solarus-1.6.5.squashfs",
+      "runtime": [
+        "solarus-1.6.5.squashfs"
+      ],
       "store": [],
       "availability": "free",
       "reqs": [],
@@ -4776,13 +4582,11 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/yarntown.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/README.md",
-      "size": 497530,
-      "md5": "47471e5a3ab336524763fc3a11f786e4",
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-02-23T23:57",
+      "md5": "90b0910b52c957a380d2163da1fde3fb",
+      "size": 497523,
+      "lifetime_downloads": 0,
+      "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
   {
@@ -4822,12 +4626,10 @@
       "min_glibc": null
     },
     "source": {
-      "date_updated": "2026-01-31T17:17",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ziiaol.zip",
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/README.md",
+      "date_updated": "2026-02-23T23:57",
+      "md5": "d48652acfaeaf9da4e0b0110165a4e96",
       "size": 12606871,
-      "md5": "7bc5533646e120ca48cdb24afe876e01",
+      "lifetime_downloads": 0,
       "last_commit": "Normalize all port.json files for version 4"
     }
   }
