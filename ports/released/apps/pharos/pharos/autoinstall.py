@@ -8,9 +8,9 @@ import shutil
 import xml.etree.ElementTree as ET
 
 AUTOINSTALL_DIR = Path(__file__).parent / "autoinstall"
-PORTS_DIR = Path("/roms/ports")
-WINDOWS_DIR = Path("/roms/windows")
-
+BASE_DIR = Path(__file__).parent
+PORTS_DIR = BASE_DIR.parent
+WINDOWS_DIR = BASE_DIR.parent.parent / "windows"
 
 class AutoInstaller:
     def __init__(self, autoinstall_dir: Path = AUTOINSTALL_DIR):
@@ -26,6 +26,7 @@ class AutoInstaller:
         print(f"[INSTALL] Installing {zip_name}...")
         try:
             with zipfile.ZipFile(zip_path, "r") as zf:
+                print(f"[EXTRACT] Zip contents: {zf.namelist()}")
                 # Find port.json or bottle.json
                 target_json = None
                 for file in zf.namelist():

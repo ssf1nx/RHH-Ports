@@ -153,6 +153,7 @@ class Downloader:
     # Single-port download (streaming)
     # ------------------------------------------------------------------
     def _download_port(self, port: Port, kind: str) -> None:
+        print(f"[DOWNLOAD] Starting: {port.name} from {port.download_url!r}")
         zip_path = self.autoinstall_dir / f"{port.name}.zip"
         try:
             req = urllib.request.Request(
@@ -161,6 +162,7 @@ class Downloader:
             )
             with urllib.request.urlopen(req, timeout=60) as resp:
                 total = int(resp.headers.get("Content-Length", 0))
+                print(f"[DOWNLOAD] Content-Length: {total} bytes")
                 downloaded = 0
                 chunk = 64 * 1024
                 start = time.time()
@@ -197,8 +199,11 @@ class Downloader:
             port.md5 = md5_hash
             port.size = zip_path.stat().st_size
             self._update_manifest(port, kind)
+            
+            print(f"[DOWNLOAD] Complete: {zip_path} ({downloaded} bytes, {time.time()-start:.1f}s)")
 
         except Exception as e:
+            print(f"[DOWNLOAD ERROR] {port.name}: {type(e).__name__}: {e}")
             self._fail(port, f"{type(e).__name__}: {e}")
             with suppress(OSError):
                 zip_path.unlink()

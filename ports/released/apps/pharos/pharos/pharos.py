@@ -335,9 +335,9 @@ class Pharos:
         header_text = f"{len(items)} items in {owner}/{repo.name}"
         self.ui.draw_header(header_text, color_text)
         
-        is_bottle_repo = hasattr(repo, "bottles") and repo.bottles is not None
+        is_bottle_repo = bool(getattr(repo, "bottles", None))
         windows_exists = WINDOWS_DIR.exists()
-        can_download = not (is_bottle_repo and not windows_exists)
+        can_download = (not is_bottle_repo) or WINDOWS_DIR.exists()
 
         max_vis = 12
         start = max(0, self.port_idx - max_vis + 1)
@@ -460,8 +460,8 @@ class Pharos:
         if not items:
             return
 
-        is_bottle_repo = hasattr(repo, "bottles") and repo.bottles is not None
-        can_download = not (is_bottle_repo and not WINDOWS_DIR.exists())
+        is_bottle_repo = bool(getattr(repo, "bottles", None))
+        can_download = (not is_bottle_repo) or WINDOWS_DIR.exists()
 
         if self.input.key(self.layout["a"]["key"]) and can_download:
             self.dl_queue.put((items[self.port_idx], "port" if not is_bottle_repo else "bottle"))
