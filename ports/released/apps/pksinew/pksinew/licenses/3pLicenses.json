@@ -33,10 +33,9 @@
             "Python is used as the primary runtime for this project."
           ]
         },
-      
-    
+
         {
-          "name": "SDL_GameControllerDB",          
+          "name": "SDL_GameControllerDB",
           "lines": [
             "Copyright (c) 2013–2025 the SDL_GameControllerDB contributors",
             "Licensed under the zlib License",
@@ -82,7 +81,7 @@
             "Used as an achievement / reward icon."
           ]
         },
-                {
+        {
           "name": "Refresh Icon",
           "lines": [
             "Source: freeiconspng.com",

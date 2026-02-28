@@ -24,7 +24,7 @@ chmod +xwr "$GAMEDIR/PKsinew"
 
 export LD_LIBRARY_PATH="${GAMEDIR}/libs:${LD_LIBRARY_PATH}"
 export SDL_GAMECONTROLLERCONFIG="${sdl_controllerconfig}"
-export XDG_DATA_HOME="${GAMEDIR}"
+export SDL_VIDEODRIVER="x11"
 
 # Run the app
 pm_platform_helper "PKsinew" >/dev/null
