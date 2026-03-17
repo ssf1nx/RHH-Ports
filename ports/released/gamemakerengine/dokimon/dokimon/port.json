@@ -22,7 +22,9 @@
     "image": null,
     "rtr": true,
     "exp": false,
-    "runtime": [],
+    "runtime": [
+      "gmtoolkit.squashfs"
+    ],
     "store": [
       {
         "name": "Steam",
