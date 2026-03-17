@@ -778,11 +778,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "822a346112c816ffb6df9425855949ef",
-      "size": 104546294,
+      "date_updated": "2026-03-17T11:09",
+      "md5": "088197b06180d2be4af176a451990286",
+      "size": 104556379,
       "lifetime_downloads": 95,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[DOKIMON] Compatibility with latest update"
     }
   },
   {
