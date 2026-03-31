@@ -43,7 +43,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "fd11e8e171f9ffed0ed4ac52330f9493",
       "size": 5261428,
-      "lifetime_downloads": 1225,
+      "lifetime_downloads": 1258,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -89,7 +89,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "c318f388abfe5320e5bd3103158413fa",
       "size": 743858,
-      "lifetime_downloads": 348,
+      "lifetime_downloads": 355,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -142,7 +142,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "0f7fec8fab0d75ddc74a62955ece425c",
       "size": 4904777,
-      "lifetime_downloads": 531,
+      "lifetime_downloads": 542,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -202,7 +202,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "a6d913cd26f0a0f4bd8f71c789015c7a",
       "size": 5027435,
-      "lifetime_downloads": 423,
+      "lifetime_downloads": 431,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -248,7 +248,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "7e51b21f0ab69063ba806bee4201a004",
       "size": 8708338,
-      "lifetime_downloads": 2016,
+      "lifetime_downloads": 2061,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -291,7 +291,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "fcd5d134c0c61e144916219a2353b30b",
       "size": 36908896,
-      "lifetime_downloads": 53,
+      "lifetime_downloads": 54,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -337,7 +337,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "7e340c72495e26bdeb6c051d9440259b",
       "size": 382964,
-      "lifetime_downloads": 75,
+      "lifetime_downloads": 76,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -478,7 +478,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "6eec80b436f415fc3f03298ea4cc3958",
       "size": 8418797,
-      "lifetime_downloads": 47,
+      "lifetime_downloads": 48,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -539,7 +539,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "d1739117577e57c5fa9adb4d74739bec",
       "size": 6507640,
-      "lifetime_downloads": 1179,
+      "lifetime_downloads": 1206,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -587,7 +587,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "6f488389d1818176ef5bfccc9291195f",
       "size": 15516354,
-      "lifetime_downloads": 21,
+      "lifetime_downloads": 23,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -635,7 +635,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "dc0b5dc0d1a6bf6bf8937484de642ebe",
       "size": 15183426,
-      "lifetime_downloads": 86,
+      "lifetime_downloads": 89,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -681,7 +681,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "3a95c77c3d73d6950b36c8b68a526319",
       "size": 7398826,
-      "lifetime_downloads": 135,
+      "lifetime_downloads": 139,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -728,7 +728,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "418650c151586a97a73f908bd2d62ea4",
       "size": 220690043,
-      "lifetime_downloads": 265,
+      "lifetime_downloads": 269,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -783,7 +783,7 @@
       "date_updated": "2026-03-17T11:15",
       "md5": "b2678fa661eba04d8f6ada05048533f6",
       "size": 104556393,
-      "lifetime_downloads": 142,
+      "lifetime_downloads": 144,
       "last_commit": "[DOKIMON] Latest game data working"
     }
   },
@@ -829,7 +829,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "221c462896cf0decfe35e41dbb9b1309",
       "size": 94871329,
-      "lifetime_downloads": 310,
+      "lifetime_downloads": 317,
       "last_commit": "[DOOMENGINES] Add Shrine mod"
     }
   },
@@ -874,7 +874,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "5ee1a1ce5e9fa6605805865a57ccf76d",
       "size": 11315344,
-      "lifetime_downloads": 66,
+      "lifetime_downloads": 67,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -920,7 +920,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "28f28901695582b9fbeab3d6a278e865",
       "size": 41455213,
-      "lifetime_downloads": 158,
+      "lifetime_downloads": 162,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -973,7 +973,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "f5e7d841785a5b30ae02cd854d38c339",
       "size": 6370632,
-      "lifetime_downloads": 204,
+      "lifetime_downloads": 208,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1026,7 +1026,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "5d0c71cab10bd09f7118b06037773d0f",
       "size": 7498415,
-      "lifetime_downloads": 289,
+      "lifetime_downloads": 293,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1075,7 +1075,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "49686b1904d1b1d9be27b3d3c5fe30c6",
       "size": 5503273,
-      "lifetime_downloads": 145,
+      "lifetime_downloads": 148,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1119,7 +1119,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "77651a3ccfe0297214620170bad974ea",
       "size": 470006,
-      "lifetime_downloads": 101,
+      "lifetime_downloads": 103,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -1177,7 +1177,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "dda4ccbfe77d6eab5be81bdee57f6824",
       "size": 5016950,
-      "lifetime_downloads": 120,
+      "lifetime_downloads": 123,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1236,7 +1236,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "45320b8b4385298acadd61f32c21f38e",
       "size": 6696335,
-      "lifetime_downloads": 2428,
+      "lifetime_downloads": 2493,
       "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
     }
   },
@@ -1296,7 +1296,7 @@
       "date_updated": "2026-02-24T00:37",
       "md5": "0c015b53ada25030eac81c4f63773ce3",
       "size": 6774803,
-      "lifetime_downloads": 1676,
+      "lifetime_downloads": 1725,
       "last_commit": "[TEAMCHERRY] Use custom gptokeyb to fix d-pad"
     }
   },
@@ -1355,7 +1355,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "553f4139cd84cead7b539eed7e5517a0",
       "size": 7948056,
-      "lifetime_downloads": 140,
+      "lifetime_downloads": 143,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
@@ -1401,7 +1401,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "7ff6b4fe5fdfc0e0c058ed3ac1f8baac",
       "size": 335376,
-      "lifetime_downloads": 73,
+      "lifetime_downloads": 74,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -1457,7 +1457,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "d41eb39325c2ac0d3095f88af4eed292",
       "size": 6614869,
-      "lifetime_downloads": 357,
+      "lifetime_downloads": 366,
       "last_commit": "Insert thumbnail into all gameinfo.xml files"
     }
   },
@@ -1546,7 +1546,7 @@
       "date_updated": "2026-02-24T00:39",
       "md5": "40b7dc0dddefffeaa682e63074799828",
       "size": 517354,
-      "lifetime_downloads": 58,
+      "lifetime_downloads": 59,
       "last_commit": "Convert older port.json runtime strings to arrays"
     }
   },
@@ -3764,7 +3764,7 @@
       "date_updated": "2026-02-24T00:38",
       "md5": "f26ad47af2ac070b015fd5cac44af627",
       "size": 6269466,
-      "lifetime_downloads": 318,
+      "lifetime_downloads": 324,
       "last_commit": "Normalize all port.json files for version 4"
     }
   },
