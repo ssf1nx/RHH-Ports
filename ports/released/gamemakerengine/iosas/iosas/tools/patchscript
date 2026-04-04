@@ -319,8 +319,8 @@ modify_datafile() {
     replace_code || return 1
     echo "Toggling GeneralInfo flags..."
     set_flags || return 1
-    echo "Externalizing textures..."
-    dump_textures || return 1
+    #echo "Externalizing textures..."
+    #dump_textures || return 1
 }
 
 process_game() {

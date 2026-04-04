@@ -1,5 +1,5 @@
 ## Installation
-Add your game data from your Steam (`download_depot 1233070 1233071 5882208673348681355`) or Itch.io installation v2.5 to `ports/iosas/assets`. First-time run will handle sorting data.
+Add your game data from your Steam or Itch.io installation to `ports/iosas/assets`. First-time run will handle sorting data.
 
 ## Default Gameplay Controls
 | Button | Action |
