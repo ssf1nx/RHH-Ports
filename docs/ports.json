@@ -4549,11 +4549,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "9f8be5af5f2d679bd0beecd98f826fd2",
-      "size": 7615810,
+      "date_updated": "2026-04-04T11:29",
+      "md5": "e42470e5dc246b25982b1e2f6173c5fb",
+      "size": 7615814,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[UFO50] Fix booting for latest game data"
     }
   },
   {
