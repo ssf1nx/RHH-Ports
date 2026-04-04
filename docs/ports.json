@@ -1352,11 +1352,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "990967d55e1c2f3e763b859e028584ad",
-      "size": 7948174,
+      "date_updated": "2026-04-04T02:11",
+      "md5": "b5843b32cb63f4a780ce1b8396007709",
+      "size": 7948125,
       "lifetime_downloads": 5,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[IOSAS] Can run latest data if textures are not externalized"
     }
   },
   {
