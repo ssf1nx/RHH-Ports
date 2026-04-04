@@ -95,7 +95,7 @@ else if (substate == SUB_NAV)
                 window_enable_borderless_fullscreen(!global.dispBordered);
                 window_set_fullscreen(global.fullscreen);
                 prevFullScreen = window_get_fullscreen();
-                scrScaleDisplay();
+                global.scrScaleDisplay();
                 delayLen = delayLenLong;
                 scrSwitchSub(SUB_DELAY);
                 break;

@@ -18,7 +18,7 @@ function scrInitDisplay()
         window_center();
     
     scrDefinePalette();
-    scrScaleDisplay();
+    global.scrScaleDisplay();
     texturegroup_set_mode(true);
     global.TEXTUREGROUP = array_create(53);
     global.TEXTUREGROUP[0] = "texturegroup00_library";

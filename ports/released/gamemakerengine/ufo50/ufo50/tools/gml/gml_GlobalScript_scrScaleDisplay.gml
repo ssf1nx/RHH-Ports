@@ -1,4 +1,4 @@
-function scrScaleDisplay()
+global.scrScaleDisplay = function()
 {
     var _dwidth = window_get_width();
     var _dheight = window_get_height();

@@ -10,7 +10,7 @@ if (window_get_fullscreen())
 if (do_screen)
 {
     if (_dwidth != global.lastWindowWidth || _dheight != global.lastWindowHeight)
-        scrScaleDisplay();
+        global.scrScaleDisplay();
     
     gpu_set_tex_filter(global.dispFilter);
     draw_clear(c_black);
