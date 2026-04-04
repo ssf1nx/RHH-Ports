@@ -48,6 +48,7 @@ chmod +x "$GAME"
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/data:$LD_LIBRARY_PATH"
+export XDG_DATA_HOME="$GAMEDIR"
 
 # Run the game
 $GPTOKEYB "LADXHD" -c "$GAMEDIR/zelda.gptk" &
