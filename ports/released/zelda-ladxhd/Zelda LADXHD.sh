@@ -45,6 +45,18 @@ cd "$GAMEDIR/data"
 # Permissions
 chmod +x "$GAME"
 
+# Request libGL
+if [ -f "${controlfolder}/libgl_${CFW_NAME}.txt" ]; then
+    source "${controlfolder}/libgl_${CFW_NAME}.txt"
+else
+    source "${controlfolder}/libgl_default.txt"
+fi
+
+if [[ "$LIBGL_ES" != "" ]]; then
+    export SDL_VIDEO_GL_DRIVER="${GAMEDIR}/gl4es/libGL.so.1"
+    export SDL_VIDEO_EGL_DRIVER="${GAMEDIR}/gl4es/libEGL.so.1"
+fi
+
 # Exports
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/data:$LD_LIBRARY_PATH"
