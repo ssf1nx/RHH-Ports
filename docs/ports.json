@@ -2565,59 +2565,6 @@
   },
   {
     "version": 4,
-    "name": "ratcheteerdx.zip",
-    "items": [
-      "Ratcheteer DX.sh",
-      "ratcheteerdx"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Ratcheteer DX",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "From the creator of MinUI, explore the interconnected caverns below the frozen surface and a vast Snowcean above as you set out to rescue friend, foe, and stranger alike in this lo-fi action-adventure!",
-      "desc_md": null,
-      "inst": "Download the demo with `download_depot 3908650 3908653 2932770551190015228` and add to the data folder, and if you enjoy the demo purchase the full game and add its data instead! Full game latest manifest can be copied here: https://steamdb.info/depot/3166153/manifests/",
-      "inst_md": null,
-      "genres": [
-        "action",
-        "adventure",
-        "rpg"
-      ],
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": [
-        "weston_pkg_0.2.squashfs"
-      ],
-      "store": [
-        {
-          "name": "Steam",
-          "gameurl": "https://store.steampowered.com/app/3166150/Ratcheteer_DX/",
-          "developerurl": "https://ratcheteer.com/"
-        }
-      ],
-      "availability": "paid",
-      "reqs": [],
-      "arch": [
-        "aarch64"
-      ],
-      "min_glibc": ""
-    },
-    "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/ratcheteerdx/ratcheteerdx/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/ratcheteerdx/ratcheteerdx/README.md",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ratcheteerdx.zip",
-      "date_updated": "2026-02-25T01:38",
-      "md5": "3c2696cbc7b7f1cfc9e4e59fa7fc90f4",
-      "size": 5242643,
-      "lifetime_downloads": 0,
-      "last_commit": "[RELEASE] RatcheteerDX"
-    }
-  },
-  {
-    "version": 4,
     "name": "rolusoutskirts.zip",
     "items": [
       "Rolus in the Outskirts",
@@ -4403,11 +4350,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-04-04T13:25",
-      "md5": "deba0ee486127ab9b181fa9b23f918a2",
-      "size": 257800,
+      "date_updated": "2026-04-10T13:21",
+      "md5": "4ad2a15d8c9bad0424c4ba11f19ca5d6",
+      "size": 697015,
       "lifetime_downloads": 0,
-      "last_commit": "[RELEASE] Release LADXHD"
+      "last_commit": "[LADXHD] Use gl4es"
     }
   },
   {
