@@ -4350,11 +4350,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-04-11T11:09",
-      "md5": "2c0ff5dbd8de1dd777adbd58e6dca682",
-      "size": 698631,
+      "date_updated": "2026-04-11T14:13",
+      "md5": "2160860483d3549bbc633af8bca9c914",
+      "size": 698624,
       "lifetime_downloads": 0,
-      "last_commit": "[LADXHD] Add swapabxy for physical button layout differences"
+      "last_commit": "[ALDXHD] Ensure Mods folder lands in data folder"
     }
   },
   {
