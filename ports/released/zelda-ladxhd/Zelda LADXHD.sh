@@ -62,6 +62,24 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export LD_LIBRARY_PATH="$GAMEDIR/data:$LD_LIBRARY_PATH"
 export XDG_DATA_HOME="$GAMEDIR"
 
+swapabxy() {
+    # Update SDL_GAMECONTROLLERCONFIG to swap a/b and x/y button
+
+    if [ "$CFW_NAME" == "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
+	    # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
+        cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
+	    export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"
+    else
+        # Other CFW use SDL_GAMECONTROLLERCONFIG
+        export SDL_GAMECONTROLLERCONFIG="`echo "$SDL_GAMECONTROLLERCONFIG" | $GAMEDIR/tools/swapabxy.py`"
+    fi
+}
+
+# Swap a/b and x/y button if needed
+if [ -f "$GAMEDIR/swapabxy.txt" ]; then
+    swapabxy
+fi
+
 # Run the game
 $GPTOKEYB "LADXHD" -c "$GAMEDIR/zelda.gptk" &
 pm_platform_helper "$GAME" >/dev/null
