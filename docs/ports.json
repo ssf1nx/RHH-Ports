@@ -2808,11 +2808,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-04-12T12:12",
-      "md5": "c4fabb3c9a35a06980f41bad0c00bbac",
-      "size": 7712798,
+      "date_updated": "2026-04-12T20:40",
+      "md5": "e6592f31dac33837773c7615327cdf1e",
+      "size": 7713285,
       "lifetime_downloads": 0,
-      "last_commit": "[SHRINESLEGACY] Fix patching with gmloader and runtime update"
+      "last_commit": "[SHRINESLEGACY] Add a config.sav file to avoid error on new installs"
     }
   },
   {
