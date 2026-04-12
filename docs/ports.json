@@ -4338,9 +4338,7 @@
       "runtime": [],
       "store": [],
       "availability": "free",
-      "reqs": [
-        "aarch64"
-      ],
+      "reqs": [],
       "arch": [
         "aarch64"
       ],
@@ -4350,8 +4348,8 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-04-12T11:22",
-      "md5": "03ae258763b66a9c8445a0669b7e16ee",
+      "date_updated": "2026-04-12T11:28",
+      "md5": "c83efdb43fad98dfb40f0aed75aeb751",
       "size": 701097,
       "lifetime_downloads": 0,
       "last_commit": "[LADXHD] Add float scaling mods thanks to BigHeadSMZ"
