@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # LADXHD Patcher for Linux ARM64
 # Extracts game from zip, then applies xdelta3 patches to update v1.0.0 to the latest version.
 # Based on the Windows patcher by BigheadSMZ: https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated
