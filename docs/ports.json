@@ -433,11 +433,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "b7d6afee7c1d46ea490423dde425f067",
-      "size": 5835489,
+      "date_updated": "2026-04-13T12:51",
+      "md5": "dcf4f5e60eb13438e635d7ebfa640a83",
+      "size": 6232276,
       "lifetime_downloads": 3,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "last_commit": "[DARKDEITY] Move splash to assets folder"
     }
   },
   {
