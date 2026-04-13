@@ -26,7 +26,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -40,11 +41,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/am2r.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "a44828b512407a31291fe93e98aa9496",
-      "size": 5261430,
-      "lifetime_downloads": 34,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "4050caff80588539ecb2a23c773da82e",
+      "size": 2974238,
+      "lifetime_downloads": 49,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -119,7 +120,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -139,11 +141,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "b31ebc0481f53df554d1498b98b33fef",
-      "size": 4904658,
-      "lifetime_downloads": 12,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "9af086c88dc1c534282da5aa2dd94765",
+      "size": 2621866,
+      "lifetime_downloads": 17,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -172,7 +174,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -199,11 +202,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "e90087aa1b1aaaa36ae435322f2ab495",
-      "size": 5027534,
-      "lifetime_downloads": 9,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "c093977ddf065f661a504e98c8cdc46f",
+      "size": 2750540,
+      "lifetime_downloads": 12,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -275,7 +278,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -288,11 +293,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/benboquest.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "fcd5d134c0c61e144916219a2353b30b",
-      "size": 36908896,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "4d20065569746c7b1ba47a84e5cc03e1",
+      "size": 34623482,
+      "lifetime_downloads": 2,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -411,7 +416,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -427,11 +433,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "3fe0b52bb336348583715b6f704b82fe",
-      "size": 8122640,
-      "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "b7d6afee7c1d46ea490423dde425f067",
+      "size": 5835489,
+      "lifetime_downloads": 3,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -459,7 +465,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -475,11 +482,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "071cce18cf762d77276f93ef7dc97a61",
-      "size": 8418897,
-      "lifetime_downloads": 1,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "1529bba11d5b44caa5943be1d89a5f40",
+      "size": 6131588,
+      "lifetime_downloads": 2,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -511,7 +518,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -536,11 +544,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "8b50ac2b0270dff0bbce2f2f4e68808d",
-      "size": 6507780,
-      "lifetime_downloads": 29,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "d08fbe47c19da6a7ee49fd748c802ab6",
+      "size": 4198520,
+      "lifetime_downloads": 45,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -757,7 +765,8 @@
       "rtr": true,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -780,11 +789,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "3ccde7122f2df779aefe8588c668fa53",
-      "size": 104556518,
-      "lifetime_downloads": 3,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:12",
+      "md5": "fc455ea253bc1d2bffd1893b922d65f6",
+      "size": 102267293,
+      "lifetime_downloads": 5,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -904,7 +913,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -917,11 +928,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/f-zeropocket.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "28f28901695582b9fbeab3d6a278e865",
-      "size": 41455213,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "235abfff22dd3ea806dc5cea84763491",
+      "size": 39169769,
+      "lifetime_downloads": 5,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -950,7 +961,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -970,11 +982,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fadingafternoon.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "6a582d6bb2202d30e4df3d84195d6f81",
-      "size": 6370723,
-      "lifetime_downloads": 4,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "13d18d4d6df5397f0d1f187f17512c5b",
+      "size": 4083362,
+      "lifetime_downloads": 8,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1003,7 +1015,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1023,11 +1036,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "eed30e278bf3b06d192a47508d17adf2",
-      "size": 7498559,
-      "lifetime_downloads": 4,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "71e3f94e145d6d10dd1f48967b070dde",
+      "size": 5217931,
+      "lifetime_downloads": 9,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1053,7 +1066,9 @@
       "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [
         {
           "name": "Itch.io",
@@ -1072,11 +1087,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "645cefea4ac87f118ca14f6ffc939065",
-      "size": 5503277,
-      "lifetime_downloads": 3,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "6e4df14193c5d138293e4e187398eeb6",
+      "size": 3215954,
+      "lifetime_downloads": 5,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1149,7 +1164,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1174,11 +1190,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "a7b24edf745ca986c8c4211dc714e2ce",
-      "size": 5016795,
-      "lifetime_downloads": 3,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "5a0caad3f2d0a97c5d4187cf4e6ba415",
+      "size": 2734663,
+      "lifetime_downloads": 6,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1327,7 +1343,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1352,11 +1369,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-04-04T02:11",
-      "md5": "b5843b32cb63f4a780ce1b8396007709",
-      "size": 7948125,
-      "lifetime_downloads": 5,
-      "last_commit": "[IOSAS] Can run latest data if textures are not externalized"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "e2360947b1ca3796e06e2761422d77c2",
+      "size": 5658940,
+      "lifetime_downloads": 13,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1432,7 +1449,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1454,11 +1472,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "ec4d1e2cc9ff895daf76ef769bc165a2",
-      "size": 6614864,
-      "lifetime_downloads": 9,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "f8df5516cdbe9722bece32f84a191ea8",
+      "size": 4325545,
+      "lifetime_downloads": 13,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1577,7 +1595,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -1593,11 +1612,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "d1e89870bc829ee78e19d28ea99acf3c",
-      "size": 7610157,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "c0878fc9b65fd91d18a19b52a255ebe8",
+      "size": 5324748,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1626,7 +1645,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1648,11 +1668,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "45890f2c885591503388786b86fdcf5c",
-      "size": 7401909,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "978027be2d143054894a3c02c3012f26",
+      "size": 5117298,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1681,7 +1701,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -1695,11 +1716,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mslugsbf/mslugsbf/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mslugsbf/mslugsbf/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mslugsbf.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "4427478bf01f6b7c69a98e793c644e09",
-      "size": 5460468,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "10eb56d7db1bc940286eba8a99cf105b",
+      "size": 3173196,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1835,7 +1856,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -1849,11 +1871,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "df4437f03c3f402a1d51b176c292c037",
-      "size": 5335306,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "17dfc02c91728ec33fcd833b7f35570b",
+      "size": 3047990,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1879,7 +1901,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [
         {
           "name": "Steam",
@@ -1899,11 +1923,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/nubbysnumberfactory.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "2eac1c046d33edf7e2c29c5176dc60be",
-      "size": 33778920,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "83c423b47e7f39c24a6b82af53349570",
+      "size": 31493407,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -1975,7 +1999,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -1997,11 +2022,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "4e72bf2afd20fee5fd32cffeca478736",
-      "size": 7090188,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "46fb0a0974365df09e6182cb1ed22f62",
+      "size": 4802988,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2074,7 +2099,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -2096,11 +2122,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "b45a588cb1c3a98449118079ce8598c6",
-      "size": 7193415,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "ad8baa36693637f7740e694a0fb52477",
+      "size": 4906106,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2213,7 +2239,9 @@
       "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "",
       "reqs": [
@@ -2229,11 +2257,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-02-24T00:37",
-      "md5": "be30297c3a38304463d05f2e6f4e85f9",
-      "size": 7513288,
+      "date_updated": "2026-04-13T02:12",
+      "md5": "0980e1ddb1504968952b8f5c0256afed",
+      "size": 5227872,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2263,7 +2291,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "dotnet-8.0.12.squashfs"
+        "dotnet-8.0.12.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -2285,11 +2314,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "7863b41dd3a22bb5c2992620eaf5bb3e",
-      "size": 11538779,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "94509356e52877f94584bf3cac9655df",
+      "size": 10886231,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2361,7 +2390,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -2377,11 +2407,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pvznd.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "0f84d77354ecf2df42a4c532168ae237",
-      "size": 4748922,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "f9647d034706be0e043005a613c4a7b1",
+      "size": 2466377,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2407,7 +2437,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -2420,11 +2452,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pocketcrystalleague.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "eb3604d31ea3ad9bf589097db78dd484",
-      "size": 21658228,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "bb3122c2529c8dfd4fa834a2afab7c77",
+      "size": 19377583,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2589,7 +2621,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -2611,11 +2644,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "date_updated": "2026-02-24T00:37",
-      "md5": "519305b6c9f10f1f5cc274b1629bf02e",
-      "size": 7531966,
+      "date_updated": "2026-04-13T02:12",
+      "md5": "3b626a41e12370a6cd600986f6639803",
+      "size": 5246644,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -2776,7 +2809,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -2808,11 +2842,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-04-12T20:40",
-      "md5": "e6592f31dac33837773c7615327cdf1e",
-      "size": 7713285,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "833bddbf948e4d1dc6c40b64231ac41a",
+      "size": 5423980,
       "lifetime_downloads": 0,
-      "last_commit": "[SHRINESLEGACY] Add a config.sav file to avoid error on new installs"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3058,7 +3092,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -3071,11 +3107,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictimetwisted.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "aaf45fa15111d4fde2b30ed7c4e60930",
-      "size": 99464558,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "df15203dd99b248c6376edb2a487ed90",
+      "size": 97179062,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3107,7 +3143,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -3121,11 +3158,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "36042b2760b4da9aae9ed17c85205af6",
-      "size": 3567188,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "6477326ad7eb06cb2a066555ce610236",
+      "size": 1281937,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3243,7 +3280,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -3268,11 +3306,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "383eae02ac6f5ed6b06e3af4ec78fa62",
-      "size": 7421310,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "ec7c0458c8ec915132c500701e33183f",
+      "size": 5134000,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3543,7 +3581,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -3557,11 +3596,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mariokartzx/mariokartzx/screenshot.png",
       "readme_url": "",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mariokartzx.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "89fdef7d86d3424679bda253b7ec2f52",
-      "size": 5029361,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "f02fa7f48d425fc9fc8170cdf2c41a84",
+      "size": 2744700,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3588,7 +3627,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -3601,11 +3642,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smxpr.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "3cb922cbb8e1c75440170f5ffbcfac7c",
-      "size": 24537887,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "37fe719bb7dffbbad5f20ed63a2595e5",
+      "size": 22253391,
       "lifetime_downloads": 0,
-      "last_commit": "[SMXPR] Add genre"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3631,7 +3672,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [
         {
           "name": "GitHub Source",
@@ -3650,11 +3693,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/superstartrek.zip",
-      "date_updated": "2026-02-28T23:58",
-      "md5": "2fe65224cdd9628ed8321348d0f685e5",
-      "size": 20134699,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "f40609cb683c582b7b440e3061e1fc23",
+      "size": 17850122,
       "lifetime_downloads": 0,
-      "last_commit": "[SST25TH] Update v1.0.3"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3683,7 +3726,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -3708,11 +3752,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "b0ad9bb226257ddb4297620c6a2ce68a",
-      "size": 6269353,
-      "lifetime_downloads": 6,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-04-13T02:13",
+      "md5": "6d3b177d0e0877e485a609cf63121041",
+      "size": 3986701,
+      "lifetime_downloads": 11,
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3796,7 +3840,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -3810,11 +3855,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "4dbbd22f3fda06415365548979fa12bf",
-      "size": 2611820,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "0e8a129561bddd5f24d83314b50893eb",
+      "size": 324523,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -3843,7 +3888,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -3857,11 +3903,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "473f881d81115bf0c1cc61b7c6659954",
-      "size": 2690518,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "f21dece3ed3b9ca8fe9decd9201003bf",
+      "size": 403221,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4288,7 +4334,9 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [],
       "availability": "",
       "reqs": [
@@ -4304,11 +4352,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldadoi.zip",
-      "date_updated": "2026-02-24T00:38",
-      "md5": "a6ac35304c1fcfb5e3e2dd5a2ca733c7",
-      "size": 42862495,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "91546be160af0978ce58917fbc8c823f",
+      "size": 40573642,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4426,7 +4474,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -4451,11 +4500,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "c5da313f604a3a29d7e1026bb7722080",
-      "size": 5904860,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "d1c32d91a3a19e1d0e420a691fb58652",
+      "size": 3622312,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4526,7 +4575,8 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -4540,11 +4590,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-04-04T11:29",
-      "md5": "e42470e5dc246b25982b1e2f6173c5fb",
-      "size": 7615814,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "092dec695c09c5be88b42a1365fe756b",
+      "size": 5326626,
       "lifetime_downloads": 0,
-      "last_commit": "[UFO50] Fix booting for latest game data"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4573,7 +4623,9 @@
       "image": null,
       "rtr": false,
       "exp": false,
-      "runtime": [],
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
       "store": [
         {
           "name": "Steam",
@@ -4591,11 +4643,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "11582d772f04af688e97efe7e43f0694",
-      "size": 11825031,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "8d9a371268fe04405419e1dbeb5eab09",
+      "size": 9539600,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4623,7 +4675,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -4642,11 +4695,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "a89fe754397c4e59b2d97a1035d78128",
-      "size": 12250921,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "4cbab54280ee83cad3622994136a95b4",
+      "size": 9965350,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4674,7 +4727,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "free",
@@ -4688,11 +4742,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "549a53165617b0d38912b7965eaa9c11",
-      "size": 6226914,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "b48d44f556175aa790c0a36a8cd76b50",
+      "size": 3939645,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4720,7 +4774,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [
         {
@@ -4750,11 +4805,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "f5a18945ddd327419d8711319bf789eb",
-      "size": 4715747,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "37ddaeefb5cff6bd6cee0ab150d057b8",
+      "size": 2432868,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
@@ -4783,7 +4838,8 @@
       "exp": false,
       "runtime": [
         "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs"
+        "gmtoolkit.squashfs",
+        "gmloadernext.squashfs"
       ],
       "store": [],
       "availability": "paid",
@@ -4799,11 +4855,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "8d80ff85ffc196c47366a0db6deae388",
-      "size": 7844405,
+      "date_updated": "2026-04-13T02:13",
+      "md5": "ffa07e74c77e2b1ad0dcc96f8b85857a",
+      "size": 5559060,
       "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "last_commit": "[GMS] Switch to gmloadernext runtime"
     }
   },
   {
