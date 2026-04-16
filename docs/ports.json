@@ -2368,54 +2368,6 @@
   },
   {
     "version": 4,
-    "name": "pvznd.zip",
-    "items": [
-      "Plants vs Zombies ND.sh",
-      "pvznd"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Plants vs Zombies : Neighborhood Defense",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Plants vs zombies Neighborhood defense is a PVZ fangame with high difficulty and new content! +90 levels, hard mode, versus mode, vasebreaker, endless zone and more!",
-      "desc_md": null,
-      "inst": "Download the *Windows* version from https://crisdevelop.itch.io/pvznd and add the zip to the `pvznd/assets` folder.",
-      "inst_md": null,
-      "genres": [
-        "strategy"
-      ],
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": [
-        "gmtoolkit.squashfs",
-        "gmloadernext.squashfs"
-      ],
-      "store": [],
-      "availability": "free",
-      "reqs": [
-        "2GB"
-      ],
-      "arch": [
-        "aarch64"
-      ],
-      "min_glibc": ""
-    },
-    "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pvznd/pvznd/README.md",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pvznd.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "f9647d034706be0e043005a613c4a7b1",
-      "size": 2466377,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
-    }
-  },
-  {
-    "version": 4,
     "name": "pocketcrystalleague.zip",
     "items": [
       "Pocket Crystal League.sh",
@@ -4590,11 +4542,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "092dec695c09c5be88b42a1365fe756b",
+      "date_updated": "2026-04-16T21:30",
+      "md5": "73460892621562a07f5dcbe8bd065d64",
       "size": 5326626,
       "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "last_commit": "[UFO50] v1.9.1 readme update"
     }
   },
   {
