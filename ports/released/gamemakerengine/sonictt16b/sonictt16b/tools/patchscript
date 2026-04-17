@@ -123,7 +123,7 @@ set_flags() {
     export SET_FLAGS="Fullscreen"
     export CLEAR_FLAGS="Scale"
     dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        load "$DATADIR/data.win" \
+        load "$DATADIR/game.droid" \
         -s "$GAMEDIR/tools/toggleflags.csx" \
         -o "$DATADIR/game2.droid"
 
