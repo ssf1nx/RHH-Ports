@@ -789,11 +789,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "fc455ea253bc1d2bffd1893b922d65f6",
-      "size": 102267293,
-      "lifetime_downloads": 5,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-04-20T23:51",
+      "md5": "a05a8c720afabfb9217c544fadfb7b3d",
+      "size": 56271897,
+      "lifetime_downloads": 6,
+      "last_commit": "[DOKIMON] Remove duplicate demo files"
     }
   },
   {
