@@ -2925,11 +2925,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic3air.zip",
-      "date_updated": "2026-04-23T16:47",
-      "md5": "f24121f0fdd9ea3b2369d439caec9dec",
-      "size": 3464959,
+      "date_updated": "2026-04-23T17:22",
+      "md5": "720ba64b5763d5856062dbe409ba23ac",
+      "size": 138117653,
       "lifetime_downloads": 0,
-      "last_commit": "Clean up sonic3air"
+      "last_commit": "[SONIC3AIR] Update to 29cf83c"
     }
   },
   {
