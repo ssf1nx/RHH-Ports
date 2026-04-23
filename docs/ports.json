@@ -2925,11 +2925,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic3air/sonic3air/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic3air.zip",
-      "date_updated": "2026-02-24T00:39",
-      "md5": "c4d53f09fdbb0dfaad5088536b483b86",
-      "size": 137549708,
+      "date_updated": "2026-04-23T15:58",
+      "md5": "d1da61a9b86c65e1daa0320aede0770e",
+      "size": 137549923,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Add more autobuild"
     }
   },
   {
@@ -2969,11 +2969,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-02-24T00:39",
-      "md5": "79e13587d5e730e89dceae5376da1334",
-      "size": 596175,
+      "date_updated": "2026-04-23T15:58",
+      "md5": "1025927735f477988cf732bef49ad18b",
+      "size": 596388,
       "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "last_commit": "Add more autobuild"
     }
   },
   {
