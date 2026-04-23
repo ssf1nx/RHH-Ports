@@ -30,24 +30,14 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 mkdir -p "config"
 bind_directories "$XDG_DATA_HOME/Sonic3AIR" "$GAMEDIR/config"
 
-# Patch config.json. Upstream ships defaults tuned for desktops (640x480
-# window, Disclaimer start screen, no debug menu). We sync config.json on
-# every port update so new upstream keys come along for free, then sed the
-# RHH-specific values back in here. Idempotent: running on an already-
-# correct file is a no-op.
+# Patch config.json
 if [ -f "$GAMEDIR/config.json" ]; then
   sed -i "s|\"StartPhase\":[[:space:]]*\"[0-9]*\"|\"StartPhase\": \"0\"|" "$GAMEDIR/config.json"
   sed -i "s|\"WindowSize\":[[:space:]]*\"[0-9]\+[[:space:]]*x[[:space:]]*[0-9]\+\"|\"WindowSize\": \"${DISPLAY_WIDTH} x ${DISPLAY_HEIGHT}\"|" "$GAMEDIR/config.json"
   sed -i "s|\"EnforceDebugMode\":[[:space:]]*\"[0-9]*\"|\"EnforceDebugMode\": \"1\"|" "$GAMEDIR/config.json"
 fi
 
-# audioremaster.bin (~200MB of Ogg Vorbis) is shipped as a multi-volume 7z
-# archive (audioremaster.7z.001, .002, ...) because a single file exceeds
-# GitHub's 100MB per-file limit. The other packaged data/*.bin files are
-# small enough to ship directly. Presence of .001 means the archive is
-# newer than whatever data/audioremaster.bin we've got (either first run
-# or port update), so we extract into data/ and remove the parts. Pointing
-# 7zzs at the first part is enough — it follows the chain automatically.
+# # Extract audioremaster.bin
 if [ -f "$GAMEDIR/audioremaster.7z.001" ]; then
   SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
   if [ ! -x "$SEVENZIP" ]; then

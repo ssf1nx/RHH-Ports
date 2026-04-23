@@ -50,19 +50,25 @@ git_clone_retry --recursive https://github.com/Eukaryot/sonic3air.git
 cd sonic3air
 
 # Check out the latest release tag, or branch HEAD if FORCE_HEAD is set.
+# We capture the tag into SONIC3AIR_TAG because later we download upstream's
+# release tarball for this same tag to pull scripts.bin out of it.
 git fetch --tags
+SONIC3AIR_TAG=""
 if [[ "${FORCE_HEAD:-false}" == "true" ]]; then
   echo "FORCE_HEAD=true — building from branch HEAD (nightly)"
+  echo "WARN: scripts.bin download from release tarball won't be possible for"
+  echo "      HEAD builds; nightly sonic3air ports are not supported."
+  exit 1
 else
   # sonic3air tags prereleases too (e.g. -preview, -test). Filter to the
   # latest -stable tag so we don't accidentally ship an unstable build.
-  latest=$(git tag --sort=-creatordate | grep -E '\-stable$' | head -n1)
-  if [[ -z "$latest" ]]; then
-    echo "No -stable tag found; falling back to main HEAD"
-  else
-    echo "Checking out latest stable tag: $latest"
-    git checkout "$latest"
+  SONIC3AIR_TAG=$(git tag --sort=-creatordate | grep -E '\-stable$' | head -n1)
+  if [[ -z "$SONIC3AIR_TAG" ]]; then
+    echo "ERROR: No -stable tag found"
+    exit 1
   fi
+  echo "Checking out latest stable tag: $SONIC3AIR_TAG"
+  git checkout "$SONIC3AIR_TAG"
 fi
 
 # Submodule init can also hit transient HTTP 500s from GitHub — retry.
@@ -83,21 +89,50 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_GLES=ON
 make -j$(nproc)
 cd ../../../../..
 
-# Run the binary with -pack to package the raw data/ tree into the compact
-# .bin files upstream's Linux release ships (gamedata.bin, audiodata.bin,
-# audioremaster.bin, enginedata.bin, scripts.bin + metadata.json). This
-# shrinks the port payload from ~330MB raw to ~220MB packaged, and matches
-# the layout the engine expects at runtime. PackageBuilder writes the bins
-# to cwd; metadata.json is written into data/ directly.
+# Package the raw asset tree into the compact .bin files upstream's Linux
+# release ships. `-pack` produces four bins (gamedata.bin, audiodata.bin,
+# audioremaster.bin, enginedata.bin) in cwd plus data/metadata.json. It
+# returns from main() before EngineMain is constructed (see main.cpp's
+# if (arguments.mPack) block), so there's no SDL window creation and no
+# video/audio init — safe to run on a headless CI runner.
+#
+# Per PackageBuilder.cpp, `-pack` REQUIRES ../oxygenengine/ to exist next
+# door, which our build tree has.
+#
+# `-pack` does NOT produce scripts.bin. Generating scripts.bin via the
+# engine's script compilation path would require full engine startup
+# (SDL window + GL context), which needs a display we don't have in CI.
+# Instead, we grab scripts.bin from upstream's tagged release tarball —
+# Lemon's serialization format (see Oxygen/lemonscript/source/lemon/program/
+# ModuleSerializer.cpp) uses fixed-width integer types with no pointer or
+# host-architecture dependence, so upstream's x86_64-built scripts.bin
+# loads cleanly in our aarch64 binary from the same tag.
 cd Oxygen/sonic3air
 ./sonic3air_linux -pack
-# Rebuild data/ containing only the packaged outputs (+ metadata.json,
-# + icon.png which is part of the canonical release layout).
+
+# Fetch upstream's Linux tarball for the same tag and extract scripts.bin.
+mkdir -p upstream
+curl -sfL -o upstream/game.tar.gz \
+    "https://github.com/Eukaryot/sonic3air/releases/download/$SONIC3AIR_TAG/sonic3air_game.tar.gz" \
+  || { echo "ERROR: failed to download release tarball for $SONIC3AIR_TAG"; exit 1; }
+tar xzf upstream/game.tar.gz -C upstream sonic3air_game/data/scripts.bin
+[[ -f upstream/sonic3air_game/data/scripts.bin ]] \
+  || { echo "ERROR: scripts.bin not found in upstream tarball"; exit 1; }
+
+# Rebuild data/ to match the upstream Linux release layout:
+#   data/{gamedata,audiodata,audioremaster,enginedata,scripts}.bin
+#   data/metadata.json
 mkdir -p data.new
-mv gamedata.bin audiodata.bin audioremaster.bin enginedata.bin scripts.bin data.new/
+for bin in gamedata audiodata audioremaster enginedata; do
+    if [[ -f $bin.bin ]]; then
+        mv $bin.bin data.new/
+    else
+        echo "NOTE: $bin.bin not produced by -pack (source tree may not contain it)"
+    fi
+done
+mv upstream/sonic3air_game/data/scripts.bin data.new/scripts.bin
 cp data/metadata.json data.new/metadata.json
-[[ -f data/icon.png ]] && cp data/icon.png data.new/icon.png
-rm -rf data
+rm -rf data upstream
 mv data.new data
 echo "Packaged data/ contents:"; ls -l data/
 cd ../..

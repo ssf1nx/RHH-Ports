@@ -38,7 +38,6 @@ cp "$SRC_DATA/audiodata.bin"   "$DESTDIR/data/audiodata.bin"
 cp "$SRC_DATA/enginedata.bin"  "$DESTDIR/data/enginedata.bin"
 cp "$SRC_DATA/scripts.bin"     "$DESTDIR/data/scripts.bin"
 cp "$SRC_DATA/metadata.json"   "$DESTDIR/data/metadata.json"
-[[ -f "$SRC_DATA/icon.png" ]] && cp "$SRC_DATA/icon.png" "$DESTDIR/data/icon.png"
 
 # Split audioremaster.bin if present. Store-only (-mx=0) since the input is
 # pre-compressed Ogg; LZMA wouldn't help and takes much longer. 90MB volumes
