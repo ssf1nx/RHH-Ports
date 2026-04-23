@@ -1,0 +1,5 @@
+# Build-time scratch — only src/ is source, everything else is output from
+# retrieve-products.txt and should not be tracked.
+/*
+!/.gitignore
+!/src/

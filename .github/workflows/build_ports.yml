@@ -52,16 +52,51 @@ jobs:
           while read -r id; do
             [[ -z "$id" ]] && continue
             repo=$(jq -r --arg id "$id" '.ports[$id].upstream_repo' buildtools/registry.json)
-            branch=$(jq -r --arg id "$id" '.ports[$id].upstream_branch' buildtools/registry.json)
-            target_dir=$(jq -r --arg id "$id" '.ports[$id].target_dir' buildtools/registry.json)
+            # Two tracking modes:
+            #   branch (default): resolve HEAD of upstream_branch to a SHA.
+            #                     Right for ports without release tags (e.g.
+            #                     Sonic Mania decomp which has rolling main).
+            #   release:          resolve the latest published release tag to
+            #                     its commit SHA. Right for projects with a
+            #                     stable release cadence (e.g. sonic3air).
+            track_mode=$(jq -r --arg id "$id" '.ports[$id].track // "branch"' buildtools/registry.json)
+            # A port can fan out to multiple target dirs (e.g. one build
+            # produces both sonic.1 and sonic.2 payloads). Use the first as
+            # the SHA marker source of truth; all targets stay in sync.
+            first_target=$(jq -r --arg id "$id" '.ports[$id].target_dirs[0]' buildtools/registry.json)
 
-            upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha)
+            case "$track_mode" in
+              release)
+                tag=$(curl -sf "https://api.github.com/repos/$repo/releases/latest" | jq -r .tag_name)
+                if [[ -z "$tag" || "$tag" == "null" ]]; then
+                  echo "[$id] failed to resolve latest release on $repo — skipping"
+                  continue
+                fi
+                # Resolve the tag to the commit SHA it points at. Annotated
+                # tags require one extra hop via the tag object.
+                ref=$(curl -sf "https://api.github.com/repos/$repo/git/ref/tags/$tag")
+                ref_type=$(echo "$ref" | jq -r .object.type)
+                if [[ "$ref_type" == "tag" ]]; then
+                  tag_obj_url=$(echo "$ref" | jq -r .object.url)
+                  upstream_sha=$(curl -sf "$tag_obj_url" | jq -r .object.sha)
+                else
+                  upstream_sha=$(echo "$ref" | jq -r .object.sha)
+                fi
+                source="$repo@$tag"
+                ;;
+              branch|*)
+                branch=$(jq -r --arg id "$id" '.ports[$id].upstream_branch' buildtools/registry.json)
+                upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha)
+                source="$repo@$branch"
+                ;;
+            esac
+
             if [[ -z "$upstream_sha" || "$upstream_sha" == "null" ]]; then
-              echo "[$id] failed to resolve upstream HEAD on $repo@$branch — skipping"
+              echo "[$id] failed to resolve upstream SHA on $source — skipping"
               continue
             fi
 
-            marker="$target_dir/.upstream-sha"
+            marker="$first_target/.upstream-sha"
             if [[ -f "$marker" ]]; then
               origin_sha=$(cat "$marker")
             else
@@ -69,7 +104,7 @@ jobs:
             fi
 
             if [[ "$FORCE" == "true" ]] || [[ "$upstream_sha" != "$origin_sha" ]]; then
-              echo "[$id] needs build (origin=${origin_sha:-none} upstream=$upstream_sha)"
+              echo "[$id] needs build (source=$source origin=${origin_sha:-none} upstream=$upstream_sha)"
               to_build+=("$id:$upstream_sha")
             else
               echo "[$id] up to date at $upstream_sha — skipping"
@@ -103,7 +138,10 @@ jobs:
             [[ -z "$id" ]] && continue
             short="${upstream_sha:0:7}"
             port_dir=$(jq -r --arg id "$id" '.ports[$id].port_dir' buildtools/registry.json)
-            target_dir=$(jq -r --arg id "$id" '.ports[$id].target_dir' buildtools/registry.json)
+            # target_dirs is a JSON array; mapfile into a bash array so one
+            # build can fan out to multiple payload dirs (e.g. sonic.1/sonic.2
+            # sharing the RSDKv4 build).
+            mapfile -t target_dirs < <(jq -r --arg id "$id" '.ports[$id].target_dirs[]' buildtools/registry.json)
             commit_prefix=$(jq -r --arg id "$id" '.ports[$id].commit_prefix' buildtools/registry.json)
             artifacts=$(jq -r --arg id "$id" '.ports[$id].artifacts[]' buildtools/registry.json)
 
@@ -134,24 +172,28 @@ jobs:
               continue
             fi
 
-            echo "::group::[$id] sync payload to $target_dir"
-            mkdir -p "$target_dir"
-            while read -r a; do
-              [[ -z "$a" ]] && continue
-              if [[ -d "$port_dir/$a" ]]; then
-                rm -rf "$target_dir/$a"
-                cp -r "$port_dir/$a" "$target_dir/$a"
-              elif [[ -f "$port_dir/$a" ]]; then
-                cp "$port_dir/$a" "$target_dir/$a"
-              else
-                echo "::warning::[$id] artifact '$a' not produced — skipping copy"
-              fi
-            done <<< "$artifacts"
-            echo "$upstream_sha" > "$target_dir/.upstream-sha"
+            echo "::group::[$id] sync payload to ${target_dirs[*]}"
+            for target_dir in "${target_dirs[@]}"; do
+              mkdir -p "$target_dir"
+              while read -r a; do
+                [[ -z "$a" ]] && continue
+                if [[ -d "$port_dir/$a" ]]; then
+                  rm -rf "$target_dir/$a"
+                  cp -r "$port_dir/$a" "$target_dir/$a"
+                elif [[ -f "$port_dir/$a" ]]; then
+                  cp "$port_dir/$a" "$target_dir/$a"
+                else
+                  echo "::warning::[$id] artifact '$a' not produced — skipping copy to $target_dir"
+                fi
+              done <<< "$artifacts"
+              echo "$upstream_sha" > "$target_dir/.upstream-sha"
+            done
             echo "::endgroup::"
 
             echo "::group::[$id] commit and push"
-            git add "$target_dir"
+            for target_dir in "${target_dirs[@]}"; do
+              git add "$target_dir"
+            done
             if git diff --staged --quiet; then
               echo "[$id] no payload changes after sync — skipping commit"
               echo "::endgroup::"

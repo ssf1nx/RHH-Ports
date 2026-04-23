@@ -1,14 +1,28 @@
 {
-  "_comment": "Registry of ports that are built by .github/workflows/build_ports.yml. Each entry is keyed by a short port id used as the workflow choice input and the concurrency group. Add a new port by creating buildtools/<id>/<id>/src/{Dockerfile,build.txt,docker-setup.txt,retrieve-products.txt}, adding an entry here, and seeding a .upstream-sha marker in the target_dir.",
   "ports": {
     "sonic-mania": {
       "port_dir": "buildtools/sonic-mania/sonic-mania",
-      "target_dir": "ports/released/sonic-collection/sonic.mania/sonic.mania",
-      "payload_root": "ports/released/sonic-collection/sonic.mania",
+      "target_dirs": ["ports/released/sonic-collection/sonic.mania/sonic.mania"],
       "upstream_repo": "RSDKModding/Sonic-Mania-Decompilation",
       "upstream_branch": "master",
       "commit_prefix": "SONICMANIA",
       "artifacts": ["sonicmania", "Game.so", "libs"]
+    },
+    "sonic-cd": {
+      "port_dir": "buildtools/sonic-cd/sonic-cd",
+      "target_dirs": ["ports/released/sonic-collection/sonic.cd/sonic.cd"],
+      "upstream_repo": "RSDKModding/RSDKv3-Decompilation",
+      "upstream_branch": "master",
+      "commit_prefix": "SONICCD",
+      "artifacts": ["soniccd", "libs"]
+    },
+    "sonic3air": {
+      "port_dir": "buildtools/sonic3air/sonic3air",
+      "target_dirs": ["ports/released/sonic-collection/sonic3air/sonic3air"],
+      "upstream_repo": "Eukaryot/sonic3air",
+      "track": "release",
+      "commit_prefix": "SONIC3AIR",
+      "artifacts": ["sonic3air_linux"]
     }
   }
 }

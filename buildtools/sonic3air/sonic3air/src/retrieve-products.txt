@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SRCDIR=$1
+DESTDIR=$2
+
+cd "$DESTDIR" || { echo "DESTDIR not found: $DESTDIR"; exit 1; }
+
+cp "$SRCDIR/sonic3air/Oxygen/sonic3air/sonic3air_linux" "$DESTDIR/sonic3air_linux"
+
+# sonic3air ships no bundled libs; `libs/` is intentionally absent from the
+# shipped payload. If the build.txt verification step starts warning about
+# NEEDED deps that aren't system-provided, add a libs/ stage here and update
+# registry.json's artifacts list.
+
+echo "Packaging complete."

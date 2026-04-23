@@ -34,16 +34,16 @@ The inner `<id>/` is the staging dir the build writes into during a run (`sonicm
 | Field | Purpose |
 |---|---|
 | `port_dir` | Path to the build-scratch dir (e.g. `buildtools/sonic-mania/sonic-mania`) |
-| `target_dir` | Where the built payload gets copied (e.g. `ports/released/sonic-collection/sonic.mania/sonic.mania`) |
-| `payload_root` | Parent of `target_dir`; where the port's launcher `.sh` lives |
+| `target_dirs` | List of payload dirs to receive the build output. Usually one (e.g. `["ports/released/sonic-collection/sonic.mania/sonic.mania"]`). Multiple entries fan one build out to several ports — used when a single decomp produces a binary consumed by two or more port folders (e.g. RSDKv4 feeding both sonic.1 and sonic.2). |
 | `upstream_repo` | GitHub `owner/repo` to poll for new commits |
-| `upstream_branch` | Branch to track (usually `main` or `master`) |
+| `track` | Optional. `"branch"` (default) = rebuild when `upstream_branch` HEAD moves. `"release"` = rebuild when a new release tag is published. Pick `release` for projects with a stable release cadence; `branch` for rolling-main decomp projects. |
+| `upstream_branch` | Branch to track when `track` is `"branch"` (usually `main` or `master`). Ignored in release mode. |
 | `commit_prefix` | Uppercase tag used in commit messages, e.g. `[SONICMANIA] Update to abc1234` |
-| `artifacts` | Files or directories to copy from `port_dir` into `target_dir` after a build |
+| `artifacts` | Files or directories to copy from `port_dir` into each `target_dirs` entry after a build |
 
 ### How upstream changes are detected
 
-Each automated port's `target_dir` contains a committed `.upstream-sha` marker file with the upstream commit the current binaries were built from. Each run fetches upstream HEAD via the GitHub API and compares against the marker. Mismatch → build. Match → skip.
+The first entry in `target_dirs` contains a committed `.upstream-sha` marker file with the upstream commit the current binaries were built from. Each run fetches upstream HEAD via the GitHub API and compares against that marker. Mismatch → build. Match → skip. When a build fans out to multiple target_dirs, all of them get the same marker written so they stay in lockstep.
 
 This means you never need a "release" or version tag — the workflow tracks rolling `main`/`master` branches by commit SHA.
 
@@ -59,10 +59,17 @@ If one port's build fails, subsequent ports still run. Failures are surfaced as 
 ### Adding a new port
 
 1. Drop the build recipe in `buildtools/<id>/<id>/src/{Dockerfile,build.txt,docker-setup.txt,retrieve-products.txt}`.
-2. Copy an existing port's `.gitignore` to `buildtools/<id>/<id>/.gitignore`.
-3. Add an entry to [`registry.json`](registry.json).
-4. Seed `ports/released/<category>/<port>/.upstream-sha` with a known-older upstream commit SHA (so the next run actually builds and validates the pipeline end-to-end).
-5. Run the workflow with `port: <id>` and `force-build: true`. Download the artifact, sideload on a device, confirm it runs.
+2. Create `buildtools/<id>/<id>/.gitignore` with exactly this content, which keeps the inner `<id>/` dir tracked only for `src/` and lets the rest serve as build scratch:
+   ```
+   # Build-time scratch — only src/ is source, everything else is output from
+   # retrieve-products.txt and should not be tracked.
+   /*
+   !/.gitignore
+   !/src/
+   ```
+3. Add an entry to [`registry.json`](registry.json). Use `target_dirs` (list) even when there's only one target.
+4. Seed `ports/released/<category>/<port>/.upstream-sha` (on each target_dir) with a known-older upstream commit SHA so the next run actually builds and validates the pipeline end-to-end.
+5. Run the workflow with `port: <id>` and `force-build: true`. Download the `force-build-outputs` artifact, sideload on a device, confirm it runs.
 6. If the artifact works, run again with `force-build: false` to let it commit the real payload. From then on, the cron handles it.
 
 ### Why we don't ship libSDL2-2.0.so.0

@@ -1,0 +1,62 @@
+set -e
+
+# Build SDL2 2.32 from source so sonic3air links against a modern SDL2 at
+# build time. We do NOT ship libSDL2-2.0.so.0 — every supported device
+# provides one, often with device-specific patches. Shipping ours via
+# LD_LIBRARY_PATH would override those patches.
+git clone https://github.com/libsdl-org/SDL.git
+cd SDL
+git checkout release-2.32.0
+mkdir -p build-sonic3air && cd build-sonic3air
+cmake .. -DBUILD_SHARED_LIBS=ON
+make -j$(nproc)
+make install
+cd ../..
+
+#### Sonic 3 AIR ####
+
+git clone --recursive https://github.com/Eukaryot/sonic3air.git
+cd sonic3air
+
+# Check out the latest release tag, or branch HEAD if FORCE_HEAD is set.
+git fetch --tags
+if [[ "${FORCE_HEAD:-false}" == "true" ]]; then
+  echo "FORCE_HEAD=true — building from branch HEAD (nightly)"
+else
+  # sonic3air tags prereleases too (e.g. -preview, -test). Filter to the
+  # latest -stable tag so we don't accidentally ship an unstable build.
+  latest=$(git tag --sort=-creatordate | grep -E '\-stable$' | head -n1)
+  if [[ -z "$latest" ]]; then
+    echo "No -stable tag found; falling back to main HEAD"
+  else
+    echo "Checking out latest stable tag: $latest"
+    git checkout "$latest"
+  fi
+fi
+
+git submodule update --init --recursive
+
+mkdir -p Oxygen/sonic3air/build/_cmake/build
+cd Oxygen/sonic3air/build/_cmake/build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
+cd ../../../../..
+
+# sonic3air ships no bundled libs — the binary's NEEDED list is covered by
+# device system libs (libSDL2, libGLESv2, libcurl). Verify and fail loudly
+# if a future upstream bump adds a new dep we'd have to start shipping.
+mkdir -p Oxygen/sonic3air/build/_cmake/build/libs
+needed=$(readelf -d Oxygen/sonic3air/sonic3air_linux | awk -F'[][]' '/NEEDED/ {print $2}')
+echo "Binary NEEDED:"; echo "$needed"
+# Libs that are OK to not ship (device system provides them or they're stdlibs):
+system_libs="libSDL2-2.0.so.0 libGLESv2.so.2 libcurl.so.4 \
+             libc.so.6 libm.so.6 libpthread.so.0 libdl.so.2 librt.so.1 \
+             libstdc++.so.6 libgcc_s.so.1"
+while read -r lib; do
+  [[ -z "$lib" ]] && continue
+  if ! echo " $system_libs " | grep -q " $lib "; then
+    echo "::warning::Binary NEEDs $lib which is not in the system-libs allowlist — consider shipping it explicitly"
+  fi
+done <<< "$needed"
+
+cd ..

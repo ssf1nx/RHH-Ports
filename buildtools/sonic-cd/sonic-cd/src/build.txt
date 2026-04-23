@@ -1,0 +1,58 @@
+set -e
+
+# Build SDL2 2.32 from source so RSDKv3 links against a modern SDL2 at build
+# time. The built libSDL2 is NOT shipped; devices provide libSDL2-2.0.so.0
+# at runtime, often with device-specific patches. Shipping ours via
+# LD_LIBRARY_PATH would override those patches.
+git clone https://github.com/libsdl-org/SDL.git
+cd SDL
+git checkout release-2.32.0
+mkdir -p build-soniccd && cd build-soniccd
+cmake .. -DBUILD_SHARED_LIBS=ON
+make -j$(nproc)
+make install
+cd ../..
+
+#### RSDKv3 (Sonic CD Decompilation) ####
+
+git clone --recursive https://github.com/RSDKModding/RSDKv3-Decompilation.git
+cd RSDKv3-Decompilation
+
+# RSDKv3 has no release tags — track master HEAD regardless of FORCE_HEAD.
+git log -1 --format='%H' > ../soniccd.sha
+
+cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release -j$(nproc)
+
+# Stage shipped libraries. Filenames MUST match DT_NEEDED entries exactly;
+# `cp -L` follows symlinks so the destination is a real file with the right
+# name. libSDL2 is NOT shipped (device provides it).
+mkdir -p build/libs
+cp -L /usr/lib/aarch64-linux-gnu/libogg.so.0 ./build/libs/libogg.so.0
+cp -L /usr/lib/aarch64-linux-gnu/libtheoradec.so.1 ./build/libs/libtheoradec.so.1
+cp -L /usr/lib/aarch64-linux-gnu/libvorbis.so.0 ./build/libs/libvorbis.so.0
+cp -L /usr/lib/aarch64-linux-gnu/libvorbisfile.so.3 ./build/libs/libvorbisfile.so.3
+
+# Verify: every staged lib is in NEEDED, every expected NEEDED lib is staged.
+# The binary's output path varies by generator; find it.
+bin=$(find build -maxdepth 3 -name RSDKv3 -type f | head -n1)
+if [[ -z "$bin" ]]; then
+    echo "ERROR: built RSDKv3 binary not found under build/"; exit 1
+fi
+echo "Binary: $bin"
+needed=$(readelf -d "$bin" | awk -F'[][]' '/NEEDED/ {print $2}')
+echo "Binary NEEDED:"; echo "$needed"
+echo "Staged:"; ls build/libs/
+for lib in libogg.so.0 libtheoradec.so.1 libvorbis.so.0 libvorbisfile.so.3; do
+    if ! echo "$needed" | grep -qx "$lib"; then
+        echo "ERROR: staged $lib but binary does not NEED it"; exit 1
+    fi
+    if [ ! -f "build/libs/$lib" ]; then
+        echo "ERROR: $lib missing from build/libs/"; exit 1
+    fi
+done
+
+# Save the binary at a predictable path for retrieve-products to pick up.
+cp "$bin" build/soniccd
+
+cd ..
