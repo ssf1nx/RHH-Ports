@@ -225,11 +225,16 @@ jobs:
                   for f in $port_dir/$a; do
                     cp -r "$f" "$target_dir/$(basename "$f")"
                   done
-                elif [[ -d "$port_dir/$a" ]]; then
-                  rm -rf "$target_dir/$a"
-                  cp -r "$port_dir/$a" "$target_dir/$a"
-                elif [[ -f "$port_dir/$a" ]]; then
-                  cp "$port_dir/$a" "$target_dir/$a"
+                else
+                  # Path artifacts may include a subdirectory prefix (e.g.
+                  # `doc/license.txt`), so ensure the parent dir exists.
+                  mkdir -p "$target_dir/$(dirname "$a")"
+                  if [[ -d "$port_dir/$a" ]]; then
+                    rm -rf "$target_dir/$a"
+                    cp -r "$port_dir/$a" "$target_dir/$a"
+                  elif [[ -f "$port_dir/$a" ]]; then
+                    cp "$port_dir/$a" "$target_dir/$a"
+                  fi
                 fi
               done <<< "$artifacts"
               echo "$upstream_sha" > "$target_dir/.upstream-sha"

@@ -9,23 +9,26 @@ Ports with an open-source upstream can be built and updated automatically by the
 
 ### Layout
 
-Each automated port lives here under `buildtools/<id>/<id>/` and mirrors the [hm64-builder](https://github.com/JeodC/hm64-builder) shape:
+Each automated port lives here under `buildtools/<id>/<id>/`. Files common to every port live at the `buildtools/` level; per-port recipes only contain what's actually port-specific.
 
 ```
 buildtools/
   registry.json                       ← registry of automated ports
   build_port.sh                       ← shared driver (Docker build + retrieve)
+  docker-setup.sh                     ← shared: builds per-port image, starts container
+  Dockerfile.base                     ← shared: Ubuntu aarch64 + SDL2 dev deps + CMake
   <id>/
     <id>/
       .gitignore                      ← ignores build scratch; only src/ is tracked
       src/
-        Dockerfile                    ← Ubuntu aarch64 build image
-        docker-setup.txt              ← builds image, starts container
+        Dockerfile                    ← `FROM rhh-base` + port-specific apt deps
         build.txt                     ← clones upstream, builds, stages libs
         retrieve-products.txt         ← copies artifacts into the port payload dir
 ```
 
 The inner `<id>/` is the staging dir the build writes into during a run (`sonicmania`, `Game.so`, `libs/*.so.*`, etc.). The `.gitignore` at that level ignores everything except `src/` — build outputs never get committed from there; they only get committed after being copied into `ports/released/...`.
+
+`build_port.sh` builds the shared `rhh-base` image once per workflow run (Ubuntu focal + build-essential + SDL2 subsystem dev headers + newer CMake). Each port's Dockerfile then does `FROM rhh-base` and installs only its unique apt deps. Docker's layer cache makes subsequent ports in the same run near-instant.
 
 ### The registry
 
@@ -58,7 +61,10 @@ If one port's build fails, subsequent ports still run. Failures are surfaced as 
 
 ### Adding a new port
 
-1. Drop the build recipe in `buildtools/<id>/<id>/src/{Dockerfile,build.txt,docker-setup.txt,retrieve-products.txt}`.
+1. Drop the build recipe in `buildtools/<id>/<id>/src/`:
+   - `Dockerfile` — starts with `FROM rhh-base` and installs only port-specific apt deps
+   - `build.txt` — clones upstream, builds, stages libs into `build/libs/`
+   - `retrieve-products.txt` — copies artifacts from the build tree into the port dir
 2. Create `buildtools/<id>/<id>/.gitignore` with exactly this content, which keeps the inner `<id>/` dir tracked only for `src/` and lets the rest serve as build scratch:
    ```
    # Build-time scratch — only src/ is source, everything else is output from

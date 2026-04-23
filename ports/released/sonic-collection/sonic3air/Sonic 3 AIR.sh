@@ -30,24 +30,36 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 mkdir -p "config"
 bind_directories "$XDG_DATA_HOME/Sonic3AIR" "$GAMEDIR/config"
 
-# Engine data is shipped as a split 7z archive (data.7z.001, data.7z.002, ...)
-# to stay under GitHub's 100MB per-file limit. Sonic 3 AIR's data/ is mostly
-# pre-compressed Ogg Vorbis, so LZMA can't shrink it enough for a single
-# file. Presence of .001 means the archive is newer than whatever's in data/
-# (either first run or port update), so we purge and re-extract. Pointing
+# Patch config.json. Upstream ships defaults tuned for desktops (640x480
+# window, Disclaimer start screen, no debug menu). We sync config.json on
+# every port update so new upstream keys come along for free, then sed the
+# RHH-specific values back in here. Idempotent: running on an already-
+# correct file is a no-op.
+if [ -f "$GAMEDIR/config.json" ]; then
+  sed -i "s|\"StartPhase\":[[:space:]]*\"[0-9]*\"|\"StartPhase\": \"0\"|" "$GAMEDIR/config.json"
+  sed -i "s|\"WindowSize\":[[:space:]]*\"[0-9]\+[[:space:]]*x[[:space:]]*[0-9]\+\"|\"WindowSize\": \"${DISPLAY_WIDTH} x ${DISPLAY_HEIGHT}\"|" "$GAMEDIR/config.json"
+  sed -i "s|\"EnforceDebugMode\":[[:space:]]*\"[0-9]*\"|\"EnforceDebugMode\": \"1\"|" "$GAMEDIR/config.json"
+fi
+
+# audioremaster.bin (~200MB of Ogg Vorbis) is shipped as a multi-volume 7z
+# archive (audioremaster.7z.001, .002, ...) because a single file exceeds
+# GitHub's 100MB per-file limit. The other packaged data/*.bin files are
+# small enough to ship directly. Presence of .001 means the archive is
+# newer than whatever data/audioremaster.bin we've got (either first run
+# or port update), so we extract into data/ and remove the parts. Pointing
 # 7zzs at the first part is enough — it follows the chain automatically.
-if [ -f "$GAMEDIR/data.7z.001" ]; then
+if [ -f "$GAMEDIR/audioremaster.7z.001" ]; then
   SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
   if [ ! -x "$SEVENZIP" ]; then
-    echo "7zzs binary not found at $SEVENZIP; aborting data extraction."
+    echo "7zzs binary not found at $SEVENZIP; aborting extraction."
     pm_finish; exit 1
   fi
-  echo "Extracting data.7z (split archive)..."
-  rm -rf "$GAMEDIR/data"
-  if "$SEVENZIP" x -y "$GAMEDIR/data.7z.001" -o"$GAMEDIR" >/dev/null; then
-    rm -f "$GAMEDIR"/data.7z.*
+  echo "Extracting audioremaster.bin (split archive)..."
+  rm -f "$GAMEDIR/data/audioremaster.bin"
+  if "$SEVENZIP" x -y "$GAMEDIR/audioremaster.7z.001" -o"$GAMEDIR/data" >/dev/null; then
+    rm -f "$GAMEDIR"/audioremaster.7z.*
   else
-    echo "Unable to extract data.7z."
+    echo "Unable to extract audioremaster.7z."
     pm_finish; exit 1
   fi
 fi

@@ -22,7 +22,7 @@
       "upstream_repo": "Eukaryot/sonic3air",
       "track": "release",
       "commit_prefix": "SONIC3AIR",
-      "artifacts": ["sonic3air_linux", "config.json", "data.7z.*"]
+      "artifacts": ["sonic3air_linux", "config.json", "doc/license.txt", "doc/license-thirdparty", "data", "audioremaster.7z.*"]
     }
   }
 }

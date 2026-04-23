@@ -7,25 +7,49 @@ DESTDIR=$2
 cd "$DESTDIR" || { echo "DESTDIR not found: $DESTDIR"; exit 1; }
 
 SRC_GAME="$SRCDIR/sonic3air/Oxygen/sonic3air"
+SRC_TEMPLATE="$SRC_GAME/_master_image_template"
+SRC_DATA="$SRC_GAME/data"
 
 # Binary
 cp "$SRC_GAME/sonic3air_linux" "$DESTDIR/sonic3air_linux"
 
-# Upstream engine data must match the binary's expectations. We ship it as
-# a 7z archive to stay under GitHub's 100MB per-file limit — plain zip of
-# this 133MB asset tree lands around 127MB; LZMA compression brings it
-# comfortably under. The launcher extracts in-place on first run (or on
-# port update when the archive reappears).
+# Upstream config.json. The launcher sed-overrides RHH-specific values
+# (WindowSize, StartPhase, EnforceDebugMode) at runtime so new upstream
+# keys propagate automatically while our overrides stay in force.
 cp "$SRC_GAME/config.json" "$DESTDIR/config.json"
-# Remove any prior archive (single-file or split) before repackaging.
-rm -f "$DESTDIR/data.7z" "$DESTDIR/data.zip" "$DESTDIR"/data.7z.*
-# Sonic 3 AIR's data/ is mostly pre-compressed Ogg Vorbis, so LZMA only
-# buys us ~0.5% — the single-file archive lands around 127MB, above
-# GitHub's 100MB per-file limit. Split into 90MB volumes to stay under.
-# 7z is pre-installed on GitHub-hosted ubuntu-24.04 runners. Extraction
-# only needs the first part (.001); 7z follows the chain automatically.
-(cd "$SRC_GAME" && 7z a -t7z -mx=9 -v90m "$DESTDIR/data.7z" data >/dev/null)
-echo "data.7z parts:"; ls -l "$DESTDIR"/data.7z.*
+
+# Upstream license texts. These track whatever deps upstream links against,
+# so we resync on every build — if they add a new dep the license file
+# comes along automatically.
+mkdir -p "$DESTDIR/doc"
+cp "$SRC_TEMPLATE/doc/license.txt" "$DESTDIR/doc/license.txt"
+rm -rf "$DESTDIR/doc/license-thirdparty"
+cp -r "$SRC_TEMPLATE/doc/license-thirdparty" "$DESTDIR/doc/license-thirdparty"
+
+# Packaged data/ from the build's -pack step. Upstream's Linux release ships
+# this layout too. The small bins (~20MB total) are committed directly;
+# audioremaster.bin (~200MB of Ogg Vorbis) is too big for a single file
+# under GitHub's 100MB limit, so we split it into a multi-volume 7z
+# archive and extract on first launch.
+rm -rf "$DESTDIR/data"
+mkdir -p "$DESTDIR/data"
+cp "$SRC_DATA/gamedata.bin"    "$DESTDIR/data/gamedata.bin"
+cp "$SRC_DATA/audiodata.bin"   "$DESTDIR/data/audiodata.bin"
+cp "$SRC_DATA/enginedata.bin"  "$DESTDIR/data/enginedata.bin"
+cp "$SRC_DATA/scripts.bin"     "$DESTDIR/data/scripts.bin"
+cp "$SRC_DATA/metadata.json"   "$DESTDIR/data/metadata.json"
+[[ -f "$SRC_DATA/icon.png" ]] && cp "$SRC_DATA/icon.png" "$DESTDIR/data/icon.png"
+
+# Split audioremaster.bin if present. Store-only (-mx=0) since the input is
+# pre-compressed Ogg; LZMA wouldn't help and takes much longer. 90MB volumes
+# stay safely under GitHub's 100MB per-file limit.
+rm -f "$DESTDIR"/audioremaster.7z.*
+if [[ -f "$SRC_DATA/audioremaster.bin" ]]; then
+    (cd "$SRC_DATA" && 7z a -t7z -mx=0 -v90m "$DESTDIR/audioremaster.7z" audioremaster.bin >/dev/null)
+    echo "audioremaster.7z parts:"; ls -l "$DESTDIR"/audioremaster.7z.*
+else
+    echo "audioremaster.bin not produced by -pack — skipping split archive"
+fi
 
 # sonic3air ships no bundled libs; `libs/` is intentionally absent from the
 # shipped payload. If the build.txt verification step starts failing because
@@ -33,9 +57,10 @@ echo "data.7z parts:"; ls -l "$DESTDIR"/data.7z.*
 # update registry.json's artifacts list.
 #
 # Other files in the port dir (cover.png, gameinfo.xml, port.json,
-# sonic.gptk, README.md, saves/, doc/, config/mods/) are RHH packaging or
-# runtime-generated state. They are intentionally NOT synced — the sync
-# step in build_ports.yml only touches paths listed in the registry's
+# sonic.gptk, README.md, saves/, doc/BUILDING.md, config/mods/) are RHH
+# packaging, runtime state, or locally-customized (config/mods/classic-mode
+# has 3:2 aspect ratio tweaks). They are intentionally NOT synced — the
+# sync step in build_ports.yml only touches paths listed in the registry's
 # `artifacts` field, so everything else is preserved as-is.
 
 echo "Packaging complete."

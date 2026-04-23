@@ -83,6 +83,25 @@ cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_GLES=ON
 make -j$(nproc)
 cd ../../../../..
 
+# Run the binary with -pack to package the raw data/ tree into the compact
+# .bin files upstream's Linux release ships (gamedata.bin, audiodata.bin,
+# audioremaster.bin, enginedata.bin, scripts.bin + metadata.json). This
+# shrinks the port payload from ~330MB raw to ~220MB packaged, and matches
+# the layout the engine expects at runtime. PackageBuilder writes the bins
+# to cwd; metadata.json is written into data/ directly.
+cd Oxygen/sonic3air
+./sonic3air_linux -pack
+# Rebuild data/ containing only the packaged outputs (+ metadata.json,
+# + icon.png which is part of the canonical release layout).
+mkdir -p data.new
+mv gamedata.bin audiodata.bin audioremaster.bin enginedata.bin scripts.bin data.new/
+cp data/metadata.json data.new/metadata.json
+[[ -f data/icon.png ]] && cp data/icon.png data.new/icon.png
+rm -rf data
+mv data.new data
+echo "Packaged data/ contents:"; ls -l data/
+cd ../..
+
 # sonic3air ships no bundled libs — the binary's NEEDED list is covered by
 # device system libs (libSDL2, libGLESv2, libcurl). Verify and fail loudly
 # if a future upstream bump adds a new dep we'd have to start shipping.
