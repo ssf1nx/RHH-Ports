@@ -1,10 +1,41 @@
 set -e
 
+# GitHub occasionally returns HTTP 500s during git clone. Retry with backoff
+# so transient failures don't abort the whole build. Use this instead of
+# `git clone` directly for any remote clone. Derives the target dir from
+# the URL basename (same as `git clone` itself) to clean up partial clones
+# between attempts.
+git_clone_retry() {
+    local url target attempt
+    for arg in "$@"; do
+        case "$arg" in
+            http*|git@*|ssh://*|git://*) url="$arg" ;;
+            -*) ;;
+            *) [[ -n "$url" ]] && target="$arg" ;;
+        esac
+    done
+    if [[ -z "$target" && -n "$url" ]]; then
+        target="${url##*/}"
+        target="${target%.git}"
+    fi
+    for attempt in 1 2 3 4 5; do
+        if git clone "$@"; then
+            return 0
+        fi
+        [[ -n "$target" && -d "$target" ]] && rm -rf "$target"
+        local delay=$((attempt * 5))
+        echo "git clone failed (attempt $attempt); retrying in ${delay}s..." >&2
+        sleep "$delay"
+    done
+    echo "git clone failed after 5 attempts" >&2
+    return 1
+}
+
 # Build SDL2 2.32 from source so sonic3air links against a modern SDL2 at
 # build time. We do NOT ship libSDL2-2.0.so.0 — every supported device
 # provides one, often with device-specific patches. Shipping ours via
 # LD_LIBRARY_PATH would override those patches.
-git clone https://github.com/libsdl-org/SDL.git
+git_clone_retry https://github.com/libsdl-org/SDL.git
 cd SDL
 git checkout release-2.32.0
 mkdir -p build-sonic3air && cd build-sonic3air
@@ -15,7 +46,7 @@ cd ../..
 
 #### Sonic 3 AIR ####
 
-git clone --recursive https://github.com/Eukaryot/sonic3air.git
+git_clone_retry --recursive https://github.com/Eukaryot/sonic3air.git
 cd sonic3air
 
 # Check out the latest release tag, or branch HEAD if FORCE_HEAD is set.
@@ -34,7 +65,13 @@ else
   fi
 fi
 
-git submodule update --init --recursive
+# Submodule init can also hit transient HTTP 500s from GitHub — retry.
+for attempt in 1 2 3 4 5; do
+  if git submodule update --init --recursive; then break; fi
+  echo "submodule update failed (attempt $attempt); retrying in $((attempt * 5))s..." >&2
+  sleep $((attempt * 5))
+  [[ $attempt -eq 5 ]] && { echo "submodule update failed after 5 attempts"; exit 1; }
+done
 
 mkdir -p Oxygen/sonic3air/build/_cmake/build
 cd Oxygen/sonic3air/build/_cmake/build

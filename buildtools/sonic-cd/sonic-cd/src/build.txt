@@ -1,10 +1,41 @@
 set -e
 
+# GitHub occasionally returns HTTP 500s during git clone. Retry with backoff
+# so transient failures don't abort the whole build. Use this instead of
+# `git clone` directly for any remote clone. Derives the target dir from
+# the URL basename (same as `git clone` itself) to clean up partial clones
+# between attempts.
+git_clone_retry() {
+    local url target attempt
+    for arg in "$@"; do
+        case "$arg" in
+            http*|git@*|ssh://*|git://*) url="$arg" ;;
+            -*) ;;
+            *) [[ -n "$url" ]] && target="$arg" ;;
+        esac
+    done
+    if [[ -z "$target" && -n "$url" ]]; then
+        target="${url##*/}"
+        target="${target%.git}"
+    fi
+    for attempt in 1 2 3 4 5; do
+        if git clone "$@"; then
+            return 0
+        fi
+        [[ -n "$target" && -d "$target" ]] && rm -rf "$target"
+        local delay=$((attempt * 5))
+        echo "git clone failed (attempt $attempt); retrying in ${delay}s..." >&2
+        sleep "$delay"
+    done
+    echo "git clone failed after 5 attempts" >&2
+    return 1
+}
+
 # Build SDL2 2.32 from source so RSDKv3 links against a modern SDL2 at build
 # time. The built libSDL2 is NOT shipped; devices provide libSDL2-2.0.so.0
 # at runtime, often with device-specific patches. Shipping ours via
 # LD_LIBRARY_PATH would override those patches.
-git clone https://github.com/libsdl-org/SDL.git
+git_clone_retry https://github.com/libsdl-org/SDL.git
 cd SDL
 git checkout release-2.32.0
 mkdir -p build-soniccd && cd build-soniccd
@@ -15,13 +46,18 @@ cd ../..
 
 #### RSDKv3 (Sonic CD Decompilation) ####
 
-git clone --recursive https://github.com/RSDKModding/RSDKv3-Decompilation.git
+git_clone_retry --recursive https://github.com/RSDKModding/RSDKv3-Decompilation.git
 cd RSDKv3-Decompilation
 
 # RSDKv3 has no release tags — track master HEAD regardless of FORCE_HEAD.
 git log -1 --format='%H' > ../soniccd.sha
 
-cmake -B build -DCMAKE_BUILD_TYPE=Release
+# -pthread on the linker flags resolves theoraplay's pthread_create reference.
+# Upstream's CMakeLists doesn't explicitly link pthread for the final binary;
+# on stricter linkers this fails as "DSO missing from command line".
+cmake -B build \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_EXE_LINKER_FLAGS="-pthread"
 cmake --build build --config Release -j$(nproc)
 
 # Stage shipped libraries. Filenames MUST match DT_NEEDED entries exactly;

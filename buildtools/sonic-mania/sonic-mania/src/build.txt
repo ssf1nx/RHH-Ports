@@ -1,12 +1,47 @@
 set -e
 
+# GitHub occasionally returns HTTP 500s during git clone. Retry with backoff
+# so transient failures don't abort the whole build. Use this instead of
+# `git clone` directly for any remote clone. Derives the target dir from
+# the URL basename (same as `git clone` itself) to clean up partial clones
+# between attempts.
+git_clone_retry() {
+    local url target attempt
+    # Find the URL arg — it's the last non-flag positional. If an explicit
+    # target dir was passed after the URL, use that instead.
+    for arg in "$@"; do
+        case "$arg" in
+            http*|git@*|ssh://*|git://*) url="$arg" ;;
+            -*) ;;
+            *) [[ -n "$url" ]] && target="$arg" ;;
+        esac
+    done
+    if [[ -z "$target" && -n "$url" ]]; then
+        target="${url##*/}"
+        target="${target%.git}"
+    fi
+    for attempt in 1 2 3 4 5; do
+        if git clone "$@"; then
+            return 0
+        fi
+        # Clean up any partially-cloned dir so the next attempt can re-use
+        # the target name.
+        [[ -n "$target" && -d "$target" ]] && rm -rf "$target"
+        local delay=$((attempt * 5))
+        echo "git clone failed (attempt $attempt); retrying in ${delay}s..." >&2
+        sleep "$delay"
+    done
+    echo "git clone failed after 5 attempts" >&2
+    return 1
+}
+
 # We build SDL2 2.32 from source so the libs we ship later (none in Mania's
 # case, but keeping the pattern) can link against a fast modern SDL2 at build
 # time. We do NOT ship libSDL2-2.0.so.0 — devices provide their own, often
 # with device-specific patches (GL backend selection, touchscreen quirks).
 # Shipping ours would override the patched system copy via LD_LIBRARY_PATH
 # and could regress things that currently work.
-git clone https://github.com/libsdl-org/SDL.git
+git_clone_retry https://github.com/libsdl-org/SDL.git
 cd SDL
 git checkout release-2.32.0
 mkdir -p build-sonicmania && cd build-sonicmania
@@ -17,7 +52,7 @@ cd ../..
 
 #### Sonic Mania Decompilation ####
 
-git clone --recursive https://github.com/RSDKModding/Sonic-Mania-Decompilation
+git_clone_retry --recursive https://github.com/RSDKModding/Sonic-Mania-Decompilation
 cd Sonic-Mania-Decompilation
 
 # Pin to current HEAD; the upstream has no release tags
