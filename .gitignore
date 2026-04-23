@@ -1,1 +1,4 @@
 /ports/released/harbourmasters64/lighthouse
+
+# buildtools build-port staging dir created by buildtools/build_port.sh
+/build-port/

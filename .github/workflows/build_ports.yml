@@ -1,0 +1,201 @@
+name: Build Ports
+
+on:
+  workflow_dispatch:
+    inputs:
+      port:
+        description: "Which port to consider (all = every port in registry)"
+        type: string
+        required: false
+        default: "all"
+      force-build:
+        description: "Force build (bypass SHA check, upload artifact only, no commit)"
+        type: boolean
+        required: false
+        default: false
+  schedule:
+    - cron: '30 4 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-ports
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Discover ports to build
+        id: discover
+        run: |
+          set -euo pipefail
+
+          SELECTED="${{ inputs.port }}"
+          FORCE="${{ inputs.force-build }}"
+          : "${SELECTED:=all}"
+          : "${FORCE:=false}"
+
+          if [[ "$SELECTED" == "all" ]]; then
+            ids=$(jq -r '.ports | keys[]' buildtools/registry.json)
+          else
+            if ! jq -e --arg id "$SELECTED" '.ports[$id]' buildtools/registry.json > /dev/null; then
+              echo "Port '$SELECTED' not found in buildtools/registry.json"; exit 1
+            fi
+            ids="$SELECTED"
+          fi
+
+          to_build=()
+          while read -r id; do
+            [[ -z "$id" ]] && continue
+            repo=$(jq -r --arg id "$id" '.ports[$id].upstream_repo' buildtools/registry.json)
+            branch=$(jq -r --arg id "$id" '.ports[$id].upstream_branch' buildtools/registry.json)
+            target_dir=$(jq -r --arg id "$id" '.ports[$id].target_dir' buildtools/registry.json)
+
+            upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha)
+            if [[ -z "$upstream_sha" || "$upstream_sha" == "null" ]]; then
+              echo "[$id] failed to resolve upstream HEAD on $repo@$branch — skipping"
+              continue
+            fi
+
+            marker="$target_dir/.upstream-sha"
+            if [[ -f "$marker" ]]; then
+              origin_sha=$(cat "$marker")
+            else
+              origin_sha=""
+            fi
+
+            if [[ "$FORCE" == "true" ]] || [[ "$upstream_sha" != "$origin_sha" ]]; then
+              echo "[$id] needs build (origin=${origin_sha:-none} upstream=$upstream_sha)"
+              to_build+=("$id:$upstream_sha")
+            else
+              echo "[$id] up to date at $upstream_sha — skipping"
+            fi
+          done <<< "$ids"
+
+          {
+            echo "to_build<<EOF"
+            printf '%s\n' "${to_build[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build each port
+        if: steps.discover.outputs.to_build != ''
+        run: |
+          set -uo pipefail
+
+          FORCE="${{ inputs.force-build }}"
+          : "${FORCE:=false}"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          # Force-build collects artifacts here; uploaded at end as one bundle.
+          FORCE_STAGING="$RUNNER_TEMP/force-build-outputs"
+          [[ "$FORCE" == "true" ]] && mkdir -p "$FORCE_STAGING"
+
+          failures=()
+
+          while IFS=: read -r id upstream_sha; do
+            [[ -z "$id" ]] && continue
+            short="${upstream_sha:0:7}"
+            port_dir=$(jq -r --arg id "$id" '.ports[$id].port_dir' buildtools/registry.json)
+            target_dir=$(jq -r --arg id "$id" '.ports[$id].target_dir' buildtools/registry.json)
+            commit_prefix=$(jq -r --arg id "$id" '.ports[$id].commit_prefix' buildtools/registry.json)
+            artifacts=$(jq -r --arg id "$id" '.ports[$id].artifacts[]' buildtools/registry.json)
+
+            echo "::group::[$id] build"
+            # Invoke via `bash` so the script doesn't need the executable bit
+            # — file-mode handling is inconsistent on Windows checkouts.
+            # FORCE_HEAD tells tag-tracking build.txt recipes to build from
+            # branch HEAD instead. Commit-tracking recipes (like sonic-mania,
+            # which already follows HEAD) ignore this.
+            if ! FORCE_HEAD="$FORCE" bash buildtools/build_port.sh "$port_dir"; then
+              echo "::error::[$id] build_port.sh failed"
+              failures+=("$id")
+              echo "::endgroup::"
+              continue
+            fi
+            echo "::endgroup::"
+
+            if [[ "$FORCE" == "true" ]]; then
+              echo "[$id] force-build: staging artifacts for upload, skipping commit"
+              dest="$FORCE_STAGING/$id-$short"
+              mkdir -p "$dest"
+              while read -r a; do
+                [[ -z "$a" ]] && continue
+                if [[ -e "$port_dir/$a" ]]; then
+                  cp -r "$port_dir/$a" "$dest/"
+                fi
+              done <<< "$artifacts"
+              continue
+            fi
+
+            echo "::group::[$id] sync payload to $target_dir"
+            mkdir -p "$target_dir"
+            while read -r a; do
+              [[ -z "$a" ]] && continue
+              if [[ -d "$port_dir/$a" ]]; then
+                rm -rf "$target_dir/$a"
+                cp -r "$port_dir/$a" "$target_dir/$a"
+              elif [[ -f "$port_dir/$a" ]]; then
+                cp "$port_dir/$a" "$target_dir/$a"
+              else
+                echo "::warning::[$id] artifact '$a' not produced — skipping copy"
+              fi
+            done <<< "$artifacts"
+            echo "$upstream_sha" > "$target_dir/.upstream-sha"
+            echo "::endgroup::"
+
+            echo "::group::[$id] commit and push"
+            git add "$target_dir"
+            if git diff --staged --quiet; then
+              echo "[$id] no payload changes after sync — skipping commit"
+              echo "::endgroup::"
+              continue
+            fi
+            git commit -m "[$commit_prefix] Update to $short"
+
+            # Retry fetch+rebase+push to absorb concurrent pushes from other
+            # workflows hitting the same branch (e.g. collect_ports.yml) and
+            # from other ports in this same run between commits.
+            pushed=false
+            for attempt in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME"
+              if ! git rebase "origin/$GITHUB_REF_NAME"; then
+                echo "::error::[$id] rebase failed on attempt $attempt"
+                git rebase --abort || true
+                break
+              fi
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then
+                echo "[$id] pushed on attempt $attempt"
+                pushed=true
+                break
+              fi
+              echo "[$id] push rejected on attempt $attempt; retrying..."
+              sleep $((attempt * 3))
+            done
+
+            if ! $pushed; then
+              echo "::error::[$id] failed to push after 5 attempts"
+              failures+=("$id")
+            fi
+            echo "::endgroup::"
+          done <<< "${{ steps.discover.outputs.to_build }}"
+
+          if (( ${#failures[@]} > 0 )); then
+            echo "::error::Failures: ${failures[*]}"
+            exit 1
+          fi
+
+      - name: Upload force-build artifacts
+        if: inputs.force-build == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: force-build-outputs
+          path: ${{ runner.temp }}/force-build-outputs
+          retention-days: 14
+          if-no-files-found: ignore
