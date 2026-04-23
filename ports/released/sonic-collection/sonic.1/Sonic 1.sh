@@ -59,9 +59,13 @@ get_res() {
 # Adjust game resolution
 get_res
 
-# Run the patcher on first launch (or if user drops a fresh Origins file)
-if { [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -f "$GAMEDIR/Sonic1u.rsdk" ]; } \
-   && { [ -f "$GAMEDIR/Data.rsdk" ] || [ -f "$GAMEDIR/Sonic1u.rsdk" ]; }; then
+# Run the patcher if the user has dropped any new game/audio files, or on
+# first launch after a fresh install.
+if [ ! -f "$GAMEDIR/patchlog.txt" ] \
+   || [ -f "$GAMEDIR/Sonic1u.rsdk" ] \
+   || [ -f "$GAMEDIR/STH1_music.awb" ] \
+   || [ -f "$GAMEDIR/STH1_sfx.acb" ] \
+   || [ -f "$GAMEDIR/HITE_sfx.acb" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
