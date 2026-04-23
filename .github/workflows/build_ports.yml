@@ -163,12 +163,18 @@ jobs:
               echo "[$id] force-build: staging artifacts for upload, skipping commit"
               dest="$FORCE_STAGING/$id-$short"
               mkdir -p "$dest"
+              shopt -s nullglob
               while read -r a; do
                 [[ -z "$a" ]] && continue
-                if [[ -e "$port_dir/$a" ]]; then
+                if [[ "$a" == *\** ]]; then
+                  for f in $port_dir/$a; do
+                    cp -r "$f" "$dest/"
+                  done
+                elif [[ -e "$port_dir/$a" ]]; then
                   cp -r "$port_dir/$a" "$dest/"
                 fi
               done <<< "$artifacts"
+              shopt -u nullglob
               continue
             fi
 
@@ -178,13 +184,25 @@ jobs:
             # build.txt didn't fail-fast). Bailing here prevents committing a
             # stale .upstream-sha that would make the next run think we're
             # up-to-date when no binaries changed.
+            #
+            # Artifact entries containing '*' are treated as globs (useful for
+            # multi-volume archives like data.7z.* where the part count can
+            # vary between upstream versions). A glob is considered satisfied
+            # if it matches at least one file.
             missing=()
+            shopt -s nullglob
             while read -r a; do
               [[ -z "$a" ]] && continue
-              if [[ ! -e "$port_dir/$a" ]]; then
+              if [[ "$a" == *\** ]]; then
+                matches=($port_dir/$a)
+                if (( ${#matches[@]} == 0 )); then
+                  missing+=("$a")
+                fi
+              elif [[ ! -e "$port_dir/$a" ]]; then
                 missing+=("$a")
               fi
             done <<< "$artifacts"
+            shopt -u nullglob
             if (( ${#missing[@]} > 0 )); then
               echo "::error::[$id] build produced no output — missing artifacts: ${missing[*]}"
               failures+=("$id")
@@ -192,11 +210,22 @@ jobs:
             fi
 
             echo "::group::[$id] sync payload to ${target_dirs[*]}"
+            shopt -s nullglob
             for target_dir in "${target_dirs[@]}"; do
               mkdir -p "$target_dir"
               while read -r a; do
                 [[ -z "$a" ]] && continue
-                if [[ -d "$port_dir/$a" ]]; then
+                if [[ "$a" == *\** ]]; then
+                  # Glob artifact: purge any existing matches in target_dir
+                  # first so shrinking part counts (e.g. 3 parts → 2 parts)
+                  # don't leave orphaned files behind.
+                  for stale in $target_dir/$a; do
+                    rm -rf "$stale"
+                  done
+                  for f in $port_dir/$a; do
+                    cp -r "$f" "$target_dir/$(basename "$f")"
+                  done
+                elif [[ -d "$port_dir/$a" ]]; then
                   rm -rf "$target_dir/$a"
                   cp -r "$port_dir/$a" "$target_dir/$a"
                 elif [[ -f "$port_dir/$a" ]]; then
@@ -205,6 +234,7 @@ jobs:
               done <<< "$artifacts"
               echo "$upstream_sha" > "$target_dir/.upstream-sha"
             done
+            shopt -u nullglob
             echo "::endgroup::"
 
             echo "::group::[$id] commit and push"

@@ -30,20 +30,22 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 mkdir -p "config"
 bind_directories "$XDG_DATA_HOME/Sonic3AIR" "$GAMEDIR/config"
 
-# Engine data is shipped as data.7z (LZMA-compressed) to stay under GitHub's
-# 100MB per-file limit and keep the port repo small. Presence of data.7z
-# means the archive is newer than whatever's in data/ (either first run or
-# port update), so we purge and re-extract. Uses PortMaster's bundled 7zzs.
-if [ -f "$GAMEDIR/data.7z" ]; then
+# Engine data is shipped as a split 7z archive (data.7z.001, data.7z.002, ...)
+# to stay under GitHub's 100MB per-file limit. Sonic 3 AIR's data/ is mostly
+# pre-compressed Ogg Vorbis, so LZMA can't shrink it enough for a single
+# file. Presence of .001 means the archive is newer than whatever's in data/
+# (either first run or port update), so we purge and re-extract. Pointing
+# 7zzs at the first part is enough — it follows the chain automatically.
+if [ -f "$GAMEDIR/data.7z.001" ]; then
   SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
   if [ ! -x "$SEVENZIP" ]; then
     echo "7zzs binary not found at $SEVENZIP; aborting data extraction."
     pm_finish; exit 1
   fi
-  echo "Extracting data.7z..."
+  echo "Extracting data.7z (split archive)..."
   rm -rf "$GAMEDIR/data"
-  if "$SEVENZIP" x -y "$GAMEDIR/data.7z" -o"$GAMEDIR" >/dev/null; then
-    rm -f "$GAMEDIR/data.7z"
+  if "$SEVENZIP" x -y "$GAMEDIR/data.7z.001" -o"$GAMEDIR" >/dev/null; then
+    rm -f "$GAMEDIR"/data.7z.*
   else
     echo "Unable to extract data.7z."
     pm_finish; exit 1

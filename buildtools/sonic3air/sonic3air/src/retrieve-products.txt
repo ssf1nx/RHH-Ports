@@ -17,12 +17,15 @@ cp "$SRC_GAME/sonic3air_linux" "$DESTDIR/sonic3air_linux"
 # comfortably under. The launcher extracts in-place on first run (or on
 # port update when the archive reappears).
 cp "$SRC_GAME/config.json" "$DESTDIR/config.json"
-# Remove any prior archive (including old zip form) before repackaging.
-rm -f "$DESTDIR/data.7z" "$DESTDIR/data.zip"
-# 7z is pre-installed on GitHub-hosted ubuntu-24.04 runners. -mx=9 is max
-# LZMA compression; for this asset tree it produces ~70-80MB vs zip's 127MB.
-(cd "$SRC_GAME" && 7z a -t7z -mx=9 "$DESTDIR/data.7z" data >/dev/null)
-echo "data.7z size: $(stat -c %s "$DESTDIR/data.7z") bytes"
+# Remove any prior archive (single-file or split) before repackaging.
+rm -f "$DESTDIR/data.7z" "$DESTDIR/data.zip" "$DESTDIR"/data.7z.*
+# Sonic 3 AIR's data/ is mostly pre-compressed Ogg Vorbis, so LZMA only
+# buys us ~0.5% — the single-file archive lands around 127MB, above
+# GitHub's 100MB per-file limit. Split into 90MB volumes to stay under.
+# 7z is pre-installed on GitHub-hosted ubuntu-24.04 runners. Extraction
+# only needs the first part (.001); 7z follows the chain automatically.
+(cd "$SRC_GAME" && 7z a -t7z -mx=9 -v90m "$DESTDIR/data.7z" data >/dev/null)
+echo "data.7z parts:"; ls -l "$DESTDIR"/data.7z.*
 
 # sonic3air ships no bundled libs; `libs/` is intentionally absent from the
 # shipped payload. If the build.txt verification step starts failing because
