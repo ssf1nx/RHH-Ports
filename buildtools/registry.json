@@ -33,7 +33,7 @@
       "upstream_repo": "RSDKModding/RSDKv4-Decompilation",
       "track": "release",
       "commit_prefix": "SONIC2013",
-      "artifacts": ["sonic1", "sonic2", "libs"]
+      "artifacts": ["RSDKv4", "libs"]
     }
   }
 }

@@ -22,7 +22,7 @@ GAMEDIR="/$directory/ports/sonic.1"
 # CD and set permissions
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +x "$GAMEDIR/sonic1"
+$ESUDO chmod +x "$GAMEDIR/RSDKv4"
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/libs":$LD_LIBRARY_PATH
@@ -59,10 +59,27 @@ get_res() {
 # Adjust game resolution
 get_res
 
+# Run the patcher on first launch (or if user drops a fresh Origins file)
+if { [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -f "$GAMEDIR/Sonic1u.rsdk" ]; } \
+   && { [ -f "$GAMEDIR/Data.rsdk" ] || [ -f "$GAMEDIR/Sonic1u.rsdk" ]; }; then
+    if [ -f "$controlfolder/utils/patcher.txt" ]; then
+        export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+        export PATCHER_GAME="$(basename "${0%.*}")"
+        export PATCHER_TIME="a few seconds"
+        export controlfolder
+        export ESUDO
+        export DEVICE_ARCH
+        source "$controlfolder/utils/patcher.txt"
+        $ESUDO kill -9 $(pidof gptokeyb) 2>/dev/null
+    else
+        echo "This port requires the latest version of PortMaster."
+    fi
+fi
+
 # Run the game
-$GPTOKEYB "sonic1" -c "sonic.gptk" &
-pm_platform_helper "sonic1" > /dev/null
-"$GAMEDIR/sonic1"
+$GPTOKEYB "RSDKv4" -c "sonic.gptk" &
+pm_platform_helper "RSDKv4" > /dev/null
+"$GAMEDIR/RSDKv4"
 
 # Cleanup
 pm_finish

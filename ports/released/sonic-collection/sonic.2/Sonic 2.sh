@@ -22,7 +22,7 @@ GAMEDIR="/$directory/ports/sonic.2"
 # CD and set permissions
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
-$ESUDO chmod +x "$GAMEDIR/sonic2"
+$ESUDO chmod +x "$GAMEDIR/RSDKv4"
 
 # Exports
 export LD_LIBRARY_PATH="/usr/lib:$GAMEDIR/libs":$LD_LIBRARY_PATH
@@ -60,9 +60,9 @@ get_res() {
 get_res
 
 # Run the game
-$GPTOKEYB "sonic2" -c "sonic.gptk" &
-pm_platform_helper "sonic2" > /dev/null
-"$GAMEDIR/sonic2"
+$GPTOKEYB "RSDKv4" -c "sonic.gptk" &
+pm_platform_helper "RSDKv4" > /dev/null
+"$GAMEDIR/RSDKv4"
 
 # Cleanup
 pm_finish

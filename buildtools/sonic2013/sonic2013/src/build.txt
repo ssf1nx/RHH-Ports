@@ -116,8 +116,7 @@ while read -r lib; do
     fi
 done <<< "$needed"
 
-# Same binary ships as sonic1 and sonic2; each launcher runs its own name.
-cp "$bin" build/sonic1
-cp "$bin" build/sonic2
+# $bin is already build/RSDKv4 from CMakeLists' default OUTPUT_NAME;
+# retrieve-products copies it into each target_dir as-is.
 
 cd ..

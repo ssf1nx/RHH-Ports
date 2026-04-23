@@ -6,12 +6,7 @@ DESTDIR=$2
 
 cd "$DESTDIR" || { echo "DESTDIR not found: $DESTDIR"; exit 1; }
 
-# Both binaries are copies of the same RSDKv4 build. The registry ships this
-# port's artifacts into two target_dirs (sonic.1 and sonic.2), and each
-# launcher invokes its own name — we produce both names here so both target
-# dirs end up with the per-game binary they expect.
-cp "$SRCDIR/RSDKv4-Decompilation/build/sonic1" "$DESTDIR/sonic1"
-cp "$SRCDIR/RSDKv4-Decompilation/build/sonic2" "$DESTDIR/sonic2"
+cp "$SRCDIR/RSDKv4-Decompilation/build/RSDKv4" "$DESTDIR/RSDKv4"
 
 rm -rf ./libs
 cp -r "$SRCDIR/RSDKv4-Decompilation/build/libs" .
