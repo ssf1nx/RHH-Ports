@@ -2838,11 +2838,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "date_updated": "2026-04-23T20:36",
-      "md5": "0ba9edf911aa689338a53678a0d40c0d",
-      "size": 295578,
+      "date_updated": "2026-04-23T20:48",
+      "md5": "10f3e394a21ba4a5d42cc539b5a20194",
+      "size": 1404335,
       "lifetime_downloads": 0,
-      "last_commit": "Further adjust sonic 1 & 2"
+      "last_commit": "[SONIC2013] Update to f5f1e87"
     }
   },
   {
@@ -2882,11 +2882,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "date_updated": "2026-04-23T20:36",
-      "md5": "09f48206be1cb91506f05ea8986c6534",
-      "size": 247691,
+      "date_updated": "2026-04-23T20:48",
+      "md5": "0838044058475b021b07bd4f8fc531f7",
+      "size": 1356448,
       "lifetime_downloads": 0,
-      "last_commit": "Further adjust sonic 1 & 2"
+      "last_commit": "[SONIC2013] Update to f5f1e87"
     }
   },
   {
