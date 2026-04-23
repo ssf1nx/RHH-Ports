@@ -2969,9 +2969,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-04-23T16:08",
-      "md5": "933207dfdf983716540c5b99da7e7c73",
-      "size": 596388,
+      "date_updated": "2026-04-23T16:35",
+      "md5": "0b54cd90ef5f8d787aec54e3adcc53d0",
+      "size": 596393,
       "lifetime_downloads": 0,
       "last_commit": "Revert \"[SONICCD] Update to 2f5fdb6\""
     }
