@@ -75,7 +75,11 @@ done
 
 mkdir -p Oxygen/sonic3air/build/_cmake/build
 cd Oxygen/sonic3air/build/_cmake/build
-cmake .. -DCMAKE_BUILD_TYPE=Release
+# USE_GLES=ON links GLESv2 instead of desktop OpenGL (libGLX.so.0 +
+# libOpenGL.so.0 from libglvnd). PortMaster devices provide libGLESv2.so.2
+# but not libglvnd, so desktop-GL builds fail at runtime. Also defines
+# RMX_LINUX_ENFORCE_GLES2 which fixes rmxmedia's GL calls for embedded.
+cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_GLES=ON
 make -j$(nproc)
 cd ../../../../..
 

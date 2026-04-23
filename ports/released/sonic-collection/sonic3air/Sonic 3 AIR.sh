@@ -30,22 +30,22 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 mkdir -p "config"
 bind_directories "$XDG_DATA_HOME/Sonic3AIR" "$GAMEDIR/config"
 
-# Engine data is shipped as data.zip to keep the port repo small and fast to
-# update. Presence of data.zip means the zip is newer than whatever's in
-# data/ (either first run or port update), so we purge and re-extract.
-# Uses PortMaster's bundled 7zzs — not regular unzip — for speed on device.
-if [ -f "$GAMEDIR/data.zip" ]; then
+# Engine data is shipped as data.7z (LZMA-compressed) to stay under GitHub's
+# 100MB per-file limit and keep the port repo small. Presence of data.7z
+# means the archive is newer than whatever's in data/ (either first run or
+# port update), so we purge and re-extract. Uses PortMaster's bundled 7zzs.
+if [ -f "$GAMEDIR/data.7z" ]; then
   SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
   if [ ! -x "$SEVENZIP" ]; then
     echo "7zzs binary not found at $SEVENZIP; aborting data extraction."
     pm_finish; exit 1
   fi
-  echo "Extracting data.zip..."
+  echo "Extracting data.7z..."
   rm -rf "$GAMEDIR/data"
-  if "$SEVENZIP" x -y "$GAMEDIR/data.zip" -o"$GAMEDIR" >/dev/null; then
-    rm -f "$GAMEDIR/data.zip"
+  if "$SEVENZIP" x -y "$GAMEDIR/data.7z" -o"$GAMEDIR" >/dev/null; then
+    rm -f "$GAMEDIR/data.7z"
   else
-    echo "Unable to extract data.zip."
+    echo "Unable to extract data.7z."
     pm_finish; exit 1
   fi
 fi

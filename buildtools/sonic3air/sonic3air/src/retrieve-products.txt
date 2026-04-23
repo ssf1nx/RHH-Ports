@@ -12,11 +12,17 @@ SRC_GAME="$SRCDIR/sonic3air/Oxygen/sonic3air"
 cp "$SRC_GAME/sonic3air_linux" "$DESTDIR/sonic3air_linux"
 
 # Upstream engine data must match the binary's expectations. We ship it as
-# a zip to keep the port repo small and diff-friendly; the launcher extracts
-# it in-place on first run (or on port update when the zip reappears).
+# a 7z archive to stay under GitHub's 100MB per-file limit — plain zip of
+# this 133MB asset tree lands around 127MB; LZMA compression brings it
+# comfortably under. The launcher extracts in-place on first run (or on
+# port update when the archive reappears).
 cp "$SRC_GAME/config.json" "$DESTDIR/config.json"
-rm -f "$DESTDIR/data.zip"
-(cd "$SRC_GAME" && zip -rq "$DESTDIR/data.zip" data)
+# Remove any prior archive (including old zip form) before repackaging.
+rm -f "$DESTDIR/data.7z" "$DESTDIR/data.zip"
+# 7z is pre-installed on GitHub-hosted ubuntu-24.04 runners. -mx=9 is max
+# LZMA compression; for this asset tree it produces ~70-80MB vs zip's 127MB.
+(cd "$SRC_GAME" && 7z a -t7z -mx=9 "$DESTDIR/data.7z" data >/dev/null)
+echo "data.7z size: $(stat -c %s "$DESTDIR/data.7z") bytes"
 
 # sonic3air ships no bundled libs; `libs/` is intentionally absent from the
 # shipped payload. If the build.txt verification step starts failing because
