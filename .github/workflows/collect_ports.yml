@@ -318,4 +318,27 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add docs/ports.json
-          git diff --cached --quiet || git commit -m "Update ports.json" && git push
+          if git diff --cached --quiet; then
+            echo "No ports.json changes to commit"
+            exit 0
+          fi
+          git commit -m "Update ports.json"
+
+          # Retry fetch+rebase+push to absorb concurrent pushes from other
+          # workflows hitting the same branch (e.g. Build Ports between runs).
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "$GITHUB_REF_NAME"
+            if ! git rebase "origin/$GITHUB_REF_NAME"; then
+              echo "::error::rebase failed on attempt $attempt"
+              git rebase --abort || true
+              exit 1
+            fi
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt; retrying..."
+            sleep $((attempt * 3))
+          done
+          echo "::error::Push failed after 5 attempts"
+          exit 1
