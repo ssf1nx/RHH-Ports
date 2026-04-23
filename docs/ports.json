@@ -2969,11 +2969,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-04-23T15:58",
-      "md5": "1025927735f477988cf732bef49ad18b",
+      "date_updated": "2026-04-23T16:03",
+      "md5": "3556beb49c820a65a56f7af5cf741b96",
       "size": 596388,
       "lifetime_downloads": 0,
-      "last_commit": "Add more autobuild"
+      "last_commit": "[SONICCD] Update to 2f5fdb6"
     }
   },
   {
