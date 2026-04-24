@@ -35,6 +35,13 @@ $ESUDO chmod +x "$GAMEDIR/tools/torch"
 # Close the menu if open
 sed -i 's/"gOpenMenu": *1/"gOpenMenu": 0/' spaghettify.cfg.json
 
+# Force controller navigation on
+if grep -q '"gControlNav"' spaghettify.cfg.json; then
+    sed -i 's/"gControlNav":[[:space:]]*[0-9]*/"gControlNav": 1/' spaghettify.cfg.json
+else
+    sed -i '/"CVars":[[:space:]]*{/a\"gControlNav": 1,' spaghettify.cfg.json
+fi
+
 # Warn if mk64.o2r is older than Spaghettify or spaghetti.o2r
 if [ -f "$GAMEDIR/mk64.o2r" ]; then
     if [ -f "$GAMEDIR/Spaghettify" ] && [ "$GAMEDIR/Spaghettify" -nt "$GAMEDIR/mk64.o2r" ] \

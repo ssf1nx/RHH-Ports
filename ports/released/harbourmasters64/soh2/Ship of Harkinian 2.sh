@@ -32,6 +32,13 @@ $ESUDO chmod +x "$GAMEDIR/assets/otrgen"
 # Close the menu if open
 sed -i 's/"Menu": *1/"Menu": 0/' 2ship2harkinian.json
 
+# Force controller navigation on
+if grep -q '"ControlNav"' 2ship2harkinian.json; then
+    sed -i 's/"ControlNav":[[:space:]]*[0-9]*/"ControlNav": 1/' 2ship2harkinian.json
+else
+    sed -i '/"gSettings":[[:space:]]*{/a\"ControlNav": 1,' 2ship2harkinian.json
+fi
+
 # -------------------- BEGIN FUNCTIONS --------------------
 
 # Check imgui.ini and modify if needed

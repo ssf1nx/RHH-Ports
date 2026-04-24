@@ -32,7 +32,14 @@ $ESUDO chmod +x "$GAMEDIR/Starship"
 $ESUDO chmod +x "$GAMEDIR/tools/otrgen"
 
 # Close the menu if open
-sed -i 's/"Menu": *1/"Menu": 0/' ghostship.cfg.json
+sed -i 's/"Menu": *1/"Menu": 0/' starship.cfg.json
+
+# Force controller navigation on
+if grep -q '"gControlNav"' starship.cfg.json; then
+    sed -i 's/"gControlNav":[[:space:]]*[0-9]*/"gControlNav": 1/' starship.cfg.json
+else
+    sed -i '/"CVars":[[:space:]]*{/a\"gControlNav": 1,' starship.cfg.json
+fi
 
 # Warn if mk64.o2r is older than Starship or starship.o2r
 if [ -f "$GAMEDIR/sf64.o2r" ]; then

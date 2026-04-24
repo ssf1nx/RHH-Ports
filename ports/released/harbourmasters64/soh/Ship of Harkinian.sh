@@ -103,6 +103,13 @@ edit_json() {
 
     # Set room id (string)
     sed -i "s/\"RoomId\":[[:space:]]*\"[^\"]*\"/\"RoomId\": \"${ROOMID}\"/" shipofharkinian.json
+
+    # Force controller navigation on
+    if grep -q '"ControlNav"' shipofharkinian.json; then
+        sed -i 's/"ControlNav":[[:space:]]*[0-9]*/"ControlNav": 1/' shipofharkinian.json
+    else
+        sed -i '/"gSettings":[[:space:]]*{/a\"ControlNav": 1,' shipofharkinian.json
+    fi
 }
 
 # --------------------- END FUNCTIONS ---------------------

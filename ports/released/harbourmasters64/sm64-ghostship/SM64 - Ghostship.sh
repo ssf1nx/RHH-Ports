@@ -65,6 +65,13 @@ mv "$temp_file" "$input_file"
 # Close the menu if open
 sed -i 's/"Menu": *1/"Menu": 0/' ghostship.cfg.json
 
+# Force controller navigation on
+if grep -q '"gControlNav"' ghostship.cfg.json; then
+    sed -i 's/"gControlNav":[[:space:]]*[0-9]*/"gControlNav": 1/' ghostship.cfg.json
+else
+    sed -i '/"CVars":[[:space:]]*{/a\"gControlNav": 1,' ghostship.cfg.json
+fi
+
 # Warn if sm64.o2r is older than Ghostship or ghostship.o2r
 if [ -f "$GAMEDIR/sm64.o2r" ]; then
     if [ -f "$GAMEDIR/Ghostship" ] && [ "$GAMEDIR/Ghostship" -nt "$GAMEDIR/sm64.o2r" ] \
