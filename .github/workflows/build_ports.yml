@@ -149,7 +149,7 @@ jobs:
             # Invoke via `bash` so the script doesn't need the executable bit
             # — file-mode handling is inconsistent on Windows checkouts.
             # FORCE_HEAD tells tag-tracking build.txt recipes to build from
-            # branch HEAD instead. Commit-tracking recipes (like sonic-mania,
+            # branch HEAD instead. Commit-tracking recipes (like rsdkv5,
             # which already follows HEAD) ignore this.
             if ! FORCE_HEAD="$FORCE" bash buildtools/build_port.sh "$port_dir"; then
               echo "::error::[$id] build_port.sh failed"

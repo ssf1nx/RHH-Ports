@@ -1,0 +1,25 @@
+The `sonic2absolute` binary shipped in this port is a custom build of the
+RSDKv4 decompilation by spec58, configured for compatibility with the
+Sonic 2 Absolute mod.
+
+Project pages:
+  https://teamforeveronline.wixsite.com/home
+  https://teamforeveronline.wixsite.com/home/sonic-2-absolute
+
+The binary is only invoked when a mobile-format `Data.rsdk` is present AND
+the user has enabled the Sonic 2 Absolute mod (set `Sonic2Absolute=true` in
+`mods/modconfig.ini`). With Origins data, the standard `RSDKv4` binary is
+used instead.
+
+Team Forever's RSDKv4 fork (the source of spec58's builds) is released
+under the same RSDKv3/v4 Decompilation Source Code License v2 that governs
+the upstream decomp — see `LICENSE.rsdkv4` in this folder for the full
+text.
+
+Upstream references:
+  https://github.com/ElspethThePict/TeamForever-v4-1.3   (fork source)
+  https://github.com/RSDKModding/RSDKv4-Decompilation   (parent decomp)
+
+Thanks to spec58 for providing the custom binary. No modifications have
+been made to it for this port; it ships as provided by the Sonic Forever
+team.

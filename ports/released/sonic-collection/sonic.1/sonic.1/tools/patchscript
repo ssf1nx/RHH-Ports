@@ -32,6 +32,7 @@ FILELIST="$TOOLSDIR/RSDKv5UFileList.txt"
 VGMSTREAM="$TOOLSDIR/vgmstream-cli"
 OGGENC="$TOOLSDIR/oggenc"
 NORMALIZE="$TOOLSDIR/wav-normalize"
+GCPATCH="$TOOLSDIR/patch-gameconfig"
 
 # Origins SFX are mastered ~8dB quieter than mobile. Normalize to -3dBFS.
 SFX_TARGET_DBFS="-3"
@@ -97,6 +98,7 @@ check_tools() {
     [ -f "$VGMSTREAM" ] && $ESUDO chmod +x "$VGMSTREAM" 2>/dev/null
     [ -f "$OGGENC" ]    && $ESUDO chmod +x "$OGGENC"    2>/dev/null
     [ -f "$NORMALIZE" ] && $ESUDO chmod +x "$NORMALIZE" 2>/dev/null
+    [ -f "$GCPATCH" ]   && $ESUDO chmod +x "$GCPATCH"   2>/dev/null
 
     missing=""
     [ -x "$EXTRACTOR" ] || missing="${missing}  tools/rsdkv5u-extract\n"
@@ -104,6 +106,7 @@ check_tools() {
     [ -x "$VGMSTREAM" ] || missing="${missing}  tools/vgmstream-cli\n"
     [ -x "$OGGENC" ]    || missing="${missing}  tools/oggenc\n"
     [ -x "$NORMALIZE" ] || missing="${missing}  tools/wav-normalize\n"
+    [ -x "$GCPATCH" ]   || missing="${missing}  tools/patch-gameconfig\n"
     if [ -n "$missing" ]; then
         echo "ERROR: port is missing required helper tools:"
         printf "$missing"
@@ -126,7 +129,19 @@ extract_rsdk() {
         return 1
     fi
     rm -f "$ORIGINS" "$TARGET"
+    patch_gameconfig "$DATADIR/Game/GameConfig.bin"
     echo "Origins data extracted to Data/ and Bytecode/."
+}
+
+# Post-extraction GameConfig.bin fixups:
+#   1. game.playMode -> 1 (Anniversary mode; enables Drop Dash etc.)
+#   2. Players list expanded to the full 7-entry Plus roster so
+#      Plus-enabled rebuilds (see BUILDING.md) work without extra RetroED work.
+patch_gameconfig() {
+    cfg="$1"
+    [ -f "$cfg" ] || return 0
+    echo "Patching GameConfig.bin:"
+    "$GCPATCH" "$cfg" || echo "WARNING: GameConfig patch failed; Drop Dash may not work."
 }
 
 # Origins cue name -> path relative to Data/SoundFX/. Empty = skip.

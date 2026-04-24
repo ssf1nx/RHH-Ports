@@ -36,12 +36,12 @@ The inner `<id>/` is the staging dir the build writes into during a run (`sonicm
 
 | Field | Purpose |
 |---|---|
-| `port_dir` | Path to the build-scratch dir (e.g. `buildtools/sonic-mania/sonic-mania`) |
+| `port_dir` | Path to the build-scratch dir (e.g. `buildtools/sonic/rsdkv5/rsdkv5`) |
 | `target_dirs` | List of payload dirs to receive the build output. Usually one (e.g. `["ports/released/sonic-collection/sonic.mania/sonic.mania"]`). Multiple entries fan one build out to several ports — used when a single decomp produces a binary consumed by two or more port folders (e.g. RSDKv4 feeding both sonic.1 and sonic.2). |
 | `upstream_repo` | GitHub `owner/repo` to poll for new commits |
 | `track` | Optional. `"branch"` (default) = rebuild when `upstream_branch` HEAD moves. `"release"` = rebuild when a new release tag is published. Pick `release` for projects with a stable release cadence; `branch` for rolling-main decomp projects. |
 | `upstream_branch` | Branch to track when `track` is `"branch"` (usually `main` or `master`). Ignored in release mode. |
-| `commit_prefix` | Uppercase tag used in commit messages, e.g. `[SONICMANIA] Update to abc1234` |
+| `commit_prefix` | Uppercase tag used in commit messages, e.g. `[RSDKV5] Update to abc1234` |
 | `artifacts` | Files or directories to copy from `port_dir` into each `target_dirs` entry after a build |
 
 ### How upstream changes are detected

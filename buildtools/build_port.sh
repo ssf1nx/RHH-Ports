@@ -2,7 +2,7 @@
 
 # Shared build driver for RHH-Ports buildtools/
 # Usage: ./build_port.sh <portdir>
-# where <portdir> is e.g. buildtools/sonic-mania/sonic-mania
+# where <portdir> is e.g. buildtools/sonic/rsdkv4/rsdkv4
 
 set -e
 

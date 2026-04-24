@@ -1,39 +1,39 @@
 {
   "ports": {
-    "sonic-mania": {
-      "port_dir": "buildtools/sonic-mania/sonic-mania",
-      "target_dirs": ["ports/released/sonic-collection/sonic.mania/sonic.mania"],
-      "upstream_repo": "RSDKModding/Sonic-Mania-Decompilation",
-      "upstream_branch": "master",
-      "commit_prefix": "SONICMANIA",
-      "artifacts": ["sonicmania", "Game.so", "libs"]
-    },
-    "sonic-cd": {
-      "port_dir": "buildtools/sonic-cd/sonic-cd",
+    "rsdkv3": {
+      "port_dir": "buildtools/sonic/rsdkv3/rsdkv3",
       "target_dirs": ["ports/released/sonic-collection/sonic.cd/sonic.cd"],
       "upstream_repo": "RSDKModding/RSDKv3-Decompilation",
       "upstream_branch": "master",
-      "commit_prefix": "SONICCD",
+      "commit_prefix": "RSDKV3",
       "artifacts": ["soniccd", "libs"]
     },
-    "sonic3air": {
-      "port_dir": "buildtools/sonic3air/sonic3air",
-      "target_dirs": ["ports/released/sonic-collection/sonic3air/sonic3air"],
-      "upstream_repo": "Eukaryot/sonic3air",
-      "track": "release",
-      "commit_prefix": "SONIC3AIR",
-      "artifacts": ["sonic3air_linux", "config.json", "doc/license.txt", "doc/license-thirdparty", "data", "audioremaster.7z.*"]
-    },
-    "sonic2013": {
-      "port_dir": "buildtools/sonic2013/sonic2013",
+    "rsdkv4": {
+      "port_dir": "buildtools/sonic/rsdkv4/rsdkv4",
       "target_dirs": [
         "ports/released/sonic-collection/sonic.1/sonic.1",
         "ports/released/sonic-collection/sonic.2/sonic.2"
       ],
       "upstream_repo": "RSDKModding/RSDKv4-Decompilation",
       "track": "release",
-      "commit_prefix": "SONIC2013",
+      "commit_prefix": "RSDKV4",
       "artifacts": ["RSDKv4", "libs"]
+    },
+    "rsdkv5": {
+      "port_dir": "buildtools/sonic/rsdkv5/rsdkv5",
+      "target_dirs": ["ports/released/sonic-collection/sonic.mania/sonic.mania"],
+      "upstream_repo": "RSDKModding/Sonic-Mania-Decompilation",
+      "upstream_branch": "master",
+      "commit_prefix": "RSDKV5",
+      "artifacts": ["sonicmania", "Game.so", "libs"]
+    },
+    "sonic3air": {
+      "port_dir": "buildtools/sonic/sonic3air/sonic3air",
+      "target_dirs": ["ports/released/sonic-collection/sonic3air/sonic3air"],
+      "upstream_repo": "Eukaryot/sonic3air",
+      "track": "release",
+      "commit_prefix": "SONIC3AIR",
+      "artifacts": ["sonic3air_linux", "config.json", "doc/license.txt", "doc/license-thirdparty", "data", "audioremaster.7z.*"]
     }
   }
 }

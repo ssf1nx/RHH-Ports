@@ -12,9 +12,9 @@
       "Christian_Haitian",
       "Jeod"
     ],
-    "desc": "Sonic the Hedgehog 2 decompilation by Rubberduckycooly.",
+    "desc": "Sonic the Hedgehog 2 decompilation by Rubberduckycooly. Now works with Sonic Origins data!",
     "desc_md": null,
-    "inst": "Add your own Data.rsdk file to the ports/sonic2 folder.",
+    "inst": "Add your own Data.rsdk file to the ports/sonic.2 folder, or see the README to use Origins data and features.",
     "inst_md": null,
     "genres": [
       "platformer"

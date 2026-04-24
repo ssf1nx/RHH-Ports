@@ -1,0 +1,645 @@
+#!/bin/sh
+
+GAMEDIR="$PWD"
+LOGFILE="patchlog.txt"
+LOGERR="patcherr.txt"
+
+# Logging
+> "$GAMEDIR/$LOGFILE" && exec > >(tee "$GAMEDIR/$LOGFILE") 2>&1
+echo "GAMEDIR is set to: $GAMEDIR"
+
+TARGET="$GAMEDIR/Data.rsdk"
+ORIGINS="$GAMEDIR/Sonic2u.rsdk"
+DATADIR="$GAMEDIR/Data"
+TMPDIR="$GAMEDIR/tmp"
+MUSICDIR="$DATADIR/Music"
+SFXDIR="$DATADIR/SoundFX"
+TOOLSDIR="$GAMEDIR/tools"
+
+# Audio pack source files — user drops these in $GAMEDIR.
+MUSIC_ACB="$GAMEDIR/STH2_music.acb"
+MUSIC_AWB="$GAMEDIR/STH2_music.awb"
+SFX_ACB="$GAMEDIR/STH2_sfx.acb"
+HITE_ACB="$GAMEDIR/HITE_sfx.acb"
+# Sonic 2 shares several audio cues with Sonic 1 that Origins only ships
+# under STH1. Require the STH1 packs too:
+#   STH1_music.awb — Drowning track, 1up jingle
+#   STH1_sfx.acb   — ScoreAdd, Event
+STH1_MUSIC_AWB="$GAMEDIR/STH1_music.awb"
+STH1_SFX_ACB="$GAMEDIR/STH1_sfx.acb"
+
+# HCA keycodes per https://rsdkmodding.com/Games/SonicOrigins/Documentation/Audio/
+STH2_MUSIC_KEY="7014663803770805356"
+STH2_SFX_KEY="1290919142773486504"
+STH1_MUSIC_KEY="6005974353133017519"
+STH1_SFX_KEY="11064953427723590053"
+HITE_SFX_KEY="1441441318033510872"
+
+EXTRACTOR="$TOOLSDIR/rsdkv5u-extract"
+FILELIST="$TOOLSDIR/RSDKv5UFileList.txt"
+VGMSTREAM="$TOOLSDIR/vgmstream-cli"
+OGGENC="$TOOLSDIR/oggenc"
+NORMALIZE="$TOOLSDIR/wav-normalize"
+SPEED="$TOOLSDIR/wav-speed"
+GCPATCH="$TOOLSDIR/patch-gameconfig"
+
+# Origins SFX are mastered ~8dB quieter than mobile. Normalize to -3dBFS.
+SFX_TARGET_DBFS="-3"
+
+# === Pre-flight: fail loudly if inputs are incomplete ===
+# Accepted starting states:
+#   A) Origins bundle: Sonic2u.rsdk + STH2_music.acb/awb + STH2_sfx.acb + HITE_sfx.acb
+#   B) Mobile-only pass-through: Data.rsdk already mobile-signed (RSDKvB)
+#   C) Already-extracted pass-through: Data/Game/GameConfig.bin exists
+check_inputs() {
+    # Pass-through shortcuts — no source files needed.
+    if [ -f "$DATADIR/Game/GameConfig.bin" ]; then
+        echo "Existing extracted Data/ detected — no new drops to process."
+        return 0
+    fi
+    if [ -f "$TARGET" ]; then
+        sig=$(dd if="$TARGET" bs=1 count=6 2>/dev/null)
+        case "$sig" in
+            RSDKvB)
+                echo "Mobile Data.rsdk detected — engine will load it directly."
+                return 0
+                ;;
+            RSDKv4)
+                echo "ERROR: Data.rsdk has Origins signature."
+                echo "       Rename it to Sonic2u.rsdk so the extractor picks it up,"
+                echo "       then provide the Origins audio files too:"
+                echo "         STH2_music.acb, STH2_music.awb, STH2_sfx.acb"
+                return 1
+                ;;
+            *)
+                echo "ERROR: Data.rsdk has unrecognized signature: '$sig'"
+                return 1
+                ;;
+        esac
+    fi
+
+    # Origins path — require all seven files.
+    missing=""
+    [ -f "$ORIGINS" ]         || missing="${missing}  Sonic2u.rsdk\n"
+    [ -f "$MUSIC_ACB" ]       || missing="${missing}  STH2_music.acb\n"
+    [ -f "$MUSIC_AWB" ]       || missing="${missing}  STH2_music.awb\n"
+    [ -f "$SFX_ACB" ]         || missing="${missing}  STH2_sfx.acb\n"
+    [ -f "$HITE_ACB" ]        || missing="${missing}  HITE_sfx.acb\n"
+    [ -f "$STH1_MUSIC_AWB" ]  || missing="${missing}  STH1_music.awb\n"
+    [ -f "$STH1_SFX_ACB" ]    || missing="${missing}  STH1_sfx.acb\n"
+    if [ -n "$missing" ]; then
+        echo "ERROR: missing required files in $GAMEDIR:"
+        printf "$missing"
+        echo ""
+        echo "This port needs the following from Sonic Origins:"
+        echo "  Sonic2u.rsdk      — image/x64/raw/retro/Sonic2u.rsdk"
+        echo "  STH2_music.acb    — image/x64/raw/sound/STH2_music.acb"
+        echo "  STH2_music.awb    — image/x64/raw/sound/STH2_music.awb"
+        echo "  STH2_sfx.acb      — image/x64/raw/sound/STH2_sfx.acb"
+        echo "  HITE_sfx.acb      — image/x64/raw/sound/HITE_sfx.acb"
+        echo "  STH1_music.awb    — image/x64/raw/sound/STH1_music.awb"
+        echo "                      (Drowning + 1Up, shared with Sonic 1)"
+        echo "  STH1_sfx.acb      — image/x64/raw/sound/STH1_sfx.acb"
+        echo "                      (ScoreAdd + Event, shared with Sonic 1)"
+        echo ""
+        echo "Drop all seven into this folder and relaunch."
+        return 1
+    fi
+    return 0
+}
+
+check_tools() {
+    [ -f "$EXTRACTOR" ] && $ESUDO chmod +x "$EXTRACTOR" 2>/dev/null
+    [ -f "$VGMSTREAM" ] && $ESUDO chmod +x "$VGMSTREAM" 2>/dev/null
+    [ -f "$OGGENC" ]    && $ESUDO chmod +x "$OGGENC"    2>/dev/null
+    [ -f "$NORMALIZE" ] && $ESUDO chmod +x "$NORMALIZE" 2>/dev/null
+    [ -f "$SPEED" ]     && $ESUDO chmod +x "$SPEED"     2>/dev/null
+    [ -f "$GCPATCH" ]   && $ESUDO chmod +x "$GCPATCH"   2>/dev/null
+
+    missing=""
+    [ -x "$EXTRACTOR" ] || missing="${missing}  tools/rsdkv5u-extract\n"
+    [ -f "$FILELIST" ]  || missing="${missing}  tools/RSDKv5UFileList.txt\n"
+    [ -x "$VGMSTREAM" ] || missing="${missing}  tools/vgmstream-cli\n"
+    [ -x "$OGGENC" ]    || missing="${missing}  tools/oggenc\n"
+    [ -x "$NORMALIZE" ] || missing="${missing}  tools/wav-normalize\n"
+    [ -x "$SPEED" ]     || missing="${missing}  tools/wav-speed\n"
+    [ -x "$GCPATCH" ]   || missing="${missing}  tools/patch-gameconfig\n"
+    if [ -n "$missing" ]; then
+        echo "ERROR: port is missing required helper tools:"
+        printf "$missing"
+        echo "Reinstall the port."
+        return 1
+    fi
+    return 0
+}
+
+extract_rsdk() {
+    [ -f "$ORIGINS" ] || return 0   # pass-through already validated in check_inputs
+
+    echo "Extracting Origins Sonic2u.rsdk..."
+    if ! "$EXTRACTOR" "$ORIGINS" "$FILELIST" "$GAMEDIR"; then
+        echo "ERROR: Sonic2u.rsdk extraction failed."
+        return 1
+    fi
+    if [ ! -f "$DATADIR/Game/GameConfig.bin" ]; then
+        echo "ERROR: extraction produced no GameConfig.bin."
+        return 1
+    fi
+    rm -f "$ORIGINS" "$TARGET"
+    patch_gameconfig "$DATADIR/Game/GameConfig.bin"
+    echo "Origins data extracted to Data/ and Bytecode/."
+}
+
+# Post-extraction GameConfig.bin fixups:
+#   1. game.playMode -> 1 (Anniversary mode; enables Drop Dash etc.)
+#   2. Players list expanded to the full 7-entry Plus roster so
+#      Plus-enabled rebuilds (see BUILDING.md) work without extra RetroED work.
+patch_gameconfig() {
+    cfg="$1"
+    [ -f "$cfg" ] || return 0
+    echo "Patching GameConfig.bin:"
+    "$GCPATCH" "$cfg" || echo "WARNING: GameConfig patch failed; Drop Dash may not work."
+}
+
+# Origins cue name -> path relative to Data/SoundFX/. Empty = skip.
+map_sfx_name() {
+    case "$1" in
+        # Global/ — menu, player, shields (shared across most acts)
+        SFX_STH2_20_Jump)          echo Global/Jump.ogg ;;
+        SFX_STH2_21_StarPost)      echo Global/StarPost.ogg ;;
+        SFX_STH2_22_SpikesMove)    echo Global/SpikesMove.ogg ;;
+        SFX_STH2_23_Hurt)          echo Global/Hurt.ogg ;;
+        SFX_STH2_24_Skidding)      echo Global/Skidding.ogg ;;
+        SFX_STH2_26_Spike)         echo Global/Spike.ogg ;;
+        SFX_STH2_2F_BlueShield)    echo Global/BlueShield.ogg ;;
+        # 35 / 4E share the same Ring clip; vgmstream joins cue names with "; ".
+        SFX_STH2_35_Ring*|*SFX_STH2_4E_Ring)
+                                   echo Global/Ring.ogg ;;
+        SFX_STH2_3C_Release)       echo Global/Release.ogg ;;
+        SFX_STH2_3E_Rolling)       echo Global/Rolling.ogg ;;
+        SFX_STH2_41_Destroy)       echo Global/Destroy.ogg ;;
+        SFX_STH2_43_SpecialRing)   echo Global/SpecialRing.ogg ;;
+        SFX_STH2_44_Explosion)     echo Global/Explosion.ogg ;;
+        SFX_STH2_45_ScoreTotal)    echo Global/ScoreTotal.ogg ;;
+        SFX_STH2_46_LoseRings)     echo Global/LoseRings.ogg ;;
+        SFX_STH2_48_FireDash)      echo Global/FireDash.ogg ;;
+        SFX_STH2_49_BonusPoints)   echo Global/BonusPoints.ogg ;;
+        SFX_STH2_4A_SpecialWarp)   echo Global/SpecialWarp.ogg ;;
+        SFX_STH2_4C_Spring)        echo Global/Spring.ogg ;;
+        SFX_STH2_4F_SignPost)      echo Global/SignPost.ogg ;;
+        SFX_STH2_51_Catch)         echo Global/Catch.ogg ;;
+        SFX_STH2_5B_Sliding)       echo Global/Sliding.ogg ;;
+        SFX_STH2_5F_Transform)     echo Global/Transform.ogg ;;
+        SFX_STH2_60_Charge)        echo Global/Charge.ogg ;;
+        SFX_STH2_68_Landing)       echo Global/Landing.ogg ;;
+        SFX_STH2_6B_InstaShield)   echo Global/InstaShield.ogg ;;
+        SFX_STH2_6C_Teleport)      echo Global/Teleport.ogg ;;
+        # Plus-mode additions
+        # Plus-mode additions — S2's Plus GameConfig has these as .wav
+        # (Origins exception to the Global/*.ogg convention).
+        SFX_Add00_DropDash)        echo Global/DropDash.wav ;;
+        SFX_Plus_AM1_Hammer-Jump)  echo Global/HammerJump.wav ;;
+        SFX_Plus_AM2_Hammer-Attack) echo Global/HammerDash.wav ;;
+        SFX_Plus_AM3_Hammer-Hit)   echo Global/HammerHit.wav ;;
+        # Origins S3K shield cues; STH2 uses its own 48_FireDash and
+        # 6B_InstaShield (see above). S017_BubbleBounce is S2's Bubble
+        # Bounce, not handled via A3 like in S1.
+        S011_*FireShield)          echo Global/FireShield.ogg ;;
+        S012_*BubbleShield)        echo Global/BubbleShield.ogg ;;
+        S014_*LightningShield)     echo Global/LightningShield.ogg ;;
+        S017_*BubbleBounce)        echo Global/BubbleBounce.ogg ;;
+        S018_*LightningJump)       echo Global/LightningJump.ogg ;;
+        # RSDK-2---* engine-shared menu/UI cues
+        RSDK-2---BackButton)       echo Global/BackButton.ogg ;;
+        RSDK-2---Flying)           echo Global/Flying.ogg ;;
+        RSDK-2---MenuButton)       echo Global/MenuButton.ogg ;;
+        RSDK-2---Resume)           echo Global/Resume.ogg ;;
+        RSDK-2---Select)           echo Global/Select.ogg ;;
+        RSDK-2---Tired)            echo Global/Tired.ogg ;;
+        # Stage/ — level-specific objects
+        SFX_STH2_27_Twinkle)       echo Stage/Twinkle.wav ;;
+        SFX_STH2_28_Beep)          echo Stage/Beep.wav ;;
+        SFX_STH2_2A_WaterSplash)   echo Stage/WaterSplash.wav ;;
+        SFX_STH2_2B_Swish)         echo Stage/Swish.wav ;;
+        SFX_STH2_2C_BossHit)       echo Stage/BossHit.wav ;;
+        SFX_STH2_2D_Breathing)     echo Stage/Breathing.wav ;;
+        SFX_STH2_2E_SmallFireball) echo Stage/SmallFireball.wav ;;
+        SFX_STH2_30_Buzzsaw)       echo Stage/Buzzsaw.wav ;;
+        SFX_STH2_31_Electricity)   echo Stage/Electricity.wav ;;
+        SFX_STH2_32_Drowning)      echo Stage/Drowning.wav ;;
+        SFX_STH2_33_FlameThrower)  echo Stage/FlameThrower.wav ;;
+        SFX_STH2_34_Bumper)        echo Stage/Bumper.wav ;;
+        SFX_STH2_36_Spear)         echo Stage/Spear.wav ;;
+        SFX_STH2_37_LargeWall)     echo Stage/LargeWall.wav ;;
+        SFX_STH2_39_BlockBreak)    echo Stage/BlockBreak.wav ;;
+        SFX_STH2_3B_FlappingDoor)  echo Stage/FlappingDoor.wav ;;
+        SFX_STH2_3D_Crusher)       echo Stage/Crusher.wav ;;
+        SFX_STH2_3F_Continue)      echo Global/Continue.ogg ;;
+        SFX_STH2_40_SlotMachine)   echo Stage/SlotMachine.wav ;;
+        SFX_STH2_42_DrownAlert)    echo Stage/DrownAlert.wav ;;
+        SFX_STH2_4B_LedgeBreak)    echo Stage/LedgeBreak.wav ;;
+        SFX_STH2_4D_ButtonPress)   echo Stage/ButtonPress.wav ;;
+        SFX_STH2_50_BossSpark)     echo Stage/BossSpark.wav ;;
+        SFX_STH2_53_SignPost2p)    echo Global/SignPost2p.ogg ;;
+        SFX_STH2_54_GasPop)        echo Stage/GasPop.wav ;;
+        SFX_STH2_55_Clank)         echo Stage/Clank.wav ;;
+        SFX_STH2_56_Elevator)      echo Stage/Elevator.wav ;;
+        SFX_STH2_57_PlatCollide)   echo Stage/PlatCollide.wav ;;
+        SFX_STH2_58_TargetBumper)  echo Stage/TargetBumper.wav ;;
+        SFX_STH2_59_CNZBumper)     echo Stage/CNZBumper.wav ;;
+        SFX_STH2_5A_ChemJump)      echo Stage/ChemJump.wav ;;
+        SFX_STH2_5C_Thruster)      echo Stage/Thruster.wav ;;
+        SFX_STH2_5D_ArrowHit)      echo Stage/ArrowHit.wav ;;
+        SFX_STH2_5E_Helicopter)    echo Stage/Helicopter.wav ;;
+        SFX_STH2_61_Rumble)        echo Stage/Rumble.wav ;;
+        SFX_STH2_62_Plunger)       echo Stage/Plunger.wav ;;
+        SFX_STH2_63_Flipper)       echo Stage/Flipper.wav ;;
+        SFX_STH2_64_LiftTick)      echo Stage/LiftTick.wav ;;
+        SFX_STH2_65_Rustle)        echo Stage/Rustle.wav ;;
+        SFX_STH2_66_ChemSplash)    echo Stage/ChemSplash.wav ;;
+        SFX_STH2_67_DropBridge)    echo Stage/DropBridge.wav ;;
+        SFX_STH2_69_DropBridge2)   echo Stage/DropBridge2.wav ;;
+        SFX_STH2_6A_SmallLaser)    echo Stage/SmallLaser.wav ;;
+        SFX_STH2_6D_Fail)          echo Stage/Fail.wav ;;
+        SFX_STH2_6E_Saw)           echo Stage/Saw.wav ;;
+        SFX_STH2_6F_MediumLaser)   echo Stage/MediumLaser.wav ;;
+        SFX_STH2_70_OilSlide)      echo Stage/OilSlide.wav ;;
+        # Wing Fortress / Death Egg specific
+        RSDK-2---Explosion2)       echo Stage/Explosion2.wav ;;
+        RSDK-2---Explosion3)       echo Stage/Explosion3.wav ;;
+        RSDK-2---Horn1)            echo Stage/Horn1.wav ;;
+        RSDK-2---Horn2)            echo Stage/Horn2.wav ;;
+        RSDK-2---Horn3)            echo Stage/Horn3.wav ;;
+        RSDK-2---Horn4)            echo Stage/Horn4.wav ;;
+        RSDK-2---HornSweep)        echo Stage/HornSweep.wav ;;
+        RSDK-2---HullClose)        echo Stage/HullClose.wav ;;
+        RSDK-2---Impact1)          echo Stage/Impact1.wav ;;
+        RSDK-2---Impact2)          echo Stage/Impact2.wav ;;
+        RSDK-2---LargeLaser)       echo Stage/LargeLaser.wav ;;
+        RSDK-2---LaserCharge)      echo Stage/LaserCharge.wav ;;
+        RSDK-2---LaserSkim)        echo Stage/LaserSkim.wav ;;
+        RSDK-2---Launch)           echo Stage/Launch.wav ;;
+        RSDK-2---LoudHorn)         echo Stage/LoudHorn.wav ;;
+        RSDK-2---MachineMove)      echo Stage/MachineMove.wav ;;
+        RSDK-2---OctusShot)        echo Stage/OctusShot.wav ;;
+        RSDK-2---Rev)              echo Stage/Rev.wav ;;
+        RSDK-2---WaterGeyser)      echo Stage/WaterGeyser.wav ;;
+        RSDK-2---Exit_SS)          echo Stage/Exit_SS.wav ;;
+        RSDK-2---Waterfall)        echo Stage/Waterfall.wav ;;
+        RSDK-2---Waterfall2)       echo Stage/Waterfall2.wav ;;
+        # Unmapped: SFX_STH2_25/29/38/3A/47/52 (unnamed/unused slots)
+        *) echo "" ;;
+    esac
+}
+
+# Origins music cue name -> filename in Data/Music/. Empty = skip.
+map_music_name() {
+    case "$1" in
+        # Zone tracks
+        *_EmeraldHill)      echo EmeraldHill.ogg ;;
+        *_EmeraldHill2)     echo EmeraldHill2.ogg ;;
+        *_ChemicalPlant)    echo ChemicalPlant.ogg ;;
+        *_AquaticRuin)      echo AquaticRuin.ogg ;;
+        *_CasinoNight)      echo CasinoNight.ogg ;;
+        *_CasinoNight2)     echo CasinoNight2.ogg ;;
+        *_HillTop)           echo HillTop.ogg ;;
+        *_MysticCave)       echo MysticCave.ogg ;;
+        *_MysticCave2)      echo MysticCave2.ogg ;;
+        *_OilOcean)         echo OilOcean.ogg ;;
+        *_Metropolis)       echo Metropolis.ogg ;;
+        *_SkyChase)         echo SkyChase.ogg ;;
+        *_WingFortress)     echo WingFortress.ogg ;;
+        *_DeathEgg)         echo DeathEgg.ogg ;;
+        # Menu / system tracks
+        *_Options)          echo Options.ogg ;;
+        *_SpecialStage)     echo SpecialStage.ogg ;;
+        *_Boss)             echo Boss.ogg ;;
+        *_FinalBoss)        echo FinalBoss.ogg ;;
+        *_Super)            echo Super.ogg ;;
+        *_Invincibility)    echo Invincibility.ogg ;;
+        *_TitleScreen)      echo Titlescreen.ogg ;;
+        *_ActComplete)      echo ActComplete.ogg ;;
+        *_GameOver)         echo GameOver.ogg ;;
+        *_Results)          echo Results.ogg ;;
+        *_Ending)           echo Ending.ogg ;;
+        *_Credits)          echo Credits.ogg ;;
+        *_Extra)            echo Extra.ogg ;;
+        # Continue exists in both music and SFX with the same cue name in
+        # STH2_music — the music version goes here; STH2_sfx ships a
+        # separate SFX_STH2_3F_Continue that place_sfx routes to
+        # Global/Continue.ogg for SfxName[Continue] at end-of-act.
+        *_Continue)         echo Continue.ogg ;;
+        # *_1up/*_ChaosEmerald/*_Event handled as SFX above.
+        # Origins still lacks the _F speed-shoes variants (mobile-only remixes);
+        # engine falls back to the un-sped track silently.
+        *)                  echo "" ;;
+    esac
+}
+
+extract_music() {
+    [ -f "$MUSIC_AWB" ] || return 0   # already processed or mobile pathway
+
+    echo "$STH2_MUSIC_KEY" > "$GAMEDIR/STH2_music.hcakey"
+    mkdir -p "$TMPDIR" "$MUSICDIR"
+    rm -f "$TMPDIR"/*.wav 2>/dev/null
+
+    echo "Extracting STH2_music.awb..."
+    # -S -1 forces vgmstream to enumerate every subsong. STH2_music.awb has
+    # 10 system tracks (ActComplete, GameOver, Titlescreen, etc.) that the
+    # ACB's primary cue sheet hides from -S 0 — we lose them without -1.
+    # Filenames come out as "<subsong>_<hex>_<name>.wav"; our *_Name globs
+    # below still match.
+    if ! "$VGMSTREAM" -S -1 -o "$TMPDIR/?s_?n.wav" "$MUSIC_AWB" >/dev/null; then
+        echo "ERROR: vgmstream-cli failed on music."
+        rm -f "$GAMEDIR/STH2_music.hcakey"
+        return 1
+    fi
+    rm -f "$GAMEDIR/STH2_music.hcakey"
+
+    echo "Encoding to OGG and placing in Music/..."
+    count=0
+    skipped=0
+    mkdir -p "$SFXDIR/Global" "$SFXDIR/Stage"
+    for wav in "$TMPDIR"/*.wav; do
+        [ -f "$wav" ] || continue
+        base=$(basename "$wav" .wav)
+        # Several cues in STH2_music.awb are actually SFX in RSDKv4 — the
+        # 1up jingle, ChaosEmerald collect, continue-screen drone, and the
+        # generic Event sting. Route them to Data/SoundFX/ via place_sfx
+        # (which normalizes and emits .ogg for Global, .wav for Stage).
+        case "$base" in
+            *_1up|*1Up)
+                place_sfx "$wav" "Global/1Up.ogg" && count=$((count + 1))
+                continue ;;
+            *_ChaosEmerald|*ChaosEmerald)
+                place_sfx "$wav" "Stage/Emerald.wav" && count=$((count + 1))
+                continue ;;
+            *_Event|*Event)
+                place_sfx "$wav" "Global/Event.ogg" && count=$((count + 1))
+                continue ;;
+        esac
+        target=$(map_music_name "$base")
+        if [ -z "$target" ]; then
+            skipped=$((skipped + 1))
+            continue
+        fi
+        if "$OGGENC" -Q -q 5 --discard-comments -o "$MUSICDIR/$target" "$wav"; then
+            count=$((count + 1))
+            # Generate the speed-shoes variant alongside the base for zones
+            # that have one in mobile S2. Origins doesn't ship these, so we
+            # synthesize by claiming a higher source sample rate (the header
+            # trick effectively pitches + tempo-shifts the playback). Mobile's
+            # _F tracks are similarly 1.2x the base per the RSDK docs, so
+            # this matches the intended effect.
+            case "$target" in
+                EmeraldHill.ogg|EmeraldHill2.ogg|ChemicalPlant.ogg|\
+AquaticRuin.ogg|CasinoNight.ogg|CasinoNight2.ogg|HillTop.ogg|\
+MysticCave.ogg|MysticCave2.ogg|OilOcean.ogg|Metropolis.ogg|\
+WingFortress.ogg|Invincibility.ogg)
+                    f_target="${target%.ogg}_F.ogg"
+                    if gen_fast_track "$wav" "$MUSICDIR/$f_target"; then
+                        count=$((count + 1))
+                    else
+                        echo "WARNING: failed to generate $f_target"
+                    fi
+                    ;;
+            esac
+        else
+            echo "WARNING: failed to encode $base -> $target"
+        fi
+    done
+    echo "Encoded $count tracks ($skipped unmapped)."
+
+    rm -f "$MUSIC_AWB" "$MUSIC_ACB"
+    rm -f "$TMPDIR"/*.wav
+}
+
+# gen_fast_track <in.wav> <out.ogg>
+# Emits a 1.2x-speed OGG variant. wav-speed resamples the PCM data to be
+# 1.2x shorter at the original sample rate, so playback preserves pitch but
+# moves 1.2x faster — the tempo-only effect mobile's _F tracks have.
+gen_fast_track() {
+    in="$1"; out="$2"
+    [ -f "$in" ] || return 1
+    tmp="${in}.fast.wav"
+    if ! "$SPEED" 1.2 "$in" "$tmp" 2>/dev/null; then
+        rm -f "$tmp"
+        return 1
+    fi
+    "$OGGENC" -Q -q 5 --discard-comments -o "$out" "$tmp" 2>/dev/null
+    rv=$?
+    rm -f "$tmp"
+    return $rv
+}
+
+# place_sfx <tmp_wav> <relative_target>
+# Moves wav into SFXDIR/$target, normalizing to $SFX_TARGET_DBFS on the way.
+# Origins SFX peak anywhere from -2 to -20 dBFS; mobile is consistently loud.
+# For .ogg targets (Sonic 2 Global/) we normalize to a temp wav then oggenc.
+# Returns 0 on placement, 1 on failure.
+place_sfx() {
+    src="$1"; rel="$2"
+    dst="$SFXDIR/$rel"
+    mkdir -p "$(dirname "$dst")"
+    case "$rel" in
+        *.ogg)
+            tmpwav="${src}.norm.wav"
+            if "$NORMALIZE" "$SFX_TARGET_DBFS" "$src" "$tmpwav" 2>/dev/null \
+               && "$OGGENC" -Q -q 5 --discard-comments -o "$dst" "$tmpwav" 2>/dev/null; then
+                rm -f "$src" "$tmpwav"
+                return 0
+            fi
+            rm -f "$tmpwav"
+            ;;
+        *)
+            if "$NORMALIZE" "$SFX_TARGET_DBFS" "$src" "$dst" 2>/dev/null; then
+                rm -f "$src"
+                return 0
+            fi
+            ;;
+    esac
+    # Fall back to plain move if normalize/encode failed (wrong volume / format
+    # but at least audible if extension matches).
+    mv -f "$src" "$dst" || return 1
+    return 0
+}
+
+# Pull shared audio from the Sonic 1 Origins packs. S2 references several
+# cues that Origins only ships under STH1:
+#   STH1_music.awb -> Drowning (music), 1Up (SFX)
+#   STH1_sfx.acb   -> ScoreAdd, Event (SFX)
+extract_sth1_shared() {
+    mkdir -p "$TMPDIR" "$MUSICDIR" "$SFXDIR/Global"
+
+    # --- STH1_music.awb: Drowning + 1Up ---
+    if [ -f "$STH1_MUSIC_AWB" ]; then
+        echo "$STH1_MUSIC_KEY" > "$GAMEDIR/STH1_music.hcakey"
+        rm -f "$TMPDIR"/*.wav 2>/dev/null
+        echo "Extracting shared tracks from STH1_music.awb..."
+        if "$VGMSTREAM" -S -1 -o "$TMPDIR/?s_?n.wav" "$STH1_MUSIC_AWB" >/dev/null; then
+            rm -f "$GAMEDIR/STH1_music.hcakey"
+
+            wav=$(ls "$TMPDIR"/*_Drowning.wav 2>/dev/null | head -n1)
+            if [ -z "$wav" ]; then
+                echo "WARNING: Drowning cue not found in STH1_music.awb."
+            elif "$OGGENC" -Q -q 5 --discard-comments -o "$MUSICDIR/Drowning.ogg" "$wav" 2>/dev/null; then
+                echo "Placed Drowning.ogg"
+            else
+                echo "WARNING: failed to encode Drowning.ogg"
+            fi
+
+            wav=$(ls "$TMPDIR"/*_1up.wav 2>/dev/null | head -n1)
+            if [ -z "$wav" ]; then
+                echo "WARNING: 1up cue not found in STH1_music.awb."
+            elif place_sfx "$wav" "Global/1Up.ogg"; then
+                echo "Placed Global/1Up.ogg"
+            else
+                echo "WARNING: failed to place 1Up.ogg"
+            fi
+
+            rm -f "$STH1_MUSIC_AWB"
+        else
+            echo "WARNING: vgmstream-cli failed on STH1_music; Drowning/1Up will be silent."
+            rm -f "$GAMEDIR/STH1_music.hcakey"
+        fi
+        rm -f "$TMPDIR"/*.wav
+    fi
+
+    # --- STH1_sfx.acb: ScoreAdd + Event ---
+    if [ -f "$STH1_SFX_ACB" ]; then
+        echo "$STH1_SFX_KEY" > "$GAMEDIR/STH1_sfx.hcakey"
+        rm -f "$TMPDIR"/*.wav 2>/dev/null
+        echo "Extracting shared SFX from STH1_sfx.acb..."
+        if "$VGMSTREAM" -S 0 -o "$TMPDIR/?n.wav" "$STH1_SFX_ACB" >/dev/null; then
+            rm -f "$GAMEDIR/STH1_sfx.hcakey"
+
+            wav="$TMPDIR/SFX_CD_ScoreAdd.wav"
+            if [ ! -f "$wav" ]; then
+                echo "WARNING: ScoreAdd cue not found in STH1_sfx.acb."
+            elif place_sfx "$wav" "Global/ScoreAdd.ogg"; then
+                echo "Placed Global/ScoreAdd.ogg"
+            else
+                echo "WARNING: failed to place ScoreAdd.ogg"
+            fi
+
+            wav="$TMPDIR/RSDK-1---Event.wav"
+            if [ ! -f "$wav" ]; then
+                echo "WARNING: Event cue not found in STH1_sfx.acb."
+            elif place_sfx "$wav" "Global/Event.ogg"; then
+                echo "Placed Global/Event.ogg"
+            else
+                echo "WARNING: failed to place Event.ogg"
+            fi
+
+            rm -f "$STH1_SFX_ACB"
+        else
+            echo "WARNING: vgmstream-cli failed on STH1_sfx; ScoreAdd/Event will be silent."
+            rm -f "$GAMEDIR/STH1_sfx.hcakey"
+        fi
+        rm -f "$TMPDIR"/*.wav
+    fi
+}
+
+extract_sfx() {
+    [ -f "$SFX_ACB" ] || return 0
+
+    # STH2_sfx.acb has audio embedded (AFS2 memory) — no sibling AWB.
+    echo "$STH2_SFX_KEY" > "$GAMEDIR/STH2_sfx.hcakey"
+    mkdir -p "$TMPDIR" "$SFXDIR/Global" "$SFXDIR/Stage"
+    rm -f "$TMPDIR"/*.wav 2>/dev/null
+
+    echo "Extracting STH2_sfx.acb..."
+    if ! "$VGMSTREAM" -S 0 -o "$TMPDIR/?n.wav" "$SFX_ACB" >/dev/null; then
+        echo "ERROR: vgmstream-cli failed on SFX."
+        rm -f "$GAMEDIR/STH2_sfx.hcakey"
+        return 1
+    fi
+    rm -f "$GAMEDIR/STH2_sfx.hcakey"
+
+    # RSDKv4 dispatches SFX load by extension (Audio.cpp). Mobile S2 ships
+    # Global/ as .ogg and Stage/ as .wav; place_sfx handles the per-target
+    # transcode from the normalized WAV.
+    echo "Placing SFX in SoundFX/..."
+    count=0
+    skipped=0
+    for wav in "$TMPDIR"/*.wav; do
+        [ -f "$wav" ] || continue
+        base=$(basename "$wav" .wav)
+        target=$(map_sfx_name "$base")
+        if [ -z "$target" ]; then
+            skipped=$((skipped + 1))
+            continue
+        fi
+        if place_sfx "$wav" "$target"; then
+            count=$((count + 1))
+        else
+            echo "WARNING: failed to place $base -> $target"
+        fi
+    done
+    echo "Placed $count SFX ($skipped unmapped)."
+
+    rm -f "$SFX_ACB"
+    rm -f "$TMPDIR"/*.wav
+}
+
+# HITE_sfx is the Origins Museum UI soundset. RSDKv4 S2 only needs the
+# SEGA chant (Title stage references Stage/Sega.wav) and the "ok" ding
+# (used as Global/Select.ogg; RSDK-2---Select is a longer chime).
+extract_hite() {
+    [ -f "$HITE_ACB" ] || return 0
+
+    echo "$HITE_SFX_KEY" > "$GAMEDIR/HITE_sfx.hcakey"
+    mkdir -p "$TMPDIR" "$SFXDIR/Stage"
+    rm -f "$TMPDIR"/*.wav 2>/dev/null
+
+    echo "Extracting HITE_sfx.acb..."
+    if ! "$VGMSTREAM" -S 0 -o "$TMPDIR/?n.wav" "$HITE_ACB" >/dev/null; then
+        echo "ERROR: vgmstream-cli failed on HITE SFX."
+        rm -f "$GAMEDIR/HITE_sfx.hcakey"
+        return 1
+    fi
+    rm -f "$GAMEDIR/HITE_sfx.hcakey"
+
+    # HITE cues we use from Origins Museum UI -> RSDKv4 S1 SoundFX paths:
+    #   SFX_07_SEGA  -> Stage/Sega.wav    (title chant)
+    #   SFX_02_ok    -> Global/Select.ogg (menu accept; RSDK-2---Select is wrong)
+    for pair in "SFX_07_SEGA:Stage/Sega.wav" "SFX_02_ok:Global/Select.ogg"; do
+        cue="${pair%%:*}"
+        dst="${pair#*:}"
+        src="$TMPDIR/${cue}.wav"
+        if [ ! -f "$src" ]; then
+            echo "WARNING: HITE cue $cue missing"
+            continue
+        fi
+        if place_sfx "$src" "$dst"; then
+            echo "Placed $cue -> $dst"
+        else
+            echo "WARNING: failed to place $cue -> $dst"
+        fi
+    done
+
+    rm -f "$HITE_ACB"
+    rm -f "$TMPDIR"/*.wav
+}
+
+cleanup() {
+    rm -rf "$TMPDIR"
+}
+
+process_game() {
+    check_tools      || { cleanup; return 1; }
+    check_inputs     || { cleanup; return 1; }
+    extract_rsdk     || { cleanup; return 1; }
+    extract_music    || { cleanup; return 1; }
+    extract_sth1_shared || { cleanup; return 1; }
+    extract_sfx      || { cleanup; return 1; }
+    extract_hite     || { cleanup; return 1; }
+    cleanup
+}
+
+if ! process_game; then
+    echo "Patching process failed!"
+    mv "$GAMEDIR/$LOGFILE" "$GAMEDIR/$LOGERR"
+else
+    echo "Patching process complete!"
+fi

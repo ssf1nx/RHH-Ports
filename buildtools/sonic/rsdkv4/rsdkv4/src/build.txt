@@ -31,7 +31,7 @@ git_clone_retry() {
 git_clone_retry https://github.com/libsdl-org/SDL.git
 cd SDL
 git checkout release-2.32.0
-mkdir -p build-sonic2013 && cd build-sonic2013
+mkdir -p build-rsdkv4 && cd build-rsdkv4
 cmake .. -DBUILD_SHARED_LIBS=ON
 make -j$(nproc)
 make install
@@ -39,24 +39,27 @@ cd ../..
 
 #### RSDKv4 (Sonic 1/2 2013 Decompilation) ####
 
-git_clone_retry --recursive -b swrender-pausemenu https://github.com/JeodC/RSDKv4-Decompilation.git
+git_clone_retry --recursive https://github.com/RSDKModding/RSDKv4-Decompilation.git
 cd RSDKv4-Decompilation
-git log -1 --format='%H' > ../sonic2013.sha
+
+# Latest release tag, or HEAD if FORCE_HEAD=true.
+git fetch --tags
+if [[ "${FORCE_HEAD:-false}" == "true" ]]; then
+  echo "FORCE_HEAD=true — building from branch HEAD (nightly)"
+else
+  git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
+fi
 
 # REVISION=3 is the universal binary; REV03's >= macros include earlier
 # revisions' code and runtime detects Origins vs mobile data layout.
 # RETRO_USE_HW_RENDER=OFF drops GLEW. The HW path uses desktop GL fixed-
 # function (glBegin-era) which doesn't compile against GLES2 without a full
 # render-loop rewrite. SW render is the working configuration on-device.
-# -DRETRO_DISABLE_LOG stubs out PrintLog (has a sprintf-into-self bug).
-# -D_FORTIFY_SOURCE=0 disables glibc's runtime buffer-overflow detection.
 cmake -B build \
   -DCMAKE_BUILD_TYPE=Release \
   -DRETRO_REVISION=3 \
   -DRETRO_USE_HW_RENDER=OFF \
   -DRETRO_DISABLE_PLUS=ON \
-  -DCMAKE_CXX_FLAGS="-DRETRO_DISABLE_LOG -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" \
-  -DCMAKE_C_FLAGS="-DRETRO_DISABLE_LOG -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0" \
   -DCMAKE_EXE_LINKER_FLAGS="-pthread"
 
 cmake --build build --config Release -j$(nproc)
