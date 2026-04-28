@@ -31,6 +31,37 @@ cd $GAMEDIR
 $ESUDO chmod +x "$GAMEDIR/Starship"
 $ESUDO chmod +x "$GAMEDIR/tools/otrgen"
 
+# Check imgui.ini and modify if needed
+input_file="imgui.ini"
+temp_file="imgui_temp.ini"
+skip_section=0
+# Loop through each line in the input file
+while IFS= read -r line; do
+    # Check if the line is a window header
+    if [[ "$line" =~ ^\[Window\]\[Main\ Game\] || "$line" =~ ^\[Window\]\[Main\ -\ Deck\] ]]; then
+        skip_section=1  # Set the flag to skip modifications for this section
+    elif [[ "$line" =~ ^\[Window\] ]]; then
+        skip_section=0  # Reset the flag for other windows
+    fi
+
+    # Modify Pos and Size only if the current section is not skipped
+    if [[ $skip_section -eq 0 ]]; then
+        if [[ "$line" =~ ^Pos=.* ]]; then
+            echo "Pos=30,30" >> "$temp_file"
+        elif [[ "$line" =~ ^Size=.* ]]; then
+            echo "Size=400,300" >> "$temp_file"
+        else
+            echo "$line" >> "$temp_file"
+        fi
+    else
+        # If skipping, write the line unchanged
+        echo "$line" >> "$temp_file"
+    fi
+done < "$input_file"
+
+# Replace the original file with the modified one
+mv "$temp_file" "$input_file"
+
 # Close the menu if open
 sed -i 's/"Menu": *1/"Menu": 0/' starship.cfg.json
 
@@ -41,7 +72,7 @@ else
     sed -i '/"CVars":[[:space:]]*{/a\"gControlNav": 1,' starship.cfg.json
 fi
 
-# Warn if mk64.o2r is older than Starship or starship.o2r
+# Warn if sf64.o2r is older than Starship or starship.o2r
 if [ -f "$GAMEDIR/sf64.o2r" ]; then
     if [ -f "$GAMEDIR/Starship" ] && [ "$GAMEDIR/Starship" -nt "$GAMEDIR/sf64.o2r" ] \
        || [ -f "$GAMEDIR/starship.o2r" ] && [ "$GAMEDIR/starship.o2r" -nt "$GAMEDIR/sf64.o2r" ]; then
@@ -53,7 +84,7 @@ if [ -f "$GAMEDIR/sf64.o2r" ]; then
 fi
 
 # Check if we need to generate any o2r files
-if [ ! -f "$GAMEDIR/mk64.o2r" ]; then
+if [ ! -f "$GAMEDIR/sf64.o2r" ]; then
     # Ensure we have a rom file before attempting to generate o2r
     if ls "$GAMEDIR/baseroms/"*.*64 1> /dev/null 2>&1; then
         if [ -f "$controlfolder/utils/patcher.txt" ]; then
