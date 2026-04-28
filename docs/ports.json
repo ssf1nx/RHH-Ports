@@ -889,6 +889,61 @@
   },
   {
     "version": 4,
+    "name": "elementallis.zip",
+    "items": [
+      "Elementallis.sh",
+      "elementallis"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Elementallis",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "Top-down action-adventure with elemental magic gameplay. Guided by guilt, you embark on a journey to restore the elements in a dying world. Harness and master elemental powers to fight enemies, solve puzzles, and explore a vast world filled with ancient temples.",
+      "desc_md": null,
+      "inst": "This port uses the Linux game assets with Box64. Wine is not involved. Copy your game assets to the `data` folder. If you own the Steam version, you can use https://steamdb.info/depot/1304283/manifests/ to grab the latest depot download link. Copy it into the Steam console to download the Linux package.",
+      "inst_md": null,
+      "genres": [
+        "action",
+        "adventure",
+        "rpg"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1304280/Elementallis/",
+          "developerurl": ""
+        }
+      ],
+      "availability": "paid",
+      "reqs": [
+        "!lowres",
+        "2gb",
+        "opengl"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/elementallis/elementallis/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/elementallis/elementallis/README.md",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/elementallis.zip",
+      "date_updated": "2026-04-28T16:39",
+      "md5": "8682c376ac706605e6c9ff95c448ae80",
+      "size": 6321286,
+      "lifetime_downloads": 0,
+      "last_commit": "[ELEMENTALLIS] Release Elementallis"
+    }
+  },
+  {
+    "version": 4,
     "name": "f-zeropocket.zip",
     "items": [
       "F-Zero Pocket.sh",
