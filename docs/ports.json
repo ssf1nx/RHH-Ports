@@ -586,17 +586,17 @@
       "arch": [
         "aarch64"
       ],
-      "min_glibc": null
+      "min_glibc": "2.36"
     },
     "source": {
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent.zip",
-      "date_updated": "2026-05-03T22:45",
-      "md5": "b6320f0e84a1dece8bd71f9d9eaad014",
-      "size": 15537920,
+      "date_updated": "2026-05-03T22:59",
+      "md5": "e6ad7add81d5fac6ab81c99be86ac96b",
+      "size": 14919742,
       "lifetime_downloads": 8,
-      "last_commit": "[DESCENT] Update ports to use native gamepad controls"
+      "last_commit": "[DESCENT] Drop older glibc builds"
     }
   },
   {
@@ -634,17 +634,17 @@
       "arch": [
         "aarch64"
       ],
-      "min_glibc": null
+      "min_glibc": "2.36"
     },
     "source": {
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent2.zip",
-      "date_updated": "2026-05-03T22:45",
-      "md5": "c461226bdbda3a8ca8a9e89dc5b42f2d",
-      "size": 15200480,
+      "date_updated": "2026-05-03T22:59",
+      "md5": "4fc09871b8775a3e2d02c641d845c559",
+      "size": 14463423,
       "lifetime_downloads": 6,
-      "last_commit": "[DESCENT] Update ports to use native gamepad controls"
+      "last_commit": "[DESCENT] Drop older glibc builds"
     }
   },
   {
