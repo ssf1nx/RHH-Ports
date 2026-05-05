@@ -4355,11 +4355,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-04-13T12:28",
-      "md5": "19fca2a58bac6a618c52fff98b044acb",
-      "size": 701095,
+      "date_updated": "2026-05-05T13:05",
+      "md5": "64ec52b34e59a9c8cd3558006e0eb1e4",
+      "size": 704447,
       "lifetime_downloads": 0,
-      "last_commit": "Remove decimals in default for TextboxOverlay.lahdmod"
+      "last_commit": "[LADXHD] v1.8.0 and auto-maintenance"
     }
   },
   {
