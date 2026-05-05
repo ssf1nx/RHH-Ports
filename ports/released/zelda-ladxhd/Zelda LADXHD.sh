@@ -12,19 +12,36 @@ else
   controlfolder="/roms/ports/PortMaster"
 fi
 
-source $controlfolder/control.txt
+source "$controlfolder/control.txt"
 [ -f "${controlfolder}/mod_${CFW_NAME}.txt" ] && source "${controlfolder}/mod_${CFW_NAME}.txt"
 get_controls
 
 # Variables
 GAMEDIR="/$directory/ports/zelda-ladxhd"
 GAME="$GAMEDIR/data/LADXHD"
+PATCH_VERSION_FILE="$GAMEDIR/data/.patch_version"
+BACKUP_ZIP="$GAMEDIR/data/.backup/source.zip"
+PATCHES_API_URL="https://api.github.com/repos/BigheadSMZ/Zelda-LA-DX-HD-Updated/contents/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
 
 # CD and set logging
 cd "$GAMEDIR/data"
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
-# Patch if game binary doesn't exist yet
+# Check for update, fall through if no connection
+if [ -f "$GAME" ] && [ -f "$PATCH_VERSION_FILE" ] && [ -f "$BACKUP_ZIP" ]; then
+    upstream_sha=$(curl -sL --max-time 5 "$PATCHES_API_URL" 2>/dev/null \
+        | awk -F'"' '/"sha":/ {print $4; exit}')
+    stored_sha=$(cat "$PATCH_VERSION_FILE" 2>/dev/null)
+    if [ -n "$upstream_sha" ] && [ -n "$stored_sha" ] && [ "$upstream_sha" != "$stored_sha" ]; then
+        echo "============================================================"
+        echo "Upstream patcher update detected!"
+        echo "Re-applying patches from preserved v1.0.0 base..."
+        echo "============================================================"
+        rm -f "$GAME"
+    fi
+fi
+
+# Patch if game binary doesn't exist yet or we detected an update
 if [ ! -f "$GAME" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
@@ -50,7 +67,7 @@ else
     source "${controlfolder}/libgl_default.txt"
 fi
 
-if [[ "$LIBGL_ES" != "" ]]; then
+if [ -n "$LIBGL_ES" ]; then
     export SDL_VIDEO_GL_DRIVER="${GAMEDIR}/gl4es/libGL.so.1"
     export SDL_VIDEO_EGL_DRIVER="${GAMEDIR}/gl4es/libEGL.so.1"
 fi
@@ -63,7 +80,7 @@ export XDG_DATA_HOME="$GAMEDIR"
 swapabxy() {
     # Update SDL_GAMECONTROLLERCONFIG to swap a/b and x/y button
 
-    if [ "$CFW_NAME" == "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
+    if [ "$CFW_NAME" = "knulli" ] && [ -f "$SDL_GAMECONTROLLERCONFIG_FILE" ];then
 	    # Knulli seems to use SDL_GAMECONTROLLERCONFIG_FILE (on rg40xxh at least)
         cat "$SDL_GAMECONTROLLERCONFIG_FILE" | swapabxy.py > "$GAMEDIR/gamecontrollerdb_swapped.txt"
 	    export SDL_GAMECONTROLLERCONFIG_FILE="$GAMEDIR/gamecontrollerdb_swapped.txt"

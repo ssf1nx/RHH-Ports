@@ -16,35 +16,39 @@ TMPDIR="$GAMEDIR/tmp"
 PATCHES="$TMPDIR/patches"
 PATCHED="$TMPDIR/patchedFiles"
 PATCHES_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/main/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
+PATCHES_API_URL="https://api.github.com/repos/BigheadSMZ/Zelda-LA-DX-HD-Updated/contents/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
+FUNCTIONS_CS_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/main/ladxhd_patcher_source_code/Program/Functions.cs"
 PATCHES_ZIP="$TMPDIR/patches_linux_arm64.zip"
+TARGETS_FILE="$TMPDIR/file_targets.txt"
+PARSE_TARGETS_AWK="$GAMEDIR/../tools/parse_targets.awk"
+PATCH_VERSION_FILE="$GAMEDIR/.patch_version"
+BACKUP_ZIP="$GAMEDIR/.backup/source.zip"
 GOOD_HASH="f4adfba864b852908705ea6a18a48f18"
 
 # ZIPFILE and controlfolder are exported by the launch script
 
-# Multi-file targets: get derived files for a given source filename
+# File-based tracking of which .xdelta patches have been applied. Using a file
+# (rather than a shell variable) keeps state across `find | while` pipelines —
+# those run in a subshell — and works in busybox ash too (no bash arrays/process
+# substitution required).
+CONSUMED_FILE="$TMPDIR/consumed_patches.txt"
+
+mark_consumed() {
+    echo "$1" >> "$CONSUMED_FILE"
+}
+
+is_consumed() {
+    [ -f "$CONSUMED_FILE" ] || return 1
+    grep -qFx -- "$1" "$CONSUMED_FILE"
+}
+
+# Get derived files for a given source filename. Reads from $TARGETS_FILE
+# (parsed live from upstream Functions.cs by download_file_targets) so new
+# upstream derivatives are picked up automatically. If the file is missing —
+# e.g. offline install or upstream parse failed — auto-match handles things.
 get_derived_files() {
-    case "$1" in
-        "eng.lng")             echo "chn.lng deu.lng esp.lng fre.lng ind.lng ita.lng por.lng rus.lng" ;;
-        "dialog_eng.lng")      echo "dialog_chn.lng dialog_deu.lng dialog_esp.lng dialog_fre.lng dialog_ind.lng dialog_ita.lng dialog_por.lng dialog_rus.lng" ;;
-        "smallFont.xnb")       echo "smallFont_redux.xnb smallFont_vwf.xnb smallFont_vwf_redux.xnb smallFont_chn.xnb smallFont_chn_0.xnb smallFont_chn_redux.xnb smallFont_chn_redux_0.xnb" ;;
-        "menuBackground.xnb")  echo "menuBackgroundB.xnb menuBackgroundC.xnb sgb_border.xnb" ;;
-        "ligth room.xnb")      echo "mamuLight.xnb" ;;
-        "link0.png")           echo "link1.png" ;;
-        "npcs.png")            echo "npcs_redux.png" ;;
-        "items.png")           echo "items_chn.png items_deu.png items_esp.png items_fre.png items_ind.png items_ita.png items_por.png items_rus.png items_redux.png items_redux_chn.png items_redux_deu.png items_redux_esp.png items_redux_fre.png items_redux_ind.png items_redux_ita.png items_redux_por.png items_redux_rus.png" ;;
-        "intro.png")           echo "intro_chn.png intro_deu.png intro_esp.png intro_fre.png intro_ind.png intro_ita.png intro_por.png intro_rus.png" ;;
-        "intro.atlas")         echo "intro_chn.atlas" ;;
-        "minimap.png")         echo "minimap_chn.png minimap_deu.png minimap_esp.png minimap_fre.png minimap_ind.png minimap_ita.png minimap_por.png minimap_rus.png" ;;
-        "objects.png")         echo "objects_chn.png objects_deu.png objects_esp.png objects_fre.png objects_ind.png objects_ita.png objects_por.png objects_rus.png" ;;
-        "photos.png")          echo "photos_chn.png photos_deu.png photos_esp.png photos_fre.png photos_ind.png photos_ita.png photos_por.png photos_rus.png photos_redux.png photos_redux_chn.png photos_redux_deu.png photos_redux_esp.png photos_redux_fre.png photos_redux_ind.png photos_redux_ita.png photos_redux_por.png photos_redux_rus.png" ;;
-        "ui.png")              echo "ui_chn.png ui_deu.png ui_esp.png ui_fre.png ui_ind.png ui_ita.png ui_por.png ui_rus.png" ;;
-        "musicOverworld.data") echo "musicOverworldClassic.data" ;;
-        "dungeon3_1.map")      echo "dungeon3.map" ;;
-        "dungeon3_1.map.data") echo "dungeon3.map.data" ;;
-        "BowWow.ani")          echo "bowwow_water.ani" ;;
-        "mapPlayer.ani")       echo "mapDungeon.ani mapManboPond.ani" ;;
-        *)                     echo "" ;;
-    esac
+    [ -f "$TARGETS_FILE" ] || return
+    awk -F'\t' -v s="$1" '$1==s {print $2; exit}' "$TARGETS_FILE"
 }
 
 prepare_system() {
@@ -68,11 +72,12 @@ prepare_system() {
         return 1
     fi
 
-    # Locate a download tool
+    # Locate a download tool. Silent flags keep curl/wget from flooding the log
+    # with their multi-line progress meter; -S/--fail keeps real errors visible.
     if command -v curl >/dev/null 2>&1; then
-        FETCH="curl -L -o"
+        FETCH="curl -fsSL -o"
     elif command -v wget >/dev/null 2>&1; then
-        FETCH="wget -O"
+        FETCH="wget -q -O"
     else
         echo "Missing curl or wget!"
         return 1
@@ -87,6 +92,15 @@ extract_game() {
             ZIPFILE="$f"
             break
         done
+    fi
+
+    # Fall back to a previously-preserved backup zip (used for re-patching after an update).
+    if [ -z "$ZIPFILE" ] || [ ! -f "$ZIPFILE" ]; then
+        if [ -f "$BACKUP_ZIP" ]; then
+            echo "Restoring v1.0.0 zip from backup for re-patching."
+            mv "$BACKUP_ZIP" "$DATADIR/source.zip"
+            ZIPFILE="$DATADIR/source.zip"
+        fi
     fi
 
     if [ -z "$ZIPFILE" ] || [ ! -f "$ZIPFILE" ]; then
@@ -142,8 +156,9 @@ extract_game() {
 
     echo "Game extracted and validated."
 
-    # Clean up the zip and source archive
-    rm -f "$ZIPFILE"
+    # Preserve the v1.0.0 zip so we can re-patch when upstream releases an update.
+    mkdir -p "$(dirname "$BACKUP_ZIP")"
+    mv -f "$ZIPFILE" "$BACKUP_ZIP"
     rm -f "$DATADIR/source.7z"
     rm -f "$DATADIR/.gitkeep"
 }
@@ -161,6 +176,36 @@ download_patches() {
     echo "Extracting patches..."
     "$SEVENZIP" x -aoa -o"$PATCHES" "$PATCHES_ZIP"
     rm -f "$PATCHES_ZIP"
+}
+
+download_file_targets() {
+    # Pull the upstream derived-files mapping from Functions.cs and parse it
+    # into TARGETS_FILE. If anything fails, get_derived_files returns nothing
+    # and the auto-match pass takes over — slower and slightly riskier, but
+    # it means the port doesn't break when upstream adds new derivatives.
+    local cs_file="$TMPDIR/Functions.cs"
+
+    echo "Fetching upstream file targets mapping..."
+    if ! $FETCH "$cs_file" "$FUNCTIONS_CS_URL"; then
+        echo "WARN: could not download Functions.cs; auto-match will handle all derivatives."
+        return
+    fi
+
+    if ! awk -f "$PARSE_TARGETS_AWK" "$cs_file" > "$TARGETS_FILE" 2>&1; then
+        echo "WARN: failed to parse Functions.cs; auto-match will handle all derivatives."
+        rm -f "$TARGETS_FILE"
+        return
+    fi
+
+    local count
+    count=$(wc -l < "$TARGETS_FILE" 2>/dev/null)
+    if [ "${count:-0}" -lt 5 ]; then
+        echo "WARN: parsed mapping has only ${count:-0} entries (suspicious); discarding."
+        rm -f "$TARGETS_FILE"
+        return
+    fi
+
+    echo "Parsed $count derived-file mappings from upstream."
 }
 
 prepare_linux_files() {
@@ -181,6 +226,112 @@ prepare_linux_files() {
     done
 }
 
+get_patch_source_size() {
+    # Read the expected source segment size from the xdelta3 patch header.
+    # Empty output means the size hint is unavailable; caller should fall back
+    # to brute-force matching.
+    "$XDELTA3" printhdr "$1" 2>/dev/null \
+        | awk '
+            /[Ss]ource segment size/ {
+                for (i=1; i<=NF; i++) if ($i ~ /^[0-9]+$/) { print $i; exit }
+            }'
+}
+
+auto_match_patches() {
+    # Catch xdelta patches that no static mapping covered (new derived files
+    # added by upstream patcher releases). xdelta3 patches carry an Adler32
+    # checksum of the source content, so we can pick the right source by
+    # trying same-extension candidates and letting xdelta3 reject mismatches.
+    # MUST run before any 1:1 patches mutate the source files.
+    local found=0
+    local unmatched=0
+    local unmapped_file="$TMPDIR/unmapped_patches.txt"
+    local candidates_file="$TMPDIR/auto_match_candidates.txt"
+    : > "$unmapped_file"
+
+    for patch in "$PATCHES"/*.xdelta; do
+        [ -f "$patch" ] || continue
+        local pname out_name
+        pname=$(basename "$patch")
+        is_consumed "$pname" && continue
+
+        out_name="${pname%.xdelta}"
+        # Skip 1:1 patches (output filename exists as a v1.0.0 source) — the main loop handles those.
+        if [ -n "$(find "$DATADIR" -type f -name "$out_name" ! -path "*/tmp/*" ! -path "*/Mods/*" -print -quit 2>/dev/null)" ]; then
+            continue
+        fi
+
+        echo "$patch" >> "$unmapped_file"
+    done
+
+    local count
+    count=$(wc -l < "$unmapped_file" 2>/dev/null)
+    count=${count:-0}
+    if [ "$count" -eq 0 ]; then
+        echo "All patches accounted for; no auto-match needed."
+        return
+    fi
+
+    echo "Found $count unmapped patch(es); attempting auto-match by source checksum..."
+
+    while IFS= read -r patch; do
+        [ -z "$patch" ] && continue
+        local pname out_name ext find_pattern
+        pname=$(basename "$patch")
+        out_name="${pname%.xdelta}"
+        case "$out_name" in
+            *.*) ext="${out_name##*.}" ;;
+            *)   ext="" ;;
+        esac
+
+        local expected_size
+        expected_size=$(get_patch_source_size "$patch")
+
+        find_pattern="*"
+        [ -n "$ext" ] && find_pattern="*.$ext"
+
+        find "$DATADIR" -type f -name "$find_pattern" \
+            ! -path "*/tmp/*" ! -path "*/Mods/*" ! -path "*/Content/Editor/*" \
+            > "$candidates_file"
+
+        local matched=""
+        while IFS= read -r src; do
+            [ -z "$src" ] && continue
+
+            if [ -n "$expected_size" ]; then
+                local src_size
+                src_size=$(stat -c%s "$src" 2>/dev/null) || continue
+                [ "$src_size" = "$expected_size" ] || continue
+            fi
+
+            local out_dir tmp_out out_path
+            out_dir=$(dirname "$src")
+            out_path="$out_dir/$out_name"
+            tmp_out="$PATCHED/$out_name"
+
+            if "$XDELTA3" -d -f -s "$src" "$patch" "$tmp_out" 2>/dev/null; then
+                mv -f "$tmp_out" "$out_path"
+                matched="$src"
+                break
+            fi
+        done < "$candidates_file"
+
+        if [ -n "$matched" ]; then
+            local rel_src=${matched#$DATADIR/}
+            echo "  Auto-matched: $pname  (from: $rel_src)"
+            mark_consumed "$pname"
+            found=$((found + 1))
+        else
+            local size_info=""
+            [ -n "$expected_size" ] && size_info=" (size $expected_size)"
+            echo "  WARN: no matching source for $pname$size_info"
+            unmatched=$((unmatched + 1))
+        fi
+    done < "$unmapped_file"
+
+    echo "Auto-match summary: $found matched, $unmatched unmatched."
+}
+
 handle_multi_file_patches() {
     local source_file="$1"
     local source_name
@@ -195,55 +346,76 @@ handle_multi_file_patches() {
     for d in $derived; do
         local xdelta_file="$PATCHES/$d.xdelta"
         [ -f "$xdelta_file" ] || continue
+        is_consumed "$d.xdelta" && continue
 
         local patched_file="$PATCHED/$d"
         local target_file="$source_dir/$d"
 
         "$XDELTA3" -d -f -s "$source_file" "$xdelta_file" "$patched_file"
         mv -f "$patched_file" "$target_file"
+        mark_consumed "$d.xdelta"
+        echo "  Derived: $d (from $source_name)"
     done
 }
 
 patch_game_files() {
+    : > "$CONSUMED_FILE"
     prepare_linux_files
 
-    echo "Patching game files..."
+    # Pass 1: derived files via the live upstream mapping. Sources still v1.0.0.
+    # Static mapping wins because it knows the *correct* source — auto-match's
+    # weak Adler32 verification is fooled by similar-size files (fonts, menu
+    # backgrounds, map data) and would pick wrong sources for some derivatives.
+    local files_list="$TMPDIR/datadir_files.txt"
+    find "$DATADIR" -type f > "$files_list"
 
-    find "$DATADIR" -type f | while IFS= read -r file; do
-        filename=$(basename "$file")
-
-        # Skip temp/mod folders
+    echo "Applying derived patches (static mapping)..."
+    while IFS= read -r file; do
         case "$file" in
             */~temp/*|*/tmp/*|*/Mods/*) continue ;;
         esac
+        filename=$(basename "$file")
+        [ "$filename" = "xdelta3" ] && continue
 
+        derived=$(get_derived_files "$filename")
+        [ -n "$derived" ] && handle_multi_file_patches "$file"
+    done < "$files_list"
+
+    # Pass 2: catch any patches the static mapping didn't cover (new derivatives
+    # not yet reflected in upstream, or upstream parse failed). Sources still v1.0.0.
+    auto_match_patches
+
+    # Pass 3: 1:1 patches. Now we mutate sources. Re-run find since auto-match
+    # and the derived pass may have written new files we don't want to iterate.
+    find "$DATADIR" -type f > "$files_list"
+
+    echo "Applying 1:1 patches..."
+    applied=0
+    while IFS= read -r file; do
+        case "$file" in
+            */~temp/*|*/tmp/*|*/Mods/*) continue ;;
+        esac
+        filename=$(basename "$file")
         [ "$filename" = "xdelta3" ] && continue
 
         xdelta_file="$PATCHES/$filename.xdelta"
-        patch_exists=0
-        [ -f "$xdelta_file" ] && patch_exists=1
+        [ -f "$xdelta_file" ] || continue
+        is_consumed "$filename.xdelta" && continue
 
-        # Handle multi-file patches
-        derived=$(get_derived_files "$filename")
-        if [ -n "$derived" ]; then
-            handle_multi_file_patches "$file"
-        fi
-
-        [ $patch_exists -eq 0 ] && continue
-
-        # Apply the patch
         patched_file="$PATCHED/$filename"
         "$XDELTA3" -d -f -s "$file" "$xdelta_file" "$patched_file"
         mv -f "$patched_file" "$file"
-    done
+        mark_consumed "$filename.xdelta"
+        applied=$((applied + 1))
+        echo "  [$applied] $filename"
+    done < "$files_list"
 
+    echo "Applied $applied 1:1 patches."
     echo "Patching complete."
     post_patch
 }
 
 post_patch() {
-    dungeon3_fix
-
     mkdir -p "$GAMEDIR/Mods/LAHDMods"
     mkdir -p "$GAMEDIR/Mods/Graphics"
 
@@ -266,28 +438,22 @@ post_patch() {
     chmod +x "$DATADIR/LADXHD"
 }
 
-dungeon3_fix() {
-    local d3map=""
-
-    if [ -f "$DATADIR/Maps/dungeon3_1.map" ]; then
-        d3map="$DATADIR/Maps/dungeon3_1.map"
-    fi
-
-    if [ -z "$d3map" ]; then
-        echo "WARNING: Could not find dungeon3_1.map for dungeon 3 fix."
-        echo "Dungeon 3 may crash!"
-        return
-    fi
-
-    local xdelta_file="$PATCHES/dungeon3.map.xdelta"
-    if [ -f "$xdelta_file" ]; then
-        "$XDELTA3" -d -f -s "$d3map" "$xdelta_file" "$DATADIR/Maps/dungeon3.map"
-        echo "Dungeon 3 map fix applied."
-    fi
-}
-
 cleanup() {
     rm -rf "$TMPDIR"
+}
+
+record_patch_version() {
+    # Store the current upstream patches blob SHA so the launch script can detect
+    # future upstream updates and trigger a re-patch.
+    local sha
+    sha=$(curl -sL --max-time 10 "$PATCHES_API_URL" 2>/dev/null \
+        | awk -F'"' '/"sha":/ {print $4; exit}')
+    if [ -n "$sha" ]; then
+        echo "$sha" > "$PATCH_VERSION_FILE"
+        echo "Recorded patch version: $sha"
+    else
+        echo "WARN: could not record patch version (offline or API unreachable)."
+    fi
 }
 
 process_game() {
@@ -297,8 +463,11 @@ process_game() {
     extract_game || return 1
     echo "Downloading and extracting patches..."
     download_patches || return 1
+    download_file_targets
     echo "Patching game files..."
     patch_game_files || return 1
+    echo "Recording patch version..."
+    record_patch_version
     echo "Finishing up..."
 }
 
