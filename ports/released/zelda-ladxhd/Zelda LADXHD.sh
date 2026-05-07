@@ -20,21 +20,35 @@ get_controls
 GAMEDIR="/$directory/ports/zelda-ladxhd"
 GAME="$GAMEDIR/data/LADXHD"
 PATCH_VERSION_FILE="$GAMEDIR/data/.patch_version"
+UPDATE_CHECK_FILE="$GAMEDIR/data/.update_check"
 BACKUP_ZIP="$GAMEDIR/data/.backup/source.zip"
-PATCHES_API_URL="https://api.github.com/repos/BigheadSMZ/Zelda-LA-DX-HD-Updated/contents/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
+RELEASES_LATEST_URL="https://api.github.com/repos/BigheadSMZ/Zelda-LA-DX-HD-Updated/releases/latest"
 
 # CD and set logging
 cd "$GAMEDIR/data"
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
-# Check for update, fall through if no connection
-if [ -f "$GAME" ] && [ -f "$PATCH_VERSION_FILE" ] && [ -f "$BACKUP_ZIP" ]; then
-    upstream_sha=$(curl -sL --max-time 5 "$PATCHES_API_URL" 2>/dev/null \
-        | awk -F'"' '/"sha":/ {print $4; exit}')
-    stored_sha=$(cat "$PATCH_VERSION_FILE" 2>/dev/null)
-    if [ -n "$upstream_sha" ] && [ -n "$stored_sha" ] && [ "$upstream_sha" != "$stored_sha" ]; then
+# Honor the update-check toggle the user set in the patcher screen.
+update_check_enabled=1
+if [ -f "$UPDATE_CHECK_FILE" ] && [ "$(cat "$UPDATE_CHECK_FILE" 2>/dev/null)" = "0" ]; then
+    update_check_enabled=0
+fi
+
+# Discover upstream's latest stable release tag
+# Skip the API call entirely when the toggle is off
+# and if GAME is already patched
+if [ "$update_check_enabled" = "1" ] || [ ! -f "$GAME" ]; then
+    UPSTREAM_TAG=$(curl -sL --max-time 5 "$RELEASES_LATEST_URL" 2>/dev/null \
+        | awk -F'"' '/"tag_name":/ {print $4; exit}')
+fi
+
+# Check for update, fall through if no connection or toggle is off
+if [ "$update_check_enabled" = "1" ] && [ -f "$GAME" ] \
+   && [ -f "$PATCH_VERSION_FILE" ] && [ -f "$BACKUP_ZIP" ]; then
+    stored_tag=$(cat "$PATCH_VERSION_FILE" 2>/dev/null)
+    if [ -n "$UPSTREAM_TAG" ] && [ -n "$stored_tag" ] && [ "$UPSTREAM_TAG" != "$stored_tag" ]; then
         echo "============================================================"
-        echo "Upstream patcher update detected!"
+        echo "Upstream release update detected: $stored_tag -> $UPSTREAM_TAG"
         echo "Re-applying patches from preserved v1.0.0 base..."
         echo "============================================================"
         rm -f "$GAME"
@@ -45,11 +59,13 @@ fi
 if [ ! -f "$GAME" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
+        export PATCHER_QUESTIONS="$GAMEDIR/tools/questions.lua"
         export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
         export PATCHER_TIME="2 to 5 minutes"
         export controlfolder
         export ESUDO
         export DEVICE_ARCH
+        export UPSTREAM_TAG
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
     else
@@ -59,6 +75,12 @@ fi
 
 # Permissions
 chmod +x "$GAME"
+
+# Splash
+if [ -f "$GAME" ]; then
+	[ "$CFW_NAME" == "muOS" ] && $ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 1
+	$ESUDO "$GAMEDIR/tools/splash" "$GAMEDIR/splash.png" 8000 & 
+fi
 
 # Request libGL
 if [ -f "${controlfolder}/libgl_${CFW_NAME}.txt" ]; then

@@ -1,7 +1,4 @@
 #!/bin/bash
-# LADXHD Patcher for Linux ARM64
-# Extracts game from zip, then applies xdelta3 patches to update v1.0.0 to the latest version.
-# Based on the Windows patcher by BigheadSMZ: https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated
 
 GAMEDIR="$PWD"
 LOGFILE="patchlog.txt"
@@ -10,27 +7,24 @@ LOGERR="patcherr.txt"
 > "$GAMEDIR/../$LOGFILE" && exec > >(tee "$GAMEDIR/../$LOGFILE") 2>&1
 echo "GAMEDIR is set to: $GAMEDIR"
 
-# Paths
+# Variables
 DATADIR="$GAMEDIR"
 TMPDIR="$GAMEDIR/tmp"
 PATCHES="$TMPDIR/patches"
 PATCHED="$TMPDIR/patchedFiles"
-PATCHES_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/main/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
-PATCHES_API_URL="https://api.github.com/repos/BigheadSMZ/Zelda-LA-DX-HD-Updated/contents/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
-FUNCTIONS_CS_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/main/ladxhd_patcher_source_code/Program/Functions.cs"
+PATCHES_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/${UPSTREAM_TAG:-main}/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip"
+FUNCTIONS_CS_URL="https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/${UPSTREAM_TAG:-main}/ladxhd_patcher_source_code/Program/Functions.cs"
 PATCHES_ZIP="$TMPDIR/patches_linux_arm64.zip"
 TARGETS_FILE="$TMPDIR/file_targets.txt"
 PARSE_TARGETS_AWK="$GAMEDIR/../tools/parse_targets.awk"
 PATCH_VERSION_FILE="$GAMEDIR/.patch_version"
+UPDATE_CHECK_FILE="$GAMEDIR/.update_check"
 BACKUP_ZIP="$GAMEDIR/.backup/source.zip"
 GOOD_HASH="f4adfba864b852908705ea6a18a48f18"
 
-# ZIPFILE and controlfolder are exported by the launch script
-
 # File-based tracking of which .xdelta patches have been applied. Using a file
 # (rather than a shell variable) keeps state across `find | while` pipelines —
-# those run in a subshell — and works in busybox ash too (no bash arrays/process
-# substitution required).
+# those run in a subshell.
 CONSUMED_FILE="$TMPDIR/consumed_patches.txt"
 
 mark_consumed() {
@@ -44,8 +38,7 @@ is_consumed() {
 
 # Get derived files for a given source filename. Reads from $TARGETS_FILE
 # (parsed live from upstream Functions.cs by download_file_targets) so new
-# upstream derivatives are picked up automatically. If the file is missing —
-# e.g. offline install or upstream parse failed — auto-match handles things.
+# upstream derivatives are picked up automatically.
 get_derived_files() {
     [ -f "$TARGETS_FILE" ] || return
     awk -F'\t' -v s="$1" '$1==s {print $2; exit}' "$TARGETS_FILE"
@@ -72,8 +65,7 @@ prepare_system() {
         return 1
     fi
 
-    # Locate a download tool. Silent flags keep curl/wget from flooding the log
-    # with their multi-line progress meter; -S/--fail keeps real errors visible.
+    # Locate a download tool.
     if command -v curl >/dev/null 2>&1; then
         FETCH="curl -fsSL -o"
     elif command -v wget >/dev/null 2>&1; then
@@ -166,11 +158,20 @@ extract_game() {
 download_patches() {
     mkdir -p "$PATCHES" "$PATCHED"
 
-    echo "Downloading patches..."
-    $FETCH "$PATCHES_ZIP" "$PATCHES_URL"
-    if [ $? -ne 0 ]; then
-        echo "Failed to download patches."
-        return 1
+    # Offline / manual install: if the user dropped the upstream zip into
+    # data/ themselves, use it instead of downloading. The original is left
+    # in place so future re-patches still find it.
+    local manual_zip="$DATADIR/patches_linux_arm64.zip"
+    if [ -f "$manual_zip" ]; then
+        echo "Using manually-placed patches_linux_arm64.zip from data/."
+        cp -f "$manual_zip" "$PATCHES_ZIP"
+    else
+        echo "Downloading patches..."
+        $FETCH "$PATCHES_ZIP" "$PATCHES_URL"
+        if [ $? -ne 0 ]; then
+            echo "Failed to download patches."
+            return 1
+        fi
     fi
 
     echo "Extracting patches..."
@@ -184,9 +185,13 @@ download_file_targets() {
     # and the auto-match pass takes over — slower and slightly riskier, but
     # it means the port doesn't break when upstream adds new derivatives.
     local cs_file="$TMPDIR/Functions.cs"
+    local manual_cs="$DATADIR/Functions.cs"
 
     echo "Fetching upstream file targets mapping..."
-    if ! $FETCH "$cs_file" "$FUNCTIONS_CS_URL"; then
+    if [ -f "$manual_cs" ]; then
+        echo "Using manually-placed Functions.cs from data/."
+        cp -f "$manual_cs" "$cs_file"
+    elif ! $FETCH "$cs_file" "$FUNCTIONS_CS_URL"; then
         echo "WARN: could not download Functions.cs; auto-match will handle all derivatives."
         return
     fi
@@ -443,16 +448,27 @@ cleanup() {
 }
 
 record_patch_version() {
-    # Store the current upstream patches blob SHA so the launch script can detect
-    # future upstream updates and trigger a re-patch.
-    local sha
-    sha=$(curl -sL --max-time 10 "$PATCHES_API_URL" 2>/dev/null \
-        | awk -F'"' '/"sha":/ {print $4; exit}')
-    if [ -n "$sha" ]; then
-        echo "$sha" > "$PATCH_VERSION_FILE"
-        echo "Recorded patch version: $sha"
+    # Store the upstream release tag we patched against so the launch script
+    # can detect future releases and trigger a re-patch. Offline installs
+    # get a "manual" sentinel — the launchscript will detect it as a tag
+    # mismatch the next time the device comes online and re-patch from
+    # upstream automatically.
+    if [ -n "$UPSTREAM_TAG" ]; then
+        echo "$UPSTREAM_TAG" > "$PATCH_VERSION_FILE"
+        echo "Recorded patch version: $UPSTREAM_TAG"
     else
-        echo "WARN: could not record patch version (offline or API unreachable)."
+        echo "manual" > "$PATCH_VERSION_FILE"
+        echo "Recorded patch version: manual (offline install)"
+    fi
+}
+
+record_update_preference() {
+    # Persist the user's answer to the patcher's update-check question. The
+    # launch script reads this on every launch to decide whether to query
+    # the GitHub releases API. Default (no file) is "yes, check."
+    if [ -n "$UPDATE_CHECK" ]; then
+        echo "$UPDATE_CHECK" > "$UPDATE_CHECK_FILE"
+        echo "Recorded update-check preference: $UPDATE_CHECK"
     fi
 }
 
@@ -468,6 +484,7 @@ process_game() {
     patch_game_files || return 1
     echo "Recording patch version..."
     record_patch_version
+    record_update_preference
     echo "Finishing up..."
 }
 
