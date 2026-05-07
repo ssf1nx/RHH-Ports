@@ -2201,9 +2201,7 @@
       "image": null,
       "rtr": true,
       "exp": false,
-      "runtime": [
-        "python_3.11.squashfs"
-      ],
+      "runtime": [],
       "store": [],
       "availability": "full",
       "reqs": [],
@@ -2216,11 +2214,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip",
-      "date_updated": "2026-04-12T12:34",
-      "md5": "3db88967c667696e31bb07afc76a4275",
-      "size": 3203313,
-      "lifetime_downloads": 0,
-      "last_commit": "[PHAROS] Download runtimes for ports that need them"
+      "date_updated": "2026-05-07T16:25",
+      "md5": "e6f7a6f06419489e60235d10170c8a32",
+      "size": 95500,
+      "lifetime_downloads": 169,
+      "last_commit": "Pharos refactor wip"
     }
   },
   {
