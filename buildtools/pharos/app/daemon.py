@@ -143,18 +143,21 @@ def _http_get(url: str, timeout: int = GITHUB_HTTP_TIMEOUT) -> bytes | None:
         log("WARN", f"http GET {url} failed: {e}")
         return None
 
-def load_local_manifest() -> tuple[dict[str, str], dict[str, str], dict[str, str]]:
-    """Returns ({name: md5}, {name: title}, {name: repo}) for ports tracked
-    by Pharos. Names are extensionless (Pharos's Port dataclass strips .zip).
-    `repo` is "owner/name" if Pharos recorded provenance, else empty."""
+def load_local_manifest() -> tuple[
+    dict[str, str], dict[str, str], dict[str, str], set[str]
+]:
+    """Returns ({name: md5}, {name: title}, {name: repo}, {muted_names}) for
+    ports tracked by Pharos. Names are extensionless. `repo` is empty for
+    legacy entries; `muted` defaults to False for entries without the field."""
     if not MANIFEST_PATH.exists():
         log("INFO", f"manifest not found at {MANIFEST_PATH}")
-        return {}, {}, {}
+        return {}, {}, {}, set()
     try:
         data = json.loads(MANIFEST_PATH.read_text("utf-8"))
         md5s: dict[str, str] = {}
         titles: dict[str, str] = {}
         repos: dict[str, str] = {}
+        muted: set[str] = set()
         for entry in data.get("ports", []) + data.get("bottles", []):
             name = entry.get("name")
             md5 = entry.get("md5")
@@ -163,10 +166,12 @@ def load_local_manifest() -> tuple[dict[str, str], dict[str, str], dict[str, str
             md5s[name] = md5
             titles[name] = entry.get("title") or name
             repos[name] = entry.get("repo") or ""
-        return md5s, titles, repos
+            if entry.get("muted"):
+                muted.add(name)
+        return md5s, titles, repos, muted
     except (OSError, json.JSONDecodeError) as e:
         log("WARN", f"manifest parse failed: {e}")
-        return {}, {}, {}
+        return {}, {}, {}, set()
 
 def parse_sources() -> list[tuple[str, str]]:
     """Returns [(owner, repo)] from .sources (one URL per line)."""
@@ -289,10 +294,19 @@ def _save_state_debug(state: dict) -> None:
 def run_check() -> bool:
     """One check + notify pass. Returns True on settled state (notify ok or
     nothing to do); False on notify failure (caller may retry)."""
-    local_md5s, local_titles, local_repos = load_local_manifest()
+    local_md5s, local_titles, local_repos, muted = load_local_manifest()
     if not local_md5s:
         log("INFO", "manifest empty; nothing tracked")
         return True
+
+    # Strip muted ports up front so they're invisible to the rest of the
+    # check pipeline — including dedup (so unmuting later genuinely re-fires).
+    if muted:
+        log("INFO", f"{len(muted)} port(s) muted: {sorted(muted)}")
+        local_md5s = {n: m for n, m in local_md5s.items() if n not in muted}
+        if not local_md5s:
+            log("INFO", "all tracked ports muted")
+            return True
 
     outdated, remote_titles = find_outdated(local_md5s, local_repos)
     if not outdated:

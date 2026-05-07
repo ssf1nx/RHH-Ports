@@ -17,6 +17,7 @@ from config import color_btn_a, color_btn_b
 # Colors
 # ----------------------------------------------------------------------
 color_row_bg = "#383838"
+color_row_muted = "#2a2a2a"
 color_menu_bg = "#141414"
 color_footer_bg = "#333333"
 color_progress_bar = "#00b400"
@@ -47,6 +48,7 @@ def hex_to_sdl(hex_str: str) -> sdl2.SDL_Color:
 
 # Preconvert common colors
 c_row_bg = hex_to_sdl(color_row_bg)
+c_row_muted = hex_to_sdl(color_row_muted)
 c_row_sel = hex_to_sdl(color_btn_a)
 c_menu_bg = hex_to_sdl(color_menu_bg)
 c_footer_bg = hex_to_sdl(color_footer_bg)

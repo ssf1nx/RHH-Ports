@@ -73,8 +73,9 @@ rm -rf "$DIST_DIR" "$BUILD_DIR"
 cd "$SCRIPT_DIR"
 
 # Build the daemon as its own --onefile binary first. No SDL2; the daemon
-# is headless. The resulting binary gets embedded inside Pharos via
-# --add-binary so we ship a single artifact.
+# is headless. Source is daemon.py (sibling of Pharos's main.py); --name
+# gives the binary the user-facing "pharos-daemon" identifier the systemd
+# unit / init.d hook reference.
 pyinstaller \
     --onefile \
     --clean \
@@ -83,7 +84,7 @@ pyinstaller \
     --distpath "$DIST_DIR" \
     --workpath "$BUILD_DIR/daemon" \
     --specpath "$BUILD_DIR/daemon" \
-    "$SOURCE_DIR/pharos-daemon.py"
+    "$SOURCE_DIR/daemon.py"
 
 # Build Pharos, embedding the daemon binary as a bundled resource. The
 # Service module copies it out to INSTALL_DIR on user opt-in.

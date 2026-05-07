@@ -21,12 +21,18 @@ import sdl2.ext
 # ----------------------------------------------------------------------
 from paths import DATA_DIR
 MANIFEST_PATH = os.path.join(DATA_DIR, "resources", "manifest.json")
-local_md5s = {}
+local_md5s: dict[str, str] = {}
+muted_ports: set[str] = set()
 if os.path.exists(MANIFEST_PATH):
     with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
         manifest = json.load(f)
         for entry in manifest.get("ports", []) + manifest.get("bottles", []):
-            local_md5s[entry["name"]] = entry.get("md5")
+            name = entry.get("name")
+            if not name:
+                continue
+            local_md5s[name] = entry.get("md5")
+            if entry.get("muted"):
+                muted_ports.add(name)
 
 # ----------------------------------------------------------------------
 # Local imports
@@ -38,12 +44,13 @@ from ui import (
     UserInterface,
     color_menu_bg,
     color_text,
+    c_row_muted,
     FOOTER_HEIGHT,
     BUTTON_AREA_HEIGHT,
 )
 from download import Downloader
 from update import Update
-from service import Service
+from service import Service, toggle_muted_port, toggle_muted_port
 
 # ----------------------------------------------------------------------
 # Safe background task runner
@@ -95,6 +102,16 @@ class Pharos:
         # Pharos Service (background daemon) controller.
         self.service = Service()
         self.service_msg: str = ""  # last install/uninstall result, shown in log strip
+
+        # If Pharos was just self-updated and the bundled daemon differs from
+        # the on-disk copy, refresh + restart the service in the background so
+        # users don't have to manually reinstall after every Pharos update.
+        # Backgrounded because systemctl restart can take a couple of seconds.
+        threading.Thread(
+            target=self._refresh_service_if_stale,
+            name="ServiceRefresh",
+            daemon=True,
+        ).start()
 
         self._load_sources()
         threading.Thread(
@@ -370,14 +387,19 @@ class Pharos:
             y = 30 + i * 30
             sel = (start + i) == self.port_idx
             size = f" [{item.size / (1024*1024):.2f} MB]" if item.size else ""
+            is_muted = item.name in muted_ports
             self.ui.row_list(
                 f"{item.title}{size}",
                 (20, y),
                 self.ui.screen_width // 3,
                 28,
                 sel,
+                # Muted ports get a darker background and lose the "update
+                # available" highlight — consistent with the daemon, which
+                # filters muted ports out before deciding what to notify.
+                fill=c_row_muted if (is_muted and not sel) else None,
                 color=color_text if sel else color_menu_bg,
-                highlight=item.update_available
+                highlight=item.update_available and not is_muted,
             )
             if sel:
                 selected_item = item
@@ -448,12 +470,20 @@ class Pharos:
         btns = []
         if can_download:
             btns.append({"key": self.layout["a"]["btn"], "label": "Download", "color": self.layout["a"]["color"]})
-        
+
         btns.append({"key": self.layout["b"]["btn"], "label": "Back", "color": self.layout["b"]["color"]})
-        
+
+        # X toggles per-port mute. Only meaningful for ports already in the
+        # local manifest (selected_item.name in local_md5s); no point muting
+        # something the daemon won't see anyway.
+        if selected_item is not None and selected_item.name in local_md5s:
+            x_label = "Unmute" if selected_item.name in muted_ports else "Mute"
+            btns.append({"key": self.layout["x"]["btn"], "label": x_label,
+                         "color": self.layout["x"]["color"]})
+
         if can_download:
             btns.append({"key": self.layout["y"]["btn"], "label": "All", "color": self.layout["y"]["color"]})
-            
+
         self._draw_button_bar(btns)
 
     # ------------------------------------------------------------------
@@ -497,6 +527,17 @@ class Pharos:
             for item in items:
                 self.dl_queue.put((item, "port" if not is_bottle_repo else "bottle"))
             self._ensure_worker()
+
+        elif self.input.key(self.layout["x"]["key"]):
+            # Toggle mute on the currently selected port. Only acts on ports
+            # that have a manifest entry — there's nothing to mute otherwise.
+            sel_item = items[self.port_idx] if items else None
+            if sel_item is not None and sel_item.name in local_md5s:
+                new_state = toggle_muted_port(sel_item.name)
+                if new_state is True:
+                    muted_ports.add(sel_item.name)
+                elif new_state is False:
+                    muted_ports.discard(sel_item.name)
 
         if self.input.key(self.layout["b"]["key"]):
             for item in items:
@@ -582,13 +623,14 @@ class Pharos:
 
         # Description block, manually wrapped to fit half-screen width.
         description = [
-            "Pharos Service is a small background daemon that periodically",
-            "checks the repos in .sources for port updates and surfaces a",
-            "notification on the device when an update is available.",
+            "Pharos Service is a small background daemon that watches",
+            "the repos in .sources for port updates without you having",
+            "to open Pharos.",
             "",
-            "It runs at boot, polls every 12 hours, and re-checks whenever",
-            "you exit a game. Notifications appear on top of EmulationStation",
-            "(or as a MuOS overlay toast).",
+            "It runs at boot, fires a notification if any installed",
+            "ports are out of date, and re-checks whenever you exit a",
+            "game. Notifications appear as an EmulationStation toast",
+            "or a MuOS overlay message.",
         ]
         for i, line in enumerate(description):
             y = 50 + i * 22
@@ -650,6 +692,13 @@ class Pharos:
     # ------------------------------------------------------------------
     # Self-update
     # ------------------------------------------------------------------
+    def _refresh_service_if_stale(self) -> None:
+        try:
+            if self.service.refresh_if_stale():
+                print("[Service] daemon binary refreshed and service restarted")
+        except Exception as e:
+            print(f"[ServiceRefresh] failed: {e}")
+
     def _check_self_update(self) -> None:
         try:
             if self.updater.check():

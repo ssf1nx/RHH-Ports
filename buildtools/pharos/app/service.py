@@ -10,9 +10,15 @@ the Pharos binary via --add-binary. At runtime the bundled daemon lives in
 BASE_PATH (sys._MEIPASS); install() copies it out to INSTALL_DIR as a
 persistent executable, uninstall() removes it. The port zip therefore
 ships only the Pharos binary — no loose script files anywhere.
+
+refresh_if_stale() is called once on Pharos startup; if the bundled daemon
+hash differs from the on-disk extracted copy (which happens after a Pharos
+self-update bringing new daemon code), it replaces the file and restarts
+the per-CFW service so the new code takes over without user intervention.
 """
 from __future__ import annotations
 
+import hashlib
 import os
 import shutil
 import signal
@@ -26,6 +32,41 @@ DAEMON_NAME = "pharos-daemon"
 # Bundled binary (read-only, inside _MEIPASS) and on-disk location after install.
 DAEMON_BUNDLED_PATH = Path(BASE_PATH) / DAEMON_NAME
 DAEMON_EXTRACTED_PATH = Path(INSTALL_DIR) / DAEMON_NAME
+
+# Per-port mute lives on each manifest entry as a "muted" boolean. The
+# daemon reads it from the same manifest the Pharos UI mutates here.
+MANIFEST_PATH = Path(INSTALL_DIR) / "resources" / "manifest.json"
+
+
+def toggle_muted_port(name: str) -> bool | None:
+    """Flip the "muted" flag on the manifest entry matching `name`. Returns
+    the new state (True if now muted), or None if no matching entry exists.
+    Atomic write via tmp + rename so a partial save can't corrupt manifest."""
+    import json
+    if not MANIFEST_PATH.exists():
+        return None
+    try:
+        data = json.loads(MANIFEST_PATH.read_text("utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+    new_state: bool | None = None
+    for key in ("ports", "bottles"):
+        for entry in data.get(key, []) or []:
+            if entry.get("name") == name:
+                new_state = not bool(entry.get("muted"))
+                entry["muted"] = new_state
+                break
+        if new_state is not None:
+            break
+
+    if new_state is None:
+        return None
+
+    tmp = MANIFEST_PATH.with_suffix(".tmp")
+    tmp.write_text(json.dumps(data, indent=2), encoding="utf-8")
+    os.replace(tmp, MANIFEST_PATH)
+    return new_state
 
 # Per-CFW autostart artefact paths.
 ROCKNIX_UNIT_PATH = Path("/storage/.config/system.d/pharos-daemon.service")
@@ -157,6 +198,17 @@ def _kill_pid_file(pid_file: Path) -> None:
         pass
 
 
+def _hash_file(path: Path) -> str:
+    h = hashlib.sha256()
+    try:
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(64 * 1024), b""):
+                h.update(chunk)
+    except OSError:
+        return ""
+    return h.hexdigest()
+
+
 # ----------------------------------------------------------------------
 # Service class
 # ----------------------------------------------------------------------
@@ -201,6 +253,39 @@ class Service:
         if not self.supported:
             return f"Not supported on this CFW ({self.cfw})"
         return "Installed" if self.installed else "Not installed"
+
+    # ------------------------------------------------------------------
+    # Auto-refresh on Pharos update
+    # ------------------------------------------------------------------
+    def refresh_if_stale(self) -> bool:
+        """If the service is installed and the bundled daemon binary differs
+        from the extracted on-disk copy, replace it and restart the per-CFW
+        service. Returns True if a refresh happened. Called once on Pharos
+        startup so a self-update of Pharos transparently brings the daemon
+        with it."""
+        if not self.installed:
+            return False
+        if not DAEMON_BUNDLED_PATH.exists() or not DAEMON_EXTRACTED_PATH.exists():
+            return False
+        if _hash_file(DAEMON_BUNDLED_PATH) == _hash_file(DAEMON_EXTRACTED_PATH):
+            return False
+
+        try:
+            shutil.copy2(DAEMON_BUNDLED_PATH, DAEMON_EXTRACTED_PATH)
+            DAEMON_EXTRACTED_PATH.chmod(0o755)
+        except OSError:
+            return False
+
+        # Restart the per-CFW service so the new code is what's actually running.
+        if self.cfw == "rocknix":
+            _safe_run(["systemctl", "restart", "pharos-daemon.service"])
+        elif self.cfw == "knulli":
+            _safe_run([str(KNULLI_SERVICE_PATH), "stop"])
+            _safe_run([str(KNULLI_SERVICE_PATH), "start"])
+        elif self.cfw == "muos":
+            _kill_pid_file(Path("/run/pharos-daemon.pid"))
+            _safe_run([str(MUOS_INIT_PATH)])
+        return True
 
     # ------------------------------------------------------------------
     # Install / uninstall — per-CFW dispatch

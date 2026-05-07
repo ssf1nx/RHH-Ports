@@ -82,6 +82,7 @@ class Port:
     runtime: List[str] = field(default_factory=list)
     runtime_base_url: str = ""
     repo: str = ""
+    muted: bool = False
 
 @dataclass
 class Repository:
