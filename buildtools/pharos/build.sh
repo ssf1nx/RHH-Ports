@@ -31,6 +31,18 @@ fi
 PYTHON_VER=$($PYTHON_BIN -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
 echo "Using Python $PYTHON_VER at $PYTHON_BIN"
 
+# ---- System build deps -----------------------------------------------------
+# PyInstaller calls objdump on Linux; bullseye-slim doesn't ship binutils.
+if command -v apt-get >/dev/null 2>&1 && ! command -v objdump >/dev/null 2>&1; then
+    sudoer=""
+    if [ "$(id -u)" -ne 0 ] && command -v sudo >/dev/null 2>&1; then
+        sudoer="sudo"
+    fi
+    echo "Installing binutils (needed by PyInstaller for objdump)"
+    $sudoer apt-get update -qq
+    $sudoer env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq binutils >/dev/null
+fi
+
 # ---- Python deps -----------------------------------------------------------
 $PYTHON_BIN -m pip install --upgrade pip
 $PYTHON_BIN -m pip install --upgrade -r "$SCRIPT_DIR/requirements.txt"
