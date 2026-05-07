@@ -1,0 +1,15 @@
+# Pharos build + runtime Python dependencies.
+#
+# Runtime:
+#   PySDL2       - Python ctypes bindings for SDL2 (used in ui.py, etc.)
+#   PySDL2-dll   - Bundled native SDL2/SDL2_image/SDL2_ttf libs that
+#                  PyInstaller's --collect-all sdl2 picks up at build time.
+#                  On Linux ARM64 the system libsdl2-* packages are also
+#                  needed (build.sh apt-installs them).
+#
+# Build:
+#   pyinstaller  - --onefile bundler.
+
+PySDL2
+PySDL2-dll
+pyinstaller

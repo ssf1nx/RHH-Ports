@@ -1,0 +1,77 @@
+name: Build Pharos
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'buildtools/pharos/app/__version__.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-pharos
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      # Build inside a bullseye container so the binary links against glibc
+      # 2.31 — broad enough to run on ArkOS, MuOS, ROCKNIX, Knulli without
+      # the runtime mount. The runner itself (ubuntu-24.04-arm, glibc 2.39)
+      # would otherwise produce a binary that fails on older devices with a
+      # "GLIBC_2.XX not found" loader error.
+      - name: Build Pharos binary
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/work" \
+            -w /work/buildtools/pharos \
+            python:3.11-slim-bullseye \
+            bash build.sh
+
+      - name: Stage binary into port dir
+        run: |
+          cp buildtools/pharos/dist/Pharos ports/released/apps/pharos/pharos/Pharos
+          chmod +x ports/released/apps/pharos/pharos/Pharos
+
+      - name: Commit binary
+        run: |
+          set -euo pipefail
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add ports/released/apps/pharos/pharos/Pharos
+
+          if git diff --cached --quiet; then
+            echo "Binary identical to committed version; nothing to release."
+            exit 0
+          fi
+
+          version=$(grep -oP 'version\s*=\s*"\K[^"]+' buildtools/pharos/app/__version__.py || echo unknown)
+          git commit -m "[Pharos] Update to v${version}"
+
+          # Retry-rebase-push to absorb concurrent pushes from other workflows.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin "$GITHUB_REF_NAME"
+            if ! git rebase "origin/$GITHUB_REF_NAME"; then
+              echo "::error::rebase failed on attempt $attempt"
+              git rebase --abort || true
+              exit 1
+            fi
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt; retrying..."
+            sleep $((attempt * 3))
+          done
+          echo "::error::Push failed after 5 attempts"
+          exit 1

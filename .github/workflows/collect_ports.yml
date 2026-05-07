@@ -18,7 +18,7 @@ on:
     # The push trigger above doesn't fire for pushes made by the default
     # GITHUB_TOKEN (GitHub suppresses this to prevent workflow recursion),
     # so any workflow that commits port payloads must be chained here.
-    workflows: ["Update HM64 Port", "Build Ports"]
+    workflows: ["Update HM64 Port", "Build Ports", "Build Pharos"]
     types: [completed]
 
 concurrency:

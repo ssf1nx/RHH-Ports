@@ -2,3 +2,11 @@
 
 # buildtools build-port staging dir created by buildtools/build_port.sh
 /build-port/
+# Pharos PyInstaller build artifacts (binary lands in dist/, intermediate
+# work in build/). Source lives at buildtools/pharos/app/ and is tracked.
+/buildtools/pharos/dist/
+/buildtools/pharos/build/
+__pycache__/
+
+# Claude Code local state
+.claude/
