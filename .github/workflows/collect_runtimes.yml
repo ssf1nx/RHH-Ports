@@ -5,13 +5,6 @@ on:
     paths:
       - 'runtimes/*.squashfs'
   workflow_dispatch:
-    inputs:
-      force:
-        description: 'Force re-upload all runtimes'
-        required: true
-        default: 'false'
-        type: choice
-        options: ['true', 'false']
 
 concurrency:
   group: release-runtimes
@@ -28,97 +21,59 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y jq gh
 
       - name: Ensure release exists
         run: |
           gh release view runtimes-latest >/dev/null 2>&1 || \
-          gh release create runtimes-latest --title "Runtimes" --notes "Squashfs runtimes for ports (auto-updated)"
+            gh release create runtimes-latest \
+              --title "Runtimes" \
+              --notes "Squashfs runtimes for ports (auto-updated)"
 
-      - name: Determine runtimes to upload
-        id: runtimes
+      - name: Sync runtimes/ ↔ release
         run: |
           set -euo pipefail
 
-          FORCE="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force || 'false' }}"
-          FILES=()
+          # Collect local runtimes
+          mapfile -t LOCAL < <(find runtimes -maxdepth 1 -name '*.squashfs' -type f | sort)
+          declare -A LOCAL_SET
+          for f in "${LOCAL[@]}"; do
+            LOCAL_SET[$(basename "$f")]=1
+          done
 
-          if [ "$FORCE" = "true" ]; then
-            mapfile -t FILES < <(find runtimes -maxdepth 1 -name '*.squashfs' -type f | sort)
-          else
-            mapfile -t FILES < <(
-              git diff --name-only HEAD~1 HEAD -- 'runtimes/*.squashfs' 2>/dev/null | sort
-            )
-          fi
-
-          if [ "${#FILES[@]}" -eq 0 ]; then
-            echo "No runtimes changed."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "changed=true" >> "$GITHUB_OUTPUT"
-          {
-            echo "files<<EOF"
-            printf '%s\n' "${FILES[@]}"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Upload changed runtimes
-        if: steps.runtimes.outputs.changed == 'true'
-        run: |
-          set -euo pipefail
-          mapfile -t FILES <<< "${{ steps.runtimes.outputs.files }}"
-
-          # Get existing asset checksums from the release
+          # Snapshot remote assets (name → size, name → id)
           RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/runtimes-latest --jq '.id')
-          declare -A REMOTE_SIZES
-          while IFS=: read -r name size; do
+          declare -A REMOTE_SIZES REMOTE_IDS
+          while IFS=: read -r name size id; do
+            [ -z "$name" ] && continue
             REMOTE_SIZES["$name"]="$size"
+            REMOTE_IDS["$name"]="$id"
           done < <(
             gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets" \
-              --jq '.[] | "\(.name):\(.size)"' 2>/dev/null || true
+              --jq '.[] | "\(.name):\(.size):\(.id)"' 2>/dev/null || true
           )
 
-          for f in "${FILES[@]}"; do
-            [ -f "$f" ] || continue
+          # Upload new or size-changed runtimes
+          for f in "${LOCAL[@]}"; do
             name=$(basename "$f")
             local_size=$(stat -c %s "$f")
             remote_size="${REMOTE_SIZES[$name]:-}"
-
             if [ "$local_size" = "$remote_size" ]; then
-              echo "Skipping $name (size unchanged: $local_size)"
+              echo "Skipping $name (unchanged: $local_size bytes)"
               continue
             fi
-
-            echo "Uploading $name ($local_size bytes)"
+            if [ -n "$remote_size" ]; then
+              echo "Replacing $name (remote: $remote_size → local: $local_size bytes)"
+            else
+              echo "Uploading new $name ($local_size bytes)"
+            fi
             gh release upload runtimes-latest "$f" --clobber
           done
 
-      - name: Purge orphaned assets
-        if: steps.runtimes.outputs.changed == 'true'
-        run: |
-          set -euo pipefail
-
-          # Collect valid runtime names from disk
-          mapfile -t VALID < <(find runtimes -maxdepth 1 -name '*.squashfs' -type f -exec basename {} \; | sort)
-
-          RELEASE_ID=$(gh api repos/${GITHUB_REPOSITORY}/releases/tags/runtimes-latest --jq '.id')
-          mapfile -t ASSETS < <(
-            gh api "repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets" \
-              --jq '.[] | "\(.name):\(.id)"' 2>/dev/null || true
-          )
-
-          for asset in "${ASSETS[@]}"; do
-            ASSET_NAME="${asset%%:*}"
-            ASSET_ID="${asset#*:}"
-
-            if ! printf '%s\n' "${VALID[@]}" | grep -qx "$ASSET_NAME"; then
-              echo "Deleting orphaned asset: $ASSET_NAME"
-              gh api -X DELETE "repos/${GITHUB_REPOSITORY}/releases/assets/$ASSET_ID" || true
+          # Purge orphaned remote assets
+          for name in "${!REMOTE_IDS[@]}"; do
+            if [ -z "${LOCAL_SET[$name]:-}" ]; then
+              echo "Deleting orphaned asset: $name"
+              gh api -X DELETE \
+                "repos/${GITHUB_REPOSITORY}/releases/assets/${REMOTE_IDS[$name]}" || true
             fi
           done
