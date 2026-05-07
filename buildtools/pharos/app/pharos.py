@@ -43,6 +43,7 @@ from ui import (
 )
 from download import Downloader
 from update import Update
+from service import Service
 
 # ----------------------------------------------------------------------
 # Safe background task runner
@@ -90,6 +91,10 @@ class Pharos:
         self.updater = Update(self.ui)
         self.self_update_available = False
         self.self_update_prompted = False
+
+        # Pharos Service (background daemon) controller.
+        self.service = Service()
+        self.service_msg: str = ""  # last install/uninstall result, shown in log strip
 
         self._load_sources()
         threading.Thread(
@@ -221,6 +226,7 @@ class Pharos:
                         date_updated=src.get("date_updated"),
                         runtime=[r for r in p.get("attr", {}).get("runtime", []) if r.endswith(".squashfs")],
                         runtime_base_url=runtime_base,
+                        repo=f"{owner}/{repo_name}",
                     )
                     port.last_commit = src.get("last_commit", "")
                     port.md5 = src.get("md5")
@@ -258,6 +264,7 @@ class Pharos:
                         download_url=src.get("download_url", ""),
                         size=src.get("size"),
                         date_updated=src.get("date_updated"),
+                        repo=f"{owner}/{repo_name}",
                     )
                     bottle.last_commit = src.get("last_commit", "")
                     bottle.md5 = src.get("md5")
@@ -340,6 +347,7 @@ class Pharos:
         btns = [
             {"key": self.layout["a"]["btn"], "label": "Open", "color": self.layout["a"]["color"]},
             {"key": self.layout["b"]["btn"], "label": "Exit", "color": self.layout["b"]["color"]},
+            {"key": self.layout["x"]["btn"], "label": "Pharos Service", "color": self.layout["x"]["color"]},
         ]
         self._draw_button_bar(btns)
 
@@ -466,6 +474,9 @@ class Pharos:
                 self.running = False
             else:
                 self.current_view = "repos"
+        elif self.input.key(self.layout["x"]["key"]):
+            self.current_view = "service"
+            self.service_msg = ""
         else:
             self.repo_idx = self.input.handle_navigation(self.repo_idx, 10, len(self.repositories))
 
@@ -549,12 +560,92 @@ class Pharos:
             self._render_self_update_prompt()
             self._handle_self_update_input()
             return
-        if self.current_view == "repos":
+        if self.current_view == "service":
+            self._render_service()
+            self._update_service()
+        elif self.current_view == "repos":
             self._render_repos()
             self._update_repos()
         else:
             self._render_ports()
             self._update_ports()
+
+    # ------------------------------------------------------------------
+    # Pharos Service view
+    # ------------------------------------------------------------------
+    def _render_service(self) -> None:
+        sw, sh = self.ui.screen_width, self.ui.screen_height
+        self.ui.draw_header("Pharos Service", color_text)
+
+        installed = self.service.installed
+        supported = self.service.supported
+
+        # Description block, manually wrapped to fit half-screen width.
+        description = [
+            "Pharos Service is a small background daemon that periodically",
+            "checks the repos in .sources for port updates and surfaces a",
+            "notification on the device when an update is available.",
+            "",
+            "It runs at boot, polls every 12 hours, and re-checks whenever",
+            "you exit a game. Notifications appear on top of EmulationStation",
+            "(or as a MuOS overlay toast).",
+        ]
+        for i, line in enumerate(description):
+            y = 50 + i * 22
+            self.ui.draw_text((40, y), line, color_text)
+
+        # Status line, centered.
+        status_label = self.service.status_text()
+        sw_text = self.ui.get_text_width(status_label)
+        self.ui.draw_text(
+            (max(20, sw // 2 - sw_text // 2), 240),
+            status_label,
+            color_text,
+        )
+
+        # Footer log: most-recent action result, if any.
+        if self.service_msg:
+            self.ui.draw_log(text=self.service_msg, background=True)
+        elif not supported:
+            self.ui.draw_log(text="This CFW isn't supported yet.", background=True)
+        else:
+            self.ui.draw_log(
+                text=("Press A to install" if not installed else "Press A to uninstall"),
+                background=True,
+            )
+
+        # Button bar.
+        btns = [{"key": self.layout["b"]["btn"], "label": "Back",
+                 "color": self.layout["b"]["color"]}]
+        if supported:
+            label = "Uninstall" if installed else "Install"
+            btns.insert(0, {
+                "key": self.layout["a"]["btn"], "label": label,
+                "color": self.layout["a"]["color"],
+            })
+        self._draw_button_bar(btns)
+
+    def _update_service(self) -> None:
+        if self.input.key(self.layout["b"]["key"]):
+            self.current_view = "repos"
+            self.service_msg = ""
+            return
+
+        if not self.service.supported:
+            return
+
+        if self.input.key(self.layout["a"]["key"]):
+            # Block briefly while we run install/uninstall — the operation
+            # touches systemctl / batocera-settings / filesystem, all of
+            # which return in a couple of seconds at most. Show a transient
+            # "Working…" hint so the UI isn't visually frozen.
+            self.ui.draw_log(text="Working…", background=True)
+            self.ui.render_to_screen()
+            if self.service.installed:
+                ok, msg = self.service.uninstall()
+            else:
+                ok, msg = self.service.install()
+            self.service_msg = ("[OK] " if ok else "[ERR] ") + msg
 
     # ------------------------------------------------------------------
     # Self-update

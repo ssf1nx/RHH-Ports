@@ -72,6 +72,21 @@ $PYTHON_BIN -m pip install --upgrade -r "$SCRIPT_DIR/requirements.txt"
 rm -rf "$DIST_DIR" "$BUILD_DIR"
 cd "$SCRIPT_DIR"
 
+# Build the daemon as its own --onefile binary first. No SDL2; the daemon
+# is headless. The resulting binary gets embedded inside Pharos via
+# --add-binary so we ship a single artifact.
+pyinstaller \
+    --onefile \
+    --clean \
+    --noconfirm \
+    --name pharos-daemon \
+    --distpath "$DIST_DIR" \
+    --workpath "$BUILD_DIR/daemon" \
+    --specpath "$BUILD_DIR/daemon" \
+    "$SOURCE_DIR/pharos-daemon.py"
+
+# Build Pharos, embedding the daemon binary as a bundled resource. The
+# Service module copies it out to INSTALL_DIR on user opt-in.
 pyinstaller \
     --onefile \
     --clean \
@@ -79,11 +94,16 @@ pyinstaller \
     --name Pharos \
     --collect-all sdl2 \
     --add-data "$SOURCE_DIR/fonts:fonts" \
+    --add-binary "$DIST_DIR/pharos-daemon:." \
     --paths "$SOURCE_DIR" \
     --distpath "$DIST_DIR" \
-    --workpath "$BUILD_DIR" \
-    --specpath "$BUILD_DIR" \
+    --workpath "$BUILD_DIR/pharos" \
+    --specpath "$BUILD_DIR/pharos" \
     "$SOURCE_DIR/main.py"
+
+# The standalone daemon binary in dist/ has now been embedded in Pharos —
+# remove it so only the single Pharos binary is published as the artifact.
+rm -f "$DIST_DIR/pharos-daemon"
 
 echo
 echo "Build complete: $DIST_DIR/Pharos"

@@ -38,14 +38,27 @@ jobs:
             python:3.11-slim-bullseye \
             bash build.sh
 
-      - name: Stage binary into port dir
+      # Manual runs (workflow_dispatch) just publish the binary as a workflow
+      # artifact for download — no commit, no chained collect_ports.yml. Used
+      # for ad-hoc builds to test on-device without cutting a release.
+      - name: Upload artifact (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pharos-binary
+          path: buildtools/pharos/dist/Pharos
+          retention-days: 14
+
+      # Push-triggered runs (a __version__.py change landed) commit the new
+      # binary back so collect_ports.yml's workflow_run chain re-publishes
+      # the port zip.
+      - name: Stage and commit binary (release run)
+        if: github.event_name == 'push'
         run: |
+          set -euo pipefail
           cp buildtools/pharos/dist/Pharos ports/released/apps/pharos/pharos/Pharos
           chmod +x ports/released/apps/pharos/pharos/Pharos
 
-      - name: Commit binary
-        run: |
-          set -euo pipefail
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add ports/released/apps/pharos/pharos/Pharos

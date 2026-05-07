@@ -534,14 +534,18 @@ class UserInterface:
         if tex_w == 0 or tex_h == 0:
             return
 
+        # Right pane bounds
+        desc_center_x = self.screen_width * 3 // 4 - 40
+        desc_max_width = self.screen_width // 2
+        desc_left_x = desc_center_x - desc_max_width // 2
+        right_margin = 10
+        max_w = min(max_w, self.screen_width - desc_left_x - right_margin)
+
         # Compute scale while preserving aspect ratio
         scale = min(max_w / tex_w, max_h / tex_h, 1.0)
         dw, dh = int(tex_w * scale), int(tex_h * scale)
 
         # Center in the allocated area
-        desc_center_x = self.screen_width * 3 // 4 - 40
-        desc_max_width = self.screen_width // 2
-        desc_left_x = desc_center_x - desc_max_width // 2
         x = desc_left_x + (max_w - dw) // 2
         y = 40 + (max_h - dh) // 2
 
