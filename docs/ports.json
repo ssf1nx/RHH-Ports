@@ -2319,11 +2319,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "94509356e52877f94584bf3cac9655df",
-      "size": 10886231,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-07T19:29",
+      "md5": "95d788dbab6d95be37341a7d708f58bf",
+      "size": 11534117,
+      "lifetime_downloads": 20,
+      "last_commit": "[PIZZATOWER] Restore custom gmloadernext"
     }
   },
   {
