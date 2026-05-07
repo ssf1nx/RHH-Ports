@@ -31,9 +31,33 @@ export LD_LIBRARY_PATH="${GAMEDIR}/libs:${LD_LIBRARY_PATH}"
 export controlfolder
 export DEVICE_ARCH
 
-# Permissions etc
-chmod +x "${GAMEDIR}/Pharos"
 mkdir -p "${LOG_DIR}"
+
+# Apply any pending self-update
+apply_pending_update() {
+    local zip="${GAMEDIR}/.pending_update.zip"
+    local parent
+    parent="$(dirname "${GAMEDIR}")"
+    {
+        echo "[Update] Applying pending update from ${zip}..."
+        if "$controlfolder/7zzs.${DEVICE_ARCH}" x -y "${zip}" -o"${parent}" >/dev/null; then
+            rm -f "${zip}"
+            echo "[Update] Applied; re-launching."
+            export _PHAROS_UPDATE_APPLIED=1
+            exec "$0" "$@"
+        else
+            echo "[Update] Extraction failed; deleting partial zip."
+            rm -f "${zip}"
+        fi
+    } >> "${LOG_FILE}" 2>&1
+}
+
+if [ -f "${GAMEDIR}/.pending_update.zip" ] && [ -z "${_PHAROS_UPDATE_APPLIED}" ]; then
+    apply_pending_update "$@"
+fi
+
+# Permissions
+chmod +x "${GAMEDIR}/Pharos"
 
 pm_platform_helper "${GAMEDIR}/Pharos" >/dev/null
 "${GAMEDIR}/Pharos" "${GAMEDIR}/.sources" > "${LOG_FILE}" 2>&1 || true

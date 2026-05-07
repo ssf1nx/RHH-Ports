@@ -7,58 +7,8 @@ Entrypoint to the Pharos companion app.
 import glob
 import os
 import sys
-import zipfile
 
-from config import DATA_DIR, INSTALL_DIR
-
-def apply_pending_update() -> None:
-    update_zip = os.path.join(DATA_DIR, ".pending_update.zip")
-    if not os.path.exists(update_zip):
-        print(f"[Update] No pending update at {update_zip}; skipping.")
-        return
-    print(f"[Update] Applying pending update from {update_zip} "
-          f"(size {os.path.getsize(update_zip)} bytes)...")
-
-    # The update zip mirrors the install layout. Extract one level above
-    # the install dir so the launchscript and binary both get replaced.
-    # Linux refuses to overwrite a running binary with O_TRUNC (ETXTBSY on
-    # overlay-style filesystems used by ROCKNIX/Knulli/MuOS), so write each
-    # entry to a sibling .tmp and os.replace() it onto the target. The
-    # inode swap leaves the currently-running process undisturbed and the
-    # new file is in place for the next launch.
-    target = os.path.abspath(os.path.join(INSTALL_DIR, ".."))
-    try:
-        with zipfile.ZipFile(update_zip, "r") as zf:
-            for entry in zf.infolist():
-                dest = os.path.join(target, entry.filename)
-                if entry.is_dir():
-                    os.makedirs(dest, exist_ok=True)
-                    continue
-                os.makedirs(os.path.dirname(dest), exist_ok=True)
-                tmp = dest + ".tmp"
-                with zf.open(entry, "r") as src, open(tmp, "wb") as dst:
-                    while True:
-                        chunk = src.read(64 * 1024)
-                        if not chunk:
-                            break
-                        dst.write(chunk)
-                # Preserve original mode bits (e.g. 0o755 on the binary).
-                mode = (entry.external_attr >> 16) & 0o777
-                if mode:
-                    os.chmod(tmp, mode)
-                os.replace(tmp, dest)
-        os.remove(update_zip)
-        print(f"[Update] Applied pending update to {target}.")
-    except (zipfile.BadZipFile, OSError) as e:
-        print(f"[Update] Failed to apply pending update: {e}", file=sys.stderr)
-        # Drop the zip so we don't keep retrying a broken/partial download.
-        try:
-            os.remove(update_zip)
-        except OSError:
-            pass
-
-
-apply_pending_update()
+from config import DATA_DIR
 
 # Minimal CFWs (Knulli) ship Python without CA certs in OpenSSL's default
 # search path, so HTTPS requests fail with CERTIFICATE_VERIFY_FAILED. Point
