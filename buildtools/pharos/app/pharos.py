@@ -644,8 +644,7 @@ class Pharos:
             "",
             "It runs at boot, fires a notification if any installed",
             "ports are out of date, and re-checks whenever you exit a",
-            "game. Notifications appear as an EmulationStation toast",
-            "or a MuOS overlay message.",
+            "game. Notifications appear as an EmulationStation toast.",
         ]
         for i, line in enumerate(description):
             y = 50 + i * 22
@@ -754,7 +753,7 @@ class Pharos:
             self.self_update_prompted = True
             if self.updater.download():
                 self.ui.draw_log(
-                    text=f"Pharos v{self.updater.latest_version} downloaded — restart to apply.",
+                    text=f"Pharos v{self.updater.latest_version} downloaded — applying and re-launching...",
                     background=True,
                 )
                 self.ui.render_to_screen()

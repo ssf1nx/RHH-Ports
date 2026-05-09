@@ -8,8 +8,12 @@ Flow:
      from PHAROS_REPO@main, and looks up the download URL from docs/ports.json.
   2. download() streams the new zip into DATA_DIR/.pending_update.zip with a
      progress UI driven by Pharos's existing draw_loader/draw_log primitives.
-  3. main.py::apply_pending_update() picks up the zip on next launch and
-     extracts it over the install dir before any other imports.
+  3. The Pharos App.sh wrapper picks up the zip — both pre-launch (if a
+     prior run left one) and post-exit (if Pharos just downloaded one and
+     set running=False). It extracts via 7zzs into a temp dir, copies the
+     pharos/ contents to GAMEDIR and the launcher script to its actual
+     runtime location, then exec's itself to relaunch the new binary.
+     See ports/released/apps/pharos/Pharos App.sh::apply_pending_update.
 """
 import json
 import os
