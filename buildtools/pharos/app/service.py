@@ -1,9 +1,15 @@
 """
 Pharos Service — install/uninstall the background update-checker daemon.
 
-Each CFW gets its own autostart hook (systemd unit / Batocera service /
-init.d script). Plus an ES event script that SIGHUPs the daemon on
+Each supported bucket gets its own autostart hook (systemd unit / userland
+service script). Plus an ES event script that SIGHUPs the daemon on
 game-end, so users see fresh notifications when ES regains the foreground.
+
+MuOS is detected but unsupported for the background daemon: it has no
+ES-style game-end hook directory, and patching `/opt/muos/script/mux/
+launch.sh` is fragile across MuOS updates. MuOS users run Pharos's UI
+directly to check for updates; status_text() reports "Not supported on
+this CFW (muos)" for the install screen.
 
 The daemon ships as its own PyInstaller --onefile binary, embedded inside
 the Pharos binary via --add-binary. At runtime the bundled daemon lives in
@@ -18,6 +24,7 @@ the per-CFW service so the new code takes over without user intervention.
 """
 from __future__ import annotations
 
+import functools
 import hashlib
 import json
 import os
@@ -29,6 +36,11 @@ from pathlib import Path
 from config import BASE_PATH, INSTALL_DIR
 
 DAEMON_NAME = "pharos-daemon"
+
+# Single source of truth for the "this CFW isn't supported" message —
+# used by status_text() and the early-out in install/uninstall so we
+# don't drift across multiple wordings.
+UNSUPPORTED_MSG = "CFW '{cfw}' not supported"
 
 # Bundled binary (read-only, inside _MEIPASS) and on-disk location after install.
 DAEMON_BUNDLED_PATH = Path(BASE_PATH) / DAEMON_NAME
@@ -69,13 +81,12 @@ def toggle_muted_port(name: str) -> bool | None:
     return new_state
 
 # Per-CFW autostart artefact paths.
-ROCKNIX_UNIT_PATH = Path("/storage/.config/system.d/pharos-daemon.service")
-KNULLI_SERVICE_PATH = Path("/userdata/system/services/pharos-daemon")
-MUOS_INIT_PATH = Path("/opt/muos/script/init/S95pharos.sh")
+SYSTEMD_UNIT_PATH = Path("/storage/.config/system.d/pharos-daemon.service")
+USERLAND_SERVICE_PATH = Path("/userdata/system/services/pharos-daemon")
 
-# ES event-script paths (ROCKNIX + Knulli).
-ROCKNIX_ES_SCRIPT = Path("/storage/.config/emulationstation/scripts/game-end/pharos-check")
-KNULLI_ES_SCRIPT = Path("/userdata/system/configs/emulationstation/scripts/game-end/pharos-check")
+# ES event-script paths (ROCKNIX + Batocera-family).
+SYSTEMD_ES_SCRIPT = Path("/storage/.config/emulationstation/scripts/game-end/pharos-check")
+USERLAND_ES_SCRIPT = Path("/userdata/system/configs/emulationstation/scripts/game-end/pharos-check")
 
 DAEMON_PID_FILE = Path(INSTALL_DIR) / "resources" / "daemon.pid"
 
@@ -83,16 +94,98 @@ DAEMON_PID_FILE = Path(INSTALL_DIR) / "resources" / "daemon.pid"
 # ----------------------------------------------------------------------
 # CFW detection
 # ----------------------------------------------------------------------
+# CFW_NAME values (case-insensitive) PortMaster's device_info.txt may
+# export. Family-grouped: every member of a tuple shares the same
+# install code path (paths + service framework + ES-frontend HTTP notify).
+_LIBREELEC_FAMILY = ("rocknix", "amberelec", "jelos", "emuelec", "unofficialos")
+_BATOCERA_FAMILY = ("batocera", "knulli", "reglinux")
+_KNOWN_UNSUPPORTED = (
+    "muos", "arkos", "retrodeck", "trimui", "miyoo", "thera", "retrooz",
+)
+
+
+def _verify_systemd_capable() -> bool:
+    """The 'systemd' bucket's install + notify prereqs: systemd CLI, the
+    LibreELEC-family /storage user-systemd dir, and a batocera-ES
+    scripts dir. Belt-and-braces — env can be wrong (sandbox, dev VM,
+    weird fork) so we verify the capability before trusting the label."""
+    return (
+        shutil.which("systemctl") is not None
+        and Path("/storage/.config/system.d").exists()
+        and Path("/storage/.config/emulationstation/scripts").exists()
+    )
+
+
+def _verify_userland_capable() -> bool:
+    """The 'userland' bucket's install + notify prereqs: Batocera
+    settings CLI, /userdata services dir, and batocera-ES scripts dir."""
+    return (
+        shutil.which("batocera-settings-set") is not None
+        and Path("/userdata/system/services").exists()
+        and Path("/userdata/system/configs/emulationstation/scripts").exists()
+    )
+
+
+@functools.lru_cache(maxsize=1)
 def detect_cfw() -> str:
-    """Returns 'rocknix' / 'knulli' / 'muos' / 'unknown'. Filesystem markers,
-    not env vars (init.d won't inherit PortMaster's env)."""
-    if Path("/run/muos").exists() or Path("/opt/muos").exists():
-        return "muos"
-    if Path("/userdata/system").exists():
-        return "knulli"
-    if Path("/storage/.config/emulationstation").exists():
-        return "rocknix"
-    return "unknown"
+    """Returns 'systemd' / 'userland' / 'muos' / 'unknown' (or a
+    known-but-unsupported lowercase CFW name like 'arkos' / 'retrodeck'
+    so the user-facing 'not supported' message shows what we actually
+    saw, not just 'unknown').
+
+    Bucket names describe the install mechanism, not a specific CFW —
+    'systemd' covers the LibreELEC family (ROCKNIX, AmberELEC, JELOS,
+    EmuELEC, UnofficialOS), 'userland' covers the Batocera family
+    (Knulli, Batocera, REGLinux). Both buckets share the batocera-ES
+    HTTP /notify endpoint and the ES scripts/game-end/ hook.
+
+    Detection order:
+      1. PortMaster's $CFW_NAME — set by PortMaster/device_info.txt and
+         exported via control.txt for every port launch. Authoritative
+         when present (Pharos runs as a port).
+      2. Filesystem markers — fallback for the daemon (init-launched, no
+         inherited env) and Pharos runs outside PM (diagnostics).
+      3. Capability verification — if env or markers point at a supported
+         bucket but the install/notify prereqs aren't actually on disk,
+         downgrade to 'unknown' so the user sees an accurate
+         'not supported' instead of a later opaque install failure.
+
+    Cached: detection is invariant within a process, and we want the
+    diagnostic log line to fire exactly once per Pharos run."""
+    env_name = (os.environ.get("CFW_NAME") or "").lower()
+    bucket: str | None = None
+
+    if env_name in _LIBREELEC_FAMILY:
+        bucket = "systemd"
+    elif env_name in _BATOCERA_FAMILY:
+        bucket = "userland"
+    elif env_name in _KNOWN_UNSUPPORTED:
+        print(f"[Service] CFW detect: env={env_name!r} (known unsupported)")
+        return env_name
+
+    if bucket is None:
+        if Path("/run/muos").exists() or Path("/opt/muos").exists():
+            print(f"[Service] CFW detect: env={env_name!r} fs=muos")
+            return "muos"
+        if Path("/userdata/system").exists():
+            bucket = "userland"
+        elif Path("/storage/.config/emulationstation").exists():
+            bucket = "systemd"
+
+    if bucket is None:
+        print(f"[Service] CFW detect: env={env_name!r} fs=<no markers> -> unknown")
+        return "unknown"
+
+    verifier = _verify_systemd_capable if bucket == "systemd" else _verify_userland_capable
+    if not verifier():
+        print(
+            f"[Service] CFW detect: env={env_name!r} bucket={bucket!r} "
+            "but capability check failed; downgrading to 'unknown'"
+        )
+        return "unknown"
+
+    print(f"[Service] CFW detect: env={env_name!r} bucket={bucket!r} verified")
+    return bucket
 
 
 # ----------------------------------------------------------------------
@@ -111,14 +204,14 @@ Restart=on-failure
 RestartSec=10
 
 [Install]
-WantedBy=rocknix.target
+WantedBy=default.target
 """
 
 
-def _knulli_service(daemon_path: Path) -> str:
+def _userland_service(daemon_path: Path) -> str:
     return f"""#!/bin/sh
 # Pharos update checker daemon — Batocera-style user service.
-# Knulli's S99userservices runs this with start/stop arg.
+# Batocera's S99userservices runs this with start/stop arg.
 PIDFILE=/var/run/pharos-daemon.pid
 
 case "$1" in
@@ -138,20 +231,6 @@ case "$1" in
         exit 1
         ;;
 esac
-"""
-
-
-def _muos_init(daemon_path: Path) -> str:
-    return f"""#!/bin/sh
-# Pharos update checker daemon — MuOS init.d slot.
-# Started as part of MuOS boot, re-started on subsequent boots.
-PIDFILE=/run/pharos-daemon.pid
-
-if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
-    exit 0
-fi
-{daemon_path} >/var/log/pharos-daemon.log 2>&1 &
-echo $! > "$PIDFILE"
 """
 
 
@@ -256,23 +335,31 @@ class Service:
 
     @property
     def supported(self) -> bool:
-        return self.cfw in ("rocknix", "knulli", "muos")
+        return self.cfw in ("systemd", "userland")
 
     @property
     def installed(self) -> bool:
         """Detect by the presence of the per-CFW autostart artefact."""
-        if self.cfw == "rocknix":
-            return ROCKNIX_UNIT_PATH.exists()
-        if self.cfw == "knulli":
-            return KNULLI_SERVICE_PATH.exists()
-        if self.cfw == "muos":
-            return MUOS_INIT_PATH.exists()
+        if self.cfw == "systemd":
+            return SYSTEMD_UNIT_PATH.exists()
+        if self.cfw == "userland":
+            return USERLAND_SERVICE_PATH.exists()
         return False
 
     def status_text(self) -> str:
         if not self.supported:
-            return f"Not supported on this CFW ({self.cfw})"
+            return UNSUPPORTED_MSG.format(cfw=self._cfw_display_name())
         return "Installed" if self.installed else "Not installed"
+
+    def _unsupported_result(self) -> tuple[bool, str]:
+        return False, UNSUPPORTED_MSG.format(cfw=self._cfw_display_name())
+
+    def _cfw_display_name(self) -> str:
+        """Friendly CFW name for user-facing strings. Pulls $CFW_NAME from
+        PortMaster's exported env (preserves casing — 'AmberELEC', 'muOS',
+        'TrimUI'). Falls back to our internal lowercase dispatch key if
+        env isn't set (daemon path, Pharos run outside PortMaster)."""
+        return os.environ.get("CFW_NAME") or self.cfw
 
     # ------------------------------------------------------------------
     # Auto-refresh on Pharos update
@@ -297,14 +384,11 @@ class Service:
             return False
 
         # Restart the per-CFW service so the new code is what's actually running.
-        if self.cfw == "rocknix":
+        if self.cfw == "systemd":
             _safe_run(["systemctl", "restart", "pharos-daemon.service"])
-        elif self.cfw == "knulli":
-            _safe_run([str(KNULLI_SERVICE_PATH), "stop"])
-            _safe_run([str(KNULLI_SERVICE_PATH), "start"])
-        elif self.cfw == "muos":
-            _kill_pid_file(Path("/run/pharos-daemon.pid"))
-            _safe_run([str(MUOS_INIT_PATH)])
+        elif self.cfw == "userland":
+            _safe_run([str(USERLAND_SERVICE_PATH), "stop"])
+            _safe_run([str(USERLAND_SERVICE_PATH), "start"])
         return True
 
     # ------------------------------------------------------------------
@@ -312,34 +396,32 @@ class Service:
     # ------------------------------------------------------------------
     def install(self) -> tuple[bool, str]:
         if not self.supported:
-            return False, f"CFW '{self.cfw}' not supported"
+            return self._unsupported_result()
         if not self._extract_daemon():
             return False, f"could not extract daemon to {self.daemon_path}"
         try:
-            if self.cfw == "rocknix":
-                return self._install_rocknix()
-            if self.cfw == "knulli":
-                return self._install_knulli()
-            if self.cfw == "muos":
-                return self._install_muos()
+            if self.cfw == "systemd":
+                return self._install_systemd()
+            if self.cfw == "userland":
+                return self._install_userland()
         except OSError as e:
             return False, f"install failed: {e}"
-        return False, "unreachable"
+        return self._unsupported_result()
 
     def uninstall(self) -> tuple[bool, str]:
+        if not self.supported:
+            return self._unsupported_result()
         try:
-            if self.cfw == "rocknix":
-                return self._uninstall_rocknix()
-            if self.cfw == "knulli":
-                return self._uninstall_knulli()
-            if self.cfw == "muos":
-                return self._uninstall_muos()
+            if self.cfw == "systemd":
+                return self._uninstall_systemd()
+            if self.cfw == "userland":
+                return self._uninstall_userland()
         except OSError as e:
             return False, f"uninstall failed: {e}"
-        return False, f"CFW '{self.cfw}' not supported"
+        return self._unsupported_result()
 
-    # ---- ROCKNIX (systemd) ------------------------------------------
-    def _install_rocknix(self) -> tuple[bool, str]:
+    # ---- systemd bucket (LibreELEC family) --------------------------
+    def _install_systemd(self) -> tuple[bool, str]:
         # Defensive: kill any stale daemon + state files left behind by a
         # previous run (e.g. user updated Pharos manually so the old daemon
         # keeps running and its pidfile blocks the new one from starting).
@@ -348,8 +430,8 @@ class Service:
         _cleanup_runtime_files()
         print("[Service] cleaned stale runtime files")
 
-        print(f"[Service] writing systemd unit -> {ROCKNIX_UNIT_PATH}")
-        _write_executable(ROCKNIX_UNIT_PATH, _systemd_unit(self.daemon_path))
+        print(f"[Service] writing systemd unit -> {SYSTEMD_UNIT_PATH}")
+        _write_executable(SYSTEMD_UNIT_PATH, _systemd_unit(self.daemon_path))
         rc, msg = _safe_run(["systemctl", "daemon-reload"])
         print(f"[Service] systemctl daemon-reload (rc={rc}) {msg}")
         rc, msg = _safe_run(["systemctl", "enable", "pharos-daemon.service"])
@@ -358,21 +440,21 @@ class Service:
         print(f"[Service] systemctl start (rc={rc}) {msg}")
         if rc != 0:
             return False, f"systemctl start failed: {msg}"
-        print(f"[Service] writing ES event script -> {ROCKNIX_ES_SCRIPT}")
-        _write_executable(ROCKNIX_ES_SCRIPT, _es_event_script())
+        print(f"[Service] writing ES event script -> {SYSTEMD_ES_SCRIPT}")
+        _write_executable(SYSTEMD_ES_SCRIPT, _es_event_script())
         return True, "Installed (systemd unit enabled + ES hook)"
 
-    def _uninstall_rocknix(self) -> tuple[bool, str]:
+    def _uninstall_systemd(self) -> tuple[bool, str]:
         rc, msg = _safe_run(["systemctl", "stop", "pharos-daemon.service"])
         print(f"[Service] systemctl stop (rc={rc}) {msg}")
         rc, msg = _safe_run(["systemctl", "disable", "pharos-daemon.service"])
         print(f"[Service] systemctl disable (rc={rc}) {msg}")
-        existed = ROCKNIX_UNIT_PATH.exists()
-        ROCKNIX_UNIT_PATH.unlink(missing_ok=True)
-        print(f"[Service] removed unit file {ROCKNIX_UNIT_PATH} (existed={existed})")
-        existed = ROCKNIX_ES_SCRIPT.exists()
-        ROCKNIX_ES_SCRIPT.unlink(missing_ok=True)
-        print(f"[Service] removed ES script {ROCKNIX_ES_SCRIPT} (existed={existed})")
+        existed = SYSTEMD_UNIT_PATH.exists()
+        SYSTEMD_UNIT_PATH.unlink(missing_ok=True)
+        print(f"[Service] removed unit file {SYSTEMD_UNIT_PATH} (existed={existed})")
+        existed = SYSTEMD_ES_SCRIPT.exists()
+        SYSTEMD_ES_SCRIPT.unlink(missing_ok=True)
+        print(f"[Service] removed ES script {SYSTEMD_ES_SCRIPT} (existed={existed})")
         _safe_run(["systemctl", "daemon-reload"])
         existed = DAEMON_EXTRACTED_PATH.exists()
         DAEMON_EXTRACTED_PATH.unlink(missing_ok=True)
@@ -381,53 +463,34 @@ class Service:
         print("[Service] cleaned up runtime files (pid/state/log)")
         return True, "Uninstalled"
 
-    # ---- Knulli (Batocera user-service) ------------------------------
-    def _install_knulli(self) -> tuple[bool, str]:
+    # ---- userland bucket (Batocera-family user-service) -------------
+    def _install_userland(self) -> tuple[bool, str]:
         # Defensive: stop any stale daemon + clear pid/state files first.
-        if KNULLI_SERVICE_PATH.exists():
-            _safe_run([str(KNULLI_SERVICE_PATH), "stop"])
+        if USERLAND_SERVICE_PATH.exists():
+            _safe_run([str(USERLAND_SERVICE_PATH), "stop"])
         _kill_pid_file(Path("/var/run/pharos-daemon.pid"))
         _cleanup_runtime_files()
         print("[Service] cleaned stale runtime files")
 
-        _write_executable(KNULLI_SERVICE_PATH, _knulli_service(self.daemon_path))
+        _write_executable(USERLAND_SERVICE_PATH, _userland_service(self.daemon_path))
         _safe_run([
             "batocera-settings-set", "system.services.pharos-daemon", "enabled"
         ])
         # Start it now too, so the user doesn't have to reboot.
-        _safe_run([str(KNULLI_SERVICE_PATH), "start"])
-        _write_executable(KNULLI_ES_SCRIPT, _es_event_script())
+        _safe_run([str(USERLAND_SERVICE_PATH), "start"])
+        _write_executable(USERLAND_ES_SCRIPT, _es_event_script())
         return True, "Installed (Batocera service registered + ES hook)"
 
-    def _uninstall_knulli(self) -> tuple[bool, str]:
-        if KNULLI_SERVICE_PATH.exists():
-            _safe_run([str(KNULLI_SERVICE_PATH), "stop"])
+    def _uninstall_userland(self) -> tuple[bool, str]:
+        if USERLAND_SERVICE_PATH.exists():
+            _safe_run([str(USERLAND_SERVICE_PATH), "stop"])
         _safe_run([
             "batocera-settings-set", "system.services.pharos-daemon", "disabled"
         ])
-        KNULLI_SERVICE_PATH.unlink(missing_ok=True)
-        KNULLI_ES_SCRIPT.unlink(missing_ok=True)
+        USERLAND_SERVICE_PATH.unlink(missing_ok=True)
+        USERLAND_ES_SCRIPT.unlink(missing_ok=True)
         _kill_pid_file(Path("/var/run/pharos-daemon.pid"))
         DAEMON_EXTRACTED_PATH.unlink(missing_ok=True)
         _cleanup_runtime_files()
         return True, "Uninstalled"
 
-    # ---- MuOS (init.d) -----------------------------------------------
-    def _install_muos(self) -> tuple[bool, str]:
-        # Defensive: kill any stale daemon + clear pid/state files first.
-        _kill_pid_file(Path("/run/pharos-daemon.pid"))
-        _cleanup_runtime_files()
-        print("[Service] cleaned stale runtime files")
-
-        _write_executable(MUOS_INIT_PATH, _muos_init(self.daemon_path))
-        # Run it now so the user gets a daemon without a reboot.
-        _safe_run([str(MUOS_INIT_PATH)])
-        return True, "Installed (init.d slot S95pharos.sh registered)"
-
-    def _uninstall_muos(self) -> tuple[bool, str]:
-        _kill_pid_file(Path("/run/pharos-daemon.pid"))
-        _kill_pid_file(DAEMON_PID_FILE)
-        MUOS_INIT_PATH.unlink(missing_ok=True)
-        DAEMON_EXTRACTED_PATH.unlink(missing_ok=True)
-        _cleanup_runtime_files()
-        return True, "Uninstalled"

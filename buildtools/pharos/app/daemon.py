@@ -5,9 +5,15 @@ pharos-daemon — background update-checker for Pharos.
 Event-driven: runs an initial check on startup, then sleeps until SIGHUP
 (fired by the ES game-end script the Service installer drops). On wake,
 re-checks Pharos's manifest against each repo's docs/ports.json and fires
-a single ES/MuOS notification for any outdated ports. Dedup state is
+a single ES notification for any outdated ports. Dedup state is
 process-local — a daemon restart yields a fresh notification, which is
 the point: ES restarts re-show the toast.
+
+Only the 'systemd' bucket (LibreELEC family — ROCKNIX, AmberELEC, JELOS,
+EmuELEC, UnofficialOS) and the 'userland' bucket (Batocera family —
+Knulli, Batocera, REGLinux) are supported as daemon hosts. MuOS detection
+is preserved for accurate logging but no notification backend is wired up
+(MuOS users invoke Pharos directly to check for updates).
 
 Usage (the Pharos Service installer takes care of all this — direct
 invocation is for diagnostics only):
@@ -18,9 +24,11 @@ invocation is for diagnostics only):
 from __future__ import annotations
 
 import argparse
+import functools
 import hashlib
 import json
 import os
+import shutil
 import signal
 import socket
 import sys
@@ -79,18 +87,89 @@ def log(level: str, msg: str) -> None:
 # ----------------------------------------------------------------------
 # CFW detection + notification backends
 # ----------------------------------------------------------------------
+# CFW_NAME values (case-insensitive) PortMaster's device_info.txt may
+# export. Mirrors the family grouping used in service.py so dispatch is
+# consistent if/when env *is* set (manual --once invocation outside init).
+_LIBREELEC_FAMILY = ("rocknix", "amberelec", "jelos", "emuelec", "unofficialos")
+_BATOCERA_FAMILY = ("batocera", "knulli", "reglinux")
+_KNOWN_UNSUPPORTED = (
+    "muos", "arkos", "retrodeck", "trimui", "miyoo", "thera", "retrooz",
+)
+
+
+def _verify_systemd_capable() -> bool:
+    """The 'systemd' bucket's notify prereqs: systemd CLI + LibreELEC
+    /storage layout + batocera-ES scripts dir. Mirrors service.py."""
+    return (
+        shutil.which("systemctl") is not None
+        and Path("/storage/.config/system.d").exists()
+        and Path("/storage/.config/emulationstation/scripts").exists()
+    )
+
+
+def _verify_userland_capable() -> bool:
+    """The 'userland' bucket's notify prereqs."""
+    return (
+        shutil.which("batocera-settings-set") is not None
+        and Path("/userdata/system/services").exists()
+        and Path("/userdata/system/configs/emulationstation/scripts").exists()
+    )
+
+
+@functools.lru_cache(maxsize=1)
 def detect_cfw() -> str:
-    """Filesystem-marker detection (env vars aren't inherited by init.d)."""
-    if Path("/run/muos").exists() or Path("/opt/muos").exists():
-        return "muos"
-    if Path("/userdata/system").exists():
-        return "knulli"
-    if Path("/storage/.config/emulationstation").exists():
-        return "rocknix"
-    return "unknown"
+    """Returns 'systemd' / 'userland' / 'muos' / 'unknown' (or a
+    known-but-unsupported lowercase name like 'arkos'). Mirrors
+    service.py.detect_cfw — duplicated rather than shared because the
+    daemon ships as its own PyInstaller binary.
+
+    Bucket names describe install/notify mechanism, not specific CFWs:
+    'systemd' = LibreELEC family, 'userland' = Batocera family.
+
+    The env-driven branch is dead code on the normal init-launched path
+    (no $CFW_NAME inherited) but kept symmetric with service.py so a
+    `pharos-daemon --once` run from inside PortMaster's env still hits
+    the same logic. Capability verification gates the supported buckets
+    so a misidentified host downgrades to 'unknown' rather than
+    silently failing on the notify backend."""
+    env_name = (os.environ.get("CFW_NAME") or "").lower()
+    bucket: str | None = None
+
+    if env_name in _LIBREELEC_FAMILY:
+        bucket = "systemd"
+    elif env_name in _BATOCERA_FAMILY:
+        bucket = "userland"
+    elif env_name in _KNOWN_UNSUPPORTED:
+        log("INFO", f"CFW detect: env={env_name!r} (known unsupported)")
+        return env_name
+
+    if bucket is None:
+        if Path("/run/muos").exists() or Path("/opt/muos").exists():
+            log("INFO", f"CFW detect: env={env_name!r} fs=muos")
+            return "muos"
+        if Path("/userdata/system").exists():
+            bucket = "userland"
+        elif Path("/storage/.config/emulationstation").exists():
+            bucket = "systemd"
+
+    if bucket is None:
+        log("WARN", f"CFW detect: env={env_name!r} fs=<no markers> -> unknown")
+        return "unknown"
+
+    verifier = _verify_systemd_capable if bucket == "systemd" else _verify_userland_capable
+    if not verifier():
+        log(
+            "WARN",
+            f"CFW detect: env={env_name!r} bucket={bucket!r} but capability "
+            "check failed; downgrading to 'unknown'",
+        )
+        return "unknown"
+
+    log("INFO", f"CFW detect: env={env_name!r} bucket={bucket!r} verified")
+    return bucket
 
 def notify_es_http(message: str) -> bool:
-    """ROCKNIX + Knulli — Batocera-emulationstation HTTP /notify endpoint."""
+    """Both supported buckets share the batocera-ES HTTP /notify endpoint."""
     try:
         req = urllib.request.Request(
             "http://127.0.0.1:1234/notify",
@@ -104,30 +183,9 @@ def notify_es_http(message: str) -> bool:
         log("WARN", f"notify_es_http failed: {e}")
         return False
 
-def notify_muos(message: str) -> bool:
-    """MuOS overlay — write a notification descriptor to /run/muos/overlay.notif."""
-    notif_path = Path("/run/muos/overlay.notif")
-    body = (
-        "position=1\n"
-        "font_size=24\n"
-        "-\n"
-        f"{message}\n"
-    )
-    try:
-        notif_path.parent.mkdir(parents=True, exist_ok=True)
-        tmp = notif_path.with_suffix(".tmp")
-        tmp.write_text(body, encoding="utf-8")
-        os.replace(tmp, notif_path)
-        return True
-    except OSError as e:
-        log("WARN", f"notify_muos failed: {e}")
-        return False
-
 def notify(cfw: str, message: str) -> bool:
-    if cfw in ("rocknix", "knulli"):
+    if cfw in ("systemd", "userland"):
         return notify_es_http(message)
-    if cfw == "muos":
-        return notify_muos(message)
     log("WARN", f"unsupported CFW '{cfw}'; would have sent: {message}")
     return False
 
