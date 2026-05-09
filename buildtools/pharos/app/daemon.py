@@ -192,9 +192,20 @@ def notify(cfw: str, message: str) -> bool:
 # ----------------------------------------------------------------------
 # Update check
 # ----------------------------------------------------------------------
+# Counts transport-level failures (URLError, socket.timeout, OSError) within
+# a single run_check pass. HTTPError is a real response and isn't counted —
+# it means the network worked but the server said no. Reset by run_check at
+# entry, read at exit so the caller can distinguish "no updates because
+# nothing changed" from "no updates because the network was down".
+_network_errors_this_pass = 0
+
+
 def _http_get(url: str, timeout: int = GITHUB_HTTP_TIMEOUT) -> bytes | None:
     """Fetch a URL. 200 -> bytes. 404 -> silent None (callers handle "not found"
-    semantically). Other HTTP / network errors -> WARN + None."""
+    semantically). Other HTTP errors -> WARN + None. Transport failures ->
+    WARN + None + bump _network_errors_this_pass so daemon_loop knows to
+    schedule a retry rather than waiting for SIGHUP."""
+    global _network_errors_this_pass
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "PharosDaemon/1.0"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -204,6 +215,7 @@ def _http_get(url: str, timeout: int = GITHUB_HTTP_TIMEOUT) -> bytes | None:
             log("WARN", f"http GET {url} -> HTTP {e.code}")
         return None
     except (URLError, socket.timeout, OSError) as e:
+        _network_errors_this_pass += 1
         log("WARN", f"http GET {url} failed: {e}")
         return None
 
@@ -356,13 +368,26 @@ _state_cache: dict = {}
 # ----------------------------------------------------------------------
 # Main check
 # ----------------------------------------------------------------------
-def run_check() -> bool:
-    """One check + notify pass. Returns True on settled state (notify ok or
-    nothing to do); False on notify failure (caller may retry)."""
+def run_check() -> tuple[bool, bool]:
+    """One check + notify pass. Returns (settled, network_failed).
+
+      settled        — True on settled state (notify ok or nothing to do);
+                       False on notify failure (caller may retry).
+      network_failed — True if at least one HTTP fetch hit a transport
+                       error (URLError/timeout/OSError). Independent of
+                       settled — caller schedules a retry alarm so updates
+                       aren't missed when the boot-time network was down.
+
+    The two flags are independent: notify failure is a settled-state issue
+    (server returned, our notify backend choked); network failure is a
+    fetch-state issue (couldn't reach the server)."""
+    global _network_errors_this_pass
+    _network_errors_this_pass = 0
+
     local_md5s, local_titles, local_repos, muted = load_local_manifest()
     if not local_md5s:
         log("INFO", "manifest empty; nothing tracked")
-        return True
+        return True, False
 
     # Strip muted ports up front so they're invisible to the rest of the
     # check pipeline — including dedup (so unmuting later genuinely re-fires).
@@ -371,17 +396,18 @@ def run_check() -> bool:
         local_md5s = {n: m for n, m in local_md5s.items() if n not in muted}
         if not local_md5s:
             log("INFO", "all tracked ports muted")
-            return True
+            return True, False
 
     outdated, remote_titles = find_outdated(local_md5s, local_repos)
+    network_failed = _network_errors_this_pass > 0
     if not outdated:
-        log("INFO", "no updates")
-        return True
+        log("INFO", "no updates" + (" (with network failures)" if network_failed else ""))
+        return True, network_failed
 
     h = _outdated_hash(outdated)
     if _state_cache.get("last_outdated_hash") == h:
         log("INFO", f"{len(outdated)} outdated but state unchanged; skipping notify")
-        return True
+        return True, network_failed
 
     titles = {**remote_titles, **local_titles}
     cfw = detect_cfw()
@@ -392,40 +418,79 @@ def run_check() -> bool:
     for attempt in range(1, 7):
         if notify(cfw, msg):
             _state_cache["last_outdated_hash"] = h
-            return True
+            return True, network_failed
         time.sleep(backoff)
         backoff = min(backoff * 2, RETRY_BACKOFF_MAX)
         log("INFO", f"notify retry attempt {attempt}")
     log("ERROR", "all notify retries exhausted")
-    return False
+    return False, network_failed
 
 # ----------------------------------------------------------------------
 # Daemon loop + signals
 # ----------------------------------------------------------------------
 _woken = False
-_pending = False
+_pending = False   # SIGHUP arrived inside rate-limit window; SIGALRM scheduled for window-end
+_retrying = False  # last check hit network errors; SIGALRM scheduled for ~60s retry
+
+# Network-retry interval. Shorter than MIN_FETCH_INTERVAL_S because the
+# whole point is to recover quickly from a boot-time network race rather
+# than wait the full rate-limit window.
+NETWORK_RETRY_S = 60
+
 
 def _on_wake(_signum, _frame) -> None:
     """Shared handler for SIGHUP and SIGALRM — both just wake daemon_loop;
     the loop body decides whether to fetch, defer, or absorb based on
-    _pending and the rate-limit window."""
+    _pending / _retrying and the rate-limit window."""
     global _woken
     _woken = True
+
 
 def _on_sigterm(_signum, _frame) -> None:
     log("INFO", "SIGTERM — shutting down")
     sys.exit(0)
 
+
+def _is_our_daemon(pid: int) -> bool:
+    """Best-effort cross-check that /proc/<pid> is actually a Pharos daemon
+    rather than an unrelated process the kernel happened to assign the same
+    PID after our previous instance died (rare but real on long-running
+    systems with intense PID churn). Compares /proc/<pid>/comm against
+    /proc/self/comm so we cover renamed binaries and PyInstaller temp
+    prefixes without hardcoding a name. If /proc isn't usable on this CFW,
+    returns True (preserves the conservative existing behavior of refusing
+    to start over a live PID)."""
+    comm_file = Path(f"/proc/{pid}/comm")
+    if not comm_file.exists():
+        return True
+    try:
+        their_comm = comm_file.read_text().strip()
+    except OSError:
+        return True
+    try:
+        our_comm = Path("/proc/self/comm").read_text().strip()
+    except OSError:
+        # /proc/self should always work if /proc/<pid>/comm did, but if
+        # somehow it doesn't, fall back to the literal binary name.
+        our_comm = "pharos-daemon"
+    return their_comm == our_comm
+
+
 def write_pidfile() -> None:
     if PID_FILE.exists():
         try:
-            old = int(PID_FILE.read_text())
+            old = int(PID_FILE.read_text().strip())
             os.kill(old, 0)
-            log("ERROR", f"another instance running (pid {old}); exiting")
-            sys.exit(1)
+            # Process exists. Cross-check it's actually ours before refusing
+            # to start — kernel PID reuse can otherwise lock us out forever.
+            if _is_our_daemon(old):
+                log("ERROR", f"another instance running (pid {old}); exiting")
+                sys.exit(1)
+            log("INFO", f"pidfile points at pid {old} but /proc shows it's not our daemon; treating as stale")
         except (OSError, ValueError):
-            pass  # stale, take over
+            pass  # process gone or pidfile garbage; take over
     PID_FILE.write_text(str(os.getpid()))
+
 
 def remove_pidfile() -> None:
     try:
@@ -433,14 +498,29 @@ def remove_pidfile() -> None:
     except OSError:
         pass
 
+
 def daemon_loop() -> None:
     """Initial check on startup, then idle until SIGHUP. Each wake re-runs
     the check pass, gated by MIN_FETCH_INTERVAL_S to keep SIGHUP storms
-    from hammering GitHub. A SIGHUP arriving inside the rate-limit window
-    sets _pending and schedules a SIGALRM at window-clear so the deferred
-    check still fires when the window expires — events aren't dropped.
-    SIGTERM / Ctrl+C exit cleanly via the handler."""
-    global _woken, _pending
+    from hammering GitHub. Two deferral mechanisms keep events from being
+    silently dropped:
+
+      _pending  — SIGHUP arrived while rate-limited. Schedule SIGALRM at
+                  window-end so the deferred check still fires.
+      _retrying — last check hit transport errors. Schedule SIGALRM in
+                  NETWORK_RETRY_S so a boot-time network race recovers
+                  without waiting for the user to play a game. last_fetch
+                  is left stale so the rate limit doesn't block the retry.
+
+    Wake signals (SIGHUP, SIGALRM) are blocked outside the wait so that
+    sigsuspend(empty_mask) atomically unblocks-and-waits — the previous
+    pause() pattern had a race window where a signal could fire after the
+    _woken check but before pause(), getting consumed by the handler while
+    pause blocked indefinitely waiting for a successor.
+
+    SIGTERM / Ctrl+C exit cleanly via _on_sigterm (left unblocked so they
+    always interrupt promptly)."""
+    global _woken, _pending, _retrying
     write_pidfile()
     try:
         signal.signal(signal.SIGHUP, _on_wake)
@@ -448,19 +528,30 @@ def daemon_loop() -> None:
         signal.signal(signal.SIGTERM, _on_sigterm)
         signal.signal(signal.SIGINT, _on_sigterm)
 
+        # Block wake signals so sigsuspend below is the atomic unblock+wait.
+        # SIGTERM/SIGINT stay unblocked so they always interrupt promptly.
+        wake_signals = {signal.SIGHUP, signal.SIGALRM}
+        signal.pthread_sigmask(signal.SIG_BLOCK, wake_signals)
+
         # Initial check: covers boot-time notification once ES is up.
         # last_fetch left at 0.0 so the first post-boot SIGHUP isn't
         # rate-limited against the boot check — that SIGHUP is the user's
         # first chance to retry if the boot check ran before network was up.
         last_fetch = 0.0
-        run_check()
+        _, network_failed = run_check()
+        if network_failed:
+            log("INFO", f"boot check hit network errors; scheduling retry in {NETWORK_RETRY_S}s")
+            signal.alarm(NETWORK_RETRY_S)
+            _retrying = True
 
+        empty_mask: set[int] = set()
         while True:
-            # Drain a wake that arrived between the last iteration and now.
-            # Without this check, signal.pause() would block forever on the
-            # second handler invocation if it raced before we entered pause.
             if not _woken:
-                signal.pause()
+                # Atomic unblock + wait. When a signal arrives, the handler
+                # runs while signals are unblocked, then sigsuspend returns
+                # and the original (blocked) mask is restored — so any
+                # further wake signals queue cleanly until the next sigsuspend.
+                signal.sigsuspend(empty_mask)
             _woken = False
 
             now = time.time()
@@ -478,12 +569,21 @@ def daemon_loop() -> None:
 
             if _pending:
                 log("INFO", "woken (deferred check after rate-limit window)")
-                _pending = False
-                signal.alarm(0)
+            elif _retrying:
+                log("INFO", "woken (network-failure retry)")
             else:
                 log("INFO", "woken (SIGHUP)")
-            run_check()
-            last_fetch = time.time()
+            _pending = False
+            _retrying = False
+            signal.alarm(0)
+
+            _, network_failed = run_check()
+            if network_failed:
+                log("INFO", f"network failure during check; scheduling retry in {NETWORK_RETRY_S}s")
+                signal.alarm(NETWORK_RETRY_S)
+                _retrying = True
+            else:
+                last_fetch = time.time()
     finally:
         remove_pidfile()
 
@@ -500,7 +600,9 @@ def main() -> int:
 
     if args.once:
         log("INFO", f"pharos-daemon --once (pid {os.getpid()})")
-        run_check()
+        _, network_failed = run_check()
+        if network_failed:
+            log("WARN", "--once detected network failures; daemon mode would schedule a retry")
         return 0
 
     # Daemon mode: rotate the log on each start so it doesn't grow unbounded

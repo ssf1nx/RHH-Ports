@@ -31,6 +31,7 @@ import os
 import shutil
 import signal
 import subprocess
+import time
 from pathlib import Path
 
 from config import BASE_PATH, INSTALL_DIR
@@ -212,6 +213,11 @@ def _userland_service(daemon_path: Path) -> str:
     return f"""#!/bin/sh
 # Pharos update checker daemon — Batocera-style user service.
 # Batocera's S99userservices runs this with start/stop arg.
+#
+# Includes a supervisor loop so a daemon crash respawns automatically (the
+# systemd bucket gets this for free via Restart=on-failure; the userland
+# bucket has to do it itself). The supervisor traps SIGTERM and forwards
+# it to the daemon child so 'service stop' kills both cleanly.
 PIDFILE=/var/run/pharos-daemon.pid
 
 case "$1" in
@@ -219,7 +225,18 @@ case "$1" in
         if [ -f "$PIDFILE" ] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; then
             exit 0
         fi
-        {daemon_path} >/var/log/pharos-daemon.log 2>&1 &
+        # Backgrounded subshell = supervisor. trap kills the daemon child
+        # before exiting so 'stop' doesn't orphan it. 5s sleep between
+        # respawns keeps a crash loop from burning CPU.
+        (
+            trap 'kill $child 2>/dev/null; exit 0' TERM INT
+            while true; do
+                {daemon_path} >>/var/log/pharos-daemon.log 2>&1 &
+                child=$!
+                wait $child
+                sleep 5
+            done
+        ) &
         echo $! > "$PIDFILE"
         ;;
     stop)
@@ -286,6 +303,23 @@ def _hash_file(path: Path) -> str:
     except OSError:
         return ""
     return h.hexdigest()
+
+
+def _daemon_alive(pid_file: Path, timeout: float = 5.0) -> bool:
+    """Poll the daemon's pidfile for up to `timeout` seconds and verify the
+    recorded pid is alive. Used after a service restart to confirm the new
+    daemon binary actually came up. Tolerates the brief window where the
+    pidfile is removed by the previous daemon's SIGTERM cleanup before the
+    new daemon writes its own."""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            pid = int(pid_file.read_text().strip())
+            os.kill(pid, 0)  # non-fatal liveness probe
+            return True
+        except (OSError, ValueError, FileNotFoundError):
+            time.sleep(0.2)
+    return False
 
 
 def _cleanup_runtime_files() -> None:
@@ -369,12 +403,28 @@ class Service:
     # ------------------------------------------------------------------
     # Auto-refresh on Pharos update
     # ------------------------------------------------------------------
+    def _restart_service(self) -> None:
+        """Bucket-specific service restart. Used by refresh_if_stale (twice
+        in the rollback path) so the dispatch lives in one place."""
+        if self.cfw == "systemd":
+            _safe_run(["systemctl", "restart", "pharos-daemon.service"])
+        elif self.cfw == "userland":
+            _safe_run([str(USERLAND_SERVICE_PATH), "stop"])
+            _safe_run([str(USERLAND_SERVICE_PATH), "start"])
+
     def refresh_if_stale(self) -> bool:
-        """If the service is installed and the bundled daemon binary differs
-        from the extracted on-disk copy, replace it and restart the per-CFW
-        service. Returns True if a refresh happened. Called once on Pharos
-        startup so a self-update of Pharos transparently brings the daemon
-        with it."""
+        """If the bundled daemon binary differs from the extracted on-disk
+        copy, replace it and restart the service. Verifies the new daemon
+        actually starts; rolls back to the previous binary if it doesn't.
+        Returns True if a refresh happened (including successful rollback
+        after a failed install). Called once on Pharos startup so a
+        self-update of Pharos transparently brings the daemon with it.
+
+        The rollback path matters because a single bad release of Pharos
+        could otherwise brick the background daemon for everyone who
+        self-updates: previously we'd overwrite the working binary, fail
+        to restart, and leave the system without a daemon until the next
+        Pharos run shipped a fixed binary."""
         if not self.installed:
             return False
         if not DAEMON_BUNDLED_PATH.exists() or not DAEMON_EXTRACTED_PATH.exists():
@@ -382,18 +432,58 @@ class Service:
         if _hash_file(DAEMON_BUNDLED_PATH) == _hash_file(DAEMON_EXTRACTED_PATH):
             return False
 
+        # Stage the new binary alongside the old so we have a recovery anchor.
+        # .new = staged candidate; .bak = old binary held for potential rollback.
+        new_path = DAEMON_EXTRACTED_PATH.with_suffix(".new")
+        bak_path = DAEMON_EXTRACTED_PATH.with_suffix(".bak")
         try:
-            shutil.copy2(DAEMON_BUNDLED_PATH, DAEMON_EXTRACTED_PATH)
-            DAEMON_EXTRACTED_PATH.chmod(0o755)
-        except OSError:
+            shutil.copy2(DAEMON_BUNDLED_PATH, new_path)
+            new_path.chmod(0o755)
+        except OSError as e:
+            print(f"[Service] refresh: staging failed: {e}")
+            new_path.unlink(missing_ok=True)
             return False
 
-        # Restart the per-CFW service so the new code is what's actually running.
-        if self.cfw == "systemd":
-            _safe_run(["systemctl", "restart", "pharos-daemon.service"])
-        elif self.cfw == "userland":
-            _safe_run([str(USERLAND_SERVICE_PATH), "stop"])
-            _safe_run([str(USERLAND_SERVICE_PATH), "start"])
+        # Atomic-ish swap: move old aside, move new into place. If the second
+        # rename fails the system still has .bak as a recovery anchor.
+        try:
+            os.replace(DAEMON_EXTRACTED_PATH, bak_path)
+            os.replace(new_path, DAEMON_EXTRACTED_PATH)
+        except OSError as e:
+            print(f"[Service] refresh: swap failed: {e}; attempting to restore")
+            # Best-effort restore: if the first replace succeeded, .bak holds
+            # the old binary — put it back. If the first failed, original
+            # is still in place.
+            if bak_path.exists() and not DAEMON_EXTRACTED_PATH.exists():
+                try:
+                    os.replace(bak_path, DAEMON_EXTRACTED_PATH)
+                except OSError:
+                    pass
+            new_path.unlink(missing_ok=True)
+            bak_path.unlink(missing_ok=True)
+            return False
+
+        print(f"[Service] refresh: extracted -> {DAEMON_EXTRACTED_PATH} (old saved at {bak_path})")
+        self._restart_service()
+
+        # Verify the new daemon actually starts. If not, roll back.
+        if _daemon_alive(DAEMON_PID_FILE, timeout=5.0):
+            bak_path.unlink(missing_ok=True)
+            print("[Service] refresh: new daemon verified alive; backup discarded")
+            return True
+
+        print("[Service] refresh: new daemon failed to start; rolling back to previous binary")
+        try:
+            os.replace(bak_path, DAEMON_EXTRACTED_PATH)
+        except OSError as e:
+            print(f"[Service] refresh: rollback move failed: {e}; daemon offline until next install")
+            return False
+
+        self._restart_service()
+        if _daemon_alive(DAEMON_PID_FILE, timeout=5.0):
+            print("[Service] refresh: rollback successful; running on previous binary")
+        else:
+            print("[Service] refresh: rollback restart did not bring daemon back; manual intervention needed")
         return True
 
     # ------------------------------------------------------------------
