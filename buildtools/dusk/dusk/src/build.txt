@@ -1,0 +1,159 @@
+set -e
+
+# Retry git clone on transient HTTP 500s.
+git_clone_retry() {
+    local url target attempt
+    for arg in "$@"; do
+        case "$arg" in
+            http*|git@*|ssh://*|git://*) url="$arg" ;;
+            -*) ;;
+            *) [[ -n "$url" ]] && target="$arg" ;;
+        esac
+    done
+    if [[ -z "$target" && -n "$url" ]]; then
+        target="${url##*/}"
+        target="${target%.git}"
+    fi
+    for attempt in 1 2 3 4 5; do
+        if git clone "$@"; then
+            return 0
+        fi
+        [[ -n "$target" && -d "$target" ]] && rm -rf "$target"
+        local delay=$((attempt * 5))
+        echo "git clone failed (attempt $attempt); retrying in ${delay}s..." >&2
+        sleep "$delay"
+    done
+    echo "git clone failed after 5 attempts" >&2
+    return 1
+}
+
+#### vcpkg ####
+
+git_clone_retry --depth 1 https://github.com/microsoft/vcpkg.git
+export VCPKG_FORCE_SYSTEM_BINARIES=1
+(cd vcpkg && ./bootstrap-vcpkg.sh -disableMetrics)
+export VCPKG_ROOT="$PWD/vcpkg"
+
+#### Dusk (Twilight Princess Reimplementation) ####
+
+git_clone_retry --recursive https://github.com/TwilitRealm/dusk.git
+cd dusk
+
+# Latest release tag, or HEAD if FORCE_HEAD=true.
+git fetch --tags
+if [[ "${FORCE_HEAD:-false}" == "true" ]]; then
+  echo "FORCE_HEAD=true — building from branch HEAD (nightly)"
+else
+  DUSK_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+  if [[ -z "$DUSK_TAG" ]]; then
+    echo "ERROR: no release tag found"; exit 1
+  fi
+  echo "Checking out latest release tag: $DUSK_TAG"
+  git checkout "$DUSK_TAG"
+fi
+
+# Submodule init can hit transient HTTP 500s — retry.
+for attempt in 1 2 3 4 5; do
+  if git submodule update --init --recursive; then break; fi
+  echo "submodule update failed (attempt $attempt); retrying in $((attempt * 5))s..." >&2
+  sleep $((attempt * 5))
+  [[ $attempt -eq 5 ]] && { echo "submodule update failed after 5 attempts"; exit 1; }
+done
+
+# Configure with the linux-clang-relwithdebinfo preset (real preset name —
+# upstream has no "linux-release"). The preset chains debug-info build type
+# + clang/clang++ compilers + ${sourceDir}/build/${presetName} binary dir
+# + ${sourceDir}/build/install for CMAKE_INSTALL_PREFIX.
+export CC=clang-19
+export CXX=clang++-19
+
+cmake --preset linux-clang-relwithdebinfo \
+  -DVCPKG_TARGET_TRIPLET=arm64-linux \
+  -DCMAKE_C_COMPILER=clang-19 \
+  -DCMAKE_CXX_COMPILER=clang++-19 \
+  -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld-19" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld-19" \
+  -DDUSK_ENABLE_DISCORD=OFF \
+  -DDUSK_ENABLE_UPDATE_CHECKER=OFF \
+  -DDUSK_ENABLE_SENTRY_NATIVE=OFF
+
+# Build, then install — install copies dusk + res/ + (Aurora runtime DLLs on
+# Windows; nothing extra on Linux) into build/install/. The post-install
+# step in CMakeLists.txt strips debug info into a sibling .dbg file so the
+# installed binary stays a sane size.
+cmake --build build/linux-clang-relwithdebinfo --parallel "$(nproc)"
+cmake --install build/linux-clang-relwithdebinfo
+
+# Locate the installed binary.
+bin="build/install/dusk"
+if [[ ! -f "$bin" ]]; then
+    echo "ERROR: installed dusk binary not found at $bin"; exit 1
+fi
+echo "Binary: $bin"
+
+# Stage shipped libs to a SIBLING dir of the dusk checkout.
+rm -rf ../libs
+mkdir -p ../libs
+
+# cp -L follows the SONAME symlink chain to a real file; the destination
+# filename matches the SONAME exactly so the loader resolves it by name.
+declare -A STAGED
+declare -A SYSTEM_LIBS=(
+    [libc.so.6]=1 [libm.so.6]=1 [libpthread.so.0]=1 [libdl.so.2]=1
+    [librt.so.1]=1 [libresolv.so.2]=1 [libutil.so.1]=1
+    [libstdc++.so.6]=1 [libgcc_s.so.1]=1
+    [ld-linux-aarch64.so.1]=1
+    [libvulkan.so.1]=1
+)
+
+resolve_lib_path() {
+    # Return the canonical filesystem path for a SONAME on the build host.
+    # ldconfig -p output: "<soname> (<arch>) => <path>"
+    ldconfig -p | awk -v lib="$1" '$1==lib {print $NF; exit}'
+}
+
+stage_lib_recursive() {
+    local lib="$1"
+    [[ -n "${STAGED[$lib]:-}" ]] && return 0
+    [[ -n "${SYSTEM_LIBS[$lib]:-}" ]] && return 0
+    STAGED[$lib]=1
+
+    local src
+    src=$(resolve_lib_path "$lib")
+    if [[ -z "$src" || ! -f "$src" ]]; then
+        echo "ERROR: cannot resolve $lib on build host (ldconfig miss)"; exit 1
+    fi
+    cp -L "$src" "../libs/$lib"
+    echo "  staged: $lib  ($src)"
+
+    # Recurse into this lib's own NEEDED list.
+    local dep
+    while read -r dep; do
+        [[ -z "$dep" ]] && continue
+        stage_lib_recursive "$dep"
+    done < <(readelf -d "$src" 2>/dev/null | awk -F'[][]' '/NEEDED/ {print $2}')
+}
+
+needed=$(readelf -d "$bin" | awk -F'[][]' '/NEEDED/ {print $2}')
+echo "Binary NEEDED:"; echo "$needed"
+echo "Staging transitive lib closure into ../libs/ ..."
+while read -r lib; do
+    [[ -z "$lib" ]] && continue
+    stage_lib_recursive "$lib"
+done <<< "$needed"
+
+echo "Final ../libs/ contents:"; ls -la ../libs/
+
+# Copy artifacts up so retrieve-products.txt finds them at stable paths.
+cp "$bin" ./dusk
+
+# res/ — fonts, icons, RML stylesheets. cmake --install put them in
+# build/install/res/. Mirror via cp -a so the directory tree (including any
+# new font/RML files added between releases) ships exactly as installed.
+if [[ ! -d build/install/res ]]; then
+    echo "ERROR: build/install/res not found after install"; exit 1
+fi
+rm -rf ../res
+cp -a build/install/res ../res
+
+cd ..

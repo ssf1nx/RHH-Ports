@@ -1,0 +1,36 @@
+{
+  "version": 4,
+  "name": "zelda-dusk.zip",
+  "items": [
+    "Zelda-Dusk.sh",
+    "zelda-dusk"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "The Legend of Zelda : Twilight Princess (Dusk)",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Dusk is an unofficial PC port of The Legend of Zelda: Twilight Princess produced through reverse-engineered reimplementation, powered by the Aurora framework. You must provide your own copy of the game.",
+    "desc_md": null,
+    "inst": "Put your iso file in ports/zelda-dusk/.",
+    "inst_md": null,
+    "genres": [
+      "action",
+      "adventure"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": true,
+    "runtime": [],
+    "store": [],
+    "availability": "paid",
+    "reqs": [
+      "vulkan"
+    ],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": "2.41"
+  }
+}
