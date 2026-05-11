@@ -46,6 +46,12 @@ import certifi
 os.environ.setdefault("SSL_CERT_FILE", certifi.where())
 os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
 
+# Ignore SIGHUP at import time. Python's default disposition is SIG_DFL
+# (terminate), so an ES game-end SIGHUP arriving before daemon_loop()'s
+# signal.signal(SIGHUP, _on_wake) call kills the process. daemon_loop
+# replaces this with the real handler once it's ready.
+signal.signal(signal.SIGHUP, signal.SIG_IGN)
+
 # ----------------------------------------------------------------------
 # Paths
 # ----------------------------------------------------------------------
@@ -361,12 +367,30 @@ def format_message(outdated: Iterable[str], titles: dict[str, str]) -> str:
     return f"[PHAROS] {len(items)} updates available"
 
 # ----------------------------------------------------------------------
-# Notify-state dedup (process-local; daemon restart wipes it)
+# Notify-state dedup (tmpfs-backed; survives in-session daemon restarts
+# but cleared on reboot — so the "reboot re-shows the toast" semantic is
+# preserved while spurious mid-session respawns stay silent)
 # ----------------------------------------------------------------------
 def _outdated_hash(items: Iterable[str]) -> str:
     return hashlib.sha256(",".join(sorted(items)).encode("utf-8")).hexdigest()
 
-_state_cache: dict = {}
+STATE_FILE = Path("/tmp/pharos-daemon.state")
+
+def _load_state() -> dict:
+    try:
+        return json.loads(STATE_FILE.read_text("utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+def _save_state(state: dict) -> None:
+    tmp = STATE_FILE.with_suffix(".tmp")
+    try:
+        tmp.write_text(json.dumps(state), encoding="utf-8")
+        os.replace(tmp, STATE_FILE)
+    except OSError as e:
+        log("WARN", f"state save failed: {e}")
+
+_state_cache: dict = _load_state()
 
 # ----------------------------------------------------------------------
 # Main check
@@ -421,6 +445,7 @@ def run_check() -> tuple[bool, bool]:
     for attempt in range(1, 7):
         if notify(cfw, msg):
             _state_cache["last_outdated_hash"] = h
+            _save_state(_state_cache)
             return True, network_failed
         time.sleep(backoff)
         backoff = min(backoff * 2, RETRY_BACKOFF_MAX)
