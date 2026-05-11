@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+SRCDIR=$1
+DESTDIR=$2
+
+cd "$DESTDIR" || { echo "DESTDIR not found: $DESTDIR"; exit 1; }
+
+# build.txt produces a single artifact — the squashfs — at the staging dir
+# root. The workflow propagates it from $DESTDIR/gmloadernext.squashfs to
+# the registered target_dir (runtimes/).
+cp "$SRCDIR/gmloadernext.squashfs" "$DESTDIR/gmloadernext.squashfs"
+
+echo "Packaging complete."

@@ -1,0 +1,216 @@
+name: Build Runtimes
+
+on:
+  workflow_dispatch:
+    inputs:
+      runtime:
+        description: "Which runtime to consider (all = every runtime in registry)"
+        type: string
+        required: false
+        default: "all"
+      force-build:
+        description: "Force build (bypass SHA check, upload artifact only, no commit)"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-runtimes
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Discover runtimes to build
+        id: discover
+        run: |
+          set -euo pipefail
+
+          SELECTED="${{ inputs.runtime }}"
+          FORCE="${{ inputs.force-build }}"
+          : "${SELECTED:=all}"
+          : "${FORCE:=false}"
+
+          if [[ "$SELECTED" == "all" ]]; then
+            ids=$(jq -r '.runtimes | keys[]' buildtools/registry.json)
+          else
+            if ! jq -e --arg id "$SELECTED" '.runtimes[$id]' buildtools/registry.json > /dev/null; then
+              echo "Runtime '$SELECTED' not found in buildtools/registry.json"; exit 1
+            fi
+            ids="$SELECTED"
+          fi
+
+          to_build=()
+          while read -r id; do
+            [[ -z "$id" ]] && continue
+            repo=$(jq -r --arg id "$id" '.runtimes[$id].upstream_repo' buildtools/registry.json)
+            track_mode=$(jq -r --arg id "$id" '.runtimes[$id].track // "branch"' buildtools/registry.json)
+            build_dir=$(jq -r --arg id "$id" '.runtimes[$id].build_dir' buildtools/registry.json)
+
+            case "$track_mode" in
+              release)
+                tag=$(curl -sf "https://api.github.com/repos/$repo/releases/latest" | jq -r .tag_name)
+                if [[ -z "$tag" || "$tag" == "null" ]]; then
+                  echo "[$id] failed to resolve latest release on $repo — skipping"
+                  continue
+                fi
+                ref=$(curl -sf "https://api.github.com/repos/$repo/git/ref/tags/$tag")
+                ref_type=$(echo "$ref" | jq -r .object.type)
+                if [[ "$ref_type" == "tag" ]]; then
+                  tag_obj_url=$(echo "$ref" | jq -r .object.url)
+                  upstream_sha=$(curl -sf "$tag_obj_url" | jq -r .object.sha)
+                else
+                  upstream_sha=$(echo "$ref" | jq -r .object.sha)
+                fi
+                source="$repo@$tag"
+                ;;
+              branch|*)
+                branch=$(jq -r --arg id "$id" '.runtimes[$id].upstream_branch' buildtools/registry.json)
+                upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha)
+                source="$repo@$branch"
+                ;;
+            esac
+
+            if [[ -z "$upstream_sha" || "$upstream_sha" == "null" ]]; then
+              echo "[$id] failed to resolve upstream SHA on $source — skipping"
+              continue
+            fi
+
+            # Per-recipe marker lives next to the build recipe rather than
+            # in target_dir/, because target_dir (runtimes/) is shared across
+            # every runtime and a single .upstream-sha there would collide.
+            marker="$build_dir/.upstream-sha"
+            if [[ -f "$marker" ]]; then
+              origin_sha=$(cat "$marker")
+            else
+              origin_sha=""
+            fi
+
+            if [[ "$FORCE" == "true" ]] || [[ "$upstream_sha" != "$origin_sha" ]]; then
+              echo "[$id] needs build (source=$source origin=${origin_sha:-none} upstream=$upstream_sha)"
+              to_build+=("$id:$upstream_sha")
+            else
+              echo "[$id] up to date at $upstream_sha — skipping"
+            fi
+          done <<< "$ids"
+
+          {
+            echo "to_build<<EOF"
+            printf '%s\n' "${to_build[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build each runtime
+        if: steps.discover.outputs.to_build != ''
+        run: |
+          set -uo pipefail
+
+          FORCE="${{ inputs.force-build }}"
+          : "${FORCE:=false}"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          # Force-build collects artifacts here; uploaded at end as one bundle.
+          FORCE_STAGING="$RUNNER_TEMP/force-build-outputs"
+          [[ "$FORCE" == "true" ]] && mkdir -p "$FORCE_STAGING"
+
+          failures=()
+
+          while IFS=: read -r id upstream_sha; do
+            [[ -z "$id" ]] && continue
+            short="${upstream_sha:0:7}"
+            build_dir=$(jq -r --arg id "$id" '.runtimes[$id].build_dir' buildtools/registry.json)
+            target_dir=$(jq -r --arg id "$id" '.runtimes[$id].target_dir' buildtools/registry.json)
+            commit_prefix=$(jq -r --arg id "$id" '.runtimes[$id].commit_prefix' buildtools/registry.json)
+            artifact=$(jq -r --arg id "$id" '.runtimes[$id].artifact' buildtools/registry.json)
+
+            echo "::group::[$id] build"
+            # build_port.sh is the generic build driver — it takes a dir with
+            # src/ inside and doesn't know or care whether it's building a
+            # port or a runtime. FORCE_HEAD tells tag-tracking build.txt
+            # recipes to build from branch HEAD instead.
+            if ! FORCE_HEAD="$FORCE" bash buildtools/build_port.sh "$build_dir"; then
+              echo "::error::[$id] build_port.sh failed"
+              failures+=("$id")
+              echo "::endgroup::"
+              continue
+            fi
+            echo "::endgroup::"
+
+            if [[ "$FORCE" == "true" ]]; then
+              echo "[$id] force-build: staging artifact for upload, skipping commit"
+              dest="$FORCE_STAGING/$id-$short"
+              mkdir -p "$dest"
+              if [[ -e "$build_dir/$artifact" ]]; then
+                cp "$build_dir/$artifact" "$dest/"
+              fi
+              continue
+            fi
+
+            if [[ ! -e "$build_dir/$artifact" ]]; then
+              echo "::error::[$id] build produced no output — missing $artifact"
+              failures+=("$id")
+              continue
+            fi
+
+            echo "::group::[$id] sync $artifact to $target_dir/"
+            mkdir -p "$target_dir"
+            cp "$build_dir/$artifact" "$target_dir/$artifact"
+            echo "$upstream_sha" > "$build_dir/.upstream-sha"
+            echo "::endgroup::"
+
+            echo "::group::[$id] commit and push"
+            git add "$target_dir/$artifact" "$build_dir/.upstream-sha"
+            if git diff --staged --quiet; then
+              echo "[$id] no changes after sync — skipping commit"
+              echo "::endgroup::"
+              continue
+            fi
+            git commit -m "[$commit_prefix] Update to $short"
+
+            # Retry fetch+rebase+push to absorb concurrent pushes from other
+            # workflows hitting the same branch.
+            pushed=false
+            for attempt in 1 2 3 4 5; do
+              git fetch origin "$GITHUB_REF_NAME"
+              if ! git rebase "origin/$GITHUB_REF_NAME"; then
+                echo "::error::[$id] rebase failed on attempt $attempt"
+                git rebase --abort || true
+                break
+              fi
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then
+                echo "[$id] pushed on attempt $attempt"
+                pushed=true
+                break
+              fi
+              echo "[$id] push rejected on attempt $attempt; retrying..."
+              sleep $((attempt * 3))
+            done
+
+            if ! $pushed; then
+              echo "::error::[$id] failed to push after 5 attempts"
+              failures+=("$id")
+            fi
+            echo "::endgroup::"
+          done <<< "${{ steps.discover.outputs.to_build }}"
+
+          if (( ${#failures[@]} > 0 )); then
+            echo "::error::Failures: ${failures[*]}"
+            exit 1
+          fi
+
+      - name: Upload force-build artifacts
+        if: inputs.force-build == true
+        uses: actions/upload-artifact@v5
+        with:
+          name: force-build-runtimes
+          path: ${{ runner.temp }}/force-build-outputs
+          retention-days: 14
+          if-no-files-found: ignore

@@ -36,12 +36,22 @@
       "artifacts": ["sonic3air_linux", "config.json", "doc/license.txt", "doc/license-thirdparty", "data", "audioremaster.7z.*"]
     },
     "dusk": {
-      "port_dir": "buildtools/dusk/dusk",
+      "port_dir": "buildtools/dusk",
       "target_dirs": ["ports/released/zelda-dusk/zelda-dusk"],
       "upstream_repo": "TwilitRealm/dusk",
       "track": "release",
       "commit_prefix": "DUSK",
       "artifacts": ["dusk", "libs", "res"]
+    }
+  },
+  "runtimes": {
+    "gmloadernext": {
+      "build_dir": "buildtools/gmloadernext",
+      "target_dir": "runtimes",
+      "upstream_repo": "JohnnyonFlame/gmloader-next",
+      "upstream_branch": "master",
+      "commit_prefix": "GMLOADER",
+      "artifact": "gmloadernext.squashfs"
     }
   }
 }

@@ -5,6 +5,12 @@ on:
     paths:
       - 'runtimes/*.squashfs'
   workflow_dispatch:
+  workflow_run:
+    # The push trigger above doesn't fire for pushes made by the default
+    # GITHUB_TOKEN (GitHub suppresses this to prevent workflow recursion),
+    # so any workflow that commits runtime payloads must be chained here.
+    workflows: ["Build Runtimes"]
+    types: [completed]
 
 concurrency:
   group: release-runtimes
@@ -13,6 +19,7 @@ concurrency:
 jobs:
   release-runtimes:
     runs-on: ubuntu-latest
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     permissions:
       contents: write
 

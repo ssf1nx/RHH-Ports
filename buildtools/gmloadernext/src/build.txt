@@ -1,0 +1,169 @@
+set -e
+
+# Retry git clone on transient HTTP 500s
+git_clone_retry() {
+    local url target attempt
+    for arg in "$@"; do
+        case "$arg" in
+            http*|git@*|ssh://*|git://*) url="$arg" ;;
+            -*) ;;
+            *) [[ -n "$url" ]] && target="$arg" ;;
+        esac
+    done
+    if [[ -z "$target" && -n "$url" ]]; then
+        target="${url##*/}"
+        target="${target%.git}"
+    fi
+    for attempt in 1 2 3 4 5; do
+        if git clone "$@"; then
+            return 0
+        fi
+        [[ -n "$target" && -d "$target" ]] && rm -rf "$target"
+        local delay=$((attempt * 5))
+        echo "git clone failed (attempt $attempt); retrying in ${delay}s..." >&2
+        sleep "$delay"
+    done
+    echo "git clone failed after 5 attempts" >&2
+    return 1
+}
+
+#### Minimal FFmpeg ####
+# Pinned to n4.4.5 because gmloader-next is built against the FFmpeg 4.x ABI
+# (libavformat.so.58, libavcodec.so.58, libavutil.so.56, libswresample.so.3,
+# libswscale.so.5). 5.x bumped to .so.59 and breaks the link contract.
+#
+# --disable-everything zeros the codec/demuxer/parser tables; we then
+# re-enable only what GameMaker video cutscenes actually use. External
+# libraries (libbluray, libgme, libopenmpt, libxml2, vaapi, vdpau, libsoxr,
+# etc.) are off because we don't pass --enable-libxxx — that's what keeps
+# DT_NEEDED minimal and saves us from bundling a sprawling subdep closure.
+FFMPEG_PREFIX="$PWD/ffmpeg-install"
+git_clone_retry --depth 1 --branch n4.4.5 https://git.ffmpeg.org/ffmpeg.git
+(
+    cd ffmpeg
+    ./configure \
+        --prefix="$FFMPEG_PREFIX" \
+        --target-os=linux --arch=aarch64 \
+        --enable-cross-compile --cross-prefix=aarch64-linux-gnu- \
+        --disable-everything --disable-doc --disable-programs \
+        --disable-network --disable-debug \
+        --disable-static --enable-shared --enable-pic \
+        --disable-avdevice --disable-avfilter --disable-postproc \
+        --enable-swresample --enable-swscale \
+        --enable-decoder=h264,vp8,vp9,theora,mpeg4,aac,vorbis,mp3,opus,flac,pcm_s16le,pcm_s16be \
+        --enable-demuxer=mov,matroska,ogg,avi,flv,wav,mp3 \
+        --enable-parser=h264,vp8,vp9,aac,vorbis,opus,mpeg4video \
+        --enable-protocol=file
+    make -j"$(nproc)"
+    make install
+)
+
+#### GMLoader-next ####
+# Upstream has no release tags — always build from master HEAD.
+git_clone_retry --recursive https://github.com/JohnnyonFlame/gmloader-next.git
+
+# Point pkg-config at our minimal FFmpeg ONLY
+export PKG_CONFIG_PATH="$FFMPEG_PREFIX/lib/pkgconfig"
+export PKG_CONFIG_LIBDIR="$PKG_CONFIG_PATH"
+
+(
+    cd gmloader-next
+    make -f Makefile.gmloader \
+        ARCH=aarch64-linux-gnu \
+        VIDEO_SUPPORT=1 \
+        LLVM_FILE=/usr/lib/llvm-11/lib/libclang-11.so \
+        LLVM_INC=/usr/aarch64-linux-gnu/include/c++/10/aarch64-linux-gnu \
+        -j"$(nproc)"
+)
+
+BIN_REL="gmloader-next/build/aarch64-linux-gnu/gmloader/gmloadernext.aarch64"
+[[ -f "$BIN_REL" ]] || { echo "ERROR: gmloadernext binary not found at $BIN_REL"; exit 1; }
+
+#### Stage transitive lib closure ####
+declare -A STAGED
+declare -A SYSTEM_LIBS=(
+    [libc.so.6]=1 [libm.so.6]=1 [libpthread.so.0]=1 [libdl.so.2]=1
+    [librt.so.1]=1 [libresolv.so.2]=1 [libutil.so.1]=1
+    [libstdc++.so.6]=1 [libgcc_s.so.1]=1
+    [ld-linux-aarch64.so.1]=1
+    [libSDL2-2.0.so.0]=1 [libz.so.1]=1
+)
+
+rm -rf lib
+mkdir -p lib
+
+resolve_lib_path() {
+    # FFmpeg install prefix first so we pick OUR build, not anything that
+    # might exist in /usr/lib/aarch64-linux-gnu/ from an apt accident.
+    local lib="$1"
+    if [[ -f "$FFMPEG_PREFIX/lib/$lib" ]]; then
+        echo "$FFMPEG_PREFIX/lib/$lib"; return
+    fi
+    for d in \
+        /usr/lib/aarch64-linux-gnu \
+        /usr/aarch64-linux-gnu/lib \
+        /lib/aarch64-linux-gnu; do
+        if [[ -f "$d/$lib" ]]; then
+            echo "$d/$lib"; return
+        fi
+    done
+    echo ""
+}
+
+stage_lib_recursive() {
+    local lib="$1"
+    [[ -n "${STAGED[$lib]:-}" ]] && return 0
+    [[ -n "${SYSTEM_LIBS[$lib]:-}" ]] && return 0
+    STAGED[$lib]=1
+
+    local src
+    src=$(resolve_lib_path "$lib")
+    if [[ -z "$src" || ! -f "$src" ]]; then
+        echo "ERROR: cannot resolve $lib on build host"; exit 1
+    fi
+    cp -L "$src" "lib/$lib"
+    echo "  staged: $lib  ($src)"
+    local dep
+    while read -r dep; do
+        [[ -z "$dep" ]] && continue
+        stage_lib_recursive "$dep"
+    done < <(aarch64-linux-gnu-readelf -d "$src" 2>/dev/null | awk -F'[][]' '/NEEDED/ {print $2}')
+}
+
+echo "Walking dependency closure from gmloadernext.aarch64..."
+needed=$(aarch64-linux-gnu-readelf -d "$BIN_REL" | awk -F'[][]' '/NEEDED/ {print $2}')
+echo "Binary NEEDED:"; echo "$needed"
+while read -r lib; do
+    [[ -z "$lib" ]] && continue
+    stage_lib_recursive "$lib"
+done <<< "$needed"
+
+mkdir -p lib/arm64-v8a
+cp -L gmloader-next/lib/arm64-v8a/*.so lib/arm64-v8a/
+
+echo "Final lib/ contents:"
+find lib -type f -printf '  %p\n'
+
+#### Strip + collect binary ####
+cp "$BIN_REL" ./gmloadernext.aarch64
+chmod +x ./gmloadernext.aarch64
+aarch64-linux-gnu-strip --strip-unneeded ./gmloadernext.aarch64
+for f in lib/*.so* lib/arm64-v8a/*.so; do
+    [[ -f "$f" ]] && aarch64-linux-gnu-strip --strip-unneeded "$f" 2>/dev/null || true
+done
+
+#### Package squashfs ####
+# Matches existing runtimes/*.squashfs: gzip compression, 128KB blocks
+# (mksquashfs defaults — explicit here for reproducibility). -all-root so
+# extracted contents don't carry the build host's UID. -noappend so a
+# previous run's contents can't leak in.
+rm -rf squashfs-stage
+mkdir -p squashfs-stage
+cp gmloadernext.aarch64 squashfs-stage/
+cp -a lib squashfs-stage/
+rm -f gmloadernext.squashfs
+mksquashfs squashfs-stage gmloadernext.squashfs \
+    -comp gzip -b 131072 -all-root -no-progress -noappend
+
+echo "Built artifact:"
+ls -la gmloadernext.squashfs

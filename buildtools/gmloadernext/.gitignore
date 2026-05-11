@@ -1,0 +1,7 @@
+# Build-time scratch — only src/ is source, everything else is output from
+# build.txt / retrieve-products.txt and should not be tracked. The
+# .upstream-sha marker IS tracked so the workflow can detect freshness.
+/*
+!/.gitignore
+!/.upstream-sha
+!/src/
