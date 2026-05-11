@@ -13,7 +13,7 @@ If `vulkaninfo` on your device fails or reports zero physical devices, this port
 
 ## Installation
 
-Drop your own legally-obtained Twilight Princess GameCube USA disc image directly into the `ports/zelda-dusk/` folder. Supported containers: `.ciso`, `.iso`, `.gcm`, `.rvz`, `.nkit.iso`. The launch script will auto-detect the first match.
+Drop your own legally-obtained Twilight Princess GameCube USA disc image directly into the `ports/zelda-dusk/` folder. The launch script will auto-detect the first match.
 
 ## Thanks
 Nintendo - The original game  

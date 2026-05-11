@@ -70,16 +70,24 @@ for ext in ciso iso gcm rvz nkit.iso; do
 done
 
 if [ -z "$DVD" ]; then
-    pm_message "No Twilight Princess disc image found in ports/zelda-dusk/. Add a .ciso or .iso and try again."
+    pm_message "No Twilight Princess disc image found in ports/zelda-dusk."
     sleep 5
     pm_finish
     exit 1
 fi
 
+# Patch the disc image path into Dusk's config
+CONFIG="$GAMEDIR/config/TwilitRealm/Dusk/config.json"
+CURRENT=$(sed -n 's/.*"backend\.isoPath"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$CONFIG" 2>/dev/null)
+if [ -z "$CURRENT" ] || [ ! -f "$CURRENT" ]; then
+    DVD_ESC=$(printf '%s' "$DVD" | sed 's/[\\&|]/\\&/g')
+    sed -i "s|\"backend\.isoPath\": \"[^\"]*\"|\"backend.isoPath\": \"$DVD_ESC\"|" "$CONFIG"
+fi
+
 # Run the game
 $GPTOKEYB "dusk" -c "zelda-dusk.gptk" &
 pm_platform_helper "$GAME" >/dev/null
-"$GAME" --backend vulkan --dvd "$DVD"
+"$GAME" --backend vulkan
 
 # Cleanup -- we already have log.txt, purge the rest to prevent bloat
 rm -rf "$GAMEDIR/config/TwilitRealm/Dusk/logs/"*
