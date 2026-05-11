@@ -62,15 +62,17 @@ git_clone_retry --depth 1 --branch n4.4.5 https://git.ffmpeg.org/ffmpeg.git
 # Upstream has no release tags — always build from master HEAD.
 git_clone_retry --recursive https://github.com/JohnnyonFlame/gmloader-next.git
 
-# Additive — aarch64-linux-gnu-pkg-config's wrapper sets its own LIBDIR
-# to the multiarch paths so it can find sdl2.pc/libzip.pc. Overriding
-# LIBDIR here clobbers that and SDL2 headers go missing.
-export PKG_CONFIG_PATH="$FFMPEG_PREFIX/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+# Force regular pkg-config + arch-scoped LIBDIR rather than depending on
+# aarch64-linux-gnu-pkg-config being installed (it's a separate Debian
+# package and isn't present in our Bullseye base). LIBDIR scopes the
+# search to aarch64 multiarch so host x86_64 .pc files can't leak in.
+export PKG_CONFIG_LIBDIR="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/share/pkgconfig:$FFMPEG_PREFIX/lib/pkgconfig"
 
 (
     cd gmloader-next
     make -f Makefile.gmloader \
         ARCH=aarch64-linux-gnu \
+        PKG_CONFIG=pkg-config \
         VIDEO_SUPPORT=1 \
         LLVM_FILE=/usr/lib/llvm-11/lib/libclang-11.so \
         LLVM_INC=/usr/aarch64-linux-gnu/include/c++/10/aarch64-linux-gnu \
