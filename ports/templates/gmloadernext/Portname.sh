@@ -39,7 +39,7 @@ fi
 export GMLOADER_LIB_PATH="$GMLOADER/lib"
 
 # Exports
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 # Check if we need to patch the game

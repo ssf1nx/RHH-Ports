@@ -43,7 +43,7 @@ chmod 777 "$GAMEDIR/tools/splash"
 chmod 777 "$GMLOADER/gmloadernext.aarch64"
 
 # Exports
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 # Check if we need to patch the game

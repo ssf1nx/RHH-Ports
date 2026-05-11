@@ -1,6 +1,6 @@
 # Building Dusk for Linux ARM64
 
-This port is built automatically on each upstream release via the [Build Ports](../../../../.github/workflows/build_ports.yml) workflow. The canonical build recipe lives at [`buildtools/dusk/dusk/`](../../../../buildtools/dusk/dusk/) — that's what produces the binary you receive through PortMaster.
+This port is built automatically on each upstream release via the [Build Ports](../../../../.github/workflows/build_ports.yml) workflow. The canonical build recipe lives at [`buildtools/dusk/`](../../../../buildtools/dusk/) — that's what produces the binary you receive through PortMaster.
 
 If you want to build it yourself for development, the recipe is the source of truth. The summary below is a human-readable version of those steps.
 

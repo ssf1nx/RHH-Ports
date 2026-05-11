@@ -41,7 +41,7 @@ fi
 export GMLOADER_LIB_PATH="$GMLOADER/lib"
 
 # Exports
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 
 

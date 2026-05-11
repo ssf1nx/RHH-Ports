@@ -44,7 +44,7 @@ export GMLOADER_LIB_PATH="$GMLOADER/lib"
 $ESUDO chmod +x -R $GAMEDIR/*
 
 # Exports
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:/usr/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
 
 # Apply mouse scaling according to screen size
 if [ $DISPLAY_WIDTH -gt 720 ]; then

@@ -61,7 +61,7 @@ if [ ! -f "$GAMEDIR/patchlog.txt" ] || [ -f "$GAMEDIR/assets/data.win" ]; then
 fi
 
 # Post patcher setup
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:$GAMEDIR/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:$GAMEDIR/lib:$LD_LIBRARY_PATH"
 
 # Apply mouse scaling according to screen size
 if [ $DISPLAY_WIDTH -gt 720 ]; then

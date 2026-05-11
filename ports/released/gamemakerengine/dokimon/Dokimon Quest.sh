@@ -44,7 +44,7 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 # Check if we need to patch the game
 if [ ! -f patchlog.txt ] || [ -f $GAMEDIR/assets/data.win ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
-        export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
+        export LD_LIBRARY_PATH="$GMLOADER/lib:$GAMEDIR/lib:$GAMEDIR/libs:$LD_LIBRARY_PATH"
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")" # This gets the current script filename without the extension
         export PATCHER_TIME="2 to 5 minutes"

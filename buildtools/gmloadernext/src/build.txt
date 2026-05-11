@@ -62,9 +62,10 @@ git_clone_retry --depth 1 --branch n4.4.5 https://git.ffmpeg.org/ffmpeg.git
 # Upstream has no release tags — always build from master HEAD.
 git_clone_retry --recursive https://github.com/JohnnyonFlame/gmloader-next.git
 
-# Point pkg-config at our minimal FFmpeg ONLY
-export PKG_CONFIG_PATH="$FFMPEG_PREFIX/lib/pkgconfig"
-export PKG_CONFIG_LIBDIR="$PKG_CONFIG_PATH"
+# Additive — aarch64-linux-gnu-pkg-config's wrapper sets its own LIBDIR
+# to the multiarch paths so it can find sdl2.pc/libzip.pc. Overriding
+# LIBDIR here clobbers that and SDL2 headers go missing.
+export PKG_CONFIG_PATH="$FFMPEG_PREFIX/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 
 (
     cd gmloader-next

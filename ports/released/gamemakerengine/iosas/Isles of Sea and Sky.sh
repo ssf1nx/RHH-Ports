@@ -41,7 +41,7 @@ fi
 export GMLOADER_LIB_PATH="$GMLOADER/lib"
 
 # Exports
-export LD_LIBRARY_PATH="$GMLOADER/lib/arm64-v8a:$GAMEDIR/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$GMLOADER/lib:$GAMEDIR/lib:$LD_LIBRARY_PATH"
 
 # Check if patchlog.txt to skip patching
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
