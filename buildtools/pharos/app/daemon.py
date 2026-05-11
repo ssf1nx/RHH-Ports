@@ -177,9 +177,12 @@ def notify_es_http(message: str) -> bool:
             headers={"Content-Type": "text/plain"},
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=3):
+        with urllib.request.urlopen(req, timeout=10):
             return True
-    except (HTTPError, URLError, socket.timeout, OSError) as e:
+    except socket.timeout:
+        log("INFO", "notify_es_http: server slow to ack; assuming delivered")
+        return True
+    except (HTTPError, URLError, OSError) as e:
         log("WARN", f"notify_es_http failed: {e}")
         return False
 
