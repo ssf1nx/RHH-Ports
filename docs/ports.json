@@ -41,11 +41,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/am2r.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "4050caff80588539ecb2a23c773da82e",
-      "size": 2974238,
-      "lifetime_downloads": 49,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "4b5ec6dd91d695a3966a5f0aa60e04ed",
+      "size": 2974243,
+      "lifetime_downloads": 93,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -141,11 +141,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "9af086c88dc1c534282da5aa2dd94765",
-      "size": 2621866,
-      "lifetime_downloads": 17,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "1b0c9678e9c2c8a768685c44a8bfc7e8",
+      "size": 2621871,
+      "lifetime_downloads": 29,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -202,11 +202,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "c093977ddf065f661a504e98c8cdc46f",
-      "size": 2750540,
-      "lifetime_downloads": 12,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "8e132d39348d56d4d4f88125e68f8ab7",
+      "size": 2750549,
+      "lifetime_downloads": 17,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -433,11 +433,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-04-13T12:51",
-      "md5": "dcf4f5e60eb13438e635d7ebfa640a83",
-      "size": 6232276,
-      "lifetime_downloads": 3,
-      "last_commit": "[DARKDEITY] Move splash to assets folder"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "e2cd63afba84e9559922d8643149c795",
+      "size": 6232284,
+      "lifetime_downloads": 7,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -482,11 +482,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "1529bba11d5b44caa5943be1d89a5f40",
-      "size": 6131588,
-      "lifetime_downloads": 2,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "e2af6ba7c051e7448a950f5e2af92777",
+      "size": 6131595,
+      "lifetime_downloads": 6,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -544,11 +544,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-05-11T10:09",
-      "md5": "589dfde8ba1cbb775039b7e5c38fe9d7",
-      "size": 10084930,
+      "date_updated": "2026-05-11T10:55",
+      "md5": "de42cf86ff08e4e4022b298865230046",
+      "size": 10084935,
       "lifetime_downloads": 78,
-      "last_commit": "[DELTARUNE] Add library for darkos"
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -733,11 +733,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/digitaltamersreborn.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "b783a9f5f40a2d91cff92c8d27c33ab0",
-      "size": 220689908,
-      "lifetime_downloads": 5,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "28b62c90084b6c26be1e690748f2741b",
+      "size": 220689914,
+      "lifetime_downloads": 13,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -789,11 +789,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-04-23T11:12",
-      "md5": "87fe43eea125ac5f2d1563f03fbcacc3",
-      "size": 56271918,
-      "lifetime_downloads": 7,
-      "last_commit": "[DOKIMON] Create needed config file at patch time"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "54c33409661eb127976d6992ddd57fa4",
+      "size": 56271922,
+      "lifetime_downloads": 14,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1037,11 +1037,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fadingafternoon.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "13d18d4d6df5397f0d1f187f17512c5b",
-      "size": 4083362,
-      "lifetime_downloads": 8,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "5e7b8cb3eacf151bfeda79fba4580854",
+      "size": 4083367,
+      "lifetime_downloads": 26,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1091,11 +1091,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "71e3f94e145d6d10dd1f48967b070dde",
-      "size": 5217931,
-      "lifetime_downloads": 9,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "55e47ebe2b805fab56d76a53a63f2d66",
+      "size": 5217936,
+      "lifetime_downloads": 25,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1142,11 +1142,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "6e4df14193c5d138293e4e187398eeb6",
-      "size": 3215954,
-      "lifetime_downloads": 5,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "21a6f70eda548b5d16a3757a0ba3feb0",
+      "size": 3215960,
+      "lifetime_downloads": 14,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1245,11 +1245,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "5a0caad3f2d0a97c5d4187cf4e6ba415",
-      "size": 2734663,
-      "lifetime_downloads": 6,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "cd135839c4614854a2ea491ebd400614",
+      "size": 2734670,
+      "lifetime_downloads": 10,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1424,11 +1424,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "e2360947b1ca3796e06e2761422d77c2",
-      "size": 5658940,
-      "lifetime_downloads": 13,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "56e777c5b53f56052d53cd16d5b4cbf5",
+      "size": 5658946,
+      "lifetime_downloads": 31,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1527,11 +1527,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "f8df5516cdbe9722bece32f84a191ea8",
-      "size": 4325545,
-      "lifetime_downloads": 13,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "5faa73fad4009880153b8cfe4b2bf6dc",
+      "size": 4325550,
+      "lifetime_downloads": 20,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1667,11 +1667,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "c0878fc9b65fd91d18a19b52a255ebe8",
-      "size": 5324748,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "58813ffad201053e79aa52279b17cf0b",
+      "size": 5324752,
+      "lifetime_downloads": 5,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1723,11 +1723,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "978027be2d143054894a3c02c3012f26",
-      "size": 5117298,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "b301259424d506f07c4797de4e491a30",
+      "size": 5117305,
+      "lifetime_downloads": 10,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -1878,11 +1878,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "17dfc02c91728ec33fcd833b7f35570b",
-      "size": 3047990,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "ce373c3a39a9fbe60f29056c8acfef3c",
+      "size": 3047995,
+      "lifetime_downloads": 10,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2029,11 +2029,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "46fb0a0974365df09e6182cb1ed22f62",
-      "size": 4802988,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "f2261cfd99f316966442022dea96ab97",
+      "size": 4802993,
+      "lifetime_downloads": 6,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2129,11 +2129,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "ad8baa36693637f7740e694a0fb52477",
-      "size": 4906106,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "b5463ca3b63de5df34cff1f0d34f0163",
+      "size": 4906111,
+      "lifetime_downloads": 7,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2262,11 +2262,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "0980e1ddb1504968952b8f5c0256afed",
-      "size": 5227872,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "0fe8a511002484d7ae27252fab1d5de1",
+      "size": 5227877,
+      "lifetime_downloads": 1,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2319,11 +2319,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "date_updated": "2026-05-07T19:29",
-      "md5": "95d788dbab6d95be37341a7d708f58bf",
-      "size": 11534117,
-      "lifetime_downloads": 20,
-      "last_commit": "[PIZZATOWER] Restore custom gmloadernext"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "ecfd3812820fc2eeed12de75504f67cb",
+      "size": 11534122,
+      "lifetime_downloads": 35,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2601,11 +2601,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "date_updated": "2026-04-13T02:12",
-      "md5": "3b626a41e12370a6cd600986f6639803",
-      "size": 5246644,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "604fcad565136a2ca00c964132b87556",
+      "size": 5246645,
+      "lifetime_downloads": 1,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2799,11 +2799,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "833bddbf948e4d1dc6c40b64231ac41a",
-      "size": 5423980,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "b70736da52ac97bd890a9cde60e69fcc",
+      "size": 5423986,
+      "lifetime_downloads": 15,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2843,11 +2843,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "date_updated": "2026-04-27T05:43",
-      "md5": "2486e1bdb13bf00ce438ed27f182704e",
-      "size": 3221959,
-      "lifetime_downloads": 0,
-      "last_commit": "[RSDKV4] Update to f5f1e87"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "629a4016dbc94c921683e775b3a85ff1",
+      "size": 3221966,
+      "lifetime_downloads": 21,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2887,11 +2887,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "date_updated": "2026-04-27T05:43",
-      "md5": "7463a3cb80da21b562b4be569458b7d8",
-      "size": 3304982,
-      "lifetime_downloads": 0,
-      "last_commit": "[RSDKV4] Update to f5f1e87"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "b7e63d444e8056851d58a2549abe728b",
+      "size": 3304991,
+      "lifetime_downloads": 16,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -2974,11 +2974,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-04-26T12:21",
-      "md5": "20207200d7c35cb49610c754a20f838f",
-      "size": 2976835,
-      "lifetime_downloads": 0,
-      "last_commit": "[RSDKV3] Update to 2f5fdb6"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "091b976777e7f5750720246cffad2f35",
+      "size": 2976843,
+      "lifetime_downloads": 23,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3115,11 +3115,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "date_updated": "2026-04-17T16:06",
-      "md5": "f4bd36c8e6ca1abd61dde142ed4a6902",
-      "size": 14961881,
-      "lifetime_downloads": 0,
-      "last_commit": "[SONICTT16B] Return to xdelta for texture compression"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "c4a49d0f7af394daa88a7598ab29c334",
+      "size": 14961887,
+      "lifetime_downloads": 30,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3264,11 +3264,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "ec7c0458c8ec915132c500701e33183f",
-      "size": 5134000,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "bf8531dcf057709cd23642ae98b76990",
+      "size": 5134003,
+      "lifetime_downloads": 5,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3554,11 +3554,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mariokartzx/mariokartzx/screenshot.png",
       "readme_url": "",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mariokartzx.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "f02fa7f48d425fc9fc8170cdf2c41a84",
-      "size": 2744700,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "5f288f1a6297184a5ee7d9b3e2310788",
+      "size": 2744705,
+      "lifetime_downloads": 22,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3710,11 +3710,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "6d3b177d0e0877e485a609cf63121041",
-      "size": 3986701,
-      "lifetime_downloads": 11,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "4dd782e1372a88f320f68971513fb593",
+      "size": 3986706,
+      "lifetime_downloads": 25,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3813,11 +3813,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "0e8a129561bddd5f24d83314b50893eb",
-      "size": 324523,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "ed98b7a76b373ef3d51cfe92dd828a12",
+      "size": 324528,
+      "lifetime_downloads": 27,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -3861,11 +3861,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "f21dece3ed3b9ca8fe9decd9201003bf",
-      "size": 403221,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "08e92956b92f6fe84917040713d78a9f",
+      "size": 403225,
+      "lifetime_downloads": 21,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4401,11 +4401,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-05-07T13:16",
-      "md5": "422a9da0d8c9272fe1c19483ec687033",
-      "size": 1208650,
-      "lifetime_downloads": 0,
-      "last_commit": "[LADXHD] Use latest release tag instead of nightly"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "2ff62a8f4a7c13b5fa962af42b4ca53c",
+      "size": 1208657,
+      "lifetime_downloads": 102,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4505,11 +4505,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "d1c32d91a3a19e1d0e420a691fb58652",
-      "size": 3622312,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "18d59ae98e33838e982dcb823a5a270b",
+      "size": 3622321,
+      "lifetime_downloads": 4,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4595,11 +4595,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-04-16T21:30",
-      "md5": "73460892621562a07f5dcbe8bd065d64",
-      "size": 5326626,
-      "lifetime_downloads": 0,
-      "last_commit": "[UFO50] v1.9.1 readme update"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "2d064ae17ca53d47a18bd338df6817fd",
+      "size": 5326632,
+      "lifetime_downloads": 38,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4648,11 +4648,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "8d9a371268fe04405419e1dbeb5eab09",
-      "size": 9539600,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "0c2e3a08212aa11681e4cda1d4eb6125",
+      "size": 9539604,
+      "lifetime_downloads": 26,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4700,11 +4700,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "4cbab54280ee83cad3622994136a95b4",
-      "size": 9965350,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "eead9d58414c52ba2f403c4a0266a588",
+      "size": 9965356,
+      "lifetime_downloads": 12,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4747,11 +4747,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "b48d44f556175aa790c0a36a8cd76b50",
-      "size": 3939645,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "ecad17430535bcedc49883d4217635eb",
+      "size": 3939652,
+      "lifetime_downloads": 14,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4810,11 +4810,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "37ddaeefb5cff6bd6cee0ab150d057b8",
-      "size": 2432868,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "9b78c244082fbb6b063fa86beed8b8cd",
+      "size": 2432873,
+      "lifetime_downloads": 14,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4860,11 +4860,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-04-13T02:13",
-      "md5": "ffa07e74c77e2b1ad0dcc96f8b85857a",
-      "size": 5559060,
-      "lifetime_downloads": 0,
-      "last_commit": "[GMS] Switch to gmloadernext runtime"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "c266375c28cb4bebad900f5b3bb26b50",
+      "size": 5559065,
+      "lifetime_downloads": 31,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   },
   {
@@ -4994,11 +4994,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ziiaol.zip",
-      "date_updated": "2026-04-04T01:44",
-      "md5": "b678ba342c10695cb401d6fea4435c00",
-      "size": 12606784,
-      "lifetime_downloads": 0,
-      "last_commit": "Audit and refactor all GMS ports for consistency"
+      "date_updated": "2026-05-11T10:55",
+      "md5": "76c9d3df840bf604192d94a5941d9034",
+      "size": 12606788,
+      "lifetime_downloads": 21,
+      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
     }
   }
 ]
