@@ -26,7 +26,7 @@ async function loadPorts() {
     try {
         // Fetch data concurrently for speed
         const [res, apiRes] = await Promise.all([
-            fetch('ports.json'),
+            fetch('ports.json', { cache: 'no-cache' }),
             fetch(`https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/releases`).catch(() => null)
         ]);
 
