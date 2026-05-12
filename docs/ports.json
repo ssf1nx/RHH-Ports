@@ -4401,11 +4401,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-05-11T10:55",
-      "md5": "2ff62a8f4a7c13b5fa962af42b4ca53c",
-      "size": 1208657,
-      "lifetime_downloads": 102,
-      "last_commit": "Clear stale patcherr.txt files on start of re-patching"
+      "date_updated": "2026-05-12T11:19",
+      "md5": "f65203d233d34a5ddecd41a7529d9e7e",
+      "size": 1761464,
+      "lifetime_downloads": 128,
+      "last_commit": "LADXHD] v1.8.1"
     }
   },
   {
