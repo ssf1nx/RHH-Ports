@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+	<game>
+		<path>./Zelda-Dusklight.sh</path>
+		<name>The Legend of Zelda : Twilight Princess (Dusklight)</name>
+		<desc>Dusklight is an unofficial PC port of The Legend of Zelda: Twilight Princess, produced through reverse-engineered reimplementation. Powered by the Aurora framework.</desc>
+		<image>./zelda-dusklight/cover.png</image>
+		<thumbnail>./zelda-dusklight/thumb.png</thumbnail>
+		<releasedate>20260509</releasedate>
+		<developer>Nintendo</developer>
+		<genre>Action / Adventure</genre>
+	</game>
+</gamelist>

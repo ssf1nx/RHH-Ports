@@ -17,8 +17,8 @@ source $controlfolder/control.txt
 get_controls
 
 # Set variables
-GAMEDIR="/$directory/ports/zelda-dusk"
-GAME="$GAMEDIR/dusk"
+GAMEDIR="/$directory/ports/zelda-dusklight"
+GAME="$GAMEDIR/dusklight"
 
 # Vulkan check
 check_vulkan() {
@@ -39,7 +39,7 @@ check_vulkan() {
 }
 
 if ! check_vulkan; then
-    pm_message "Dusk requires Vulkan, which is not available on this device. The port cannot run."
+    pm_message "Dusklight requires Vulkan, which is not available on this device. The port cannot run."
     sleep 5
     pm_finish
     exit 1
@@ -67,14 +67,20 @@ for ext in ciso iso gcm rvz nkit.iso; do
 done
 
 if [ -z "$DVD" ]; then
-    pm_message "No Twilight Princess disc image found in ports/zelda-dusk."
+    pm_message "No Twilight Princess disc image found in ports/zelda-dusklight."
     sleep 5
     pm_finish
     exit 1
 fi
 
-# Patch the disc image path into Dusk's config
-CONFIG="$GAMEDIR/config/TwilitRealm/Dusk/config.json"
+# Patch the disc image path into the config. Upstream renamed the AppName
+# from "Dusk" to "Dusklight" in PR #1064 (v1.0.2+), with a built-in legacy-
+# path migration so old saves move on first launch. Prefer Dusklight/ when
+# it exists (post-migration or fresh v1.0.2+ install), else fall back to
+# Dusk/ (v1.0.1 or pre-migration first-run).
+CONFIG_DIR="$GAMEDIR/config/TwilitRealm/Dusklight"
+[ -d "$CONFIG_DIR" ] || CONFIG_DIR="$GAMEDIR/config/TwilitRealm/Dusk"
+CONFIG="$CONFIG_DIR/config.json"
 CURRENT=$(sed -n 's/.*"backend\.isoPath"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$CONFIG" 2>/dev/null)
 if [ -z "$CURRENT" ] || [ ! -f "$CURRENT" ]; then
     DVD_ESC=$(printf '%s' "$DVD" | sed 's/[\\&|]/\\&/g')
@@ -82,10 +88,10 @@ if [ -z "$CURRENT" ] || [ ! -f "$CURRENT" ]; then
 fi
 
 # Run the game
-$GPTOKEYB "dusk" -c "zelda-dusk.gptk" &
+$GPTOKEYB "dusklight" -c "zelda-dusklight.gptk" &
 pm_platform_helper "$GAME" >/dev/null
 "$GAME" --backend vulkan
 
 # Cleanup -- we already have log.txt, purge the rest to prevent bloat
-rm -rf "$GAMEDIR/config/TwilitRealm/Dusk/logs/"*
+rm -rf "$CONFIG_DIR/logs/"*
 pm_finish

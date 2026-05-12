@@ -35,13 +35,13 @@
       "commit_prefix": "SONIC3AIR",
       "artifacts": ["sonic3air_linux", "config.json", "doc/license.txt", "doc/license-thirdparty", "data", "audioremaster.7z.*"]
     },
-    "dusk": {
-      "port_dir": "buildtools/dusk",
-      "target_dirs": ["ports/released/zelda-dusk/zelda-dusk"],
-      "upstream_repo": "TwilitRealm/dusk",
+    "dusklight": {
+      "port_dir": "buildtools/dusklight",
+      "target_dirs": ["ports/released/zelda-dusklight/zelda-dusklight"],
+      "upstream_repo": "TwilitRealm/dusklight",
       "track": "release",
-      "commit_prefix": "DUSK",
-      "artifacts": ["dusk", "libs", "res"]
+      "commit_prefix": "DUSKLIGHT",
+      "artifacts": ["dusklight", "libs", "res"]
     }
   },
   "runtimes": {

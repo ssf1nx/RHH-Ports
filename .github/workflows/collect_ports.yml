@@ -121,8 +121,8 @@ jobs:
                 continue
               fi
               # Second: the file is a launcher (.sh) sitting in the staging
-              # dir as a sibling of the port_dir — e.g. zelda-dusk/Zelda-Dusk.sh
-              # next to zelda-dusk/zelda-dusk/port.json. Check immediate
+              # dir as a sibling of the port_dir — e.g. zelda-dusklight/Zelda-Dusklight.sh
+              # next to zelda-dusklight/zelda-dusklight/port.json. Check immediate
               # children of the file's parent for port.json. Category-level
               # dirs (which contain staging dirs, not port_dirs) won't match.
               parent="$(dirname "$file")"

@@ -1,19 +1,19 @@
 {
   "version": 4,
-  "name": "zelda-dusk.zip",
+  "name": "zelda-dusklight.zip",
   "items": [
-    "Zelda-Dusk.sh",
-    "zelda-dusk"
+    "Zelda-Dusklight.sh",
+    "zelda-dusklight"
   ],
   "items_opt": [],
   "attr": {
-    "title": "The Legend of Zelda : Twilight Princess (Dusk)",
+    "title": "The Legend of Zelda : Twilight Princess (Dusklight)",
     "porter": [
       "Jeod"
     ],
-    "desc": "Dusk is an unofficial PC port of The Legend of Zelda: Twilight Princess produced through reverse-engineered reimplementation, powered by the Aurora framework. You must provide your own copy of the game.",
+    "desc": "Dusklight is an unofficial PC port of The Legend of Zelda: Twilight Princess produced through reverse-engineered reimplementation, powered by the Aurora framework. You must provide your own copy of the game.",
     "desc_md": null,
-    "inst": "Put your iso file in ports/zelda-dusk/.",
+    "inst": "Put your iso file in ports/zelda-dusklight/.",
     "inst_md": null,
     "genres": [
       "action",

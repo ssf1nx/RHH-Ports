@@ -1,7 +1,7 @@
 # Trixie (Debian 13) gives us clang-19 + gcc-14 + libstdc++-14 in main with
-# full C++20/23 support — Dusk uses <format> which only lives in libstdc++
-# 13+, so bookworm's stock toolchain wouldn't build it. Glibc floor is 2.41;
-# port.json's min_glibc reflects that.
+# full C++20/23 support — Dusklight uses <format> which only lives in
+# libstdc++ 13+, so bookworm's stock toolchain wouldn't build it. Glibc
+# floor is 2.41; port.json's min_glibc reflects that.
 FROM debian:trixie
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Toolchain + Aurora's link-time deps + the full X11/Wayland/audio/input
 # stack SDL3 expects on Linux. SDL3 (vendored by Aurora) auto-detects each
 # subsystem and fails configure when any is missing rather than skipping.
-# This list mirrors upstream Dusk's CI install step so we surface the same
+# This list mirrors upstream Dusklight's CI install step so we surface the same
 # set of capabilities.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates wget curl git zip unzip pkg-config \

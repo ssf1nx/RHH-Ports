@@ -27,22 +27,22 @@ git_clone_retry() {
     return 1
 }
 
-#### Dusk (Twilight Princess Reimplementation) ####
+#### Dusklight (Twilight Princess Reimplementation) ####
 
-git_clone_retry --recursive https://github.com/TwilitRealm/dusk.git dusk-src
-cd dusk-src
+git_clone_retry --recursive https://github.com/TwilitRealm/dusklight.git dusklight-src
+cd dusklight-src
 
 # Latest release tag, or HEAD if FORCE_HEAD=true.
 git fetch --tags
 if [[ "${FORCE_HEAD:-false}" == "true" ]]; then
   echo "FORCE_HEAD=true — building from branch HEAD (nightly)"
 else
-  DUSK_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)")
-  if [[ -z "$DUSK_TAG" ]]; then
+  DUSKLIGHT_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+  if [[ -z "$DUSKLIGHT_TAG" ]]; then
     echo "ERROR: no release tag found"; exit 1
   fi
-  echo "Checking out latest release tag: $DUSK_TAG"
-  git checkout "$DUSK_TAG"
+  echo "Checking out latest release tag: $DUSKLIGHT_TAG"
+  git checkout "$DUSKLIGHT_TAG"
 fi
 
 # Submodule init can hit transient HTTP 500s — retry. --jobs parallelises
@@ -72,16 +72,22 @@ cmake --preset linux-clang \
 cmake --build build/linux-clang --parallel "$(nproc)"
 cmake --install build/linux-clang
 
-strip --strip-unneeded build/install/dusk
-
-# Locate the installed binary.
-bin="build/install/dusk"
-if [[ ! -f "$bin" ]]; then
-    echo "ERROR: installed dusk binary not found at $bin"; exit 1
+# Locate the installed binary. Upstream renamed the target from `dusk` to
+# `dusklight` in PR #1064 (merged 2026-05-12, lands in v1.0.2+); v1.0.1 and
+# older still produce `dusk`. Probe both so the build keeps working through
+# the transition without a flag day.
+bin=""
+for candidate in build/install/dusklight build/install/dusk; do
+    if [[ -f "$candidate" ]]; then bin="$candidate"; break; fi
+done
+if [[ -z "$bin" ]]; then
+    echo "ERROR: no dusk/dusklight binary in build/install/"; ls -la build/install/ || true; exit 1
 fi
 echo "Binary: $bin"
 
-# Stage shipped libs to a SIBLING dir of the dusk checkout.
+strip --strip-unneeded "$bin"
+
+# Stage shipped libs to a SIBLING dir of the dusklight checkout.
 rm -rf ../libs
 mkdir -p ../libs
 
@@ -135,8 +141,10 @@ done <<< "$needed"
 echo "Final ../libs/ contents:"; ls -la ../libs/
 
 # Copy artifacts up so retrieve-products.txt finds them at stable paths.
-# Binary lands at $SRCDIR/dusk (a file, sibling of dusk-src/).
-cp "$bin" ../dusk
+# Binary always lands at $SRCDIR/dusklight regardless of upstream's target
+# name, so the registry artifact list is stable across the v1.0.1 → v1.0.2
+# rename.
+cp "$bin" ../dusklight
 
 # res/ — fonts, icons, RML stylesheets. cmake --install put them in
 # build/install/res/. Mirror via cp -a so the directory tree (including any
