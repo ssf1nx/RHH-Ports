@@ -60,6 +60,16 @@ jobs:
             #                     its commit SHA. Right for projects with a
             #                     stable release cadence (e.g. sonic3air).
             track_mode=$(jq -r --arg id "$id" '.ports[$id].track // "branch"' buildtools/registry.json)
+
+            # Scheduled runs only consider release-tagged ports. Branch-tracked
+            # upstreams (rolling main, no release cadence — e.g. rsdkv3 nightlies)
+            # would rebuild on every cron tick; manual workflow_dispatch is the
+            # right trigger for those.
+            if [[ "$GITHUB_EVENT_NAME" == "schedule" && "$track_mode" != "release" ]]; then
+              echo "[$id] skipping in scheduled run (track=$track_mode; cron is release-only)"
+              continue
+            fi
+
             # A port can fan out to multiple target dirs (e.g. one build
             # produces both sonic.1 and sonic.2 payloads). Use the first as
             # the SHA marker source of truth; all targets stay in sync.
