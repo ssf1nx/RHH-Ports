@@ -41,9 +41,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/am2r.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "a0daf937cd7c03e795231e2506ec2c39",
-      "size": 2974470,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "c7a38c718e81a50985d81ab79829bf84",
+      "size": 2974442,
       "lifetime_downloads": 99,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -141,9 +141,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "64cc639524b8150fdd70eb7d8a69c2ee",
-      "size": 2622109,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "85eb130bc4966a34aa823532481b18aa",
+      "size": 2622082,
       "lifetime_downloads": 37,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -202,9 +202,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "b9268a5879e69b029968e1cd7e716bfa",
-      "size": 2750773,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "2138913f24a9cb9d5e367160c8a2bbd9",
+      "size": 2750745,
       "lifetime_downloads": 18,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -433,9 +433,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "aff6d6d3960b6ba694fbee52ea548251",
-      "size": 6232506,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "2fcebdf90a398c73b4ae79837fd3559c",
+      "size": 6232479,
       "lifetime_downloads": 7,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -482,9 +482,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "0c161d10786cc4ee4f5dd8e7da5e5750",
-      "size": 6131817,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "866e5acd0a76cccd812fbd648bb4a281",
+      "size": 6131790,
       "lifetime_downloads": 6,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -544,9 +544,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "8f47f93e404049f107e6673171c9f673",
-      "size": 4198743,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "4c5d40b07dcbd97c2269c7dd44e85889",
+      "size": 4198713,
       "lifetime_downloads": 80,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -733,9 +733,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/digitaltamersreborn.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "ad3a71db3a7dcf59b544719d3d2adba8",
-      "size": 220690145,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "6781096d46b0b44869b033aa156d42f6",
+      "size": 220690123,
       "lifetime_downloads": 14,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -789,9 +789,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "eccf90794b054a7ac37d996966d967ba",
-      "size": 56272151,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "c4d1f1886c976723bc99435a2c33326c",
+      "size": 56272120,
       "lifetime_downloads": 14,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1037,9 +1037,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fadingafternoon.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "209559b68d8d7886254a158040e7dda4",
-      "size": 4083596,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "9ff826dab97ee0ce18a80ffe2aeda342",
+      "size": 4083570,
       "lifetime_downloads": 31,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1091,9 +1091,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "160e989403a9a22b08b02873454a4bf2",
-      "size": 5218161,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "81bd737f43e0fa88c9f9433b7328d82e",
+      "size": 5218132,
       "lifetime_downloads": 26,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1142,9 +1142,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "595cead351e0203b32c487f1c50a9ac3",
-      "size": 3216187,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "6dbb703455f5401e2a00998e28fb7e06",
+      "size": 3216161,
       "lifetime_downloads": 15,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1245,9 +1245,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "359e32d42ce6db1a4f03aaa651838489",
-      "size": 2734892,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "a591af8313df5b52c909471341942f3a",
+      "size": 2734868,
       "lifetime_downloads": 11,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1424,9 +1424,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "4be14241fdc22bf7697e4a4fdb3cab29",
-      "size": 5659175,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "67c662b12d80855158943d820ccc37b8",
+      "size": 5659153,
       "lifetime_downloads": 33,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1527,9 +1527,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "44a5bc2ea8571404acc89f06deb7a958",
-      "size": 4325768,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "8261e2b6dae566c2d84d302663caaeb8",
+      "size": 4325745,
       "lifetime_downloads": 21,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1667,9 +1667,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "f3044c12ed39d6b990dd2a55fd175842",
-      "size": 5324976,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "8854ac9835ea02a5d1f22286003d7045",
+      "size": 5324951,
       "lifetime_downloads": 6,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1723,9 +1723,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "79da979bd3ea854b964a52af0dbda40a",
-      "size": 5117527,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "95f3080818ec00e949efa0b3639d203e",
+      "size": 5117500,
       "lifetime_downloads": 11,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -1878,9 +1878,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "9e65caf80157f07611419e9c80261fcd",
-      "size": 3048221,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "2e351491327ac535beed5f8981da29fb",
+      "size": 3048192,
       "lifetime_downloads": 11,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2029,9 +2029,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "db39f729f056573e65e95209fab922d5",
-      "size": 4803214,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "9e927e7ba3a2a3259c11202b8de08408",
+      "size": 4803188,
       "lifetime_downloads": 7,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2129,9 +2129,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "4f6ab06d22f1e927f3a6777595cd5a00",
-      "size": 4906331,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "4a168ec534f2817600f80e8ba184a86a",
+      "size": 4906307,
       "lifetime_downloads": 8,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2262,9 +2262,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "3d98d23d6e2c23c4c0a1f8d70577e96d",
-      "size": 5228093,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "26ef7e7b89da5041a3ae57bac5c05fa1",
+      "size": 5228072,
       "lifetime_downloads": 2,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2319,9 +2319,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "34b2c9cbacbe735e1a6601c042206430",
-      "size": 11534357,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "cd77bb4d17f3e50993d8fee99a90133b",
+      "size": 11534327,
       "lifetime_downloads": 36,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2601,9 +2601,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "d1fa58249fdf8ca4c409a9517efed7ea",
-      "size": 5246858,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "dfea9d3bee82049e1d8b4ef877d9f05d",
+      "size": 5246869,
       "lifetime_downloads": 2,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2644,9 +2644,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sm64-ghostship.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "52f9002a31a5c9d23da9c20ed0c3fa39",
-      "size": 11196608,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "1930d7aba46b0ca742ce2229400a8b7a",
+      "size": 11196544,
       "lifetime_downloads": 64,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2689,9 +2689,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "1e8253e0170d6c19a0407f3ed9948c20",
-      "size": 51064185,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "9d8b3f49e3dc9fb4c9601c6687ab3fa4",
+      "size": 51064133,
       "lifetime_downloads": 63,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2734,9 +2734,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "f2e6cd905840e2daf6296b85f7c1398c",
-      "size": 14069633,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "82cfbf14f99c90ae1ab036c4e86c94ca",
+      "size": 14069563,
       "lifetime_downloads": 91,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2799,9 +2799,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "7a20403b4620393e8cac60081978beee",
-      "size": 5424210,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "e926b6fda1da7bd76661a667aabf5fc8",
+      "size": 5424182,
       "lifetime_downloads": 18,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2843,9 +2843,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "c591a6b88918f8d61e4294ba65575990",
-      "size": 3222189,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "113c74e526f9d6e201ac4e7e485a424c",
+      "size": 3222171,
       "lifetime_downloads": 23,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2887,9 +2887,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "c6a471bcff58b7c669278dc185a92659",
-      "size": 3305205,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "3880ce55ee8368fdef144a325223a952",
+      "size": 3305187,
       "lifetime_downloads": 18,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -2974,9 +2974,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "ba406f678f6e446586a79f8af8b67981",
-      "size": 2977077,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "b583afdff42ba9eace4ad3eb4522480a",
+      "size": 2977056,
       "lifetime_downloads": 26,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3115,9 +3115,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "00d9032a9195737f5fe22c03451a115a",
-      "size": 14962121,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "f00841f9865251a9fde25cf6e7ab5da9",
+      "size": 14962096,
       "lifetime_downloads": 32,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3206,9 +3206,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spaghettikart.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "d1db34e914176f52b1667f7b6303dc70",
-      "size": 28989443,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "b138ea20fc90e0ab1295dfdbd3445412",
+      "size": 28989376,
       "lifetime_downloads": 70,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3264,9 +3264,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "3be339656bc347757521cfaae52a3dcf",
-      "size": 5134225,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "426ec9834dc608ef3b4bb3561cec9445",
+      "size": 5134200,
       "lifetime_downloads": 8,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3418,9 +3418,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/starship.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "9dccce8732e130208963f36cc4a6b36e",
-      "size": 6744973,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "e7544bf379d9a1fe41627e96c1253cf8",
+      "size": 6744907,
       "lifetime_downloads": 43,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3464,9 +3464,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/steamlink/steamlink/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/steamlink.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "4b231c26148fd4d1a79ebd15b988f42a",
-      "size": 21555340,
+      "date_updated": "2026-05-12T14:44",
+      "md5": "06139c19eab6cb37111c70f3d9ed86da",
+      "size": 21555316,
       "lifetime_downloads": 49,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3554,9 +3554,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mariokartzx/mariokartzx/screenshot.png",
       "readme_url": "",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mariokartzx.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "f4b8ef7167d39617b819f87eb7df76a3",
-      "size": 2744929,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "e18eff1a1b3118e37d48c2a3d5337dc5",
+      "size": 2744901,
       "lifetime_downloads": 25,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3710,9 +3710,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "4294342c135dc9ff0da4d70ccfec899e",
-      "size": 3986941,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "93873100b7c615757cd14621a9267aed",
+      "size": 3986913,
       "lifetime_downloads": 28,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3813,9 +3813,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "958a4180e5db79a9e81816d2ab42311e",
-      "size": 324754,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "468f29f09786d433873ce9704171e5e6",
+      "size": 324731,
       "lifetime_downloads": 31,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -3861,9 +3861,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "8712e1862268c2470483e50fdc7b0c0e",
-      "size": 403452,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "23503f0c7994fbac61426ef47118eaa3",
+      "size": 403429,
       "lifetime_downloads": 23,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4401,9 +4401,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-05-12T14:31",
-      "md5": "1d1d2a22801d438cc6cef61a793ba029",
-      "size": 1761921,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "ff13138295a8ed9b22ec54bd9d04adb1",
+      "size": 1761905,
       "lifetime_downloads": 132,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4505,9 +4505,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "9819175dce6409ac5d107505d38d8b21",
-      "size": 3622543,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "5f28d79538f9ea298f7d2db723ac46e7",
+      "size": 3622517,
       "lifetime_downloads": 5,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4595,9 +4595,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "856f957d7d650fdbf784dfce7f74c980",
-      "size": 5326867,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "c30837de962c6c68d36da1e0610fce5a",
+      "size": 5326838,
       "lifetime_downloads": 41,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4648,9 +4648,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "b85e4edaab917bc10319e3f54d9c51f2",
-      "size": 9539826,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "8c41d63b8609286dfa9055ff42ec24f2",
+      "size": 9539803,
       "lifetime_downloads": 28,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4700,9 +4700,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "e6146a58acf8adbcc32b851749d2a10d",
-      "size": 9965587,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "7898c35b97e9563d6b4f3c3ec83518d3",
+      "size": 9965559,
       "lifetime_downloads": 13,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4747,9 +4747,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "3a4478281667d35e24c196f85127a998",
-      "size": 3939878,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "eec851219e9c6e3d2d02a68f82cdfb79",
+      "size": 3939853,
       "lifetime_downloads": 15,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4810,9 +4810,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "ca072bf2d0812e398621325b83939ad1",
-      "size": 2433097,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "7c63fb378fbdecab2fe3bfaee2e862ec",
+      "size": 2433069,
       "lifetime_downloads": 19,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4860,9 +4860,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "4c8268ffb2aaf1d8f19f6c2cc7936656",
-      "size": 5559299,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "a991ead00492e4d2e0951cd09b2f5113",
+      "size": 5559272,
       "lifetime_downloads": 34,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
@@ -4994,9 +4994,9 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ziiaol.zip",
-      "date_updated": "2026-05-12T14:30",
-      "md5": "2a76ede0ebfd54d8bfdc94b26b87e462",
-      "size": 12607022,
+      "date_updated": "2026-05-12T14:45",
+      "md5": "cd32c0b41aee2e3c6716efdd01599fd5",
+      "size": 12606998,
       "lifetime_downloads": 24,
       "last_commit": "Update all patchscripts in prep for new patcher gui commands"
     }
