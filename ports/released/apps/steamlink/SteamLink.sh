@@ -38,6 +38,43 @@ cd $GAMEDIR
 chmod +x -R "$GAMEDIR/config"
 chmod +x "$GAMEDIR/bin/bsdtar"
 
+# ---- RK3566 + Batocera Mali ----
+# Batocera ships mesa-panfork (Mesa 22.x era) for Mali GPUs, which doesn't
+# satisfy Qt 5.14.1 eglfs requirements that Valve's Steam Link build
+# expects. RK3566 + Batocera devices need a self-contained AppImage that
+# bundles its own Mesa 26 + LLVM 20 stack.
+case "$DEVICE_CPU:$CFW_NAME" in
+    RK3566:Batocera)
+        echo "[STEAMLINK] RK3566 + Batocera detected — using bundled AppImage."
+
+        # AppImage sourced from suckbluefrog
+        APPIMAGE_URL="https://github.com/suckbluefrog/batocera.linux/releases/download/stuff/Steamlink-aarch64-rk3566.AppImage"
+        APPIMAGE_DST="$GAMEDIR/Steamlink-aarch64-rk3566.AppImage"
+
+        if [ ! -f "$APPIMAGE_DST" ]; then
+            pm_message "Downloading Steam Link AppImage for RK3566 (~92 MB)..."
+            if ! curl -fL --retry 3 --connect-timeout 15 "$APPIMAGE_URL" -o "$APPIMAGE_DST"; then
+                pm_message "AppImage download failed. Check internet connection."
+                sleep 5
+                pm_finish
+                exit 1
+            fi
+            chmod +x "$APPIMAGE_DST"
+        fi
+
+        # Env the bundled Steam Link build expects (mirrors suckbluefrog's wrapper)
+        export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run}"
+        export APPIMAGE_EXTRACT_AND_RUN=1
+        mkdir -p "${TMPDIR:-/tmp}"
+
+        pm_platform_helper "$APPIMAGE_DST" > /dev/null
+        "$APPIMAGE_DST"
+
+        pm_finish
+        exit 0
+        ;;
+esac
+
 run_patcher() {
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         source "$controlfolder/utils/patcher.txt"
