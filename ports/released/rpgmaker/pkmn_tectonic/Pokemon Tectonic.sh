@@ -31,12 +31,10 @@ $ESUDO chmod +x "$GAMEDIR/mkxp-z.aarch64"
 mkdir -p "$GAMEDIR/config"
 
 # Exports
-export LD_LIBRARY_PATH="$GAMEDIR/libs.${DEVICE_ARCH}:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export XDG_DATA_HOME="$GAMEDIR/config"
 export LC_ALL=C
 export LANG=C
-export PCKILLMODE="Y"
 
 # Unzip stdlib
 if [ -f "$GAMEDIR/stdlib.zip" ]; then
@@ -116,8 +114,12 @@ SCENE_FILE="$GAMEDIR/Plugins/Tectonic Graphics and UI/Menus/Options/OptionScenes
 MENU_FILE="$GAMEDIR/Plugins/Tectonic Graphics and UI/Menus/Options/PokemonOptionsMenu.rb"
 [ -f "$MENU_FILE" ] && sed -i '/optionsCommands\[cmdControlsMapping = optionsCommands\.length\]/d' "$MENU_FILE"
 
-# Gptk and run port
+# Gptk — launched with stock LD path so its hotkey/kill logic isn't
+# broken by our shipped libs
 $GPTOKEYB "mkxp-z.aarch64" -c "$GAMEDIR/tectonic.gptk" &
+
+# Now wire our libs in for mkxp-z and run it
+export LD_LIBRARY_PATH="$GAMEDIR/libs.${DEVICE_ARCH}:$LD_LIBRARY_PATH"
 pm_platform_helper "$GAMEDIR/mkxp-z.aarch64" >/dev/null
 ./mkxp-z.aarch64
 
