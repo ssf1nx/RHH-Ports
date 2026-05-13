@@ -5,9 +5,20 @@ async function loadPorts() {
     const genreDropdown = document.getElementById('genre-filter');
     const availabilityDropdown = document.getElementById('availability-filter');
     const requirementsDropdown = document.getElementById('requirements-filter');
+    const runtimeDropdown = document.getElementById('runtime-filter');
     const sortDropdown = document.getElementById('sort-select');
     const GITHUB_REPO_OWNER = 'JeodC';
     const GITHUB_REPO_NAME = 'RHH-Ports';
+
+    const runtimeNames = {
+        'dotnet-8.0.12.squashfs': '.NET 8',
+        'gmloadernext.squashfs': 'GMLoader-Next',
+        'gmtoolkit.squashfs': 'GMToolkit',
+        'mkxp-z.squashfs': 'MKXP-Z',
+        'python_3.11.squashfs': 'Python 3.11',
+        'rlvm.squashfs': 'RLVM',
+        'solarus-1.6.5.squashfs': 'Solarus'
+    };
 
     const mappings = [
         { keys: ['!lowpower'], value: 'Needs moderate CPU' },
@@ -72,6 +83,9 @@ async function loadPorts() {
         const orderedReqs = mappings.map(m => m.value).filter(v => reqLabels.has(v));
         populateDropdown(requirementsDropdown, orderedReqs);
 
+        const runtimeSet = new Set(ports.flatMap(p => p.attr?.runtime || []));
+        populateDropdown(runtimeDropdown, Array.from(runtimeSet).sort(), r => runtimeNames[r] || r);
+
         if (![...sortDropdown.options].some(o => o.value === 'most_downloaded')) {
             const opt = document.createElement('option');
             opt.value = 'most_downloaded';
@@ -99,6 +113,7 @@ async function loadPorts() {
                 const totalLifetime = baseLifetime + downloadCount;
                 const reqs = (port.attr?.reqs || []).join(', ');
                 const genres = (port.attr?.genres || []).join(', ');
+                const runtimes = (port.attr?.runtime || []).map(r => runtimeNames[r] || r).join(', ');
                 const lastCommit = port.source.last_commit;
                 const displayCommit = (!lastCommit || lastCommit.includes('Update ports.json')) 
                     ? "" 
@@ -116,6 +131,7 @@ async function loadPorts() {
                                     <strong>Total Downloads:</strong> ${totalLifetime}
                                 </p>
                                 ${reqs ? `<div class="port-reqs">${reqs}</div>` : ''}
+                                ${runtimes ? `<div class="port-runtimes">${runtimes}</div>` : ''}
                                 ${genres ? `<div class="port-genres">${genres}</div>` : ''}
                                 ${displayCommit ? `<div class="port-commit-banner" title="${displayCommit}">${displayCommit}</div>` : ''}
                                 <div class="port-buttons">
@@ -132,18 +148,21 @@ async function loadPorts() {
             const genre = genreDropdown.value;
             const availability = availabilityDropdown.value;
             const reqLabel = requirementsDropdown.value;
+            const runtime = runtimeDropdown.value;
             const query = searchBar.value.trim().toLowerCase();
 
             const filtered = ports.filter(p => {
                 const pReqs = (p.attr?.reqs || []).map(r => r.toLowerCase());
                 if (genre !== 'all' && !p.attr?.genres?.includes(genre)) return false;
                 if (availability !== 'all' && p.attr?.availability !== availability) return false;
-                
+
                 // Fixed requirements check
                 if (reqLabel !== 'all') {
                     const mapsToSelected = pReqs.some(key => keyToLabel[key] === reqLabel);
                     if (!mapsToSelected) return false;
                 }
+
+                if (runtime !== 'all' && !(p.attr?.runtime || []).includes(runtime)) return false;
 
                 if (query && !(p.attr.title || '').toLowerCase().includes(query)) return false;
                 return true;
@@ -168,7 +187,7 @@ async function loadPorts() {
         };
 
         // Listeners
-        [searchBar, genreDropdown, availabilityDropdown, requirementsDropdown, sortDropdown]
+        [searchBar, genreDropdown, availabilityDropdown, requirementsDropdown, runtimeDropdown, sortDropdown]
             .forEach(el => el.addEventListener('input', updateDisplay));
 
         updateDisplay();

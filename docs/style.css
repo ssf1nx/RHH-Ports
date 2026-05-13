@@ -276,6 +276,20 @@ details[open] summary {
 	box-shadow: var(--shadow-inset);
 }
 
+/* Runtime badge */
+.port-runtimes {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--white);
+	background: var(--primary);
+	padding: 0.2rem 0.6rem;
+	border-radius: 12px;
+	white-space: nowrap;
+	align-self: center;
+	margin-bottom: 0.5rem;
+	box-shadow: var(--shadow-inset);
+}
+
 /* Card Footer */
 .port-footer {
 	margin-top: auto; /* Push buttons to the bottom */
