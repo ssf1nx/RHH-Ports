@@ -1,3 +1,4 @@
 {
-    "backend.isoPath": ""
+    "backend.isoPath": "",
+    "backend.checkForUpdates": false
 }
