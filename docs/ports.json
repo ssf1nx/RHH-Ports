@@ -4599,11 +4599,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/zelda-ladxhd/zelda-ladxhd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-ladxhd.zip",
-      "date_updated": "2026-05-12T14:45",
-      "md5": "ff13138295a8ed9b22ec54bd9d04adb1",
-      "size": 1761905,
-      "lifetime_downloads": 132,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "date_updated": "2026-05-13T20:06",
+      "md5": "e1e2ee5ddea2571e4bd8d350ed820ce8",
+      "size": 1762270,
+      "lifetime_downloads": 154,
+      "last_commit": "[LADXHD] Add a fix for libopenal for older glibc devices"
     }
   },
   {
