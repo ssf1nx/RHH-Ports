@@ -1,0 +1,38 @@
+{
+  "version": 4,
+  "name": "ziiaol.zip",
+  "items": [
+    "Zelda II: Enhanced.sh",
+    "ziiaol"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Zelda II: Enhanced",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Zelda II Enhanced adds a ton of QoL improvements, widescreen, new areas, and new collectibles. The game is arguably much easier to play through.",
+    "desc_md": null,
+    "inst": "Download the 1.0.0.2 zip from https://hoverbat.itch.io/ziiaol and extract it in the zelda2enhanced/assets folder.",
+    "inst_md": "Download the 1.0.0.2 zip from [Itch.io](https://hoverbat.itch.io/ziiaol) and extract it in the `zelda2enhanced/assets` folder.",
+    "genres": [
+      "action",
+      "adventure",
+      "platformer"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "gmtoolkit.squashfs",
+      "gmloadernext.squashfs"
+    ],
+    "store": [],
+    "availability": "free",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": null
+  }
+}
