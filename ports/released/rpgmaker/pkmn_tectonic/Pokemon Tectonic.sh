@@ -36,6 +36,7 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export XDG_DATA_HOME="$GAMEDIR/config"
 export LC_ALL=C
 export LANG=C
+export PCKILLMODE="Y"
 
 # Unzip stdlib
 if [ -f "$GAMEDIR/stdlib.zip" ]; then
@@ -102,6 +103,10 @@ if [ -d "$GAMEDIR/mkxp" ]; then
     mv "$GAMEDIR/mkxp/mkxp.json" "$GAMEDIR/mkxp.json"
     rmdir "$GAMEDIR/mkxp"
 fi
+
+# Force onscreen keyboard (replaces broken SDL text-input path with character grid)
+TE_FILE="$GAMEDIR/Plugins/Tectonic Graphics and UI/Objects and windows/Text Entry/PokemonEntryScene.rb"
+[ -f "$TE_FILE" ] && sed -i 's/^\(\s*USEKEYBOARD\s*=\s*\).*/\1false/' "$TE_FILE"
 
 # Gptk and run port
 $GPTOKEYB "mkxp-z.aarch64" -c "$GAMEDIR/tectonic.gptk" &

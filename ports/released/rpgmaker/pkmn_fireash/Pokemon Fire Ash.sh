@@ -36,6 +36,7 @@ export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export XDG_DATA_HOME="$GAMEDIR/config"
 export LC_ALL=C
 export LANG=C
+export PCKILLMODE="Y"
 
 # Unzip stdlib
 if [ -f "$GAMEDIR/stdlib.zip" ]; then
@@ -88,6 +89,15 @@ if ls "$GAMEDIR"/*.zip 1> /dev/null 2>&1; then
     rm -rf "$GAMEDIR/Game.exe"
     rm -rf "$GAMEDIR/Changelog.txt"
     rmdir "$GAMEDIR/Helpful Notes"
+    # Force onscreen keyboard (patch USEKEYBOARD=false inside Scripts.rxdata)
+    PY="${PYTHON:-python3}"
+    command -v "$PY" >/dev/null 2>&1 || PY=python
+    if command -v "$PY" >/dev/null 2>&1 && [ -f "$GAMEDIR/Data/Scripts.rxdata" ]; then
+        "$PY" "$GAMEDIR/patch_textentry.py" "$GAMEDIR/Data/Scripts.rxdata" || \
+            pm_message "Warning: keyboard patch failed; name entry may be stuck."
+    else
+        pm_message "Warning: python not found; keyboard patch skipped."
+    fi
 fi
 
 # Gptk and run port

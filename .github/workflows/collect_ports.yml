@@ -188,8 +188,9 @@ jobs:
             [[ -n "$README" ]] && README_URL="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/${README#"$GITHUB_WORKSPACE/"}"
             DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/ports-latest/${CANONICAL_NAME}"
             
-            # Last commit message
-            COMMIT_MSG=$(git log -1 --format=%s -- "$PORT_DIR")
+            # Last commit message — use STAGING_DIR so launcher (.sh) changes
+            # that live as siblings of the port_dir are also picked up.
+            COMMIT_MSG=$(git log -1 --format=%s -- "$STAGING_DIR")
             
             # Check if entry already exists (match by canonical name)
             EXISTING=$(jq -c --arg name "$CANONICAL_NAME" '.[] | select(.name == $name)' "$PORTS_JSON" 2>/dev/null || echo "")
