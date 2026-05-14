@@ -333,7 +333,13 @@
       "runtime": [
         "rlvm.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/324160/Clannad/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -345,12 +351,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/clannad.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-17",
-      "md5": "9e77ea38afff4f137c298951bf30a3bc",
-      "size": 383167,
+      "md5": "8059c1f2f64223c1db76184ebceddca5",
+      "size": 383234,
       "lifetime_downloads": 7,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -379,7 +385,13 @@
       "runtime": [
         "rlvm.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/462990/CLANNAD__Tomoyo_After__Its_a_Wonderful_Life/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -391,12 +403,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tomoyo_after.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-17",
-      "md5": "5991f8b48acba969720d0b18c73499ad",
-      "size": 343106,
+      "md5": "81d3151ac071f8f315e3886bc39e1838",
+      "size": 343194,
       "lifetime_downloads": 6,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -427,7 +439,18 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1374840/Dark_Deity/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/dark_deity_complete_edition",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [
         "2GB"
@@ -441,12 +464,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "92645b3079d891b1704f1b3adcfc3593",
-      "size": 6232753,
+      "md5": "e2494971911132b2db3527f90817ec89",
+      "size": 6232861,
       "lifetime_downloads": 7,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -477,7 +500,18 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2446600/Dark_Deity_2/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/dark_deity_2",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [
         "2GB"
@@ -491,12 +525,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "3f2c5c1be0b8e676c24829dd29f32ee6",
-      "size": 6132063,
+      "md5": "079d8dd594ee6d68743d0d1298d42a60",
+      "size": 6132166,
       "lifetime_downloads": 7,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -589,7 +623,18 @@
       "rtr": true,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/273570/Descent/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/descent",
+          "developerurl": ""
+        }
+      ],
       "availability": "demo",
       "reqs": [
         "analog_1|analog_2"
@@ -603,12 +648,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent/descent/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent.zip",
-      "date_updated": "2026-05-03T22:59",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "e6ad7add81d5fac6ab81c99be86ac96b",
-      "size": 14919742,
-      "lifetime_downloads": 8,
-      "last_commit": "[DESCENT] Drop older glibc builds"
+      "md5": "6cb595462ffb90bcb0d4fa7b5fc77a50",
+      "size": 14919836,
+      "lifetime_downloads": 15,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -638,7 +683,18 @@
       "rtr": true,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/273580/Descent_2/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/descent_2",
+          "developerurl": ""
+        }
+      ],
       "availability": "demo",
       "reqs": [
         "analog_1|analog_2"
@@ -652,12 +708,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent-1-2/descent2/descent2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent2.zip",
-      "date_updated": "2026-05-03T22:59",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "4fc09871b8775a3e2d02c641d845c559",
-      "size": 14463423,
-      "lifetime_downloads": 6,
-      "last_commit": "[DESCENT] Drop older glibc builds"
+      "md5": "26beede9798fc3c303f5e52883c7caf5",
+      "size": 14463519,
+      "lifetime_downloads": 12,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -685,7 +741,18 @@
       "rtr": false,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/273590/Descent_3/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/descent_3_expansion",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [
         "analog_1|analog_2"
@@ -699,12 +766,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/descent3/descent3/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/descent3.zip",
-      "date_updated": "2026-02-24T00:37",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-17",
-      "md5": "3a95c77c3d73d6950b36c8b68a526319",
-      "size": 7398826,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "1b9fc5e33ad27e29efaa2b0f141abf76",
+      "size": 7398930,
+      "lifetime_downloads": 11,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -786,11 +853,13 @@
       "store": [
         {
           "name": "Steam",
-          "url": "https://store.steampowered.com/app/2019300"
+          "gameurl": "https://store.steampowered.com/app/2019300",
+          "developerurl": ""
         },
         {
           "name": "Itch.io",
-          "url": "https://yanako-rpgs.itch.io/dokimon-quest"
+          "gameurl": "https://yanako-rpgs.itch.io/dokimon-quest",
+          "developerurl": ""
         }
       ],
       "availability": "paid",
@@ -804,12 +873,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-11",
-      "md5": "f6c8f2513197189cb3f0f7f5da3b57b6",
-      "size": 56272398,
+      "md5": "e34c82c402f3efa6d34c5adbe3196f01",
+      "size": 56272411,
       "lifetime_downloads": 14,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -839,7 +908,13 @@
       "rtr": true,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2280/DOOM__DOOM_II/",
+          "developerurl": ""
+        }
+      ],
       "availability": "demo",
       "reqs": [],
       "arch": [
@@ -851,12 +926,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
-      "date_updated": "2026-05-13T20:52",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-17",
-      "md5": "83a7cd5127dcaef96e05d53b035e18a6",
-      "size": 94871379,
-      "lifetime_downloads": 24,
-      "last_commit": "[DOOMENGINES] Adjust launchscript to add mapped buffer args and align gzdoom/uzdoom"
+      "md5": "956b5711310935acdef87f11865a319a",
+      "size": 94871452,
+      "lifetime_downloads": 26,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -1146,13 +1221,7 @@
       "runtime": [
         "gmloadernext.squashfs"
       ],
-      "store": [
-        {
-          "name": "Itch.io",
-          "gameurl": "https://krakelak.itch.io/gyakuten-live",
-          "developerurl": ""
-        }
-      ],
+      "store": [],
       "availability": "free",
       "reqs": [],
       "arch": [
@@ -1164,12 +1233,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-07-09",
-      "md5": "4100c4a34cbc7ecb752100e650be998a",
-      "size": 3216387,
+      "md5": "de874b242d8605d6e6ac0370d69c7146",
+      "size": 3216335,
       "lifetime_downloads": 15,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -1199,7 +1268,13 @@
       "runtime": [
         "solarus-1.6.5.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Itch.io",
+          "gameurl": "https://maxatrillionator.itch.io/hallows-eve",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [],
@@ -1209,12 +1284,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hallowseve.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "9d682e605e31cbdd232a6942d02fc9bd",
-      "size": 470236,
+      "md5": "a74b7a3a48bc82747dcbb3082b25ae9f",
+      "size": 470272,
       "lifetime_downloads": 10,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -1604,64 +1679,6 @@
   },
   {
     "version": 4,
-    "name": "koboo_prologue.zip",
-    "items": [
-      "Koboo The Tree Spirit - Prologue.sh",
-      "koboo_prologue"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Koboo The Tree Spirit : Prologue",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Explore the free prologue of Koboo: The Tree Spirit! An action rogue-lite platformer where you battle against towering hunters as a tiny spirit. Forge powerful synergies, battle seemingly gigantic bosses and rebuild your home.",
-      "desc_md": null,
-      "inst": "Add all game files to `koboo_prologue/assets/`.",
-      "inst_md": null,
-      "genres": [
-        "action",
-        "adventure",
-        "rpg"
-      ],
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": [
-        "dotnet-8.0.12.squashfs",
-        "gmtoolkit.squashfs",
-        "gmloadernext.squashfs"
-      ],
-      "store": [
-        {
-          "name": "Steam",
-          "gameurl": "https://store.steampowered.com/app/2194820/Koboo_The_Tree_Spirit__Prologue/",
-          "developerurl": ""
-        }
-      ],
-      "availability": "free",
-      "reqs": [
-        "!lowres"
-      ],
-      "arch": [
-        "aarch64"
-      ],
-      "min_glibc": ""
-    },
-    "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "date_updated": "2026-05-14T13:38",
-      "first_seen": "2025-11-19",
-      "md5": "84e1502da3b66bc9221f2a0eac00d848",
-      "size": 4326034,
-      "lifetime_downloads": 23,
-      "last_commit": "Update readmes to add runtime requirements"
-    }
-  },
-  {
-    "version": 4,
     "name": "oracles-randomizer-ng.zip",
     "items": [
       "LOZ Oracles Randomizer NG.sh",
@@ -1781,7 +1798,23 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1932680/LunarLux/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/lunarlux",
+          "developerurl": ""
+        },
+        {
+          "name": "Itch.io",
+          "gameurl": "https://cosmicnobab.itch.io/lunarlux",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [
         "!lowres"
@@ -1795,12 +1828,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "a24a8199e775b1a92094e1cfbdb45522",
-      "size": 5325228,
+      "md5": "0f8c80c3fd3452c0d30b9500a6204dca",
+      "size": 5325346,
       "lifetime_downloads": 6,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -1998,7 +2031,18 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/332610/Mystik_Belle/",
+          "developerurl": ""
+        },
+        {
+          "name": "Itch.io",
+          "gameurl": "https://darkfalzx.itch.io/mystik-belle",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -2010,12 +2054,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "79d9d5b7b2a2da68bd33824443b3c000",
-      "size": 3048474,
+      "md5": "5d013a685c512aa9960fe694daabca4b",
+      "size": 3048570,
       "lifetime_downloads": 11,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -2047,7 +2091,8 @@
       "store": [
         {
           "name": "Steam",
-          "url": "https://store.steampowered.com/app/3191030"
+          "gameurl": "https://store.steampowered.com/app/3191030",
+          "developerurl": ""
         }
       ],
       "availability": "free",
@@ -2063,12 +2108,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/nubbysnumberfactory.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "9114279137b499eb839b3ba736ca1ba0",
-      "size": 31493619,
+      "md5": "1b814930df5440bd2c81173659fb87f2",
+      "size": 31493629,
       "lifetime_downloads": 5,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -2098,7 +2143,18 @@
       "runtime": [
         "solarus-1.6.5.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1393750/Oceans_Heart/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/oceans_heart",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [],
@@ -2108,12 +2164,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oceansheart.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "0db92a396b417afb658abdfcae1f5b79",
-      "size": 1183258,
+      "md5": "ceff40b6029559a9262d7af317a198a4",
+      "size": 1183359,
       "lifetime_downloads": 16,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -2389,8 +2445,14 @@
       "runtime": [
         "gmloadernext.squashfs"
       ],
-      "store": [],
-      "availability": "",
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2088840/Picayune_Dreams/",
+          "developerurl": ""
+        }
+      ],
+      "availability": "paid",
       "reqs": [
         "analog_2",
         "hires"
@@ -2404,12 +2466,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-05-14T13:37",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2026-01-01",
-      "md5": "02ef84f1d426afb0e3ed1ccc2986fe2b",
-      "size": 5228285,
+      "md5": "2c3088e1e87392dcbe840269dfd50f79",
+      "size": 5228345,
       "lifetime_downloads": 2,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3088,7 +3150,13 @@
       "rtr": false,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1794960/Sonic_Origins/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -3100,12 +3168,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.1/sonic.1/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.1.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-10",
-      "md5": "113c74e526f9d6e201ac4e7e485a424c",
-      "size": 3222171,
-      "lifetime_downloads": 23,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "fd1b1876ebf231cd10ca37b8c8707b2e",
+      "size": 3222242,
+      "lifetime_downloads": 27,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3133,7 +3201,13 @@
       "rtr": false,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1794960/Sonic_Origins/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -3145,12 +3219,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.2/sonic.2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.2.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-10",
-      "md5": "3880ce55ee8368fdef144a325223a952",
-      "size": 3305187,
-      "lifetime_downloads": 18,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "9cbf2fdda1f042f370e176b371c5d4bc",
+      "size": 3305258,
+      "lifetime_downloads": 21,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3222,7 +3296,13 @@
       "rtr": false,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1794960/Sonic_Origins/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -3234,12 +3314,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-10",
-      "md5": "b583afdff42ba9eace4ad3eb4522480a",
-      "size": 2977056,
-      "lifetime_downloads": 26,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "8d5a564c54e41b166c7239cad355becc",
+      "size": 2977129,
+      "lifetime_downloads": 29,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3267,7 +3347,13 @@
       "rtr": false,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/584400/Sonic_Mania/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -3279,12 +3365,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.mania.zip",
-      "date_updated": "2026-05-12T05:55",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-10",
-      "md5": "127d58c2adcd31964f4f1d909d5eaf2b",
-      "size": 2658405,
-      "lifetime_downloads": 21,
-      "last_commit": "[RSDKV5] Update to 9dc6994"
+      "md5": "562adfb5076bc0374b8df7330d3641a7",
+      "size": 2658473,
+      "lifetime_downloads": 23,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3564,8 +3650,13 @@
       "runtime": [],
       "store": [
         {
-          "name": "",
-          "gameurl": "",
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2292260/STAR_WARS_Dark_Forces_Remaster/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/star_wars_dark_forces_remaster",
           "developerurl": ""
         }
       ],
@@ -3582,12 +3673,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/theforceengine.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-12-29",
-      "md5": "724d230aa90e417d0e60d48681b9af00",
-      "size": 9713702,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "213560bd83f3fb1ae856d065c9fb8dbd",
+      "size": 9713800,
+      "lifetime_downloads": 52,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -3907,13 +3998,7 @@
       "runtime": [
         "gmloadernext.squashfs"
       ],
-      "store": [
-        {
-          "name": "GitHub Source",
-          "gameurl": "https://github.com/JeodC/SuperStarTrek25thGMS/tree/main",
-          "developerurl": ""
-        }
-      ],
+      "store": [],
       "availability": "full",
       "reqs": [],
       "arch": [
@@ -3925,12 +4010,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/superstartrek.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-07-01",
-      "md5": "ae606050ce1a2abe6e75c2f22a146391",
-      "size": 17850353,
+      "md5": "78c8de819f42e8bca25ed72fde2b366f",
+      "size": 17850273,
       "lifetime_downloads": 7,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -4877,7 +4962,13 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1147860/UFO_50/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [],
       "arch": [
@@ -4889,12 +4980,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "c11e3cae155302130038eda19c2af99b",
-      "size": 5327049,
+      "md5": "23b0eae04a19b1284b730e37bb96b15e",
+      "size": 5327110,
       "lifetime_downloads": 42,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -4929,7 +5020,13 @@
       "store": [
         {
           "name": "Steam",
-          "url": "https://store.steampowered.com/app/391540/Undertale/"
+          "gameurl": "https://store.steampowered.com/app/391540/Undertale/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/undertale",
+          "developerurl": ""
         }
       ],
       "availability": "paid",
@@ -4943,12 +5040,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-18",
-      "md5": "1a38f1c1feff59f4ff0e9b984b612555",
-      "size": 9540035,
+      "md5": "7c3d6597cc7979520c163cf762ddda0f",
+      "size": 9540072,
       "lifetime_downloads": 33,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -4982,7 +5079,13 @@
       "store": [
         {
           "name": "Steam",
-          "url": "https://store.steampowered.com/app/391540/Undertale/"
+          "gameurl": "https://store.steampowered.com/app/391540/Undertale/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/undertale",
+          "developerurl": ""
         }
       ],
       "availability": "paid",
@@ -4996,12 +5099,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-05-19",
-      "md5": "9728b9626e380570d9939e26094e5b56",
-      "size": 9965829,
+      "md5": "cc91ae081b40b408af75e57d74fe82b0",
+      "size": 9965865,
       "lifetime_downloads": 16,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -5032,7 +5135,18 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/391540/Undertale/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/undertale",
+          "developerurl": ""
+        }
+      ],
       "availability": "free",
       "reqs": [],
       "arch": [
@@ -5044,12 +5158,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-11",
-      "md5": "a9723d62be9e0deb3af344d4ac727877",
-      "size": 3940116,
+      "md5": "30c27cf9de9282c1bf777a47ef9c3a80",
+      "size": 3940211,
       "lifetime_downloads": 15,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -5145,7 +5259,13 @@
         "gmtoolkit.squashfs",
         "gmloadernext.squashfs"
       ],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1594060/Victory_Heat_Rally/",
+          "developerurl": ""
+        }
+      ],
       "availability": "paid",
       "reqs": [
         "power"
@@ -5159,12 +5279,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-11",
-      "md5": "41a6162a56a8d9524e22c0407143c43b",
-      "size": 5559543,
+      "md5": "f1b059686c794664bd0c1c0fd367a81d",
+      "size": 5559609,
       "lifetime_downloads": 35,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
@@ -5192,7 +5312,23 @@
       "rtr": true,
       "exp": false,
       "runtime": [],
-      "store": [],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/2270/Wolfenstein_3D/",
+          "developerurl": ""
+        },
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/en/game/wolfenstein_3d",
+          "developerurl": ""
+        },
+        {
+          "name": "Itch.io",
+          "gameurl": "https://wisdomtree.itch.io/s3dna",
+          "developerurl": ""
+        }
+      ],
       "availability": "demo",
       "reqs": [],
       "arch": [
@@ -5204,12 +5340,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/wolf3d.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T16:48",
       "first_seen": "2025-11-11",
-      "md5": "fd52218a6193b375707370358a01fcfb",
-      "size": 7926385,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "13f2c2a3a7362c6de30a08e0d95bb2cb",
+      "size": 7926506,
+      "lifetime_downloads": 24,
+      "last_commit": "Remove old ports and fix all storefronts in port.json files"
     }
   },
   {
