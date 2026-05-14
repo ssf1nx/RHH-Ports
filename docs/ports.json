@@ -474,12 +474,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-05-18",
-      "md5": "e2494971911132b2db3527f90817ec89",
-      "size": 6232861,
+      "md5": "f6a358d7cfbfcacb0cc9fe710ac900b0",
+      "size": 6232910,
       "lifetime_downloads": 7,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -545,12 +545,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-05-18",
-      "md5": "079d8dd594ee6d68743d0d1298d42a60",
-      "size": 6132166,
+      "md5": "8f0db9fc6bb87e75d800d0bd71fea20e",
+      "size": 6132216,
       "lifetime_downloads": 7,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -956,12 +956,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-05-17",
-      "md5": "956b5711310935acdef87f11865a319a",
-      "size": 94871452,
+      "md5": "af5c3872a3f883c928d3417b46219142",
+      "size": 94871515,
       "lifetime_downloads": 26,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -1439,12 +1439,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight/hollow_knight/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight.zip",
-      "date_updated": "2026-04-04T12:44",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2026-01-17",
-      "md5": "af6db9e4cceabb0d8ca04f9bc3036e76",
-      "size": 6697109,
-      "lifetime_downloads": 83,
-      "last_commit": "[HK/SS] Update launchscripts"
+      "md5": "195e1ab32aad2564dcae191716f1a2b9",
+      "size": 6697137,
+      "lifetime_downloads": 238,
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -1505,12 +1505,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/hollow_knight_silksong/hollow_knight_silksong/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hollow_knight_silksong.zip",
-      "date_updated": "2026-04-04T11:53",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2026-01-17",
-      "md5": "0d2690276541e09121d24631a0d8023e",
-      "size": 6775243,
-      "lifetime_downloads": 56,
-      "last_commit": "[HK/SS] Update gptokeyb and fix permissions"
+      "md5": "8d6de525db42dfe73e5cf483ea0bac94",
+      "size": 6775300,
+      "lifetime_downloads": 147,
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -1572,12 +1572,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/impostorfactory/impostorfactory/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/impostorfactory/impostorfactory/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/impostorfactory.zip",
-      "date_updated": "2026-05-14T16:55",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2026-05-13",
-      "md5": "98c9480abd8a0008003cbcac21b86082",
-      "size": 393350,
+      "md5": "666e9e276c91f1a46b6695ea46809872",
+      "size": 393398,
       "lifetime_downloads": 2,
-      "last_commit": "Add store links for new rpgmaker additions"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -1690,12 +1690,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/to_the_moon_beachsode/to_the_moon_beachsode/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/to_the_moon_beachsode/to_the_moon_beachsode/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/to_the_moon_beachsode.zip",
-      "date_updated": "2026-05-14T16:55",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2026-05-13",
-      "md5": "6c141176448815da88a6b444ff134293",
-      "size": 217637,
+      "md5": "f05333e9ec4fd868ca8ef983d9a1557e",
+      "size": 217688,
       "lifetime_downloads": 3,
-      "last_commit": "Add store links for new rpgmaker additions"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -1906,12 +1906,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-05-18",
-      "md5": "0f8c80c3fd3452c0d30b9500a6204dca",
-      "size": 5325346,
+      "md5": "d89cc98e1e21436c0e878a76bdb1e795",
+      "size": 5325386,
       "lifetime_downloads": 6,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -2075,12 +2075,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "date_updated": "2026-05-14T13:37",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2026-01-17",
-      "md5": "1a7c8df0b1d84fade7743ab29be989ca",
-      "size": 8486707,
+      "md5": "1709ab6dc852495c58c7aa59c8199973",
+      "size": 8486745,
       "lifetime_downloads": 30,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -3210,12 +3210,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-05-14T13:38",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-10-07",
-      "md5": "37954cede1ad89e0fbc4c87641c13b57",
-      "size": 5424458,
+      "md5": "cde87baaa8686f927e2961ee896a6bb4",
+      "size": 5424503,
       "lifetime_downloads": 20,
-      "last_commit": "Update readmes to add runtime requirements"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -3417,12 +3417,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.cd/sonic.cd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.cd.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-11-10",
-      "md5": "8d5a564c54e41b166c7239cad355becc",
-      "size": 2977129,
+      "md5": "396a60e16bf5a0be850eee31cb879a73",
+      "size": 2977190,
       "lifetime_downloads": 29,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -3478,12 +3478,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/sonic-collection/sonic.mania/sonic.mania/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonic.mania.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-11-10",
-      "md5": "562adfb5076bc0374b8df7330d3641a7",
-      "size": 2658473,
+      "md5": "134c402c3076f884f5b803763e1c4bb1",
+      "size": 2658536,
       "lifetime_downloads": 23,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -3791,12 +3791,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/theforceengine/theforceengine/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/theforceengine.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-12-29",
-      "md5": "213560bd83f3fb1ae856d065c9fb8dbd",
-      "size": 9713800,
+      "md5": "1eb6b61b8540ce1371240f5ccd3d953f",
+      "size": 9713835,
       "lifetime_downloads": 52,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -5281,12 +5281,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-11-11",
-      "md5": "30c27cf9de9282c1bf777a47ef9c3a80",
-      "size": 3940211,
+      "md5": "43e43d74ff5bc3441c01852a448bcf84",
+      "size": 3940237,
       "lifetime_downloads": 15,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -5350,12 +5350,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-08-25",
-      "md5": "e864ce6eb7614b58675b14c81bd6a08d",
-      "size": 2433360,
-      "lifetime_downloads": 19,
-      "last_commit": "Update readmes to add runtime requirements"
+      "md5": "7f040be8a08670f8a7f5ab8360f43367",
+      "size": 2433398,
+      "lifetime_downloads": 20,
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -5417,12 +5417,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-11-11",
-      "md5": "f1b059686c794664bd0c1c0fd367a81d",
-      "size": 5559609,
+      "md5": "efc03cb313a80caf4575d93666310b29",
+      "size": 5559676,
       "lifetime_downloads": 35,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
@@ -5488,12 +5488,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/wolf3d.zip",
-      "date_updated": "2026-05-14T16:48",
+      "date_updated": "2026-05-14T18:18",
       "first_seen": "2025-11-11",
-      "md5": "13f2c2a3a7362c6de30a08e0d95bb2cb",
-      "size": 7926506,
+      "md5": "2a974dfb08c66e513b230a5c6027558a",
+      "size": 7926558,
       "lifetime_downloads": 24,
-      "last_commit": "Remove old ports and fix all storefronts in port.json files"
+      "last_commit": "Add discounts and more stores"
     }
   },
   {
