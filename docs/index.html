@@ -66,12 +66,16 @@
 	</header>
 
 	<main>
-		<!-- Above-grid stack: carousel + port count, both aligned to the center column.
+		<!-- Above-grid stack: carousels + port count, all aligned to the center column.
 		     The rails (filters, devlog) start BELOW this stack in the page-layout grid. -->
 		<div class="above-grid">
 			<section class="recent-updates" aria-label="Recently updated ports">
 				<h2>Recently updated</h2>
 				<div class="recent-strip" id="recent-strip"></div>
+			</section>
+			<section class="recent-updates" id="new-section" aria-label="New ports">
+				<h2>What's new</h2>
+				<div class="recent-strip" id="new-strip"></div>
 			</section>
 			<section id="port-count" aria-live="polite"></section>
 		</div>

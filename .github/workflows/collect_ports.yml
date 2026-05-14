@@ -225,6 +225,17 @@ jobs:
               LIFE=0
             fi
 
+            # first_seen is set ONCE per port and preserved across runs. New
+            # ports get today's date. The "What's new" frontend carousel uses
+            # this to differentiate brand-new releases from routine updates.
+            FIRST_SEEN=""
+            if [[ -n "$EXISTING" ]]; then
+              FIRST_SEEN=$(echo "$EXISTING" | jq -r '.source.first_seen // empty')
+            fi
+            if [[ -z "$FIRST_SEEN" ]]; then
+              FIRST_SEEN=$(date -u +"%Y-%m-%d")
+            fi
+
             MERGED=$(jq -n \
               --argjson o "$(cat "$PORT_JSON")" \
               --arg d "$DATE_UPDATED" \
@@ -235,11 +246,13 @@ jobs:
               --arg s "$SIZE" \
               --arg l "$LIFE" \
               --arg c "$COMMIT_MSG" \
+              --arg fs "$FIRST_SEEN" \
               '$o + {source:{
                 screenshot_url:$screenshot_url,
                 readme_url:$readme_url,
                 download_url:$download_url,
                 date_updated:$d,
+                first_seen:$fs,
                 md5:$m,
                 size:($s|tonumber),
                 lifetime_downloads:($l|tonumber),

@@ -8,10 +8,12 @@ async function loadPorts() {
     const runtimeDropdown = document.getElementById('runtime-filter');
     const sortDropdown = document.getElementById('sort-select');
     const recentStrip = document.getElementById('recent-strip');
+    const newStrip = document.getElementById('new-strip');
     const devlogContent = document.getElementById('devlog-content');
     const GITHUB_REPO_OWNER = 'JeodC';
     const GITHUB_REPO_NAME = 'RHH-Ports';
     const RECENT_COUNT = 6;
+    const NEW_COUNT = 6;
     const DEVLOG_COUNT = 3;
 
     const runtimeNames = {
@@ -92,6 +94,33 @@ async function loadPorts() {
         const runtimeSet = new Set(ports.flatMap(p => p.attr?.runtime || []));
         populateDropdown(runtimeDropdown, Array.from(runtimeSet).sort(), r => runtimeNames[r] || r);
 
+        const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        // Shared tile renderer: same template for the Recently Updated and
+        // What's New carousels.
+        const renderTile = (p) => {
+            const title = p.attr?.title || p.name;
+            const screenshot = p.source?.screenshot_url || '';
+            const date = (p.source?.date_updated || '').split('T')[0];
+            const downloadUrl = p.source?.download_url || '';
+            const readmeUrl = p.source?.readme_url || '';
+            const filename = downloadUrl ? downloadUrl.split('/').pop() : '';
+            const dlSinceUpdate = downloadCounts?.[filename] ?? 0;
+            const lastCommit = p.source?.last_commit;
+            const meaningfulCommit = (lastCommit && !lastCommit.includes('Update ports.json')) ? lastCommit : '';
+            const tooltip = meaningfulCommit || title;
+            const href = readmeUrl || downloadUrl || '#';
+            return `
+                <a class="recent-tile" href="${href}" target="_blank" rel="noopener noreferrer" title="${escAttr(tooltip)}" data-readme="${escAttr(readmeUrl)}" data-port-title="${escAttr(title)}">
+                    <img src="${screenshot}" alt="${title} screenshot" loading="lazy">
+                    <div class="recent-tile-info">
+                        <div class="recent-tile-title">${title}</div>
+                        <div class="recent-tile-date">${date} | ${dlSinceUpdate} ↓ since update</div>
+                        ${meaningfulCommit ? `<div class="recent-tile-commit">${escAttr(meaningfulCommit)}</div>` : ''}
+                    </div>
+                </a>`;
+        };
+
         // --- Recently Updated Carousel ---
         const renderRecentStrip = () => {
             if (!recentStrip) return;
@@ -100,32 +129,19 @@ async function loadPorts() {
                 .sort((a, b) => new Date(b.source.date_updated) - new Date(a.source.date_updated))
                 .slice(0, RECENT_COUNT);
 
-            const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            recentStrip.innerHTML = recent.map(p => {
-                const title = p.attr?.title || p.name;
-                const screenshot = p.source?.screenshot_url || '';
-                const date = (p.source?.date_updated || '').split('T')[0];
-                const downloadUrl = p.source?.download_url || '';
-                const readmeUrl = p.source?.readme_url || '';
-                const filename = downloadUrl ? downloadUrl.split('/').pop() : '';
-                const dlSinceUpdate = downloadCounts?.[filename] ?? 0;
-                const lastCommit = p.source?.last_commit;
-                const meaningfulCommit = (lastCommit && !lastCommit.includes('Update ports.json')) ? lastCommit : '';
-                const tooltip = meaningfulCommit || title;
-                // Clicking the tile opens the README modal (intercepted by JS). If
-                // the port has no README we still set the href so middle-click
-                // or right-click fall back to the download.
-                const href = readmeUrl || downloadUrl || '#';
-                return `
-                    <a class="recent-tile" href="${href}" target="_blank" rel="noopener noreferrer" title="${escAttr(tooltip)}" data-readme="${escAttr(readmeUrl)}" data-port-title="${escAttr(title)}">
-                        <img src="${screenshot}" alt="${title} screenshot" loading="lazy">
-                        <div class="recent-tile-info">
-                            <div class="recent-tile-title">${title}</div>
-                            <div class="recent-tile-date">${date} | ${dlSinceUpdate} ↓ since update</div>
-                            ${meaningfulCommit ? `<div class="recent-tile-commit">${escAttr(meaningfulCommit)}</div>` : ''}
-                        </div>
-                    </a>`;
-            }).join('');
+            recentStrip.innerHTML = recent.map(renderTile).join('');
+        };
+
+        // --- "What's New" Carousel: the N most-recently-added ports by
+        //     first_seen. Always shows N tiles; never hides the section. ---
+        const renderNewStrip = () => {
+            if (!newStrip) return;
+            const fresh = [...ports]
+                .filter(p => p.source?.first_seen)
+                .sort((a, b) => (b.source.first_seen || '').localeCompare(a.source.first_seen || ''))
+                .slice(0, NEW_COUNT);
+
+            newStrip.innerHTML = fresh.map(renderTile).join('');
         };
 
         // --- Devlog ---
@@ -188,6 +204,7 @@ async function loadPorts() {
         };
 
         renderRecentStrip();
+        renderNewStrip();
         renderDevlog();
 
         // --- Core Functions ---
@@ -368,18 +385,22 @@ hr { border: none; border-top: 1px solid rgba(0,0,0,0.15); margin: 1.5rem 0; }
             openReadmeModal(url, title);
         });
 
-        // Recent tiles open the README modal when clicked. If a port has no
-        // README, data-readme is empty and the default link behavior takes
-        // over (the href falls back to the download URL).
-        recentStrip?.addEventListener('click', (e) => {
-            const tile = e.target.closest('.recent-tile');
-            if (!tile) return;
-            const readme = tile.getAttribute('data-readme');
-            if (!readme) return;
-            e.preventDefault();
-            const title = tile.getAttribute('data-port-title') || 'README';
-            openReadmeModal(readme, title);
-        });
+        // Carousel tiles open the README modal when clicked. If a port has
+        // no README, data-readme is empty and the default link behavior
+        // takes over (the href falls back to the download URL).
+        const wireTileClicks = (strip) => {
+            strip?.addEventListener('click', (e) => {
+                const tile = e.target.closest('.recent-tile');
+                if (!tile) return;
+                const readme = tile.getAttribute('data-readme');
+                if (!readme) return;
+                e.preventDefault();
+                const title = tile.getAttribute('data-port-title') || 'README';
+                openReadmeModal(readme, title);
+            });
+        };
+        wireTileClicks(recentStrip);
+        wireTileClicks(newStrip);
 
     } catch (err) {
         container.textContent = 'Error loading ports: ' + err.message;
