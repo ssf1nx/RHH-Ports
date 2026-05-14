@@ -50,7 +50,9 @@ async function loadPorts() {
             icon: 'fa-brands fa-steam',
             short: 'Steam',
             addAffiliate: (url) => {
-                const TAG = '';
+                // RHH-Ports Steam Curator
+                // https://store.steampowered.com/curator/46123857-RHH-Ports
+                const TAG = '46123857';
                 if (!TAG) return url;
                 return url + (url.includes('?') ? '&' : '?') + 'curator_clanid=' + encodeURIComponent(TAG);
             }
