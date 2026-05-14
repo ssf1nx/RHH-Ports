@@ -41,12 +41,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/am2r/am2r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/am2r.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "c7a38c718e81a50985d81ab79829bf84",
-      "size": 2974442,
-      "lifetime_downloads": 99,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "08fbc988f0731eb5c6c1448e1dbcf071",
+      "size": 2974652,
+      "lifetime_downloads": 100,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -88,12 +88,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/air/air/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/air.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "c318f388abfe5320e5bd3103158413fa",
-      "size": 743858,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "94261ba597fb258b31c2ecce022a965d",
+      "size": 744073,
+      "lifetime_downloads": 18,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -143,12 +143,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-07-02",
-      "md5": "85eb130bc4966a34aa823532481b18aa",
-      "size": 2622082,
+      "md5": "24c9375cc85405f370bbe1d4dd258e45",
+      "size": 2622364,
       "lifetime_downloads": 37,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -205,12 +205,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "2138913f24a9cb9d5e367160c8a2bbd9",
-      "size": 2750745,
+      "md5": "09863311d08e779ba9f7b1778617cd2c",
+      "size": 2750999,
       "lifetime_downloads": 18,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -298,12 +298,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/benboquest/benboquest/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/benboquest.zip",
-      "date_updated": "2026-05-11T17:11",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "eb2932e2afbb32c0fe87bf8a8a26297d",
-      "size": 34623472,
+      "md5": "fb02456e7172aecaef972a76783aed74",
+      "size": 34623708,
       "lifetime_downloads": 6,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -345,12 +345,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/clannad/clannad/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/clannad.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "7e340c72495e26bdeb6c051d9440259b",
-      "size": 382964,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "9e77ea38afff4f137c298951bf30a3bc",
+      "size": 383167,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -391,12 +391,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/tomoyo_after/tomoyo_after/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tomoyo_after.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "770e84ac903a2147b5998ba76b0c2b15",
-      "size": 342904,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "5991f8b48acba969720d0b18c73499ad",
+      "size": 343106,
+      "lifetime_downloads": 6,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -441,12 +441,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "2fcebdf90a398c73b4ae79837fd3559c",
-      "size": 6232479,
+      "md5": "92645b3079d891b1704f1b3adcfc3593",
+      "size": 6232753,
       "lifetime_downloads": 7,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -491,12 +491,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "866e5acd0a76cccd812fbd648bb4a281",
-      "size": 6131790,
-      "lifetime_downloads": 6,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "3f2c5c1be0b8e676c24829dd29f32ee6",
+      "size": 6132063,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -554,12 +554,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "4c5d40b07dcbd97c2269c7dd44e85889",
-      "size": 4198713,
-      "lifetime_downloads": 80,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "bfdf78c5a0d243c17fc43846b48ba01a",
+      "size": 4198965,
+      "lifetime_downloads": 83,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -747,12 +747,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/digitaltamersreborn.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "6781096d46b0b44869b033aa156d42f6",
-      "size": 220690123,
+      "md5": "eeff5d62a4604310aec5785ecbba52f3",
+      "size": 220690348,
       "lifetime_downloads": 14,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -804,12 +804,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/dokimon/dokimon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/dokimon.zip",
-      "date_updated": "2026-05-14T13:13",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-11-11",
-      "md5": "62652f26420618bfc6129ad9aaa23e2b",
-      "size": 56272258,
+      "md5": "f6c8f2513197189cb3f0f7f5da3b57b6",
+      "size": 56272398,
       "lifetime_downloads": 14,
-      "last_commit": "[DOKIMON] Add a section in README about using DLC"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1002,12 +1002,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/f-zeropocket/f-zeropocket/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/f-zeropocket.zip",
-      "date_updated": "2026-05-11T17:11",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-11-11",
-      "md5": "88d82a89282023c7a5228639a22d8bc4",
-      "size": 39169759,
-      "lifetime_downloads": 20,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "md5": "eab2440f4fd09bdb20ed2c6896840e52",
+      "size": 39169988,
+      "lifetime_downloads": 21,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1057,12 +1057,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/fadingafternoon/fadingafternoon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fadingafternoon.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-07-02",
-      "md5": "9ff826dab97ee0ce18a80ffe2aeda342",
-      "size": 4083570,
-      "lifetime_downloads": 31,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "80012be11c24be553bfe4ddc98856d66",
+      "size": 4083854,
+      "lifetime_downloads": 32,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1112,12 +1112,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "81bd737f43e0fa88c9f9433b7328d82e",
-      "size": 5218132,
+      "md5": "a17e5d70d43e3b5c03ab9106691505c1",
+      "size": 5218404,
       "lifetime_downloads": 26,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1164,12 +1164,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-07-09",
-      "md5": "6dbb703455f5401e2a00998e28fb7e06",
-      "size": 3216161,
+      "md5": "4100c4a34cbc7ecb752100e650be998a",
+      "size": 3216387,
       "lifetime_downloads": 15,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1209,12 +1209,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/hallowseve/hallowseve/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/hallowseve.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "77651a3ccfe0297214620170bad974ea",
-      "size": 470006,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "9d682e605e31cbdd232a6942d02fc9bd",
+      "size": 470236,
+      "lifetime_downloads": 10,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1269,12 +1269,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "a591af8313df5b52c909471341942f3a",
-      "size": 2734868,
+      "md5": "1865c5a5723a9e978284d417e2d41e0c",
+      "size": 2735124,
       "lifetime_downloads": 11,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1438,12 +1438,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/impostorfactory/impostorfactory/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/impostorfactory/impostorfactory/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/impostorfactory.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-05-13",
-      "md5": "00f5d29de99863c396bfa4cf579a710c",
-      "size": 393072,
-      "lifetime_downloads": 0,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "615e71a4856bcfa83d0979d150bcc516",
+      "size": 393283,
+      "lifetime_downloads": 2,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1499,12 +1499,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-11-11",
-      "md5": "67c662b12d80855158943d820ccc37b8",
-      "size": 5659153,
+      "md5": "975624d3c6081053b3f4cf1a7ab159bd",
+      "size": 5659418,
       "lifetime_downloads": 33,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1547,12 +1547,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/to_the_moon_beachsode/to_the_moon_beachsode/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/to_the_moon_beachsode/to_the_moon_beachsode/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/to_the_moon_beachsode.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-05-13",
-      "md5": "1c095338e8d4a79b779cb337d7c8e545",
-      "size": 217376,
-      "lifetime_downloads": 0,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "d8e2869b7bf05c81d4a1cbf0c378287b",
+      "size": 217588,
+      "lifetime_downloads": 3,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1594,12 +1594,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/kanon/kanon/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/kanon.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "7ff6b4fe5fdfc0e0c058ed3ac1f8baac",
-      "size": 335376,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "ca530c7572e9fe828de68d798f8bb78f",
+      "size": 335586,
+      "lifetime_downloads": 6,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1652,12 +1652,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/koboo_prologue/koboo_prologue/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/koboo_prologue.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-11-19",
-      "md5": "8261e2b6dae566c2d84d302663caaeb8",
-      "size": 4325745,
-      "lifetime_downloads": 21,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "84e1502da3b66bc9221f2a0eac00d848",
+      "size": 4326034,
+      "lifetime_downloads": 23,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1743,12 +1743,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/littlebusters/littlebusters/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/littlebusters.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "40b7dc0dddefffeaa682e63074799828",
-      "size": 517354,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "03bb41128e53aca3ac50ec5200623ecb",
+      "size": 517566,
+      "lifetime_downloads": 4,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1795,12 +1795,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "8854ac9835ea02a5d1f22286003d7045",
-      "size": 5324951,
+      "md5": "a24a8199e775b1a92094e1cfbdb45522",
+      "size": 5325228,
       "lifetime_downloads": 6,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1852,12 +1852,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-28",
-      "md5": "95f3080818ec00e949efa0b3639d203e",
-      "size": 5117500,
+      "md5": "f0f77a5560a0a6a935778ad37a5edd61",
+      "size": 5117761,
       "lifetime_downloads": 11,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -1959,12 +1959,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "date_updated": "2026-02-24T00:37",
+      "date_updated": "2026-05-14T13:37",
       "first_seen": "2026-01-17",
-      "md5": "3a8bf9590fc99a3b9075a2f7527238d1",
-      "size": 8486477,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "1a7c8df0b1d84fade7743ab29be989ca",
+      "size": 8486707,
+      "lifetime_downloads": 30,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2010,12 +2010,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "2e351491327ac535beed5f8981da29fb",
-      "size": 3048192,
+      "md5": "79d9d5b7b2a2da68bd33824443b3c000",
+      "size": 3048474,
       "lifetime_downloads": 11,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2063,12 +2063,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/nubbysnumberfactory/nubbysnumberfactory/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/nubbysnumberfactory.zip",
-      "date_updated": "2026-05-11T17:11",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "5138f8c7820ee3296d4292d28bbf4083",
-      "size": 31493398,
+      "md5": "9114279137b499eb839b3ba736ca1ba0",
+      "size": 31493619,
       "lifetime_downloads": 5,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2108,12 +2108,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/oceansheart/oceansheart/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oceansheart.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "a9011d931367b0624033fc69707ee854",
-      "size": 1183020,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "0db92a396b417afb658abdfcae1f5b79",
+      "size": 1183258,
+      "lifetime_downloads": 16,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2164,12 +2164,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2026-01-01",
-      "md5": "9e927e7ba3a2a3259c11202b8de08408",
-      "size": 4803188,
+      "md5": "f8a9e185063f527ec364344e33c05620",
+      "size": 4803472,
       "lifetime_downloads": 7,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2210,12 +2210,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/osanasrevenge/osanasrevenge/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/osanasrevenge.zip",
-      "date_updated": "2026-05-13T19:49",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "c7b1059b0e50e26c8c0e3d21ded12f53",
-      "size": 372863,
+      "md5": "befe6b6eded073a975d380269af4c4d1",
+      "size": 373096,
       "lifetime_downloads": 10,
-      "last_commit": "Fix incorrect runtime tag in port.json"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2266,12 +2266,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-07-01",
-      "md5": "4a168ec534f2817600f80e8ba184a86a",
-      "size": 4906307,
-      "lifetime_downloads": 8,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "2f36aecb32dd61affef4563c49f46290",
+      "size": 4906556,
+      "lifetime_downloads": 10,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2355,12 +2355,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip",
-      "date_updated": "2026-05-14T12:28",
+      "date_updated": "2026-05-14T13:37",
       "first_seen": "2026-01-29",
-      "md5": "7bdaa73a63e2b2dea0e0727440346107",
-      "size": 21670259,
+      "md5": "c6faa7200996fd6c1e09a748892d6a27",
+      "size": 21670445,
       "lifetime_downloads": 288,
-      "last_commit": "[Pharos] Update to v1.1.0"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2404,12 +2404,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:37",
       "first_seen": "2026-01-01",
-      "md5": "26ef7e7b89da5041a3ae57bac5c05fa1",
-      "size": 5228072,
+      "md5": "02ef84f1d426afb0e3ed1ccc2986fe2b",
+      "size": 5228285,
       "lifetime_downloads": 2,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2439,8 +2439,7 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "dotnet-8.0.12.squashfs",
-        "gmloadernext.squashfs"
+        "dotnet-8.0.12.squashfs"
       ],
       "store": [
         {
@@ -2462,12 +2461,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pizzatower/pizzatower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pizzatower.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "cd77bb4d17f3e50993d8fee99a90133b",
-      "size": 11534327,
-      "lifetime_downloads": 36,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "4ce520af5ff4c37e6168b5066bad86b5",
+      "size": 11534584,
+      "lifetime_downloads": 37,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2508,12 +2507,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rlvm/planetarian/planetarian/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/planetarian.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "72dd1dfc84e3ffb0853edc7636171127",
-      "size": 260259,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "33432606c9bc851ef10570f43c99299a",
+      "size": 260474,
+      "lifetime_downloads": 6,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2554,12 +2553,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/pocketcrystalleague/pocketcrystalleague/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pocketcrystalleague.zip",
-      "date_updated": "2026-05-11T17:12",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "877001e4922a4a5878a3717851927395",
-      "size": 19377575,
-      "lifetime_downloads": 14,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "md5": "655d11dc435a3d85f8f4a318dcd251a9",
+      "size": 19377800,
+      "lifetime_downloads": 16,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2601,12 +2600,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_fireash/pkmn_fireash/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_fireash/pkmn_fireash/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_fireash.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-02-07",
-      "md5": "4c8d562a33bfc478176121ac912861d5",
-      "size": 170810,
-      "lifetime_downloads": 43,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "b00ba51e3fdfadb8ffb9d5acf196076e",
+      "size": 171020,
+      "lifetime_downloads": 45,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2651,12 +2650,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_reborn/pkmn_reborn/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_reborn/pkmn_reborn/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_reborn.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-05-13",
-      "md5": "cabc40ea5a019f150501aa26839e9be4",
-      "size": 90250,
-      "lifetime_downloads": 0,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "4a36f1e6b6b805b5bd47ecb9490272b2",
+      "size": 90456,
+      "lifetime_downloads": 1,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2701,12 +2700,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_rejuvenation/pkmn_rejuvenation/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_rejuvenation/pkmn_rejuvenation/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_rejuvenation.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-05-13",
-      "md5": "934223e363f63d0bdc4e685749bf10c4",
-      "size": 7434250,
-      "lifetime_downloads": 0,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "9d8cb6dfe673c979719c64e6f985082a",
+      "size": 7434451,
+      "lifetime_downloads": 1,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2748,12 +2747,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/rpgmaker/pkmn_tectonic/pkmn_tectonic/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pkmn_tectonic.zip",
-      "date_updated": "2026-05-13T19:11",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-02-07",
-      "md5": "cc6e0ae360a96254a8b6c2c863cb5a2f",
-      "size": 321032,
-      "lifetime_downloads": 31,
-      "last_commit": "MKXP-Z becomes a runtime, add rpgmaker ports"
+      "md5": "432080eee8fd4c3c66ae1d0afa34306e",
+      "size": 321242,
+      "lifetime_downloads": 36,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2797,12 +2796,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pokewilds.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-17",
-      "md5": "ebc7a32e656e1d5ab8e2bb5a8de6daa2",
-      "size": 2196446,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "e2c03d93d69036156d8024d5be30f979",
+      "size": 2196623,
+      "lifetime_downloads": 24,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -2854,12 +2853,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "date_updated": "2026-05-12T14:44",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2026-01-01",
-      "md5": "dfea9d3bee82049e1d8b4ef877d9f05d",
-      "size": 5246869,
+      "md5": "a46e401b6f7fd973c7ffb21ac8643404",
+      "size": 5247139,
       "lifetime_downloads": 2,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3056,12 +3055,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-10-07",
-      "md5": "e926b6fda1da7bd76661a667aabf5fc8",
-      "size": 5424182,
-      "lifetime_downloads": 18,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "37954cede1ad89e0fbc4c87641c13b57",
+      "size": 5424458,
+      "lifetime_downloads": 20,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3327,12 +3326,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictimetwisted/sonictimetwisted/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictimetwisted.zip",
-      "date_updated": "2026-05-11T17:12",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "83b3d4cd988b093bbaa85d537bb09399",
-      "size": 97179051,
+      "md5": "0f887c0edfcb9468235b6aa8da375136",
+      "size": 97179278,
       "lifetime_downloads": 8,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3379,12 +3378,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "f00841f9865251a9fde25cf6e7ab5da9",
-      "size": 14962096,
-      "lifetime_downloads": 32,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "c6dcb7de0f389bc3f185d57d42e8ed41",
+      "size": 14962357,
+      "lifetime_downloads": 33,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3531,12 +3530,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-08-11",
-      "md5": "426ec9834dc608ef3b4bb3561cec9445",
-      "size": 5134200,
+      "md5": "3fb44fd65a526116b08e5af34ff145bb",
+      "size": 5134445,
       "lifetime_downloads": 8,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3781,12 +3780,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smb1r.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-09-15",
-      "md5": "dd4218c9c57dbc8726453e4e852521a3",
-      "size": 67778971,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "3e585bb45967791c04d50696335febed",
+      "size": 67779183,
+      "lifetime_downloads": 165,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3874,12 +3873,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/smxpr/smxpr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smxpr.zip",
-      "date_updated": "2026-05-11T17:12",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2026-02-07",
-      "md5": "6fbff914e5deb1cc88ad6da2c1cf3b90",
-      "size": 22253382,
-      "lifetime_downloads": 28,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "md5": "512d0b1829f20e364bd4e8035845cb60",
+      "size": 22253619,
+      "lifetime_downloads": 33,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3926,12 +3925,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/superstartrek/superstartrek/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/superstartrek.zip",
-      "date_updated": "2026-05-11T17:12",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-07-01",
-      "md5": "2ecd410b3a4a25c5252201e1a5d9280b",
-      "size": 17850114,
-      "lifetime_downloads": 5,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "md5": "ae606050ce1a2abe6e75c2f22a146391",
+      "size": 17850353,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -3986,12 +3985,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-07-02",
-      "md5": "93873100b7c615757cd14621a9267aed",
-      "size": 3986913,
+      "md5": "5eeabdc8457ebe85baca39c2dcba4ca1",
+      "size": 3987194,
       "lifetime_downloads": 28,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4091,12 +4090,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-11-07",
-      "md5": "468f29f09786d433873ce9704171e5e6",
-      "size": 324731,
-      "lifetime_downloads": 31,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "7315e82a8c27dcbf4c24a608e2613386",
+      "size": 324979,
+      "lifetime_downloads": 36,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4140,12 +4139,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-11-07",
-      "md5": "23503f0c7994fbac61426ef47118eaa3",
-      "size": 403429,
-      "lifetime_downloads": 23,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "575a898b0b171a9bcff840d34d8a89b8",
+      "size": 403678,
+      "lifetime_downloads": 26,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4185,12 +4184,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldaxd-mercurischess/zeldaxd-mercurischess/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldaxd-mercurischess.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "fe66d4aa86b809e8e951b82550656adb",
-      "size": 384181,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "a3e86fd467dc2ebc78c38c805853267e",
+      "size": 384410,
+      "lifetime_downloads": 9,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4230,12 +4229,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mercurischest/zelda-mercurischest/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mercurischest.zip",
-      "date_updated": "2026-05-13T19:46",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "61dce63b2957617b78b03ebbda8b29e4",
-      "size": 2634937,
-      "lifetime_downloads": 4,
-      "last_commit": "Fix runtime tag missing in port.json"
+      "md5": "7aa23f49f6468f66b929b3f82315dff5",
+      "size": 2635169,
+      "lifetime_downloads": 6,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4275,12 +4274,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusdx/zelda-mysteryofsolarusdx/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusdx.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "469dc5ea0409ae34697a94b8c0988bd6",
-      "size": 389908,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "b9f58392ae9b0c8e0b50dc047734f211",
+      "size": 390135,
+      "lifetime_downloads": 10,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4320,12 +4319,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-mysteryofsolarusxd/zelda-mysteryofsolarusxd/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-mysteryofsolarusxd.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "5272b605eb5b39b8a4003a1b723fdbf6",
-      "size": 357688,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "1b6c5c6e88f176da4e916408925a753a",
+      "size": 357915,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4365,12 +4364,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-roth-se/zelda-roth-se/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-roth-se.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "c6fbb7eaf97006698aafd3f6fe3a60da",
-      "size": 380745,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "7af123af6778a71e106d0342635155a4",
+      "size": 380976,
+      "lifetime_downloads": 10,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4410,12 +4409,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zelda-bookofmudora/zelda-bookofmudora/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-bookofmudora.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "ea178e78c5eeb4585d7ed1905524dd52",
-      "size": 392646,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "f56438f4afd81ad0c6b2caaa3403e8b3",
+      "size": 392874,
+      "lifetime_downloads": 6,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4455,12 +4454,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldo-labors/zeldo-labors/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldo-labors.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-01-01",
-      "md5": "2af33bbb9f36d4d23bca895654824760",
-      "size": 666232,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "d46fd241af925458ec0f862dac7cc5b4",
+      "size": 666466,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4548,12 +4547,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge/zeldoschallenge/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "81507fb9eb39db2805d848be8bb9ffd7",
-      "size": 411748,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "1fccd3072e9155af115aa099cfbf30dc",
+      "size": 411976,
+      "lifetime_downloads": 5,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4593,12 +4592,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/zeldoschallenge2/zeldoschallenge2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldoschallenge2.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "55c059b28b1bfe7fac25758cc10b6667",
-      "size": 610557,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "f08c64f340bf6c58ca2feba384686d62",
+      "size": 610785,
+      "lifetime_downloads": 9,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4647,12 +4646,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldadoi.zip",
-      "date_updated": "2026-05-11T17:12",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-12-16",
-      "md5": "354232dc734ead36042910f7a23239ca",
-      "size": 40573635,
+      "md5": "05ca1b3a86007403cc52d0fdfc0ba4f0",
+      "size": 40573852,
       "lifetime_downloads": 18,
-      "last_commit": "[GML] Update all GMS ports to properly reference runtime libraries"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4798,12 +4797,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-07-09",
-      "md5": "5f28d79538f9ea298f7d2db723ac46e7",
-      "size": 3622517,
+      "md5": "4381832da5622b4d681b43b4e724d3ca",
+      "size": 3622801,
       "lifetime_downloads": 5,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4843,12 +4842,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics!/tunics!/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/tunics!/tunics!/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/tunics!.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-11-11",
-      "md5": "bad235d4a508d0b56ca97c2cd17f3814",
-      "size": 2422386,
+      "md5": "5749b66887b8d947cab15e64ba8bd054",
+      "size": 2422616,
       "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4890,12 +4889,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "c30837de962c6c68d36da1e0610fce5a",
-      "size": 5326838,
-      "lifetime_downloads": 41,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "c11e3cae155302130038eda19c2af99b",
+      "size": 5327049,
+      "lifetime_downloads": 42,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4944,12 +4943,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertale/undertale/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertale.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-18",
-      "md5": "8c41d63b8609286dfa9055ff42ec24f2",
-      "size": 9539803,
-      "lifetime_downloads": 28,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "1a38f1c1feff59f4ff0e9b984b612555",
+      "size": 9540035,
+      "lifetime_downloads": 33,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -4997,12 +4996,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:38",
       "first_seen": "2025-05-19",
-      "md5": "7898c35b97e9563d6b4f3c3ec83518d3",
-      "size": 9965559,
-      "lifetime_downloads": 13,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "9728b9626e380570d9939e26094e5b56",
+      "size": 9965829,
+      "lifetime_downloads": 16,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -5045,12 +5044,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-11-11",
-      "md5": "eec851219e9c6e3d2d02a68f82cdfb79",
-      "size": 3939853,
+      "md5": "a9723d62be9e0deb3af344d4ac727877",
+      "size": 3940116,
       "lifetime_downloads": 15,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -5109,12 +5108,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-08-25",
-      "md5": "7c63fb378fbdecab2fe3bfaee2e862ec",
-      "size": 2433069,
+      "md5": "e864ce6eb7614b58675b14c81bd6a08d",
+      "size": 2433360,
       "lifetime_downloads": 19,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -5160,12 +5159,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-11-11",
-      "md5": "a991ead00492e4d2e0951cd09b2f5113",
-      "size": 5559272,
-      "lifetime_downloads": 34,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "41a6162a56a8d9524e22c0407143c43b",
+      "size": 5559543,
+      "lifetime_downloads": 35,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -5249,12 +5248,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/solarus/yarntown/yarntown/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/yarntown.zip",
-      "date_updated": "2026-02-24T00:39",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2025-05-18",
-      "md5": "a918c3a85ebff68423acf633f90303f0",
-      "size": 497523,
-      "lifetime_downloads": 0,
-      "last_commit": "Convert older port.json runtime strings to arrays"
+      "md5": "82ff2b0aba5647e68c48fa323a342f2e",
+      "size": 497748,
+      "lifetime_downloads": 7,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   },
   {
@@ -5272,8 +5271,8 @@
       ],
       "desc": "Zelda II Enhanced adds a ton of QoL improvements, widescreen, new areas, and new collectibles. The game is arguably much easier to play through.",
       "desc_md": null,
-      "inst": "Download the 1.0.0.2 zip from https://hoverbat.itch.io/ziiaol and extract it in the zelda2enhanced/assets folder.",
-      "inst_md": "Download the 1.0.0.2 zip from [Itch.io](https://hoverbat.itch.io/ziiaol) and extract it in the `zelda2enhanced/assets` folder.",
+      "inst": "Download the .zip from https://hoverbat.itch.io/ziiaol and put in the gamedata folder.",
+      "inst_md": "Download the .zip from https://hoverbat.itch.io/ziiaol and put in the gamedata folder.",
       "genres": [
         "action",
         "adventure",
@@ -5283,27 +5282,26 @@
       "rtr": false,
       "exp": false,
       "runtime": [
-        "gmtoolkit.squashfs",
-        "gmloadernext.squashfs"
+        "gmtoolkit.squashfs"
       ],
       "store": [],
       "availability": "free",
       "reqs": [],
       "arch": [
-        "aarch64"
+        "armhf"
       ],
       "min_glibc": null
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/zelda2enhanced/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/zelda2enhanced/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ziiaol.zip",
-      "date_updated": "2026-05-13T12:52",
+      "date_updated": "2026-05-14T13:39",
       "first_seen": "2026-05-13",
-      "md5": "8f51ff7753a428a27b04694a02cfb67d",
-      "size": 2824049,
-      "lifetime_downloads": 25,
-      "last_commit": "[ZELDA2] Release Zelda 2 PC Enhanced Edition x64"
+      "md5": "71218cb6b0f9d6ecd7bd06e6fb39166d",
+      "size": 15430454,
+      "lifetime_downloads": 31,
+      "last_commit": "Update readmes to add runtime requirements"
     }
   }
 ]
