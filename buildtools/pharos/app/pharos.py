@@ -308,7 +308,7 @@ class Pharos:
         for r in self.repositories:
             threading.Thread(target=_safe_bg(self._fetch_ports_json, r), name=f"PortsFetcher-{r.name}", daemon=True).start()
             threading.Thread(target=_safe_bg(self._fetch_winecask_json, r), name=f"WineCaskFetcher-{r.name}", daemon=True).start()
-        threading.Thread(target=_safe_bg(self._fetch_discounts), name="DiscountFetcher", daemon=True).start()
+        threading.Thread(target=_safe_bg(self._fetch_discounts, self.repositories), name="DiscountFetcher", daemon=True).start()
 
     # Pulls current ITAD-tracked discounts from the RHH-Ports Cloudflare Worker
     # for every Steam appid present in the catalog. Stored in self.discounts_by_appid

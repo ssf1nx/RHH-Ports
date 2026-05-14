@@ -138,7 +138,7 @@ fi
 chmod +x "${GAMEDIR}/Pharos"
 
 # Run
-pm_platform_helper "${GAMEDIR}/Pharos" >>"${RUN_LOG}" 2>&1
+pm_platform_helper "${GAMEDIR}/Pharos" > /dev/null
 "${GAMEDIR}/Pharos" "${GAMEDIR}/.sources" >>"${RUN_LOG}" 2>&1
 
 # Post-exit apply
