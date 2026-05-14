@@ -25,7 +25,18 @@
     "runtime": [
       "solarus-1.6.5.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1393750/Oceans_Heart/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/oceans_heart",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [],

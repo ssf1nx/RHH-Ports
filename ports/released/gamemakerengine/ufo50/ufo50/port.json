@@ -25,7 +25,13 @@
       "gmtoolkit.squashfs",
       "gmloadernext.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1147860/UFO_50/",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [

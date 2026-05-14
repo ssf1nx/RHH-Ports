@@ -29,7 +29,13 @@
     "store": [
       {
         "name": "Steam",
-        "url": "https://store.steampowered.com/app/391540/Undertale/"
+        "gameurl": "https://store.steampowered.com/app/391540/Undertale/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/undertale",
+        "developerurl": ""
       }
     ],
     "availability": "paid",

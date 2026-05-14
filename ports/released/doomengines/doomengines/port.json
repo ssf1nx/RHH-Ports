@@ -25,7 +25,13 @@
     "rtr": true,
     "exp": false,
     "runtime": [],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2280/DOOM__DOOM_II/",
+        "developerurl": ""
+      }
+    ],
     "availability": "demo",
     "reqs": [],
     "arch": [

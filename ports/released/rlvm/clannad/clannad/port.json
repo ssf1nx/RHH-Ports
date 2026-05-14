@@ -25,7 +25,13 @@
     "runtime": [
       "rlvm.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/324160/Clannad/",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [

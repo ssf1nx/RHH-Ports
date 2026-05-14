@@ -25,7 +25,13 @@
     "runtime": [
       "solarus-1.6.5.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Itch.io",
+        "gameurl": "https://maxatrillionator.itch.io/hallows-eve",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [],

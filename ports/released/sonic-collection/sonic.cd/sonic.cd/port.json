@@ -23,7 +23,13 @@
     "rtr": false,
     "exp": false,
     "runtime": [],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1794960/Sonic_Origins/",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [

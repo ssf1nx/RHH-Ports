@@ -24,8 +24,13 @@
     "runtime": [],
     "store": [
       {
-        "name": "",
-        "gameurl": "",
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2292260/STAR_WARS_Dark_Forces_Remaster/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/star_wars_dark_forces_remaster",
         "developerurl": ""
       }
     ],

@@ -24,7 +24,13 @@
     "runtime": [
       "rlvm.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/462990/CLANNAD__Tomoyo_After__Its_a_Wonderful_Life/",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [],
     "arch": [

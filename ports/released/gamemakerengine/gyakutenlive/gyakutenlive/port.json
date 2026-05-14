@@ -24,13 +24,7 @@
     "runtime": [
       "gmloadernext.squashfs"
     ],
-    "store": [
-      {
-        "name": "Itch.io",
-        "gameurl": "https://krakelak.itch.io/gyakuten-live",
-        "developerurl": ""
-      }
-    ],
+    "store": [],
     "availability": "free",
     "reqs": [],
     "arch": [

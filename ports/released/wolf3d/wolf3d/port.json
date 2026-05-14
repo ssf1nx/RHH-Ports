@@ -23,7 +23,23 @@
     "rtr": true,
     "exp": false,
     "runtime": [],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2270/Wolfenstein_3D/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/wolfenstein_3d",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://wisdomtree.itch.io/s3dna",
+        "developerurl": ""
+      }
+    ],
     "availability": "demo",
     "reqs": [],
     "arch": [

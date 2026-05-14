@@ -24,13 +24,7 @@
     "runtime": [
       "gmloadernext.squashfs"
     ],
-    "store": [
-      {
-        "name": "GitHub Source",
-        "gameurl": "https://github.com/JeodC/SuperStarTrek25thGMS/tree/main",
-        "developerurl": ""
-      }
-    ],
+    "store": [],
     "availability": "full",
     "reqs": [],
     "arch": [

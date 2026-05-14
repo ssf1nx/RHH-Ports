@@ -24,8 +24,14 @@
     "runtime": [
       "gmloadernext.squashfs"
     ],
-    "store": [],
-    "availability": "",
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2088840/Picayune_Dreams/",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
     "reqs": [
       "analog_2",
       "hires"

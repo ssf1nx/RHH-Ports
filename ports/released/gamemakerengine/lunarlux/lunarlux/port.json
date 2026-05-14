@@ -28,7 +28,23 @@
       "gmtoolkit.squashfs",
       "gmloadernext.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/1932680/LunarLux/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/lunarlux",
+        "developerurl": ""
+      },
+      {
+        "name": "Itch.io",
+        "gameurl": "https://cosmicnobab.itch.io/lunarlux",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [
       "!lowres"

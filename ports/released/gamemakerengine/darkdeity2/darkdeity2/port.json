@@ -26,7 +26,18 @@
       "gmtoolkit.squashfs",
       "gmloadernext.squashfs"
     ],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/2446600/Dark_Deity_2/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/dark_deity_2",
+        "developerurl": ""
+      }
+    ],
     "availability": "paid",
     "reqs": [
       "2GB"

@@ -25,7 +25,18 @@
     "rtr": true,
     "exp": false,
     "runtime": [],
-    "store": [],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/273570/Descent/",
+        "developerurl": ""
+      },
+      {
+        "name": "GOG",
+        "gameurl": "https://www.gog.com/en/game/descent",
+        "developerurl": ""
+      }
+    ],
     "availability": "demo",
     "reqs": [
       "analog_1|analog_2"
