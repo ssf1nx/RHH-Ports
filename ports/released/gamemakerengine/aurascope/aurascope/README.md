@@ -23,6 +23,16 @@ This port is currently marked `ultra` due to cpu usage. Slowdowns occur even on 
 
 You can modify the `Aurascope.sh` file to use a gptk file instead of the xbox360 virtual controller, simply comment the alternate line. When using the gptk file, pressing X will give you a FPS overlay in the bottom left of the screen.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **.NET 8** — [dotnet-8.0.12.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/dotnet-8.0.12.squashfs)
+- **GMToolkit** — [gmtoolkit.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmtoolkit.squashfs)
+- **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 Nick Oztok -- For creating Aurascope  
 JohnnyOnFlame -- For GMLoaderNext  

@@ -41,6 +41,15 @@ To use them, you will want to do the following:
 #### IF A MODDED UFO 50 DOES NOT WORK AS EXPECTED
 - The modified gml scripts used for this Retro Handheld port are in `tools/gml`. These replace the existing gml scripts, so if any mods are dependent on them, there will be conflicts.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **GMToolkit** — [gmtoolkit.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmtoolkit.squashfs)
+- **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 Mossmouth -- The absolutely amazing game  
 JohnnyOnFlame -- GMLoader-Next and TextureRepacker via UTMT  

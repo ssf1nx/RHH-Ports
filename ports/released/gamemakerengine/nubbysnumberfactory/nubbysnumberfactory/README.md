@@ -30,6 +30,14 @@ In this demo you'll find:
 
 You can modify your controls by opening the `nubby.gptk` file in a text editor. The keys are the gamepad buttons and the values are their keyboard and mouse maps.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 MogDogBlog Productions -- The amazing game  
 JohnnyOnFlame -- GMLoader-Next  

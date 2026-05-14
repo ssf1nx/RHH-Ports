@@ -18,6 +18,14 @@ Special thank you goes to [**Justin Bohemier**](https://justinbohemier.wixsite.c
 ## Custom Sprites
 In the `saves` folder you will find `data/Characters` with folders numbered 1-9. These folders represent the nine character slots in the game. Inside the `Skins` folder, you will find a large collection of 430 png files. You can choose a custom skin and **copy** the png file to any one of the 1-9 character slot folders. You will also find `Sprite Credits.pdf` to credit the authors of these skins, and a `Template.png` you can use to create your own skins!
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 * Justin Bohemier - The game and distribution permission
 * JohnnyOnFlame, PortMaster Team - GMLoader

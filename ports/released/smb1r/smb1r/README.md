@@ -13,6 +13,14 @@ Custom levels are hosted with nonprofit [Level Share Square](https://levelshares
 ## Building
 Super Mario Bros. Remastered is built with [Godot 4.5-beta3](https://godotengine.org/article/dev-snapshot-godot-4-5-beta-3) from a [custom fork](https://github.com/JeodC/Super-Mario-Bros.-Remastered-Public/tree/retro-handheld) tailored to retro handhelds.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **Westonpack** — [weston_pkg_0.2.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/weston_pkg_0.2.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 JHDev2006 and contributors -- The remaster  
 krystalphantasm.bsky.social -- Splash art  

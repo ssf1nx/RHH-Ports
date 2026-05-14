@@ -13,9 +13,14 @@ https://yanako-rpgs.itch.io/dokimon-quest
 
 GMLoader-Next correctly claims that we do not have access to Steam and can't verify DLC licensure. If you own the Dokimon DLC content, you can transfer your save back to a PC or Steam Deck and begin the DLC. Once you get to the new area, you can save and transfer your save back to continue.
 
-## Runtime
+## Runtimes
 
-This game requires my GMToolkit runtime. Download it from the repository root's runtimes folder and add it to `PortMaster/libs`. Replace the one inside if you get a message about it.
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **GMToolkit** — [gmtoolkit.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmtoolkit.squashfs)
+- **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
 
 ## Default Gameplay Controls
 | Button            | Action                                |

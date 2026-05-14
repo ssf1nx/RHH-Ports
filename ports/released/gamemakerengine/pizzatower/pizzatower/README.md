@@ -29,6 +29,16 @@ It is the culmination of the combined efforts of those listed in the Thanks sect
 - This port uses a file `swapabxy.txt` to align device buttons with glyph prompts. If they are incorrect for you, delete `pizzatower/swapabxy.txt` and restart the game.
 - This port does not run well on low power devices like the RK3326. If you attempt to do so, try lowering the ingame options.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **.NET 8** — [dotnet-8.0.12.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/dotnet-8.0.12.squashfs)
+
+This port ships its own custom GMLoader-Next binary so it does not consume the `gmloadernext.squashfs` runtime.
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch the runtime above automatically when installing the port. Otherwise download it manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop it in `PortMaster/libs`.
+
 ## Thanks
 Tour De Pizza -- The amazing game.  
 JohnnyOnFlame -- GMLoader-Next, FMOD compatibility, Game Port and [UTMT-CLI fork](https://github.com/JohnnyonFlame/UTMT-PortMaster).  

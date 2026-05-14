@@ -31,6 +31,14 @@ This game has a large RAM footprint and uses more memory over time. Therefore it
 
 Documentation: https://github.com/SheerSt/pokewilds/issues/476.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **Java 17** — [zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/zulu17.54.21-ca-jre17.0.13-linux.aarch64.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 Pokéwilds Team -- The amazing game  
 Nintendo -- The franchise

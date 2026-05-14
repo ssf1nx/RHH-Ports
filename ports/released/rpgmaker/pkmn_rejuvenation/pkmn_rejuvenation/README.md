@@ -26,6 +26,14 @@ Buttons follow Xbox-style labeling: **A** = bottom, **B** = right, **X** = top, 
 
 Pokémon Rejuvenation is RAM-heavy. Save often. The handheld build runs through mkxp-z.
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **MKXP-Z** — [mkxp-z.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/mkxp-z.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 Jan and the Rejuvenation Team for the original game  
 [Dokoma](https://github.com/dokoma) for compiling mkxp-z 

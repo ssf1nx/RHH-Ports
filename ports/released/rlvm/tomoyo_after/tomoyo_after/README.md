@@ -36,6 +36,14 @@ You should be able to use older editions of Tomoyo After if you have them. The f
 |L2|Fast forward dialog|
 |D-Pad / Sticks|Move cursor|
 
+## Runtimes
+
+This port requires the following runtimes in `PortMaster/libs`:
+
+- **RLVM** — [rlvm.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/rlvm.squashfs)
+
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+
 ## Thanks
 Kloptops - Original port  
 eglaysher - Rlvm original  
