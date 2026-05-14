@@ -42,6 +42,50 @@ async function loadPorts() {
         { keys: ['!arkos'], value: 'Won\'t run on ArkOS' }
     ];
 
+    // Store rendering + affiliate-tag injection.
+    const STORE_CONFIG = {
+        'Steam': {
+            priority: 1,
+            modifier: 'steam',
+            icon: 'fa-brands fa-steam',
+            short: 'Steam',
+            addAffiliate: (url) => {
+                const TAG = '';
+                if (!TAG) return url;
+                return url + (url.includes('?') ? '&' : '?') + 'curator_clanid=' + encodeURIComponent(TAG);
+            }
+        },
+        'GOG': {
+            priority: 2,
+            modifier: 'gog',
+            icon: '',
+            short: 'GOG',
+            addAffiliate: (url) => {
+                const TAG = '';
+                if (!TAG) return url;
+                return url + (url.includes('?') ? '&' : '?') + 'pp=' + encodeURIComponent(TAG);
+            }
+        },
+        'Itch.io': {
+            priority: 3,
+            modifier: 'itch',
+            icon: 'fa-brands fa-itch-io',
+            short: 'Itch',
+            addAffiliate: (url) => url
+        },
+        'Epic Games': {
+            priority: 4,
+            modifier: 'epic',
+            icon: '',
+            short: 'Epic',
+            addAffiliate: (url) => {
+                const TAG = '';
+                if (!TAG) return url;
+                return url + (url.includes('?') ? '&' : '?') + 'creatorTag=' + encodeURIComponent(TAG);
+            }
+        }
+    };
+
     try {
         // Fetch data concurrently for speed
         const [res, apiRes] = await Promise.all([
@@ -95,6 +139,28 @@ async function loadPorts() {
         populateDropdown(runtimeDropdown, Array.from(runtimeSet).sort(), r => runtimeNames[r] || r);
 
         const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+        const renderStores = (stores) => {
+            if (!Array.isArray(stores) || stores.length === 0) return '';
+            const valid = stores
+                .filter(s => s && s.gameurl)
+                .map(s => ({ s, cfg: STORE_CONFIG[s.name] || { priority: 99, modifier: 'other', icon: '', short: s.name || 'Buy', addAffiliate: (u) => u } }));
+            // Canonical store ordering: Steam, GOG, Itch.io, Epic, then everything else.
+            valid.sort((a, b) => (a.cfg.priority ?? 99) - (b.cfg.priority ?? 99));
+            const buttons = valid
+                .map(({ s, cfg }) => {
+                    const url = cfg.addAffiliate(s.gameurl);
+                    const label = cfg.short || s.name || 'Buy';
+                    const iconHtml = cfg.icon ? `<i class="${cfg.icon}" aria-hidden="true"></i>` : '';
+                    const labelHtml = `<span class="port-store-label">${escAttr(label)}</span>`;
+                    const discount = s.discount ? `<span class="port-store-discount">${escAttr(s.discount)}</span>` : '<span class="port-store-discount"></span>';
+                    const tooltip = s.name ? `Buy on ${s.name}` : 'Buy';
+                    return `<a class="port-store port-store--${cfg.modifier}" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer sponsored" title="${escAttr(tooltip)}" data-store-name="${escAttr(s.name || '')}">${iconHtml}${labelHtml}${discount}</a>`;
+                })
+                .join('');
+            if (!buttons) return '';
+            return `<div class="port-stores" aria-label="Buy the game">${buttons}</div>`;
+        };
 
         // Shared tile renderer: same template for the Recently Updated and
         // What's New carousels.
@@ -248,6 +314,7 @@ async function loadPorts() {
                                 ${runtimes ? `<div class="port-runtimes">${runtimes}</div>` : ''}
                                 ${genres ? `<div class="port-genres">${genres}</div>` : ''}
                                 ${displayCommit ? `<div class="port-commit-banner" title="${displayCommit}">${displayCommit}</div>` : ''}
+                                ${renderStores(port.attr?.store)}
                                 <div class="port-buttons">
                                     <a class="details-link" href="${port.source.readme_url || ''}" target="_blank" rel="noopener noreferrer">Details</a>
                                     <a class="download-link" href="${downloadHref}" target="_blank" rel="noopener noreferrer">Download</a>
@@ -320,9 +387,11 @@ async function loadPorts() {
             document.body.style.overflow = '';
         };
 
-        const openReadmeModal = async (url, title) => {
+        const openReadmeModal = async (url, title, storesHtml = '') => {
             if (!readmeModal) return;
             readmeTitle.textContent = title || 'README';
+            const storesSlot = readmeModal.querySelector('.readme-modal-stores');
+            if (storesSlot) storesSlot.innerHTML = storesHtml || '';
             readmeFrame.srcdoc = '<html><body style="font-family:system-ui;padding:1rem;color:#666;margin:0">Loading…</body></html>';
             readmeModal.removeAttribute('hidden');
             readmeModal.setAttribute('aria-hidden', 'false');
@@ -382,7 +451,11 @@ hr { border: none; border-top: 1px solid rgba(0,0,0,0.15); margin: 1.5rem 0; }
             if (!url) return;
             const card = link.closest('.port-card');
             const title = card?.querySelector('.port-title')?.textContent || 'README';
-            openReadmeModal(url, title);
+            // Clone the card's already-rendered store row (preserves any
+            // discount badges populated post-render by the sale tracker).
+            const storesEl = card?.querySelector('.port-stores');
+            const storesHtml = storesEl ? storesEl.outerHTML : '';
+            openReadmeModal(url, title, storesHtml);
         });
 
         // Carousel tiles open the README modal when clicked. If a port has
@@ -396,7 +469,11 @@ hr { border: none; border-top: 1px solid rgba(0,0,0,0.15); margin: 1.5rem 0; }
                 if (!readme) return;
                 e.preventDefault();
                 const title = tile.getAttribute('data-port-title') || 'README';
-                openReadmeModal(readme, title);
+                // Carousel tiles don't have a store row baked into them;
+                // re-render fresh from the source port's data.
+                const port = ports.find(p => (p.attr?.title || p.name) === title);
+                const storesHtml = port ? renderStores(port.attr?.store) : '';
+                openReadmeModal(readme, title, storesHtml);
             });
         };
         wireTileClicks(recentStrip);

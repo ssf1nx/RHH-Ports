@@ -607,6 +607,110 @@ details[open] summary {
 }
 
 /* =========================
+   Store buttons (affiliate)
+   Sized to share the action row with Details/Download below.
+========================= */
+.port-stores {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-top: 0.2rem;
+}
+
+.port-store {
+	flex: 1;
+	min-width: 5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	padding: 0.4rem 0.85rem;
+	border-radius: var(--radius);
+	background: #2c2c2c;
+	color: var(--white);
+	text-decoration: none;
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.2;
+	transition: background 0.2s ease, transform 0.1s ease;
+	box-shadow: var(--shadow-inset);
+}
+
+.port-store:hover {
+	background: #404040;
+	transform: translateY(-1px);
+}
+
+.port-store:focus {
+	outline: 2px solid #ffcc00;
+	outline-offset: 2px;
+}
+
+.port-store i {
+	font-size: 1.2rem;
+}
+
+.port-store-discount {
+	margin-left: auto;
+	padding: 0.1rem 0.45rem;
+	border-radius: 0.4rem;
+	background: #4c6b22;
+	color: #beee11;
+	font-size: 0.78rem;
+	font-weight: 700;
+	line-height: 1.3;
+	white-space: nowrap;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+}
+
+.port-store-discount:empty {
+	display: none;
+}
+
+.readme-modal-stores {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0.6rem 0 0;
+}
+
+.readme-modal-stores:empty {
+	display: none;
+}
+
+.readme-modal-stores .port-store {
+	flex: 0 1 auto;
+}
+
+.port-store--steam {
+	background: #1b2838;
+}
+.port-store--steam:hover {
+	background: #2a475e;
+}
+
+.port-store--gog {
+	background: #6b21a8;
+}
+.port-store--gog:hover {
+	background: #8b3fcc;
+}
+
+.port-store--itch {
+	background: #fa5c5c;
+}
+.port-store--itch:hover {
+	background: #ff7878;
+}
+
+.port-store--epic {
+	background: #2f2d2e;
+}
+.port-store--epic:hover {
+	background: #4a4a4a;
+}
+
+/* =========================
    Commit Banner
 ========================= */
 .port-commit-banner {
@@ -863,6 +967,12 @@ details[open] summary {
 	padding: 0.6rem 0.8rem 0.6rem 1.2rem;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	background: var(--accent-bg);
+	gap: 0.6rem;
+}
+
+.readme-modal-header-text {
+	flex: 1;
+	min-width: 0;
 }
 
 .readme-modal-title {

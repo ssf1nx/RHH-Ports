@@ -5404,53 +5404,5 @@
       "lifetime_downloads": 7,
       "last_commit": "Update readmes to add runtime requirements"
     }
-  },
-  {
-    "version": 4,
-    "name": "ziiaol.zip",
-    "items": [
-      "Zelda II: Enhanced.sh",
-      "ziiaol"
-    ],
-    "items_opt": [],
-    "attr": {
-      "title": "Zelda II: Enhanced",
-      "porter": [
-        "Jeod"
-      ],
-      "desc": "Zelda II Enhanced adds a ton of QoL improvements, widescreen, new areas, and new collectibles. The game is arguably much easier to play through.",
-      "desc_md": null,
-      "inst": "Download the .zip from https://hoverbat.itch.io/ziiaol and put in the gamedata folder.",
-      "inst_md": "Download the .zip from https://hoverbat.itch.io/ziiaol and put in the gamedata folder.",
-      "genres": [
-        "action",
-        "adventure",
-        "platformer"
-      ],
-      "image": null,
-      "rtr": false,
-      "exp": false,
-      "runtime": [
-        "gmtoolkit.squashfs"
-      ],
-      "store": [],
-      "availability": "free",
-      "reqs": [],
-      "arch": [
-        "armhf"
-      ],
-      "min_glibc": null
-    },
-    "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ziiaol/ziiaol/README.md",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ziiaol.zip",
-      "date_updated": "2026-05-14T13:39",
-      "first_seen": "2026-05-13",
-      "md5": "71218cb6b0f9d6ecd7bd06e6fb39166d",
-      "size": 15430454,
-      "lifetime_downloads": 31,
-      "last_commit": "Update readmes to add runtime requirements"
-    }
   }
 ]
