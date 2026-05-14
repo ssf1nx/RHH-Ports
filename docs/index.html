@@ -173,6 +173,17 @@
 		</div>
 	</main>
 
+	<!-- README modal: shown when user clicks a port's Details button -->
+	<div id="readme-modal" class="readme-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title">
+		<div class="readme-modal-content">
+			<header class="readme-modal-header">
+				<h2 id="readme-modal-title" class="readme-modal-title"></h2>
+				<button type="button" class="readme-modal-close" aria-label="Close README">×</button>
+			</header>
+			<iframe class="readme-modal-frame" sandbox="allow-popups allow-popups-to-escape-sandbox" title="Port README"></iframe>
+		</div>
+	</div>
+
 	<script src="loadports.js"></script>
 </body>
 </html>

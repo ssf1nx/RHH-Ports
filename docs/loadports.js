@@ -105,18 +105,23 @@ async function loadPorts() {
                 const title = p.attr?.title || p.name;
                 const screenshot = p.source?.screenshot_url || '';
                 const date = (p.source?.date_updated || '').split('T')[0];
-                const href = p.source?.download_url || '#';
-                const filename = href ? href.split('/').pop() : '';
+                const downloadUrl = p.source?.download_url || '';
+                const readmeUrl = p.source?.readme_url || '';
+                const filename = downloadUrl ? downloadUrl.split('/').pop() : '';
                 const dlSinceUpdate = downloadCounts?.[filename] ?? 0;
                 const lastCommit = p.source?.last_commit;
                 const meaningfulCommit = (lastCommit && !lastCommit.includes('Update ports.json')) ? lastCommit : '';
                 const tooltip = meaningfulCommit || title;
+                // Clicking the tile opens the README modal (intercepted by JS). If
+                // the port has no README we still set the href so middle-click
+                // or right-click fall back to the download.
+                const href = readmeUrl || downloadUrl || '#';
                 return `
-                    <a class="recent-tile" href="${href}" target="_blank" rel="noopener noreferrer" title="${escAttr(tooltip)}">
+                    <a class="recent-tile" href="${href}" target="_blank" rel="noopener noreferrer" title="${escAttr(tooltip)}" data-readme="${escAttr(readmeUrl)}" data-port-title="${escAttr(title)}">
                         <img src="${screenshot}" alt="${title} screenshot" loading="lazy">
                         <div class="recent-tile-info">
                             <div class="recent-tile-title">${title}</div>
-                            <div class="recent-tile-date">${date} · ${dlSinceUpdate} ↓ since update</div>
+                            <div class="recent-tile-date">${date} | ${dlSinceUpdate} ↓ since update</div>
                             ${meaningfulCommit ? `<div class="recent-tile-commit">${escAttr(meaningfulCommit)}</div>` : ''}
                         </div>
                     </a>`;
@@ -283,6 +288,98 @@ async function loadPorts() {
             .forEach(el => el.addEventListener('input', updateDisplay));
 
         updateDisplay();
+
+        // --- README Modal ---
+        const readmeModal = document.getElementById('readme-modal');
+        const readmeTitle = readmeModal?.querySelector('.readme-modal-title');
+        const readmeFrame = readmeModal?.querySelector('.readme-modal-frame');
+        const readmeClose = readmeModal?.querySelector('.readme-modal-close');
+
+        const closeReadmeModal = () => {
+            if (!readmeModal) return;
+            readmeModal.setAttribute('hidden', '');
+            readmeModal.setAttribute('aria-hidden', 'true');
+            if (readmeFrame) readmeFrame.srcdoc = '';
+            document.body.style.overflow = '';
+        };
+
+        const openReadmeModal = async (url, title) => {
+            if (!readmeModal) return;
+            readmeTitle.textContent = title || 'README';
+            readmeFrame.srcdoc = '<html><body style="font-family:system-ui;padding:1rem;color:#666;margin:0">Loading…</body></html>';
+            readmeModal.removeAttribute('hidden');
+            readmeModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const res = await fetch(url, { cache: 'no-cache' });
+                if (!res.ok) throw new Error('not found');
+                const md = await res.text();
+                const html = (typeof marked !== 'undefined')
+                    ? marked.parse(md, { gfm: true, breaks: true })
+                    : `<pre>${md.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</pre>`;
+                // Strip the filename so relative paths in the README resolve against the README's directory
+                const baseUrl = url.replace(/[^/]+$/, '');
+                readmeFrame.srcdoc = `<!DOCTYPE html>
+<html><head>
+<base href="${baseUrl}" target="_blank">
+<style>
+body { font-family: system-ui, sans-serif; padding: 1rem 1.5rem; line-height: 1.6; color: #222; margin: 0; word-wrap: break-word; background: #ebe7d9; }
+h1, h2, h3, h4 { margin-top: 1.2rem; margin-bottom: 0.5rem; }
+h1:first-child, h2:first-child { margin-top: 0; }
+p { margin: 0.6rem 0; }
+code { background: rgba(0,0,0,0.07); padding: 0.1rem 0.35rem; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 0.9em; }
+pre { background: rgba(0,0,0,0.07); padding: 0.8rem; border-radius: 6px; overflow-x: auto; }
+pre code { background: none; padding: 0; }
+img { max-width: 100%; height: auto; }
+table { border-collapse: collapse; margin: 0.8rem 0; }
+th, td { border: 1px solid rgba(0,0,0,0.2); padding: 0.3rem 0.6rem; text-align: left; }
+a { color: #3a6ea5; }
+blockquote { border-left: 4px solid #3a6ea5; margin: 0.6rem 0; padding: 0.2rem 0.8rem; color: #333; }
+ul, ol { padding-left: 1.5rem; }
+hr { border: none; border-top: 1px solid rgba(0,0,0,0.15); margin: 1.5rem 0; }
+</style>
+</head><body>${html}</body></html>`;
+            } catch (err) {
+                readmeFrame.srcdoc = `<html><body style="font-family:system-ui;padding:1rem;color:#a00;margin:0">Could not load README.</body></html>`;
+            }
+        };
+
+        // Wire close handlers (once)
+        readmeClose?.addEventListener('click', closeReadmeModal);
+        readmeModal?.addEventListener('click', (e) => {
+            if (e.target === readmeModal) closeReadmeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && readmeModal && !readmeModal.hasAttribute('hidden')) {
+                closeReadmeModal();
+            }
+        });
+
+        // Delegate Details clicks to the modal opener
+        container.addEventListener('click', (e) => {
+            const link = e.target.closest('.details-link');
+            if (!link) return;
+            e.preventDefault();
+            const url = link.getAttribute('href');
+            if (!url) return;
+            const card = link.closest('.port-card');
+            const title = card?.querySelector('.port-title')?.textContent || 'README';
+            openReadmeModal(url, title);
+        });
+
+        // Recent tiles open the README modal when clicked. If a port has no
+        // README, data-readme is empty and the default link behavior takes
+        // over (the href falls back to the download URL).
+        recentStrip?.addEventListener('click', (e) => {
+            const tile = e.target.closest('.recent-tile');
+            if (!tile) return;
+            const readme = tile.getAttribute('data-readme');
+            if (!readme) return;
+            e.preventDefault();
+            const title = tile.getAttribute('data-port-title') || 'README';
+            openReadmeModal(readme, title);
+        });
 
     } catch (err) {
         container.textContent = 'Error loading ports: ' + err.message;
