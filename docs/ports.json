@@ -956,12 +956,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/doomengines/doomengines/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/doomengines.zip",
-      "date_updated": "2026-05-14T18:18",
+      "date_updated": "2026-05-14T21:49",
       "first_seen": "2025-05-17",
-      "md5": "af5c3872a3f883c928d3417b46219142",
-      "size": 94871515,
+      "md5": "77e027fe0171467a03e538853438790e",
+      "size": 94497931,
       "lifetime_downloads": 26,
-      "last_commit": "Add discounts and more stores"
+      "last_commit": "Remove libfreetype from love launcher ports"
     }
   },
   {
@@ -1781,12 +1781,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/oracles-randomizer-ng/oracles-randomizer-ng/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/oracles-randomizer-ng.zip",
-      "date_updated": "2026-02-24T00:37",
+      "date_updated": "2026-05-14T21:49",
       "first_seen": "2026-01-04",
-      "md5": "0aaa3d459d3fc431a994817818c930b4",
-      "size": 6554020,
-      "lifetime_downloads": 0,
-      "last_commit": "Normalize all port.json files for version 4"
+      "md5": "e4940091bc525773278f83fb66cc22be",
+      "size": 6180416,
+      "lifetime_downloads": 14,
+      "last_commit": "Remove libfreetype from love launcher ports"
     }
   },
   {
@@ -5488,12 +5488,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/wolf3d/wolf3d/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/wolf3d.zip",
-      "date_updated": "2026-05-14T18:18",
+      "date_updated": "2026-05-14T21:49",
       "first_seen": "2025-11-11",
-      "md5": "2a974dfb08c66e513b230a5c6027558a",
-      "size": 7926558,
+      "md5": "3a4ec7e3c88774b9a804a6f928fd0196",
+      "size": 7553002,
       "lifetime_downloads": 24,
-      "last_commit": "Add discounts and more stores"
+      "last_commit": "Remove libfreetype from love launcher ports"
     }
   },
   {
