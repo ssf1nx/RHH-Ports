@@ -2355,12 +2355,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip",
-      "date_updated": "2026-05-13T19:58",
+      "date_updated": "2026-05-14T12:28",
       "first_seen": "2026-01-29",
-      "md5": "37dae025dc556a8b6af8246a93bda44a",
-      "size": 21669504,
-      "lifetime_downloads": 285,
-      "last_commit": "[PHAROS] Add missing runtime dep"
+      "md5": "7bdaa73a63e2b2dea0e0727440346107",
+      "size": 21670259,
+      "lifetime_downloads": 288,
+      "last_commit": "[Pharos] Update to v1.1.0"
     }
   },
   {
