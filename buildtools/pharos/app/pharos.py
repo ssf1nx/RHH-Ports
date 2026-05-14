@@ -5,6 +5,7 @@ Pharos
 import os
 import json
 import queue
+import re
 import sys
 import threading
 import time
@@ -47,6 +48,7 @@ from ui import (
     c_row_muted,
     FOOTER_HEIGHT,
     BUTTON_AREA_HEIGHT,
+    STORE_ROW_HEIGHT,
 )
 from download import Downloader
 from update import Update
@@ -102,6 +104,12 @@ class Pharos:
 
         # Pharos Service (background daemon) controller.
         self.service = Service()
+
+        # Live discount data, populated by a background thread once repos load.
+        # Shape: { steam_appid: { shop_name: cut_pct, ... }, ... }
+        # No clicking — informational only on the port detail panel.
+        self.discounts_by_appid: dict = {}
+        self._discounts_lock = threading.Lock()
         self.service_msg: str = ""  # last install/uninstall result, shown in log strip
 
         # If Pharos was just self-updated and the bundled daemon differs from
@@ -246,6 +254,7 @@ class Pharos:
                         runtime=[r for r in p.get("attr", {}).get("runtime", []) if r.endswith(".squashfs")],
                         runtime_base_url=runtime_base,
                         repo=f"{owner}/{repo_name}",
+                        store=p.get("attr", {}).get("store", []) or [],
                     )
                     port.last_commit = src.get("last_commit", "")
                     port.md5 = src.get("md5")
@@ -299,6 +308,57 @@ class Pharos:
         for r in self.repositories:
             threading.Thread(target=_safe_bg(self._fetch_ports_json, r), name=f"PortsFetcher-{r.name}", daemon=True).start()
             threading.Thread(target=_safe_bg(self._fetch_winecask_json, r), name=f"WineCaskFetcher-{r.name}", daemon=True).start()
+        threading.Thread(target=_safe_bg(self._fetch_discounts), name="DiscountFetcher", daemon=True).start()
+
+    # Pulls current ITAD-tracked discounts from the RHH-Ports Cloudflare Worker
+    # for every Steam appid present in the catalog. Stored in self.discounts_by_appid
+    # for the renderer to read. Fails silently — discounts are a nice-to-have, not
+    # critical to functionality.
+    def _fetch_discounts(self) -> None:
+        WORKER = "https://rhh-ports-discounts.jeodc.workers.dev/"
+        COUNTRY = "US"
+        # Wait briefly for ports.json fetch to populate so we know which appids matter.
+        # If repos are slow, we just retry up to ~15s total.
+        deadline = time.time() + 15
+        appids = set()
+        while time.time() < deadline:
+            for r in self.repositories:
+                for p in getattr(r, "ports", []) or []:
+                    for s in getattr(p, "store", []) or []:
+                        url = s.get("gameurl", "") if isinstance(s, dict) else ""
+                        m = re.search(r"store\.steampowered\.com/app/(\d+)", url)
+                        if m:
+                            appids.add(m.group(1))
+            if appids:
+                break
+            time.sleep(0.5)
+        if not appids:
+            return
+        try:
+            url = f"{WORKER}?appids={','.join(sorted(appids))}&country={COUNTRY}"
+            raw = self._gh_request(url, timeout=20)
+            data = json.loads(raw)
+            if not isinstance(data, dict):
+                return
+            # Worker returns { appid: { shop: {cut, url} } }. Flatten to { appid: { shop: cut } }.
+            flattened: dict = {}
+            for appid, shops in data.items():
+                if not isinstance(shops, dict):
+                    continue
+                per_shop = {}
+                for shop_name, entry in shops.items():
+                    if isinstance(entry, dict):
+                        cut = entry.get("cut", 0) or 0
+                    else:
+                        cut = entry or 0
+                    if cut > 0:
+                        per_shop[shop_name] = cut
+                if per_shop:
+                    flattened[appid] = per_shop
+            with self._discounts_lock:
+                self.discounts_by_appid = flattened
+        except Exception:
+            pass
 
     def _gh_request(self, url: str, timeout: int = 12) -> bytes:
         hdr = {"User-Agent": "Pharos/1.0"}
@@ -373,19 +433,48 @@ class Pharos:
         ]
         self._draw_button_bar(btns)
 
-    VIEW_MODES = ("all", "updated", "new", "installed")
+    VIEW_MODES = ("all", "updated", "new", "discount", "installed")
     _VIEW_MODE_BTN_LABEL = {
         "all": "All",
         "updated": "Updated",
         "new": "New",
+        "discount": "On Sale",
         "installed": "Installed",
     }
     _VIEW_MODE_HEADER_SUFFIX = {
         "all": "",
         "updated": " — by last update",
         "new": " — newest first",
+        "discount": " — biggest discount first",
         "installed": "",
     }
+
+    def _max_discount_for_port(self, port) -> int:
+        """Deepest active discount % across all of a port's stores, or 0."""
+        stores = getattr(port, "store", None) or []
+        # Find the port's Steam appid (the ITAD lookup key) from any Steam URL.
+        appid = None
+        for s in stores:
+            if not isinstance(s, dict):
+                continue
+            m = re.search(r"store\.steampowered\.com/app/(\d+)", s.get("gameurl", ""))
+            if m:
+                appid = m.group(1)
+                break
+        if not appid:
+            return 0
+        with self._discounts_lock:
+            shops = self.discounts_by_appid.get(appid)
+        if not shops:
+            return 0
+        best = 0
+        for s in stores:
+            if not isinstance(s, dict):
+                continue
+            cut = shops.get(s.get("name", ""), 0) or 0
+            if cut > best:
+                best = cut
+        return best
 
     def _items_for_current_view(self, all_items):
         """Apply the active view_mode's filter+sort to the repo's items."""
@@ -398,6 +487,11 @@ class Pharos:
             items.sort(key=lambda p: p.date_updated or "", reverse=True)
         elif self.view_mode == "new":
             items.sort(key=lambda p: (getattr(p, "first_seen", None) or ""), reverse=True)
+        elif self.view_mode == "discount":
+            # Sort by deepest discount descending; alphabetical tiebreak so
+            # ports without active sales fall to the bottom in stable order.
+            items.sort(key=lambda p: (-self._max_discount_for_port(p),
+                                      (getattr(p, "title", "") or "").lower()))
         return items
 
     def _render_ports(self) -> None:
@@ -443,6 +537,11 @@ class Pharos:
                 self.ui.draw_port_image(selected_item)
             except Exception:
                 pass  # Image error handled below
+        # Reserve space below the description for the store-icon row when the
+        # selected port has any. Skips entirely for ports without stores so
+        # the description gets the full vertical area.
+        has_stores = bool(selected_item and getattr(selected_item, "store", None))
+        store_reserve = STORE_ROW_HEIGHT if has_stores else 0
         if selected_item and selected_item.desc:
             self.ui.draw_wrapped_text_centered(
                 selected_item.desc,
@@ -450,6 +549,25 @@ class Pharos:
                 start_y=400 - FOOTER_HEIGHT - BUTTON_AREA_HEIGHT - 5,
                 max_width=self.ui.screen_width // 2,
                 color=color_text,
+                reserve_bottom=store_reserve,
+            )
+        if has_stores:
+            # Map this port's Steam appid → its per-shop discount entries so
+            # the renderer can show "-NN%" beside relevant icons.
+            shops = None
+            for s in selected_item.store:
+                url = s.get("gameurl", "") if isinstance(s, dict) else ""
+                m = re.search(r"store\.steampowered\.com/app/(\d+)", url)
+                if m:
+                    with self._discounts_lock:
+                        shops = self.discounts_by_appid.get(m.group(1))
+                    break
+            self.ui.draw_port_stores(
+                selected_item.store,
+                discount_lookup=(lambda name, sh=shops: (sh or {}).get(name, 0)),
+                center_x=(self.ui.screen_width * 3 // 4 - 20),
+                max_width=self.ui.screen_width // 2,
+                bottom_y=self.ui.screen_height - FOOTER_HEIGHT - BUTTON_AREA_HEIGHT,
             )
 
         # ------------------------------------------------------------------

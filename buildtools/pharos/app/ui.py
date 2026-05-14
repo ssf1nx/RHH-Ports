@@ -58,6 +58,25 @@ BODY_MARGIN_TOP = 0
 BUTTON_AREA_HEIGHT = 50
 MAX_TEXTURE_CACHE = 48
 
+# Height reserved at the bottom of the port detail area for the store-icon
+# row (above the button area). Set to 0 when a port has no store data.
+STORE_ROW_HEIGHT = 36
+
+# Store name (as it appears in port.json) → icon filename under
+# resources/stores/. Filenames downloaded by buildtools/pharos/download_store_icons.py.
+STORE_ICON_FILES = {
+    "Steam":        "steam.png",
+    "GOG":          "gog.png",
+    "Itch.io":      "itch.png",
+    "Epic Games":   "epic.png",
+    "Humble Store": "humble.png",
+    "Fanatical":    "fanatical.png",
+}
+STORE_ICONS_DIR = os.path.join(BASE_PATH, "resources", "stores")
+STORE_ICON_SIZE = 24
+# Steam's classic discount green pair, matching the website.
+c_discount_text = sdl2.SDL_Color(190, 238, 17, 255)
+
 # ----------------------------------------------------------------------
 # UserInterface
 # ----------------------------------------------------------------------
@@ -514,7 +533,7 @@ class UserInterface:
 
     def draw_wrapped_text_centered(self, text: str, center_x: int, start_y: int,
                                    max_width: int, color: sdl2.SDL_Color = c_text,
-                                   line_spacing: int = 2):
+                                   line_spacing: int = 2, reserve_bottom: int = 0):
 
         words = text.split()
         lines = []
@@ -534,7 +553,7 @@ class UserInterface:
         text_height = len(lines) * line_height
 
         desc_top_y = start_y
-        desc_bottom_y = self.screen_height - FOOTER_HEIGHT - BUTTON_AREA_HEIGHT
+        desc_bottom_y = self.screen_height - FOOTER_HEIGHT - BUTTON_AREA_HEIGHT - reserve_bottom
         max_area_height = desc_bottom_y - desc_top_y
 
         if text_height > max_area_height:
@@ -565,3 +584,80 @@ class UserInterface:
             desc_y = desc_top_y + i * line_height - offset
             if desc_top_y <= desc_y <= desc_bottom_y - line_height:
                 self.draw_text((desc_x, desc_y), line, color)
+
+    def _load_store_texture(self, name: str):
+        filename = STORE_ICON_FILES.get(name)
+        if not filename:
+            return None
+        path = os.path.join(STORE_ICONS_DIR, filename)
+        if not os.path.exists(path):
+            return None
+        texture = self.texture_cache.get(path)
+        if texture is not None:
+            return texture
+        surface = img.IMG_Load(path.encode())
+        if not surface:
+            return None
+        try:
+            texture = sdl2.SDL_CreateTextureFromSurface(self.renderer, surface)
+            if not texture:
+                return None
+            self._cache_texture(path, texture)
+            return texture
+        finally:
+            try:
+                sdl2.SDL_FreeSurface(surface)
+            except Exception:
+                pass
+
+    def draw_port_stores(self, stores, discount_lookup, center_x: int,
+                         max_width: int, bottom_y: int):
+        """Render the store-icon row for a port.
+
+        stores          list of {name, gameurl, ...} dicts from port.json
+        discount_lookup callable(store_name) -> int discount percent, or 0/None
+        center_x        horizontal center of the row
+        max_width       maximum row width before clipping
+        bottom_y        y-coordinate of the bottom edge of the reserved area
+        """
+        if not stores:
+            return
+
+        # Build a list of (texture, discount_text, total_width) per entry.
+        gap_after_icon = 4         # px between icon and discount text (if shown)
+        gap_between_items = 12     # px between entries
+        entries = []
+        for s in stores:
+            if not isinstance(s, dict):
+                continue
+            name = s.get("name", "")
+            tex = self._load_store_texture(name)
+            if tex is None:
+                continue
+            cut = discount_lookup(name) if discount_lookup else 0
+            disc_text = f"-{cut}%" if cut and cut > 0 else ""
+            disc_w = self.get_text_width(disc_text) if disc_text else 0
+            entry_w = STORE_ICON_SIZE + (gap_after_icon + disc_w if disc_text else 0)
+            entries.append((tex, disc_text, entry_w))
+
+        if not entries:
+            return
+
+        total_w = sum(e[2] for e in entries) + gap_between_items * (len(entries) - 1)
+        # Clip / right-align if overflow
+        if total_w > max_width:
+            total_w = max_width
+        x = center_x - total_w // 2
+        y_icon = bottom_y - STORE_ICON_SIZE - 4  # 4px margin above button area
+        y_text = y_icon + (STORE_ICON_SIZE - FONT_SIZE) // 2
+
+        for tex, disc_text, entry_w in entries:
+            dst = sdl2.SDL_Rect(x, y_icon, STORE_ICON_SIZE, STORE_ICON_SIZE)
+            sdl2.SDL_RenderCopy(self.renderer, tex, None, dst)
+            if disc_text:
+                self.draw_text(
+                    (x + STORE_ICON_SIZE + gap_after_icon, y_text),
+                    disc_text,
+                    c_discount_text,
+                )
+            x += entry_w + gap_between_items

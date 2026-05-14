@@ -107,6 +107,10 @@ class Port:
     runtime_base_url: str = ""
     repo: str = ""
     muted: bool = False
+    # Stores selling the port's underlying game; each entry is a dict with
+    # name/gameurl/developerurl as in port.json. Used purely for display in
+    # the port detail panel — no clicks/navigation.
+    store: List[dict] = field(default_factory=list)
 
 @dataclass
 class Repository:

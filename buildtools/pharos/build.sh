@@ -76,6 +76,7 @@ pyinstaller \
     --name Pharos \
     --collect-all sdl2 \
     --add-data "$SOURCE_DIR/fonts:fonts" \
+    --add-data "$SOURCE_DIR/resources:resources" \
     --add-binary "$DIST_DIR/pharos-daemon:." \
     --paths "$SOURCE_DIR" \
     --distpath "$DIST_DIR" \
