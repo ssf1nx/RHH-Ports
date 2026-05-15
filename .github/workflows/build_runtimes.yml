@@ -55,16 +55,20 @@ jobs:
 
             case "$track_mode" in
               release)
-                tag=$(curl -sf "https://api.github.com/repos/$repo/releases/latest" | jq -r .tag_name)
+                tag=$(curl -sf "https://api.github.com/repos/$repo/releases/latest" | jq -r .tag_name) || tag=""
                 if [[ -z "$tag" || "$tag" == "null" ]]; then
                   echo "[$id] failed to resolve latest release on $repo — skipping"
                   continue
                 fi
-                ref=$(curl -sf "https://api.github.com/repos/$repo/git/ref/tags/$tag")
+                ref=$(curl -sf "https://api.github.com/repos/$repo/git/ref/tags/$tag") || ref=""
+                if [[ -z "$ref" ]]; then
+                  echo "[$id] failed to resolve tag ref on $repo — skipping"
+                  continue
+                fi
                 ref_type=$(echo "$ref" | jq -r .object.type)
                 if [[ "$ref_type" == "tag" ]]; then
                   tag_obj_url=$(echo "$ref" | jq -r .object.url)
-                  upstream_sha=$(curl -sf "$tag_obj_url" | jq -r .object.sha)
+                  upstream_sha=$(curl -sf "$tag_obj_url" | jq -r .object.sha) || upstream_sha=""
                 else
                   upstream_sha=$(echo "$ref" | jq -r .object.sha)
                 fi
@@ -72,7 +76,7 @@ jobs:
                 ;;
               branch|*)
                 branch=$(jq -r --arg id "$id" '.runtimes[$id].upstream_branch' buildtools/registry.json)
-                upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha)
+                upstream_sha=$(curl -sf "https://api.github.com/repos/$repo/commits/$branch" | jq -r .sha) || upstream_sha=""
                 source="$repo@$branch"
                 ;;
             esac
