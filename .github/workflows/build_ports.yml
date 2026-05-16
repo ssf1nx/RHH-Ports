@@ -361,9 +361,9 @@ jobs:
               run_id: context.runId,
               per_page: 100,
             });
-            const failedJob = jobsData.jobs.find(j =>
-              j.status === 'completed' && j.conclusion === 'failure'
-            );
+            const failedJob =
+              jobsData.jobs.find(j => j.name === context.job) ||
+              jobsData.jobs.find(j => j.conclusion === 'failure');
 
             let fullLog = '';
             if (failedJob) {
