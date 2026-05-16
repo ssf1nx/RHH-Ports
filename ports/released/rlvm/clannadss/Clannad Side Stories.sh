@@ -17,7 +17,7 @@ source $controlfolder/control.txt
 get_controls
 
 # Set variables
-GAMEDIR="/$directory/ports/littlebusters"
+GAMEDIR="/$directory/ports/clannadss"
 DEVICE_ARCH="${DEVICE_ARCH:-aarch64}"
 
 # CD and set logging
@@ -50,11 +50,11 @@ else
 fi
 
 # Create config dir
-rm -rf "$HOME/.rlvm/KEY_リトルバスターズ！"
-ln -s "$GAMEDIR/saves" "$HOME/.rlvm/KEY_リトルバスターズ！"
+rm -rf "$HOME/.rlvm/KEY_CLANNAD_ENHD"
+ln -s "$GAMEDIR/saves" "$HOME/.rlvm/KEY_CLANNAD_ENHD"
 
 # Setup controls
-$GPTOKEYB "$RLVM/rlvm" -c "rlvm.gptk" &
+$GPTOKEYB "$RLVM/rlvm" -c "rlvm.gptk" & 
 
 # Run the game
 pm_platform_helper "$RLVM/rlvm" > /dev/null

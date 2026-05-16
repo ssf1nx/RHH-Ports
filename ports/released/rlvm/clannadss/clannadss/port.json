@@ -1,0 +1,41 @@
+{
+  "version": 4,
+  "name": "clannadss.zip",
+  "items": [
+    "Clannad Side Stories.sh",
+    "clannadss/"
+  ],
+  "items_opt": [],
+  "attr": {
+    "title": "Clannad Side Stories",
+    "porter": [
+      "Jeod"
+    ],
+    "desc": "Delve further into the world of Clannad and experience stories beyond the original visual novel.",
+    "desc_md": null,
+    "inst": "Add your game assets to `ports/clannadss/gamedata`.",
+    "inst_md": null,
+    "genres": [
+      "visual-novel"
+    ],
+    "image": null,
+    "rtr": false,
+    "exp": false,
+    "runtime": [
+      "rlvm.squashfs"
+    ],
+    "store": [
+      {
+        "name": "Steam",
+        "gameurl": "https://store.steampowered.com/app/420100/CLANNAD_Side_Stories/",
+        "developerurl": ""
+      }
+    ],
+    "availability": "paid",
+    "reqs": [],
+    "arch": [
+      "aarch64"
+    ],
+    "min_glibc": null
+  }
+}

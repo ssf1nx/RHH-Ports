@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<gamelist>
+    <game>
+        <path>./Clannad Side Stories.sh</path>
+        <name>Clannad Side Stories</name>
+        <desc>Delve further into the world of Clannad and experience stories beyond the original visual novel.</desc>
+        <image>./clannadss/cover.png</image>
+        <thumbnail>./clannadss/thumb.png</thumbnail>
+		<releasedate>20160602T000000</releasedate>
+		<developer>Key</developer>
+		<publisher>VisualArts</publisher>
+    </game>
+</gamelist>

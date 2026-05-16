@@ -19,65 +19,46 @@ get_controls
 # Set variables
 GAMEDIR="/$directory/ports/planetarian"
 DEVICE_ARCH="${DEVICE_ARCH:-aarch64}"
-runtime="rlvm"
-rlvm_dir="$HOME/rlvm"
-rlvm_file="$controlfolder/libs/${runtime}.squashfs"
-font="--font $rlvm_dir/fonts/sazanami-gothic.ttf"
-font2="--font $rlvm_dir/fonts/DejaVuSans.ttf"
 
+# CD and set logging
 cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
-if [ -f "${controlfolder}/libgl_${CFW_NAME}.txt" ]; then 
-  source "${controlfolder}/libgl_${CFW_NAME}.txt"
-else
-  source "${controlfolder}/libgl_default.txt"
-fi
-
-# Check for runtime
-if [ ! -f "$controlfolder/libs/${runtime}.squashfs" ]; then
-  # Check for runtime if not downloaded via PM
-  if [ ! -f "$controlfolder/harbourmaster" ]; then
-    echo "This port requires the latest PortMaster to run, please go to https://portmaster.games/ for more info." > /dev/tty0
-    sleep 5
-    exit 1
-  fi
-  $ESUDO $controlfolder/harbourmaster --quiet --no-check runtime_check "${runtime}.squashfs"
-fi
-
 # Setup RLVM
-$ESUDO mkdir -p "$rlvm_dir"
-$ESUDO umount "$rlvm_file" || true
-$ESUDO mount "$rlvm_file" "$rlvm_dir"
-PATH="$rlvm_dir:$PATH"
+RLVM="$HOME/rlvm"
+RLVM_RUNTIME="$controlfolder/libs/rlvm.squashfs"
+FONT="--font $RLVM/fonts/sazanami-gothic.ttf"
+FONT2="--font $RLVM/fonts/DejaVuSans.ttf"
+if [ -f "$RLVM_RUNTIME" ]; then
+    $ESUDO mkdir -p "$RLVM"
+    $ESUDO umount "$RLVM" 2>/dev/null || true
+    $ESUDO mount "$RLVM_RUNTIME" "$RLVM"
+else
+    pm_message "This port requires the rlvm runtime. Please download it."
+    pm_finish
+    exit 1
+fi
+
+# Exports
+export LD_LIBRARY_PATH="$RLVM/libs:$LD_LIBRARY_PATH"
+
+# Request libGL
+if [ -f "${controlfolder}/libgl_${CFW_NAME}.txt" ]; then
+    source "${controlfolder}/libgl_${CFW_NAME}.txt"
+else
+    source "${controlfolder}/libgl_default.txt"
+fi
 
 # Create config dir
 rm -rf "$HOME/.rlvm/KEY_planetarian_ME"
 ln -s "$GAMEDIR/saves" "$HOME/.rlvm/KEY_planetarian_ME"
 
-# Export libs
-export LD_LIBRARY_PATH="$rlvm_dir/libs":$LD_LIBRARY_PATH
-if [ "$LIBGL_FB" != "" ]; then
-  export SDL_VIDEO_GL_DRIVER="$rlvm_dir/gl4es/libGL.so.1"
-  export LD_LIBRARY_PATH="$rlvm_dir/gl4es:$LD_LIBRARY_PATH"
-fi
-
 # Setup controls
-$ESUDO chmod 666 /dev/tty0
-$ESUDO chmod 666 /dev/tty1
-$ESUDO chmod 666 /dev/uinput
-$GPTOKEYB "$runtime" -c "rlvm.gptk" & 
-
-# Disable touchscreen
-modprobe -r edt_ft5x06
+$GPTOKEYB "$RLVM/rlvm" -c "rlvm.gptk" &
 
 # Run the game
-echo "Loading, please wait... (might take a while!)" > /dev/tty0
-pm_platform_helper "$runtime"
-$runtime $font "$GAMEDIR/gamedata"
+pm_platform_helper "$RLVM/rlvm" > /dev/null
+"$RLVM/rlvm" $FONT "$GAMEDIR/gamedata"
 
 # Cleanup
 pm_finish
-
-# Re-enable touchscreen
-modprobe edt_ft5x06
