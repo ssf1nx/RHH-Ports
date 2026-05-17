@@ -41,7 +41,8 @@
       "upstream_repo": "TwilitRealm/dusklight",
       "track": "release",
       "commit_prefix": "DUSKLIGHT",
-      "artifacts": ["dusklight", "libs", "res"]
+      "artifacts": ["dusklight", "libs", "res"],
+      "base": "self"
     },
     "soh": {
       "port_dir": "buildtools/harbourmasters64/soh/soh",

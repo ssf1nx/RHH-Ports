@@ -20,12 +20,11 @@ BUILDSCRIPT=$SRCDIR/build.txt
 BUILDDIR=build-port
 CONTAINER=$PORTNAME-build
 
-# Build the shared base image once per run. All ports extend this via
-# `FROM rhh-base` in their per-port Dockerfile. Docker's layer cache makes
-# subsequent calls across ports in the same workflow run near-instant.
-if ! docker image inspect rhh-base >/dev/null 2>&1; then
-    echo "Building rhh-base image..."
-    docker build --platform linux/aarch64 -t rhh-base -f $BUILDTOOLS/Dockerfile.base $BUILDTOOLS
+if grep -q '^FROM rhh-base' "$SRCDIR/Dockerfile"; then
+    if ! docker image inspect rhh-base >/dev/null 2>&1; then
+        echo "Building rhh-base image..."
+        docker build --platform linux/aarch64 -t rhh-base -f $BUILDTOOLS/Dockerfile.base $BUILDTOOLS
+    fi
 fi
 
 # Stop any prior container for this port, and clean the shared staging dir

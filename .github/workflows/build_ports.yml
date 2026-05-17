@@ -136,8 +136,9 @@ jobs:
 
             if [[ "$FORCE" == "true" ]] || [[ "$upstream_sha" != "$origin_sha" ]]; then
               echo "[$id] needs build (source=$source origin=${origin_sha:-none} upstream=$upstream_sha)"
-              matrix_entries+=("$(jq -cn --arg id "$id" --arg sha "$upstream_sha" --arg label "$label" \
-                '{id:$id, upstream_sha:$sha, label:$label}')")
+              base=$(jq -r --arg id "$id" '.ports[$id].base // "rhh-base"' buildtools/registry.json)
+              matrix_entries+=("$(jq -cn --arg id "$id" --arg sha "$upstream_sha" --arg label "$label" --arg base "$base" \
+                '{id:$id, upstream_sha:$sha, label:$label, base:$base}')")
             else
               echo "[$id] up to date at $upstream_sha — skipping"
             fi
@@ -233,11 +234,10 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull rhh-base from GHCR
+        if: matrix.port.base == 'rhh-base'
         run: |
           set -euo pipefail
           docker pull "${{ needs.base-image.outputs.image }}"
-          # Tag locally as rhh-base so build_port.sh's `docker image inspect
-          # rhh-base` check passes and it skips the from-scratch build.
           docker tag "${{ needs.base-image.outputs.image }}" rhh-base
 
       - name: Build port
