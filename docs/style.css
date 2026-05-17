@@ -196,6 +196,7 @@ details[open] summary {
 
 .recent-tile {
 	flex: 0 0 260px;
+	min-width: 0;
 	scroll-snap-align: start;
 	background: var(--card-bg);
 	border: 1px solid #232323;
@@ -473,7 +474,7 @@ details[open] summary {
 ========================= */
 #ports-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
 	gap: 1.5rem;
 }
 
@@ -915,8 +916,6 @@ details[open] summary {
               (carousel, port count) sit only in the center column. ---------- */
 .above-grid {
 	display: grid;
-	/* Mirror the page-layout's fluid template so the carousel + port count
-	   stay column-2-aligned with the grid below at every viewport width. */
 	grid-template-columns:
 		clamp(180px, 16%, 320px)
 		minmax(0, 1fr)
@@ -927,6 +926,7 @@ details[open] summary {
 
 .above-grid > * {
 	grid-column: 2;
+	min-width: 0;
 }
 
 .above-grid > .recent-updates {
@@ -1019,7 +1019,7 @@ details[open] summary {
 	background: #ebe7d9;
 }
 
-/* ---------- Mobile / narrow: stack the three columns ---------- */
+/* ---------- Tablet / narrow: stack the three columns ---------- */
 @media (max-width: 1000px) {
 	.above-grid {
 		grid-template-columns: 1fr;
@@ -1037,7 +1037,6 @@ details[open] summary {
 		overflow: visible;
 		padding: 0;
 	}
-	/* Filters go back to horizontal/wrapping on narrow widths */
 	.page-left .filters-container {
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -1045,5 +1044,97 @@ details[open] summary {
 	}
 	.page-left .filters-container label {
 		margin-top: 0;
+	}
+}
+
+/* ---------- Phone-sized: tighten chrome, scale type, shrink tiles ---------- */
+@media (max-width: 600px) {
+	body {
+		padding: 0.5rem;
+	}
+
+	.site-header {
+		margin-bottom: 1rem;
+	}
+	.site-header h1 {
+		font-size: clamp(1.4rem, 6vw, 2rem);
+		margin-bottom: 0.5rem;
+	}
+	.avatar img {
+		max-width: 80px;
+	}
+	.social-links ul {
+		gap: 0.75rem 1rem;
+		font-size: 0.9rem;
+		margin-top: 0.6rem;
+	}
+
+	#port-count {
+		font-size: 1.3rem;
+		margin-bottom: 1rem;
+	}
+
+	.above-grid,
+	.page-layout {
+		gap: 0.75rem;
+		margin-top: 0.75rem;
+	}
+
+	.recent-updates {
+		margin: 1rem auto;
+	}
+	.recent-updates h2 {
+		font-size: 1.15rem;
+	}
+	.recent-tile {
+		flex: 0 0 200px;
+	}
+	.recent-tile img {
+		height: 110px;
+	}
+
+	/* Cards */
+	.port-card {
+		padding: 0.75rem;
+	}
+	.port-title {
+		font-size: 1.15rem;
+	}
+
+	.filters-panel-body {
+		padding: 0.6rem 0.75rem 0.75rem 1rem;
+	}
+	.devlog-content,
+	.page-right .devlog-content {
+		padding: 0 0.75rem 0.75rem 1rem;
+	}
+	.instructions-content,
+	.page-right .instructions-content {
+		padding: 0 0.75rem 0.75rem 1rem;
+	}
+
+	.readme-modal {
+		padding: 0.5rem;
+	}
+	.readme-modal-title {
+		font-size: 1rem;
+	}
+	.readme-modal-header {
+		padding: 0.5rem 0.6rem 0.5rem 0.9rem;
+	}
+}
+
+/* ---------- Very narrow: icon-only nav ---------- */
+@media (max-width: 380px) {
+	.site-header h1 {
+		font-size: 1.25rem;
+	}
+	.social-links a span {
+		position: absolute;
+		left: -9999px;
+	}
+	.social-links ul {
+		gap: 1rem;
+		font-size: 1.1rem;
 	}
 }
