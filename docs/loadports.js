@@ -50,8 +50,6 @@ async function loadPorts() {
             icon: 'fa-brands fa-steam',
             short: 'Steam',
             addAffiliate: (url) => {
-                // RHH-Ports Steam Curator
-                // https://store.steampowered.com/curator/46123857-RHH-Ports
                 const TAG = '46123857';
                 if (!TAG) return url;
                 return url + (url.includes('?') ? '&' : '?') + 'curator_clanid=' + encodeURIComponent(TAG);
@@ -91,10 +89,11 @@ async function loadPorts() {
             modifier: 'humble',
             icon: '',
             short: 'Humble',
+            isPaidAffiliate: true,
             addAffiliate: (url) => {
-                const TAG = '';
-                if (!TAG) return url;
-                return url + (url.includes('?') ? '&' : '?') + 'partner=' + encodeURIComponent(TAG);
+                const IMPACT_ID = '7306128';
+                if (!IMPACT_ID) return url;
+                return `https://humblebundleinc.sjv.io/c/${IMPACT_ID}/2059850/25796?u=` + encodeURIComponent(url);
             }
         },
         'Fanatical': {
@@ -230,7 +229,9 @@ async function loadPorts() {
                     const itadCut = itadEntry && itadEntry.cut > 0 ? itadEntry.cut : null;
                     const pct = explicit || (itadCut ? `-${itadCut}%` : '');
                     const discount = pct ? `<span class="port-store-discount">${escAttr(pct)}</span>` : '<span class="port-store-discount"></span>';
-                    const tooltip = s.name ? `Buy on ${s.name}` : 'Buy';
+                    const tooltip = s.name
+                        ? (cfg.isPaidAffiliate ? `Buy on ${s.name} (affiliate link)` : `Buy on ${s.name}`)
+                        : 'Buy';
                     return `<a class="port-store port-store--${cfg.modifier}" href="${escAttr(url)}" target="_blank" rel="noopener noreferrer sponsored" title="${escAttr(tooltip)}" data-store-name="${escAttr(s.name || '')}">${iconHtml}${labelHtml}${discount}</a>`;
                 })
                 .join('');

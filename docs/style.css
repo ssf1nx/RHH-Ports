@@ -53,39 +53,107 @@ body {
 	box-shadow: var(--shadow-sm);
 }
 
-/* Social links */
-.social-links ul {
+/* Site navbar with dropdowns */
+.site-nav {
+	margin-top: 1rem;
+}
+.nav-bar {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	gap: 1.5rem;
-	list-style: none;
-	padding: 0;
-	margin: 1rem 0 0;
+	gap: 0.4rem;
 }
-
-
-.social-links .nav-separator {
-	flex-basis: 100%;
-	height: 1px;
-	background: rgba(0, 0, 0, 0.25);
-	margin: 0.25rem 0;
-	list-style: none;
+.nav-item {
+	position: relative;
 }
-
-
-.social-links a {
+.nav-trigger {
+	background: rgba(255, 255, 255, 0.15);
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: var(--radius);
+	padding: 0.5rem 0.9rem;
+	font: inherit;
+	font-weight: 600;
+	color: inherit;
+	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
-	gap: 0.4rem;
+	gap: 0.5rem;
+	transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.nav-trigger:hover,
+.nav-trigger:focus-visible,
+.nav-dropdown.open .nav-trigger {
+	background: rgba(255, 255, 255, 0.45);
+	border-color: rgba(0, 0, 0, 0.35);
+	color: var(--primary);
+	outline: none;
+}
+.nav-chevron {
+	font-size: 0.7em;
+	transition: transform 0.15s ease;
+}
+.nav-dropdown.open .nav-chevron {
+	transform: rotate(180deg);
+}
+.nav-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0.35rem 0;
+	position: absolute;
+	top: calc(100% + 0.4rem);
+	left: 50%;
+	transform: translateX(-50%);
+	min-width: 220px;
+	max-width: calc(100vw - 1rem);
+	background: var(--white);
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-md);
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.12s ease, visibility 0s linear 0.12s;
+	text-align: left;
+}
+/* When dynamic positioning kicks in, the JS sets these as inline styles. */
+.nav-menu--right {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+.nav-menu--left {
+	left: 0;
+	right: auto;
+	transform: none;
+}
+.nav-dropdown.open .nav-menu {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.12s ease, visibility 0s;
+}
+.nav-menu a {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	padding: 0.55rem 1rem;
 	text-decoration: none;
 	color: inherit;
 	font-weight: 600;
-	transition: color 0.2s ease;
+	white-space: nowrap;
+	transition: background-color 0.15s ease, color 0.15s ease;
 }
-
-.social-links a:hover {
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+	background: rgba(0, 0, 0, 0.05);
 	color: var(--primary);
+	outline: none;
+}
+.nav-menu i {
+	width: 1em;
+	text-align: center;
 }
 
 /* =========================
@@ -1063,10 +1131,12 @@ details[open] summary {
 	.avatar img {
 		max-width: 80px;
 	}
-	.social-links ul {
-		gap: 0.75rem 1rem;
+	.nav-trigger {
+		padding: 0.4rem 0.7rem;
 		font-size: 0.9rem;
-		margin-top: 0.6rem;
+	}
+	.nav-menu {
+		min-width: 200px;
 	}
 
 	#port-count {
@@ -1124,17 +1194,19 @@ details[open] summary {
 	}
 }
 
-/* ---------- Very narrow: icon-only nav ---------- */
+/* ---------- Very narrow: icon-only triggers ---------- */
 @media (max-width: 380px) {
 	.site-header h1 {
 		font-size: 1.25rem;
 	}
-	.social-links a span {
+	.nav-trigger > span {
 		position: absolute;
 		left: -9999px;
 	}
-	.social-links ul {
-		gap: 1rem;
-		font-size: 1.1rem;
+	.nav-trigger {
+		padding: 0.45rem 0.6rem;
+	}
+	.nav-bar {
+		gap: 0.5rem;
 	}
 }
