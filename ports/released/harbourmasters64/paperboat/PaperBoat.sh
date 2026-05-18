@@ -28,70 +28,103 @@ cd $GAMEDIR
 > "$GAMEDIR/log.txt" && exec > >(tee "$GAMEDIR/log.txt") 2>&1
 
 # Permissions
-$ESUDO chmod +x "$GAMEDIR/PaperBoat"
+$ESUDO chmod +x "$GAMEDIR/Paperboat"
+$ESUDO chmod +x "$GAMEDIR/tools/torch"
+$ESUDO chmod +x "$GAMEDIR/tools/otrgen"
+
+# -------------------- BEGIN FUNCTIONS --------------------
 
 # Check imgui.ini and modify if needed
-input_file="imgui.ini"
-temp_file="imgui_temp.ini"
-skip_section=0
-# Loop through each line in the input file
-while IFS= read -r line; do
-    # Check if the line is a window header
-    if [[ "$line" =~ ^\[Window\]\[Main\ Game\] || "$line" =~ ^\[Window\]\[Main\ -\ Deck\] ]]; then
-        skip_section=1  # Set the flag to skip modifications for this section
-    elif [[ "$line" =~ ^\[Window\] ]]; then
-        skip_section=0  # Reset the flag for other windows
-    fi
+imgui_reset() {
+    input_file="imgui.ini"
+    temp_file="imgui_temp.ini"
+    skip_section=0
+    # Loop through each line in the input file
+    while IFS= read -r line; do
+        # Check if the line is a window header
+        if [[ "$line" =~ ^\[Window\]\[Main\ Game\] || "$line" =~ ^\[Window\]\[Main\ -\ Deck\] ]]; then
+            skip_section=1  # Set the flag to skip modifications for this section
+        elif [[ "$line" =~ ^\[Window\] ]]; then
+            skip_section=0  # Reset the flag for other windows
+        fi
 
-    # Modify Pos and Size only if the current section is not skipped
-    if [[ $skip_section -eq 0 ]]; then
-        if [[ "$line" =~ ^Pos=.* ]]; then
-            echo "Pos=30,30" >> "$temp_file"
-        elif [[ "$line" =~ ^Size=.* ]]; then
-            echo "Size=400,300" >> "$temp_file"
+        # Modify Pos and Size only if the current section is not skipped
+        if [[ $skip_section -eq 0 ]]; then
+            if [[ "$line" =~ ^Pos=.* ]]; then
+                echo "Pos=30,30" >> "$temp_file"
+            elif [[ "$line" =~ ^Size=.* ]]; then
+                echo "Size=400,300" >> "$temp_file"
+            else
+                echo "$line" >> "$temp_file"
+            fi
         else
+            # If skipping, write the line unchanged
             echo "$line" >> "$temp_file"
         fi
-    else
-        # If skipping, write the line unchanged
-        echo "$line" >> "$temp_file"
-    fi
-done < "$input_file"
+    done < "$input_file"
 
-# Replace the original file with the modified one
-mv "$temp_file" "$input_file"
+    # Replace the original file with the modified one
+    mv "$temp_file" "$input_file"
+}
 
-# Close the menu if open
-sed -i 's/"Menu": *1/"Menu": 0/' paperboat.cfg.json
-
-# Check if we need to unzip the assets archive
-unzip_assets() {
-    # Define 7zzs binary
-    SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
-    if [ ! -x "$SEVENZIP" ]; then
-        echo "7zzs binary not found at $SEVENZIP"
-        return 1
-    fi
-
-    if [ -f "$GAMEDIR/assets.zip" ]; then
-        echo "Extracting assets.zip..."
-        if "$SEVENZIP" x -y "$GAMEDIR/assets.zip" -o"$GAMEDIR" >/dev/null; then
-            rm -f "$GAMEDIR/assets.zip"
+otr_check() {
+    if [ ! -f "pm64.o2r" ]; then
+        # Ensure we have a rom file before attempting to generate otr
+        if ls "$GAMEDIR/baseroms/"*.*64 1> /dev/null 2>&1; then
+            if [ -f "$controlfolder/utils/patcher.txt" ]; then
+                export PATCHER_FILE="$GAMEDIR/tools/otrgen"
+                export PATCHER_GAME="$(basename "${0%.*}")"
+                export PATCHER_TIME="5 to 10 minutes"
+                export controlfolder
+                export DEVICE_ARCH
+                source "$controlfolder/utils/patcher.txt"
+                $ESUDO kill -9 $(pidof gptokeyb)
+            else
+                pm_message "This port requires the latest version of PortMaster."
+            fi
         else
-            echo "Unable to extract assets.zip."
-            return 1
+            echo "Missing ROM files! Can't generate o2r!"
+        fi
+        
+        # Check if OTR files were generated
+        if [ ! -f "pm64.o2r" ]; then
+            echo "No o2r files, can't run the game!"
+            exit 1
         fi
     fi
 }
 
-if [ -f "$GAMEDIR/assets.zip" ]; then
-    unzip_assets
+edit_json() {
+    [ -f "paperboat.cfg.json" ] || return 0
+
+    # Close the menu if open
+    sed -i 's/"Menu":[[:space:]]*1/"Menu": 0/' paperboat.cfg.json
+
+    # Force controller navigation on (paperboat uses libultraship's CVars block)
+    if grep -q '"gControlNav"' paperboat.cfg.json; then
+        sed -i 's/"gControlNav":[[:space:]]*[0-9]*/"gControlNav": 1/' paperboat.cfg.json
+    else
+        sed -i '/"CVars":[[:space:]]*{/a\"gControlNav": 1,' paperboat.cfg.json
+    fi
+}
+
+# --------------------- END FUNCTIONS ---------------------
+
+# Perform functions
+otr_check
+
+# Edit json
+edit_json
+
+# Edit imgui
+if [ -f "imgui.ini" ]; then
+    imgui_reset
 fi
 
 # Run the game
-$GPTOKEYB "PaperBoat" -c "paperboat.gptk" & 
-pm_platform_helper "$GAMEDIR/PaperBoat" > /dev/null
-./PaperBoat
+$GPTOKEYB "Paperboat" -c "paperboat.gptk" &
+pm_platform_helper "$GAMEDIR/Paperboat" > /dev/null
+./Paperboat
 
 # Cleanup
 rm -rf logs
