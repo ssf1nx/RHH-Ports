@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "2026-05-18-dusklight-opengles",
+      "title": "Dusklight v1.2.0 and the OpenGL ES question",
+      "date": "2026-05-18",
+      "excerpt": "v1.2.0's headline feature is experimental OpenGL ES, but the path is scoped to Android by design and the Linux branch still hardcodes it off."
+    },
+    {
       "slug": "2026-05-13-engine-runtimes",
       "title": "Game engines as shared runtimes",
       "date": "2026-05-13",
