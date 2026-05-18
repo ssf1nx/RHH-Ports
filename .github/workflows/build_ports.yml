@@ -185,7 +185,7 @@ jobs:
           echo "image=$image" >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -227,7 +227,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -376,7 +376,7 @@ jobs:
 
       - name: Upload commit payload
         if: steps.sync.outputs.validated == 'true' && inputs.force-build != true
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: payload-${{ matrix.port.id }}
           path: _ci/payload/
@@ -385,7 +385,7 @@ jobs:
 
       - name: Upload force-build output
         if: steps.build.outputs.rc == '0' && inputs.force-build == true
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: force-payload-${{ matrix.port.id }}
           path: _ci/force/
@@ -418,7 +418,7 @@ jobs:
 
       - name: Upload port status
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: status-${{ matrix.port.id }}
           path: _ci/status/
@@ -449,7 +449,7 @@ jobs:
 
       - name: Download all payloads
         id: download
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           pattern: payload-*
           path: _ci/payloads/
@@ -537,14 +537,14 @@ jobs:
       issues: write
     steps:
       - name: Download all statuses
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           pattern: status-*
           path: _ci/statuses/
         continue-on-error: true
 
       - name: Open or update issues for failures
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         env:
           DISCOVER_RESULT: ${{ needs.discover.result }}
           BASE_IMAGE_RESULT: ${{ needs.base-image.result }}
@@ -617,18 +617,30 @@ jobs:
               return;
             }
 
-            // Port-level failures from status artifacts.
+            // Port-level failures from status artifacts. Walk recursively
+            // for status.json files: when download-artifact@v7 matches
+            // exactly one artifact via `pattern`, it extracts contents
+            // directly into the root path with no per-artifact subdir
+            // (artifacts.length === 1 special case). Recursive find handles
+            // both that flat case and the normal nested case.
             const root = '_ci/statuses';
-            let dirs = [];
-            try { dirs = fs.readdirSync(root); } catch (_) {}
+            function findStatusFiles(dir) {
+              let entries;
+              try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (_) { return []; }
+              const out = [];
+              for (const e of entries) {
+                const full = path.join(dir, e.name);
+                if (e.isDirectory()) out.push(...findStatusFiles(full));
+                else if (e.isFile() && e.name === 'status.json') out.push(full);
+              }
+              return out;
+            }
 
             const failed = [];
-            for (const d of dirs) {
-              const statusPath = path.join(root, d, 'status.json');
-              if (!fs.existsSync(statusPath)) continue;
+            for (const statusPath of findStatusFiles(root)) {
               const s = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
               if (s.status !== 'failure') continue;
-              const logPath = path.join(root, d, 'build.log');
+              const logPath = path.join(path.dirname(statusPath), 'build.log');
               let tail = '(log unavailable)';
               if (fs.existsSync(logPath)) {
                 const lines = fs.readFileSync(logPath, 'utf8').split(/\r?\n/);
@@ -674,7 +686,7 @@ jobs:
       needs.discover.outputs.matrix != '[]'
     steps:
       - name: Download all force payloads
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           pattern: force-payload-*
           path: _ci/force/
@@ -685,11 +697,16 @@ jobs:
           set -euo pipefail
           mkdir -p _ci/bundle
           shopt -s nullglob
+          # Multi-artifact layout: _ci/force/force-payload-<id>/<id>-<sha>/
           for d in _ci/force/force-payload-*/*/; do
             cp -r "$d" _ci/bundle/
           done
+          for d in _ci/force/*/; do
+            [[ "$(basename "$d")" == force-payload-* ]] && continue
+            cp -r "$d" _ci/bundle/
+          done
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: force-build-outputs
           path: _ci/bundle/

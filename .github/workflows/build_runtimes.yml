@@ -212,7 +212,7 @@ jobs:
 
       - name: Upload force-build artifacts
         if: inputs.force-build == true
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: force-build-runtimes
           path: ${{ runner.temp }}/force-build-outputs
