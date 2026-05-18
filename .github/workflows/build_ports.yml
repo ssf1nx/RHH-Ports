@@ -458,9 +458,8 @@ jobs:
       - name: Commit and push
         run: |
           set -euo pipefail
-          shopt -s nullglob
-          payloads=(_ci/payloads/payload-*/)
-          if (( ${#payloads[@]} == 0 )); then
+          mapfile -t metas < <(find _ci/payloads -type f -name meta.json | sort)
+          if (( ${#metas[@]} == 0 )); then
             echo "No payloads produced — nothing to commit."
             exit 0
           fi
@@ -469,8 +468,8 @@ jobs:
           git config user.email "github-actions@github.com"
 
           committed=false
-          for payload in "${payloads[@]}"; do
-            meta="$payload/meta.json"
+          for meta in "${metas[@]}"; do
+            payload="$(dirname "$meta")"
             tarball="$payload/payload.tar.gz"
             [[ -f "$meta" && -f "$tarball" ]] || {
               echo "::warning::malformed payload at $payload — skipping"
