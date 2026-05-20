@@ -108,15 +108,19 @@ async function loadPorts() {
     // === Discount integration (via Cloudflare Worker proxy) ===
     const DISCOUNT_API_URL = 'https://rhh-ports-discounts.jeodc.workers.dev/';
     const DISCOUNT_COUNTRY = 'US';
-    const DISCOUNT_CACHE_KEY = 'rhh:discounts:v2';
+    const DISCOUNT_CACHE_KEY = 'rhh:discounts:v3';
     const DISCOUNT_CACHE_TTL_MS = 60 * 60 * 1000;     // 1 hour (Worker also caches 15m on its CDN)
 
-    const readCachedDiscounts = () => {
+    // Cache is invalidated by either TTL or appid-set drift
+    const readCachedDiscounts = (requestedAppids) => {
         try {
             const raw = localStorage.getItem(DISCOUNT_CACHE_KEY);
             if (!raw) return null;
             const cached = JSON.parse(raw);
-            if (cached && (Date.now() - cached.ts) < DISCOUNT_CACHE_TTL_MS) return cached.data;
+            if (!cached || (Date.now() - cached.ts) >= DISCOUNT_CACHE_TTL_MS) return null;
+            const have = new Set(Object.keys(cached.data || {}));
+            if (!requestedAppids.every(id => have.has(String(id)))) return null;
+            return cached.data;
         } catch (_) { /* corrupt cache; ignore */ }
         return null;
     };
@@ -127,7 +131,7 @@ async function loadPorts() {
     // Returns { appid: { shopName: cutPct, ... }, ... } — empty on any failure.
     const fetchDiscounts = async (steamAppids) => {
         if (!steamAppids.length) return {};
-        const cached = readCachedDiscounts();
+        const cached = readCachedDiscounts(steamAppids);
         if (cached) return cached;
         try {
             const url = `${DISCOUNT_API_URL}?appids=${steamAppids.join(',')}&country=${DISCOUNT_COUNTRY}`;
