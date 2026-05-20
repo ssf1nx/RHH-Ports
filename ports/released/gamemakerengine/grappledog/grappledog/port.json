@@ -38,7 +38,7 @@
     ],
     "availability": "paid",
     "reqs": [
-      "2gb"
+      "ultra"
     ],
     "arch": [
       "aarch64"
