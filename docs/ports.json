@@ -1261,9 +1261,7 @@
         }
       ],
       "availability": "paid",
-      "reqs": [
-        "ultra"
-      ],
+      "reqs": [],
       "arch": [
         "aarch64"
       ],
@@ -1273,12 +1271,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/grappledog/grappledog/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/grappledog/grappledog/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/grappledog.zip",
-      "date_updated": "2026-05-20T12:15",
+      "date_updated": "2026-05-20T21:14",
       "first_seen": "2026-05-20",
-      "md5": "c737fbc14682e4c30a680ffa03df80a3",
-      "size": 5275273,
+      "md5": "0f198b5973c4c4907f9fa22444520f23",
+      "size": 6032008,
       "lifetime_downloads": 2,
-      "last_commit": "[GRAPPLEDOGS] Temp bump reqs"
+      "last_commit": "[GRAPPLEDOGS] Refactor to support more devices"
     }
   },
   {
