@@ -44,12 +44,36 @@ export LD_LIBRARY_PATH="$GAMEDIR/libs:$GMLOADER/lib:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
 export GMLOADER_LIB_PATH="$GMLOADER/lib"
 
+# ---- BEGIN FUNCTIONS ---
+thermal_setup() {
+    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+        [ -d "$policy" ] && [ -f "$policy/scaling_max_freq" ] || continue
+        orig=$(cat "$policy/scaling_max_freq") || continue
+        target=$((orig * 8 / 10)) # Edit the first number here to boost or lower the cap
+        $ESUDO sh -c "echo $target > '$policy/scaling_max_freq'" 2>/dev/null || true
+        ORIG_MAX_FREQS="$ORIG_MAX_FREQS|$policy=$orig"
+    done
+}
+
+thermal_restore() {
+    OLDIFS=$IFS
+    IFS='|'
+    for entry in $ORIG_MAX_FREQS; do
+        [ -z "$entry" ] && continue
+        policy="${entry%=*}"
+        orig="${entry#*=}"
+        $ESUDO sh -c "echo $orig > '$policy/scaling_max_freq'" 2>/dev/null || true
+    done
+    IFS=$OLDIFS
+}
+# ---- END FUNCTIONS ---
+
 # Check if we need to patch
 if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     if [ -f "$controlfolder/utils/patcher.txt" ]; then
         export PATCHER_FILE="$GAMEDIR/tools/patchscript"
         export PATCHER_GAME="$(basename "${0%.*}")"
-        export PATCHER_TIME="5 to 10 minutes"
+        export PATCHER_TIME="a while"
         export controlfolder
         source "$controlfolder/utils/patcher.txt"
         $ESUDO kill -9 $(pidof gptokeyb)
@@ -60,11 +84,17 @@ if [ ! -f patchlog.txt ] || [ -f "$GAMEDIR/assets/data.win" ]; then
     fi
 fi
 
+# 2GB devices can trip thermal during spikes; cap CPU max freq 
+# so the SoC stays under its passive cooling envelope.
+ORIG_MAX_FREQS=""
+if [ "${DEVICE_RAM:-0}" -le 2 ]; then thermal_setup; fi
+
 # Run
 $GPTOKEYB "gmloadernext.aarch64" -c "grappledog.gptk" &
 pm_platform_helper "$GMLOADER/gmloadernext.aarch64" > /dev/null
 $TASKSET "$GMLOADER/gmloadernext.aarch64" -c gmloader.json
 
 # Cleanup
+if [ -n "$ORIG_MAX_FREQS" ]; then thermal_restore; fi
 $ESUDO umount "$GMLOADER" 2>/dev/null || true
 pm_finish

@@ -37,9 +37,7 @@
       }
     ],
     "availability": "paid",
-    "reqs": [
-      "ultra"
-    ],
+    "reqs": [],
     "arch": [
       "aarch64"
     ],

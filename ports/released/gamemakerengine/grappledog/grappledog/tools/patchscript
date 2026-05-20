@@ -21,7 +21,6 @@ echo "GAMEDIR is set to: $GAMEDIR"
 export DATADIR="$GAMEDIR/assets"
 export LICENSEDIR="$GAMEDIR/licenses/grappledog"
 export DATAFILE="grappledog.port"
-export TMPDIR="$GAMEDIR/tmp"
 
 prepare_system() {
     ZIP=$(command -v zip)
@@ -30,15 +29,9 @@ prepare_system() {
         return 1
     fi
 
-    PYTHON=$(command -v python3 || command -v python)
-    if [ -z "$PYTHON" ]; then
-        emit_fail_msg "Missing python3!"
-        return 1
-    fi
-
-    ASTCENC="$controlfolder/astcenc.${DEVICE_ARCH}"
-    if [ ! -x "$ASTCENC" ]; then
-        emit_fail_msg "astcenc binary not found at $ASTCENC"
+    DECODER="$GAMEDIR/tools/yyg_qoi_decode"
+    if [ ! -x "$DECODER" ]; then
+        emit_fail_msg "yyg_qoi_decode binary not found at $DECODER"
         return 1
     fi
 
@@ -49,7 +42,7 @@ prepare_system() {
     else
         SAVEDIR="$GAMEDIR/saves"
     fi
-    export PYTHON ASTCENC SAVEDIR
+    export DECODER SAVEDIR
 }
 
 prepare_assets() {
@@ -60,19 +53,68 @@ prepare_assets() {
     [ -d "$DATADIR/fmodBanks" ] && mv "$DATADIR/fmodBanks" "$SAVEDIR/fmodBanks"
     [ -d "$DATADIR/licenses" ] && mv "$DATADIR/licenses/"* "$LICENSEDIR"
     rmdir "$DATADIR/licenses" 2>/dev/null || true
+    # If user pre-patched on a PC, they'll have a textures/ folder bundled in
+    # with assets/ -- move it where the texhack expects to find it.
+    if [ -d "$DATADIR/textures" ]; then
+        mv "$DATADIR/textures" "$SAVEDIR/textures"
+    fi
 }
 
 externalize_textures() {
-    mkdir -p "$SAVEDIR/textures" "$TMPDIR"
-    echo "Extracting textures and compressing..."
-    if ! $PYTHON "$GAMEDIR/tools/extract_2zoq.py" \
-            "$DATADIR/data.win" "$SAVEDIR/textures" \
-            --astcenc "$ASTCENC" \
-            --quality=-medium \
-            --tmpdir "$TMPDIR"; then
+    mkdir -p "$SAVEDIR/textures"
+    echo "Repacking texture pages and compressing at ASTC $PATCH_BLOCK $PATCH_QUALITY..."
+    # One yyg_qoi_decode pass does texture externalization + InfoFlags toggle
+    # + GMS2RandomUID recompute. (Previously a Python tools/toggleflags.py ran
+    # the InfoFlags step separately, which is why we used to require python3.)
+    if ! "$DECODER" "$DATADIR/data.win" "$SAVEDIR/textures" \
+            --repack --page-size 1024 \
+            --block "$PATCH_BLOCK" --quality "$PATCH_QUALITY" $PATCH_THREADS \
+            --set-flags Fullscreen --clear-flags Scale; then
         emit_fail_msg "Texture compression failed."
         return 1
     fi
+}
+
+# Tighter devices need fewer threads during patching
+PATCH_THREADS=""
+ORIG_MAX_FREQS=""
+if [ "${DEVICE_RAM:-0}" -le 2 ]; then
+    PATCH_THREADS="--threads 1"
+fi
+
+# Scale ASTC block size + quality to screen pixel count.
+SCREEN_PIXELS=$(( ${DISPLAY_WIDTH:-640} * ${DISPLAY_HEIGHT:-480} ))
+if [ "$SCREEN_PIXELS" -le 480000 ]; then
+    PATCH_BLOCK="6x6"
+    PATCH_QUALITY="-fastest"
+elif [ "$SCREEN_PIXELS" -le 1000000 ]; then
+    PATCH_BLOCK="5x5"
+    PATCH_QUALITY="-fast"
+else
+    PATCH_BLOCK="4x4"
+    PATCH_QUALITY="-medium"
+fi
+
+thermal_setup() {
+    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+        [ -d "$policy" ] && [ -f "$policy/scaling_max_freq" ] || continue
+        orig=$(cat "$policy/scaling_max_freq") || continue
+        target=$((orig * 8 / 10))
+        $ESUDO sh -c "echo $target > '$policy/scaling_max_freq'" 2>/dev/null || true
+        ORIG_MAX_FREQS="$ORIG_MAX_FREQS|$policy=$orig"
+    done
+}
+
+thermal_restore() {
+    OLDIFS=$IFS
+    IFS='|'
+    for entry in $ORIG_MAX_FREQS; do
+        [ -z "$entry" ] && continue
+        policy="${entry%=*}"
+        orig="${entry#*=}"
+        $ESUDO sh -c "echo $orig > '$policy/scaling_max_freq'" 2>/dev/null || true
+    done
+    IFS=$OLDIFS
 }
 
 # Add assets to $DATAFILE
@@ -84,15 +126,23 @@ zip_archive() {
         sleep 1
 }
 
-cleanup() {
-    rm -rf "$TMPDIR"
-}
-
 process_game() {
-    prepare_system || { cleanup; return 1; }
-    prepare_assets || { cleanup; return 1; }
-    externalize_textures || { cleanup; return 1; }
-    zip_archive || { cleanup; return 1; }
+    prepare_system || return 1
+    # Detect PC-pre-patched assets BEFORE prepare_assets moves them away.
+    PRE_PATCHED=0
+    [ -d "$DATADIR/textures" ] && PRE_PATCHED=1
+    prepare_assets || return 1
+    if [ "$PRE_PATCHED" = 1 ]; then
+        echo "Pre-patched assets detected; skipping on-device texture compression."
+    else
+        if [ "${DEVICE_RAM:-0}" -le 2 ]; then thermal_setup; fi
+        if ! externalize_textures; then
+            if [ -n "$ORIG_MAX_FREQS" ]; then thermal_restore; fi
+            return 1
+        fi
+        if [ -n "$ORIG_MAX_FREQS" ]; then thermal_restore; fi
+    fi
+    zip_archive || return 1
 }
 
 # Call the function
@@ -103,5 +153,3 @@ if ! process_game; then
 else
     echo "Patching process complete!"
 fi
-
-cleanup
