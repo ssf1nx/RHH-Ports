@@ -65,11 +65,11 @@ export LD_LIBRARY_PATH="$GMLOADER/lib:$GAMEDIR/lib:$LD_LIBRARY_PATH"
 
 # Apply mouse scaling according to screen size
 if [ $DISPLAY_WIDTH -gt 720 ]; then
-    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $BIG_SCALE/" "$GAMEDIR/pcl.gptk"
-    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $BIG_DELAY/" "$GAMEDIR/pcl.gptk"
+    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $BIG_SCALE/" "$GAMEDIR/valhalla.gptk"
+    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $BIG_DELAY/" "$GAMEDIR/valhalla.gptk"
 else
-    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $SMALL_SCALE/" "$GAMEDIR/pcl.gptk"
-    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $SMALL_DELAY/" "$GAMEDIR/pcl.gptk"
+    sed -i "s/^mouse_scale *= *[0-9]\+/mouse_scale = $SMALL_SCALE/" "$GAMEDIR/valhalla.gptk"
+    sed -i "s/^mouse_delay *= *[0-9]\+/mouse_delay = $SMALL_DELAY/" "$GAMEDIR/valhalla.gptk"
 fi
 
 # Assign gptokeyb and load the game
