@@ -31,6 +31,7 @@ UPDATE_CHECK_FILE="$GAMEDIR/.update_check"
 BACKUP_ZIP="$GAMEDIR/.backup/source.zip"
 GOOD_HASH="f4adfba864b852908705ea6a18a48f18"
 CONSUMED_FILE="$TMPDIR/consumed_patches.txt"
+VCDIFF_MAX=2147483647
 TOTAL_PATCHED=0
 FAILED_PATCHES=0
 
@@ -49,16 +50,6 @@ is_consumed() {
 get_derived_files() {
     [ -f "$TARGETS_FILE" ] || return
     awk -F'\t' -v s="$1" '$1==s {print $2; exit}' "$TARGETS_FILE"
-}
-
-# Compute a target-size cap for vcdiff decode, capped at INT32_MAX.
-vcdiff_max_size() {
-    local src_size patch_size sum
-    src_size=$(stat -c%s "$1" 2>/dev/null) || src_size=0
-    patch_size=$(stat -c%s "$2" 2>/dev/null) || patch_size=0
-    sum=$(( src_size + patch_size * 50 + 67108864 ))
-    [ "$sum" -gt 2147483647 ] && sum=2147483647
-    echo "$sum"
 }
 
 prepare_system() {
@@ -305,10 +296,8 @@ handle_multi_file_patches() {
 
         local patched_file="$PATCHED/$d"
         local target_file="$source_dir/$d"
-        local max_size
-        max_size=$(vcdiff_max_size "$source_file" "$vcdiff_file")
 
-        if ! "$VCDIFF" decode -max_target_file_size="$max_size" -max_target_window_size="$max_size" -dictionary "$source_file" -delta "$vcdiff_file" -target "$patched_file" 2>&1; then
+        if ! "$VCDIFF" decode -max_target_file_size="$VCDIFF_MAX" -max_target_window_size="$VCDIFF_MAX" -dictionary "$source_file" -delta "$vcdiff_file" -target "$patched_file" 2>&1; then
             echo "  ERROR: vcdiff decode failed for $d (source: $source_name)"
             FAILED_PATCHES=$((FAILED_PATCHES + 1))
             continue
@@ -361,8 +350,7 @@ patch_game_files() {
         is_consumed "$filename.vcdiff" && continue
 
         patched_file="$PATCHED/$filename"
-        max_size=$(vcdiff_max_size "$file" "$vcdiff_file")
-        if ! "$VCDIFF" decode -max_target_file_size="$max_size" -max_target_window_size="$max_size" -dictionary "$file" -delta "$vcdiff_file" -target "$patched_file" 2>&1; then
+        if ! "$VCDIFF" decode -max_target_file_size="$VCDIFF_MAX" -max_target_window_size="$VCDIFF_MAX" -dictionary "$file" -delta "$vcdiff_file" -target "$patched_file" 2>&1; then
             echo "  ERROR: vcdiff decode failed for $filename"
             FAILED_PATCHES=$((FAILED_PATCHES + 1))
             continue
