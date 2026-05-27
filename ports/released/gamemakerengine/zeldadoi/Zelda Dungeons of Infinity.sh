@@ -36,13 +36,10 @@ else
     exit 1
 fi
 
-export GMLOADER_LIB_PATH="$GMLOADER/lib"
-
-export LD_LIBRARY_PATH="$GMLOADER/lib:$LD_LIBRARY_PATH"
-
 # Exports
+export GMLOADER_LIB_PATH="$GMLOADER/lib"
+export LD_LIBRARY_PATH="$GMLOADER/lib:$LD_LIBRARY_PATH"
 export SDL_GAMECONTROLLERCONFIG="$sdl_controllerconfig"
-
 
 # Unzip data directory if needed
 if [ -f "$GAMEDIR/saves/data.zip" ]; then
@@ -56,13 +53,42 @@ if [ -f "$GAMEDIR/saves/data.zip" ]; then
     fi
 fi
 
+function thermal_safety() {
+    # Every cpufreq policy (handles big.LITTLE), cap to 80% of current max.
+    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+        [ -w "$policy/scaling_max_freq" ] || continue
+        orig=$(cat "$policy/scaling_max_freq") || continue
+        target=$((orig * 8 / 10))
+        echo "$target" | $ESUDO tee "$policy/scaling_max_freq" > /dev/null
+        echo "[thermal] capped $(basename $policy) max: $orig -> $target"
+    done
+    # Every devfreq node whose name looks like a GPU.
+    for devfreq in /sys/class/devfreq/*; do
+        [ -w "$devfreq/max_freq" ] || continue
+        case "$(basename "$devfreq")" in *gpu*|*GPU*) ;; *) continue ;; esac
+        orig=$(cat "$devfreq/max_freq") || continue
+        target=$((orig * 8 / 10))
+        echo "$target" | $ESUDO tee "$devfreq/max_freq" > /dev/null
+        echo "[thermal] capped $(basename "$devfreq") max: $orig -> $target"
+    done
+    $ESUDO rfkill block wlan bluetooth 2>/dev/null && echo "[thermal] rfkill blocked wlan + bluetooth"
+}
+
+case "$DEVICE_CPU" in
+    RK3326|h700|a133plus|RK3399|RK3566)
+        thermal_safety
+        ;;
+esac
+
+if [ "${DEVICE_RAM:-0}" -lt 2 ]; then
+    pm_message "Dungeons of Infinity is not designed to run well on devices less than 2GB. You will likely experience crashes."
+fi
+
 # Assign configs and load the game
-$GPTOKEYB "gmloadernext.aarch64" &
+$GPTOKEYB "gmloadernext.aarch64" -c "zelda.gptk" &
 pm_platform_helper "$GMLOADER/gmloadernext.aarch64" > /dev/null
 "$GMLOADER/gmloadernext.aarch64" -c gmloader.json
 
 # Cleanup
-# Unmount gmloadernext runtime
 $ESUDO umount "$GMLOADER" 2>/dev/null || true
-
 pm_finish
