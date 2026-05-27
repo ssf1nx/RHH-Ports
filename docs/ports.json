@@ -4946,7 +4946,7 @@
       "store": [],
       "availability": "",
       "reqs": [
-        "4gb",
+        "2gb",
         "power"
       ],
       "arch": [
@@ -4958,12 +4958,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zeldadoi/zeldadoi/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zeldadoi.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-27T23:07",
       "first_seen": "2025-12-16",
-      "md5": "05ca1b3a86007403cc52d0fdfc0ba4f0",
-      "size": 40573852,
-      "lifetime_downloads": 18,
-      "last_commit": "Update readmes to add runtime requirements"
+      "md5": "ee87f4af2a33ba3ff79914705d10d2c4",
+      "size": 35182908,
+      "lifetime_downloads": 27,
+      "last_commit": "[ZELDADOI] Optimize for 2GB devices"
     }
   },
   {
