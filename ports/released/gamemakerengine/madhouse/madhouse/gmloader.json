@@ -7,5 +7,6 @@
 	"disable_extensions" : false,
     "disable_rumble" : false,
 	"rumble_scale" : 4.0,
+    "disable_texhack" : true,
     "force_platform" : "os_windows"
 }

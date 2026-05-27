@@ -1,0 +1,10 @@
+{
+    "game": "Grapple Dog",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "repack":      true,
+    "page_size":   1024,
+    "block":       "4x4",
+    "quality":     "medium",
+    "externalize_textures": "../saves/textures"
+}

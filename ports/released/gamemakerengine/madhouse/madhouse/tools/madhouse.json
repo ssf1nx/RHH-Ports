@@ -1,0 +1,13 @@
+{
+    "game":        "MADHOUSE",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "code_patches": [
+        { "entry": "gml_GlobalScript_GMLiveAPI", "gml": "gml/gml_GlobalScript_GMLiveAPI.gml" }
+    ]
+}

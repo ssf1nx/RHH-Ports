@@ -1,0 +1,14 @@
+{
+    "game": "VHR THE FINAL",
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "externalize_textures": "../saves/textures",
+    "code_patches": [
+        { "entry": "gml_GlobalScript_bookkeeping_update", "gml": "gml/gml_GlobalScript_bookkeeping_update.gml" },
+        { "entry": "gml_GlobalScript_car_bounce",         "gml": "gml/gml_GlobalScript_car_bounce.gml" },
+        { "entry": "gml_GlobalScript_player_scripts",     "gml": "gml/gml_GlobalScript_player_scripts.gml" }
+    ]
+}

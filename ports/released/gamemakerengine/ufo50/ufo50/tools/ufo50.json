@@ -1,0 +1,18 @@
+{
+    "game":        "ufo50",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "code_patches": [
+        { "entry": "gml_GlobalScript_scrInitDisplay",        "gml": "gml/gml_GlobalScript_scrInitDisplay.gml" },
+        { "entry": "gml_GlobalScript_scrSaveConfig",         "gml": "gml/gml_GlobalScript_scrSaveConfig.gml" },
+        { "entry": "gml_GlobalScript_scrScaleDisplay",       "gml": "gml/gml_GlobalScript_scrScaleDisplay.gml" },
+        { "entry": "gml_GlobalScript_scrSetDisplayDefaults", "gml": "gml/gml_GlobalScript_scrSetDisplayDefaults.gml" },
+        { "entry": "gml_Object_oPauseMenu_Other_14",         "gml": "gml/gml_Object_oPauseMenu_Other_14.gml" },
+        { "entry": "gml_Object_oScreenHandler_Draw_75",      "gml": "gml/gml_Object_oScreenHandler_Draw_75.gml" }
+    ]
+}

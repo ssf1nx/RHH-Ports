@@ -22,47 +22,46 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
+export SAVEDIR="$GAMEDIR/saves"
 export DATAFILE="spinelasher.port"
-export TMPDIR="$GAMEDIR/tmp"
 
-prepare_system() {
-    # Test for commands: python, zip
-    PYTHON=$(command -v python3)
-    if [ -z "$PYTHON" ]; then
-        emit_fail_msg "Missing Python!"
-        return 1
-    fi
+# Tight-RAM devices can't sustain a parallel astcenc / vorbis workload.
+THREADS_FLAG=""
+if [ "${DEVICE_RAM:-0}" -le 2 ]; then
+    THREADS_FLAG="--threads 1"
+fi
 
-    ZIP=$(command -v zip)
-    if [ -z "$ZIP" ]; then
-        emit_fail_msg "Missing zip!"
-        return 1
-    fi
+# Pick ASTC block/quality based on display size. Smaller screens don't need 4x4 medium.
+SCREEN_PIXELS=$(( ${DISPLAY_WIDTH:-640} * ${DISPLAY_HEIGHT:-480} ))
+if [ "$SCREEN_PIXELS" -le 480000 ]; then
+    BLOCK_FLAGS="--block 6x6 --quality fastest"
+elif [ "$SCREEN_PIXELS" -le 1000000 ]; then
+    BLOCK_FLAGS="--block 5x5 --quality fast"
+else
+    BLOCK_FLAGS=""
+fi
 
-    # Mount the GMToolkit runtime
-    TOOLKIT="$HOME/gmtoolkit"
-    RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
-    if [ -f "$RUNTIME" ]; then
-        $ESUDO mkdir -p "$TOOLKIT"
-        $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-        $ESUDO mount "$RUNTIME" "$TOOLKIT"
-    else
-        emit_fail_msg "This port requires the GMToolkit runtime. Please download it."
-        return 1
-    fi
+ORIG_MAX_FREQS=""
+thermal_setup() {
+    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+        [ -d "$policy" ] && [ -f "$policy/scaling_max_freq" ] || continue
+        orig=$(cat "$policy/scaling_max_freq") || continue
+        target=$((orig * 8 / 10))
+        $ESUDO sh -c "echo $target > '$policy/scaling_max_freq'" 2>/dev/null || true
+        ORIG_MAX_FREQS="$ORIG_MAX_FREQS|$policy=$orig"
+    done
+}
 
-    # Attempt to get SAVEDIR from gmloader.json using jq
-    if command -v jq >/dev/null 2>&1; then
-        SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
-    else
-        SAVEDIR="$GAMEDIR/saves"
-    fi
-
-    # Exports
-    export PYTHON
-    export SAVEDIR
-    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-    export LD_LIBRARY_PATH="$TOOLKIT/libs:$LD_LIBRARY_PATH"
+thermal_restore() {
+    OLDIFS=$IFS
+    IFS='|'
+    for entry in $ORIG_MAX_FREQS; do
+        [ -z "$entry" ] && continue
+        policy="${entry%=*}"
+        orig="${entry#*=}"
+        $ESUDO sh -c "echo $orig > '$policy/scaling_max_freq'" 2>/dev/null || true
+    done
+    IFS=$OLDIFS
 }
 
 prepare_files() {
@@ -70,83 +69,52 @@ prepare_files() {
 
     # Delete excess files
     find "$DATADIR" -type f \( \
-        -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
+        -name "*.gitkeep" -o -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
     \) -exec rm -f {} \;
 
-}
-
-# Toggle GeneralInfo flags via envars - see https://github.com/UnderminersTeam/UndertaleModTool/blob/master/UndertaleModLib/Models/UndertaleGeneralInfo.cs for options
-set_flags() {
-    export SET_FLAGS="Fullscreen"
-    export CLEAR_FLAGS="Scale"
-    dotnet "$TOOLKIT/utmt-cli/UndertaleModCli.dll" \
-        load "$DATADIR/data.win" \
-        -s "$GAMEDIR/tools/toggleflags.csx" \
-        -o "$DATADIR/data2.win"
-
-    if [ $? -ne 0 ]; then
-        emit_fail_msg "Failed to toggle info flags."
-        return 1
-    else
-        echo "Successfully toggled info flags."
-        rm -f "$DATADIR/data.win"
-        mv "$DATADIR/data2.win" "$DATADIR/data.win"
-        if [ -n "$TMPDIR" ] && [ -d "$TMPDIR" ]; then
-            rm -rf "$TMPDIR"/*
-        fi
+    if [ -d "$SAVEDIR/textures" ]; then
+        rm -rf "$SAVEDIR/textures"
     fi
 }
 
-compress_audio() {
-    # Do audio compression
-    if $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/data.win"; then
-        mv "$TMPDIR/"* "$DATADIR" && rmdir "$TMPDIR"
-        echo "Audio compression applied successfully."
-    else
-        # Failure
-        emit_fail_msg "Audio compression failed."
-        rmdir "$TMPDIR"
+patch_datafile() {
+    if ! "$controlfolder/gmtoolkit.${DEVICE_ARCH}" --config "$GAMEDIR/tools/spinelasher.json" $THREADS_FLAG $BLOCK_FLAGS "$DATADIR/data.win"; then
+        emit_fail_msg "gmtoolkit patch failed."
         return 1
     fi
 }
 
+# Zip it all into the .port file
 zip_archive() {
     [ -f "$DATADIR/data.win" ] && mv "$DATADIR/data.win" "$DATADIR/game.droid"
-    $ZIP -r -0 "$DATAFILE" ./assets/
-    echo "Zipped contents to $DATAFILE"
-    rm -rf "$DATADIR/"*
-}
-
-# Cleanup function
-cleanup() {
-    rm -rf "$TMPDIR"
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
+    local zip_out
+    if zip_out=$("$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa -mx=0 "$GAMEDIR/$DATAFILE" "$DATADIR" 2>&1); then
+        rm -rf "$DATADIR"/*
+    else
+        echo "$zip_out"
+        emit_fail_msg "Failed to create $DATAFILE."
+        return 1
+    fi
 }
 
 process_game() {
-    echo "Preparing system..."
-    prepare_system || { cleanup; return 1; }
-
     echo "Preparing game..."
-    prepare_files || { cleanup; return 1; }
-
-    echo "Compressing audio..."
-    compress_audio || { cleanup; return 1; }
-
-    sleep 1
+    prepare_files || return 1
+    thermal_setup
+    echo "Applying patches..."
+    patch_datafile
+    rc=$?
+    thermal_restore
+    [ "$rc" -ne 0 ] && return 1
     echo "Finishing up..."
-    zip_archive || { cleanup; return 1; }
+    zip_archive || return 1
 }
 
-# Call the function
 if ! process_game; then
     [ -z "$FAIL_MSG_SET" ] && emit_fail_msg "Patching failed. Report on the RHH-Ports GitHub with patcherr.txt."
     echo "Patching process failed!"
     mv "$LOGFILE" "$LOGERR"
-else
-    echo "Patching process complete!"
+    exit 1
 fi
-
-# Always run cleanup at the end
-cleanup
+echo "Patching process complete!"

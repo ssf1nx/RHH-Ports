@@ -1,0 +1,9 @@
+All of my GameMaker ports have dropped [UndertaleModTool](https://github.com/UnderminersTeam/UndertaleModTool) + .NET + the [gmKtool](https://github.com/CST1229/GMtools) Python script for a single native binary called [gmtoolkit](https://github.com/JeodC/gmtoolkit). The old tools have a memory constraint that's tough to avoid: UndertaleModTool loads data files into RAM wholesale. For example, while Fading Afternoon can run comfortably on 1GB devices after patching, the patching itself would run out of memory.
+
+GMToolkit sidesteps the entire problem by porting Underanalyzer and parts of UTMTLib to CPlusPlus. Instead of deserializing the whole datafile into a heap object multiple times during the patch duration, GMToolkit reads the datafile into a single-byte buffer and performs more surgical operations.
+
+Now, instead of a huge patchscript, GMToolkit takes a json config passed to it as an argument, like gmloadernext has gmloader.json to determine how it should operate. You can also patch your games on a desktop machine by using a desktop release. See [gmtoolkit's readme](https://github.com/JeodC/gmtoolkit#offline-on-a-desktop) for information about that. For weaker handhelds, desktop patching means not having to wait 3 hours for a port to patch for the first time.
+
+GMToolkit will detect if a game has been patched already. When patching, it embeds a string `__gmtk:<version>:<sha>__` into the STRG chunk. Harmless for libyoyo runtimes, but ensures ports don't operate on data patched on a PC and then break the port.
+
+I tested this new tool on all of my ports, and two ports specifically have been properly fixed because of it. Pizza Tower's Peppino now has his white shirt as intended, and "Bloody Clover" in Undertale Yellow's Snowdin now properly has a paler face to reflect the palette of the town.

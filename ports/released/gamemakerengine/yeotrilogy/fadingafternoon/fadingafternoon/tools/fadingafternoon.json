@@ -1,0 +1,14 @@
+{
+    "game":        "fading afternoon",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "compress_audio": {
+        "min_size":       1048576,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "externalize_textures": "../saves/textures",
+    "code_patches": [
+        { "entry": "gml_GlobalScript_screen_init", "gml": "gml/gml_GlobalScript_screen_init.gml" }
+    ]
+}

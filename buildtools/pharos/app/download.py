@@ -34,6 +34,11 @@ controlfolder = os.environ.get("controlfolder", "")
 LIBS_DIR = Path(controlfolder) / "libs" if controlfolder else None
 DEVICE_ARCH = os.environ.get("DEVICE_ARCH", "")
 
+# Standalone CLI binary needed by every GameMaker port at patch time.
+# /releases/latest/download/<asset> auto-redirects to the newest non-prerelease
+# asset, so this URL doesn't need to be bumped per release.
+GMTOOLKIT_RELEASE_URL = "https://github.com/JeodC/gmtoolkit/releases/latest/download"
+
 # ----------------------------------------------------------------------
 # GitHub request
 # ----------------------------------------------------------------------
@@ -67,6 +72,7 @@ class Downloader:
 
             port, kind = item
             self._download_runtimes(port)
+            self._ensure_gmtoolkit_binary(port)
             self._download_port(port, kind)
 
             if self.dl_queue.empty():
@@ -226,6 +232,64 @@ class Downloader:
                 self.progress_q.put((0, 1, f"Runtime failed: {rt_name}", "download"))
                 with suppress(OSError):
                     tmp_path.unlink()
+
+    # ------------------------------------------------------------------
+    # gmtoolkit binary check
+    # ------------------------------------------------------------------
+    def _ensure_gmtoolkit_binary(self, port: Port) -> None:
+        if not port.runtime or "gmloadernext.squashfs" not in port.runtime:
+            return
+        if DEVICE_ARCH != "aarch64":
+            return
+        if not controlfolder:
+            return
+
+        bin_name = f"gmtoolkit.{DEVICE_ARCH}"
+        dest = Path(controlfolder) / bin_name
+        if dest.exists():
+            return
+
+        zip_name = f"gmtoolkit-{DEVICE_ARCH}.zip"
+        url = f"{GMTOOLKIT_RELEASE_URL}/{zip_name}"
+        print(f"[GMTOOLKIT] Downloading {zip_name}")
+        self.progress_q.put((0, 1, f"gmtoolkit: {zip_name}", "download"))
+        zip_tmp = Path(controlfolder) / f"{zip_name}.tmp"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Pharos/1.0"})
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                total = int(resp.headers.get("Content-Length", 0))
+                downloaded = 0
+                start = time.time()
+                with open(zip_tmp, "wb") as f:
+                    while True:
+                        data = resp.read(64 * 1024)
+                        if not data:
+                            break
+                        f.write(data)
+                        downloaded += len(data)
+                        elapsed = time.time() - start
+                        speed = (downloaded / (1024 * 1024)) / elapsed if elapsed else 0
+                        pct = (downloaded / total * 100) if total else 0
+                        self.progress_q.put((
+                            downloaded, total or downloaded,
+                            f"gmtoolkit ({pct:.1f}%) – {speed:.2f} MB/s",
+                            "download",
+                        ))
+
+            # Extract the binary + license bundle directly into $controlfolder.
+            with zipfile.ZipFile(zip_tmp) as zf:
+                zf.extractall(controlfolder)
+            zip_tmp.unlink()
+
+            with suppress(OSError):
+                os.chmod(dest, 0o755)
+            self.progress_q.put((1, 1, "gmtoolkit installed", "download"))
+            print(f"[GMTOOLKIT] Installed {dest}")
+        except Exception as e:
+            print(f"[GMTOOLKIT ERROR] {type(e).__name__}: {e}")
+            self.progress_q.put((0, 1, "gmtoolkit failed", "download"))
+            with suppress(OSError):
+                zip_tmp.unlink()
 
     def _load_runtime_manifest(self) -> dict:
         if MANIFEST_PATH.exists():

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Set GAMEDIR to the current directory and set logfile
 GAMEDIR="$PWD"
 LOGFILE="$GAMEDIR/../patchlog.txt"
 LOGERR="$GAMEDIR/../patcherr.txt"

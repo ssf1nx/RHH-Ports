@@ -1,0 +1,15 @@
+{
+    "game":        "IslesOfSeaAndSky",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "compress_audio": {
+        "min_size":  1000,
+        "bitrate":   64,
+        "recompress_ogg": true
+    },
+    "code_patches": [
+        { "entry": "gml_Object_code_game_init_Create_0",            "gml": "gml/gml_Object_code_game_init_Create_0.gml" },
+        { "entry": "gml_Object_obj_god_gem_slot_controller_Draw_0", "gml": "gml/gml_Object_obj_god_gem_slot_controller_Draw_0.gml" },
+        { "entry": "gml_GlobalScript_localization_functions",       "gml": "gml/gml_GlobalScript_localization_functions.gml" }
+    ]
+}

@@ -39,31 +39,16 @@ prepare_system() {
         return 1
     fi
     
-    # Mount the GMToolkit runtime
-    TOOLKIT="$HOME/gmtoolkit"
-    RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
-    if [ -f "$RUNTIME" ]; then
-        $ESUDO mkdir -p "$TOOLKIT"
-        $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-        $ESUDO mount "$RUNTIME" "$TOOLKIT"
-    else
-        emit_fail_msg "This port requires the GMToolkit runtime. Please download it."
-        return 1
-    fi
-    
     # Attempt to get SAVEDIR from gmloader.json using jq
     if command -v jq >/dev/null 2>&1; then
         SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
     else
         SAVEDIR="$GAMEDIR/saves"
     fi
-    
-    # Exports
+
     export PYTHON
     export SAVEDIR
     export SEVENZIP
-    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-    export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
 }
 
 unzip_archives() {
@@ -180,7 +165,6 @@ zip_archive() {
 # Cleanup function
 cleanup() {
     rm -rf "$TMPDIR"
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
 }
 
 process_game() {

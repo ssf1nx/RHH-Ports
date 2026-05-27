@@ -1,0 +1,15 @@
+{
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "shader_patches": [
+        {
+            "shader":  "sh_palette_swap",
+            "stage":   "glsl_es_fragment",
+            "find":    "precision mediump float;",
+            "replace": "precision highp float;"
+        }
+    ]
+}

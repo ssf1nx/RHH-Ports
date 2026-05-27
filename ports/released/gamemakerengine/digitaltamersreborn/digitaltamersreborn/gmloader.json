@@ -3,5 +3,6 @@
     "apk_path" : "dtr.port",
     "show_cursor" : true,
     "disable_controller" : false,
+    "disable_texhack" : true,
     "force_platform" : "os_windows"
 }

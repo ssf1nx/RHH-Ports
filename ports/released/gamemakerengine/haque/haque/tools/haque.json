@@ -1,0 +1,14 @@
+{
+    "game": "Haque1-0-0-0",
+    "set_flags": [
+        "Fullscreen"
+    ],
+    "clear_flags": [
+        "Scale"
+    ],
+    "compress_audio": {
+        "min_size": 1000,
+        "bitrate": 64,
+        "recompress_ogg": true
+    }
+}

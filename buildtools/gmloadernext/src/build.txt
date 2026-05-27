@@ -27,32 +27,7 @@ git_clone_retry() {
     return 1
 }
 
-#### Minimal FFmpeg ####
-FFMPEG_LIBDIR=/usr/lib/aarch64-linux-gnu
-git_clone_retry --depth 1 --branch n4.4.5 https://git.ffmpeg.org/ffmpeg.git
-(
-    cd ffmpeg
-    ./configure \
-        --prefix=/usr \
-        --libdir="$FFMPEG_LIBDIR" \
-        --shlibdir="$FFMPEG_LIBDIR" \
-        --pkgconfigdir="$FFMPEG_LIBDIR/pkgconfig" \
-        --target-os=linux --arch=aarch64 \
-        --enable-cross-compile --cross-prefix=aarch64-linux-gnu- \
-        --disable-everything --disable-doc --disable-programs \
-        --disable-network --disable-debug \
-        --disable-static --enable-shared --enable-pic \
-        --disable-avdevice --disable-avfilter --disable-postproc \
-        --enable-swresample --enable-swscale \
-        --enable-decoder=h264,vp8,vp9,theora,mpeg4,aac,vorbis,mp3,opus,flac,pcm_s16le,pcm_s16be \
-        --enable-demuxer=mov,matroska,ogg,avi,flv,wav,mp3 \
-        --enable-parser=h264,vp8,vp9,aac,vorbis,opus,mpeg4video \
-        --enable-protocol=file
-    make -j"$(nproc)"
-    make install
-)
-
-#### GMLoader-next ####
+#### GMLoader-next host ####
 git_clone_retry --recursive https://github.com/JeodC/gmloader-next.git
 
 # Scope pkg-config to aarch64 multiarch so sdl2.pc / libzip.pc resolve.
@@ -66,7 +41,6 @@ export PKG_CONFIG_LIBDIR="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/share/pkgcon
     make -f Makefile.gmloader \
         ARCH=aarch64-linux-gnu \
         PKG_CONFIG=pkg-config \
-        VIDEO_SUPPORT=1 \
         LLVM_FILE=/usr/lib/llvm-11/lib/libclang-11.so \
         LLVM_INC=/usr/aarch64-linux-gnu/include/c++/10/aarch64-linux-gnu \
         -j"$(nproc)"
@@ -74,6 +48,42 @@ export PKG_CONFIG_LIBDIR="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/share/pkgcon
 
 BIN_REL="gmloader-next/build/aarch64-linux-gnu/gmloader/gmloadernext.aarch64"
 [[ -f "$BIN_REL" ]] || { echo "ERROR: gmloadernext binary not found at $BIN_REL"; exit 1; }
+
+#### Minimal FFmpeg (static-linked into the gmlvideo-ffmpeg plugin) ####
+# --disable-asm dodges R_AARCH64_CONDBR19 overflows when FFmpeg's hand-written
+# aarch64 .S objects link into a shared plugin. ac3/mjpeg/rawvideo decoders are
+# enabled because the mov demuxer references avpriv_* symbols from them.
+FFMPEG_LIBDIR=/usr/lib/aarch64-linux-gnu
+git_clone_retry --depth 1 --branch n4.4.5 https://git.ffmpeg.org/ffmpeg.git
+(
+    cd ffmpeg
+    ./configure \
+        --prefix=/usr \
+        --libdir="$FFMPEG_LIBDIR" \
+        --shlibdir="$FFMPEG_LIBDIR" \
+        --pkgconfigdir="$FFMPEG_LIBDIR/pkgconfig" \
+        --target-os=linux --arch=aarch64 \
+        --enable-cross-compile --cross-prefix=aarch64-linux-gnu- \
+        --disable-everything --disable-doc --disable-programs \
+        --disable-network --disable-debug \
+        --enable-static --disable-shared --enable-pic --disable-asm \
+        --disable-avdevice --disable-avfilter --disable-postproc \
+        --enable-swresample --enable-swscale \
+        --enable-decoder=h264,vp8,vp9,theora,mpeg4,aac,vorbis,mp3,opus,flac,pcm_s16le,pcm_s16be,ac3,mjpeg,rawvideo \
+        --enable-demuxer=mov,matroska,ogg,avi,flv,wav,mp3 \
+        --enable-parser=h264,vp8,vp9,aac,vorbis,opus,mpeg4video \
+        --enable-protocol=file
+    make -j"$(nproc)"
+    make install
+)
+
+#### Build gmlvideo-ffmpeg plugin (FFmpeg + SDL_kitchensink, opt-in via gmloader.json) ####
+(
+    cd gmloader-next/plugins/video-ffmpeg
+    make ARCH=aarch64-linux-gnu PKG_CONFIG=pkg-config -j"$(nproc)"
+)
+VIDEO_PLUGIN="gmloader-next/plugins/video-ffmpeg/build/libgmlvideo-ffmpeg.so"
+[[ -f "$VIDEO_PLUGIN" ]] || { echo "ERROR: video plugin not built at $VIDEO_PLUGIN"; exit 1; }
 
 #### Stage transitive lib closure ####
 declare -A STAGED
@@ -135,6 +145,11 @@ done <<< "$needed"
 mkdir -p lib/arm64-v8a
 cp -L gmloader-next/lib/arm64-v8a/*.so lib/arm64-v8a/
 
+# Stage the optional video plugin. FFmpeg is static-linked into the .so, so
+# there's nothing else to stage on its behalf — the plugin file is fully
+# self-contained per gmloader-next's plugin convention.
+cp -L "$VIDEO_PLUGIN" lib/
+
 # Older GameMaker runners (e.g. AM2R 1.6b2's libyoyo.so) DT_NEEDED a
 # libstdc++.so — the Android Bionic C++ stub. They don't actually use any
 # C++ STL; the only symbols they reference are __cxa_atexit / __cxa_finalize,
@@ -167,11 +182,10 @@ mkdir -p licenses
 # FFmpeg (LGPL 2.1+ -- this build enables only LGPL components).
 cp ffmpeg/COPYING.LGPLv2.1 licenses/FFmpeg.LGPLv2.1
 cat > licenses/FFmpeg.README <<'EOF'
-This runtime bundles unmodified shared libraries from the FFmpeg project
+The optional libgmlvideo-ffmpeg.so plugin in lib/ statically links FFmpeg
 under LGPL 2.1 or later:
 
-    libavcodec.so.58, libavformat.so.58, libavutil.so.56,
-    libswresample.so.3, libswscale.so.5
+    libavcodec, libavformat, libavutil, libswresample, libswscale
 
 FFmpeg version: n4.4.5 (build options: --disable-everything plus a fixed
 set of LGPL-only decoders, demuxers, parsers and protocols; see the

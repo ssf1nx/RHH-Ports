@@ -1,0 +1,10 @@
+{
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "code_patches": [
+        { "entry": "gml_Object_obj_torhandhold1_Create_0", "gml": "gml/gml_Object_obj_torhandhold1_Create_0.gml" }
+    ]
+}

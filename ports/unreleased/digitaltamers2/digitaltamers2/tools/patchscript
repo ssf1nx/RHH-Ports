@@ -22,152 +22,120 @@ echo "GAMEDIR is set to: $GAMEDIR"
 
 # Exports
 export DATADIR="$GAMEDIR/assets"
+export SAVEDIR="$GAMEDIR/saves"
 export DATAFILE="dt2.port"
-export TMPDIR="$GAMEDIR/tmp"
 
-prepare_system() {
-    # Test for commands: python, zip
-    PYTHON=$(which python3)
-    if [ -z "$PYTHON" ]; then
-        emit_fail_msg "Missing Python!"
-        return 1
-    fi
-    
-    # Define 7zzs binary
-    SEVENZIP="$controlfolder/7zzs.${DEVICE_ARCH}"
-    if [ ! -x "$SEVENZIP" ]; then
-        emit_fail_msg "7zzs binary not found at $SEVENZIP"
-        return 1
-    fi
-    
-    # Mount the GMToolkit runtime
-    TOOLKIT="$HOME/gmtoolkit"
-    RUNTIME="$controlfolder/libs/gmtoolkit.squashfs"
-    if [ -f "$RUNTIME" ]; then
-        $ESUDO mkdir -p "$TOOLKIT"
-        $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-        $ESUDO mount "$RUNTIME" "$TOOLKIT"
-    else
-        emit_fail_msg "This port requires the GMToolkit runtime. Please download it."
-        return 1
-    fi
-    
-    # Attempt to get SAVEDIR from gmloader.json using jq
-    if command -v jq >/dev/null 2>&1; then
-        SAVEDIR=$(jq -r '.save_dir // empty' "$GAMEDIR/gmloader.json" 2>/dev/null)
-    else
-        SAVEDIR="$GAMEDIR/saves"
-    fi
-    
-    # Exports
-    export PYTHON
-    export SAVEDIR
-    export SEVENZIP
-    export PATH="$TOOLKIT/gmtools:$TOOLKIT/utmt-cli:$PATH"
-    export LD_LIBRARY_PATH="/usr/lib:$TOOLKIT/libs:$LD_LIBRARY_PATH"
+# Tight-RAM devices can't sustain a parallel astcenc / vorbis workload.
+THREADS_FLAG=""
+if [ "${DEVICE_RAM:-0}" -le 2 ]; then
+    THREADS_FLAG="--threads 1"
+fi
+
+# Pick ASTC block/quality based on display size. Smaller screens don't need 4x4 medium.
+SCREEN_PIXELS=$(( ${DISPLAY_WIDTH:-640} * ${DISPLAY_HEIGHT:-480} ))
+if [ "$SCREEN_PIXELS" -le 480000 ]; then
+    BLOCK_FLAGS="--block 6x6 --quality fastest"
+elif [ "$SCREEN_PIXELS" -le 1000000 ]; then
+    BLOCK_FLAGS="--block 5x5 --quality fast"
+else
+    BLOCK_FLAGS=""
+fi
+
+ORIG_MAX_FREQS=""
+thermal_setup() {
+    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
+        [ -d "$policy" ] && [ -f "$policy/scaling_max_freq" ] || continue
+        orig=$(cat "$policy/scaling_max_freq") || continue
+        target=$((orig * 8 / 10))
+        $ESUDO sh -c "echo $target > '$policy/scaling_max_freq'" 2>/dev/null || true
+        ORIG_MAX_FREQS="$ORIG_MAX_FREQS|$policy=$orig"
+    done
 }
 
-unzip_archive() {
+thermal_restore() {
+    OLDIFS=$IFS
+    IFS='|'
+    for entry in $ORIG_MAX_FREQS; do
+        [ -z "$entry" ] && continue
+        policy="${entry%=*}"
+        orig="${entry#*=}"
+        $ESUDO sh -c "echo $orig > '$policy/scaling_max_freq'" 2>/dev/null || true
+    done
+    IFS=$OLDIFS
+}
+
+unzip_installer() {
     EXE="$DATADIR/DigitalTamers02 - Installer.exe"
-    # Now unzip the exe
-    if [ -f "$EXE" ]; then
-        if "$SEVENZIP" x -y "$EXE" -o"$DATADIR" >/dev/null; then
-            rm -rf "$EXE"
-            prepare_files
-        else
-            emit_fail_msg "Failed to unzip executable."
-            return 1
-        fi
-    else
-        emit_fail_msg "Did not find $EXE!"
+    if [ ! -f "$EXE" ]; then
+        emit_fail_msg "Did not find $(basename "$EXE")!"
         return 1
     fi
+    if ! "$controlfolder/7zzs.${DEVICE_ARCH}" x -y "$EXE" -o"$DATADIR" >/dev/null; then
+        emit_fail_msg "Failed to unzip installer."
+        return 1
+    fi
+    rm -f "$EXE"
 }
 
 prepare_files() {
     mkdir -p "$SAVEDIR"
-    
-    # Delete excess files
+
+    # Delete NSIS scaffolding + Windows-only assets
     find "$DATADIR" -type f \( \
-        -name "*.bin" -o -name "*.arsc" -o -name "*.dex" -o -name "*.txt" -o -name "*.xml" -o \
-        -name "*.exe" -o -name "*.gitkeep" -o \
+        -name "*.bin" -o -name "*.arsc" -o -name "*.dex" -o -name "*.txt" -o \
+        -name "*.xml" -o -name "*.exe" -o -name "*.dll" -o -name "*.gitkeep" \
     \) -exec rm -f {} \;
-    
-    # Delete excess folders
-    rm -rf "${DATADIR}/\$PLUGINSDIR"
-    rm -rf "${DATADIR}/\$TEMP"
+    rm -rf "${DATADIR}/\$PLUGINSDIR" "${DATADIR}/\$TEMP"
 
-    # Rename data.win
-    if [ -f "$DATADIR/data.win" ]; then
-        mv "$DATADIR/data.win" "$DATADIR/game.droid"
-    else
-        emit_fail_msg "No data.win after unzipping executable!"
+    if [ ! -f "$DATADIR/data.win" ]; then
+        emit_fail_msg "No data.win after unpacking installer!"
         return 1
     fi
-    
-    # Compress audio
-    compress_audio
+
+    if [ -d "$SAVEDIR/textures" ]; then
+        rm -rf "$SAVEDIR/textures"
+    fi
 }
 
-# Compress audio files inside datafile and audiogroups
-compress_audio() {
-    # Purge cache before operations
-    rm -rf "$TMPDIR/"*
-
-    # Run the compression tool
-    PYTHON=$(which python3)
-    echo "Running GMTools on data and audiogroups."
-    $PYTHON "$TOOLKIT/gmtools/gmKtool.py" -vv -m 1000 -r -b 64 -d "$TMPDIR" "$DATADIR/game.droid"
-
-    if [ $? -eq 0 ]; then
-        echo "Compression completed successfully."
-        mv "$TMPDIR/"* "$DATADIR/tmp/assets"
-        echo "Moved compressed files to $DATADIR."
-        rm -rf "$TMPDIR"
-        echo "Temporary directory $TMPDIR removed."
-        echo "Audio compression applied successfully."
-    else
-        # Failure
-        emit_fail_msg "Audio compression failed."
-        if [ -n "$TMPDIR" ] && [ -d "$TMPDIR" ]; then
-            rm -rf "$TMPDIR"/*
-        fi
+patch_datafile() {
+    if ! "$controlfolder/gmtoolkit.${DEVICE_ARCH}" --config "$GAMEDIR/tools/digitaltamers2.json" $THREADS_FLAG $BLOCK_FLAGS "$DATADIR/data.win"; then
+        emit_fail_msg "gmtoolkit patch failed."
         return 1
     fi
 }
 
+# Zip it all into the .port file
 zip_archive() {
-    if "$SEVENZIP" a -tzip -aoa -mx=0 "$GAMEDIR/$DATAFILE" "$DATADIR"; then
+    [ -f "$DATADIR/data.win" ] && mv "$DATADIR/data.win" "$DATADIR/game.droid"
+    local zip_out
+    if zip_out=$("$controlfolder/7zzs.${DEVICE_ARCH}" a -tzip -aoa -mx=0 "$GAMEDIR/$DATAFILE" "$DATADIR" 2>&1); then
         rm -rf "$DATADIR"/*
     else
+        echo "$zip_out"
         emit_fail_msg "Failed to create $DATAFILE."
         return 1
     fi
 }
 
-# Cleanup
-cleanup() {
-    rm -rf "$TMPDIR"
-    $ESUDO umount "$TOOLKIT" 2>/dev/null || true
-}
-
 process_game() {
-    echo "Preparing system..."
-    prepare_system || { cleanup; return 1; }
-    echo "Unzipping archive..."
-    unzip_archive || { cleanup; return 1; }
-    echo "Creating .port archive..."
-    zip_archive || { cleanup; return 1; }
+    echo "Unpacking installer..."
+    unzip_installer || return 1
+    echo "Preparing game..."
+    prepare_files || return 1
+    thermal_setup
+    echo "Applying patches..."
+    patch_datafile
+    rc=$?
+    thermal_restore
+    [ "$rc" -ne 0 ] && return 1
+    echo "Finishing up..."
+    zip_archive || return 1
 }
 
-# Call the function
 if ! process_game; then
     [ -z "$FAIL_MSG_SET" ] && emit_fail_msg "Patching failed. Report on the RHH-Ports GitHub with patcherr.txt."
     echo "Patching process failed!"
     mv "$LOGFILE" "$LOGERR"
-else
-    echo "Patching process complete!"
+    exit 1
 fi
-
-# Always run cleanup at the end
-cleanup
+echo "Patching process complete!"

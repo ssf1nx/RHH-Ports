@@ -1,0 +1,13 @@
+{
+    "game":        "arrest of a stone buddha",
+    "set_flags":   ["Fullscreen"],
+    "clear_flags": ["Scale"],
+    "compress_audio": {
+        "min_size":       1000,
+        "bitrate":        64,
+        "recompress_ogg": true
+    },
+    "code_patches": [
+        { "entry": "gml_Script_screen_init", "gml": "gml/gml_Script_screen_init.gml" }
+    ]
+}

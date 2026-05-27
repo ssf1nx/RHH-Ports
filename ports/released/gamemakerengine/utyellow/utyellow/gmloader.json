@@ -8,6 +8,6 @@
     "disable_joystick" : false,
     "disable_rumble" : false,
     "rumble_scale" : 4.0,
-    "disable_texhack" : false,
+    "disable_texhack" : true,
     "force_platform" : "os_windows"
 }

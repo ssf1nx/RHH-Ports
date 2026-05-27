@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "2026-05-27-gmtoolkit",
+      "title": "gmtoolkit: a single binary instead of a .NET runtime",
+      "date": "2026-05-27",
+      "excerpt": "All my GameMaker ports dropped UndertaleModTool + .NET + the gmKtool Python script for gmtoolkit, a single native C++ binary. UTMT loaded data files into RAM wholesale and would OOM during patching on 1GB devices that ran the game itself just fine."
+    },
+    {
       "slug": "2026-05-18-dusklight-opengles",
       "title": "Dusklight v1.2.0 and the OpenGL ES question",
       "date": "2026-05-18",
