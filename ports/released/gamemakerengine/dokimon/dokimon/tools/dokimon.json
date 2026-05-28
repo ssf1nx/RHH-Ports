@@ -1,9 +1,0 @@
-{
-    "game": "Dokimon",
-    "set_flags":   ["Fullscreen"],
-    "clear_flags": ["Scale"],
-    "code_patches": [
-        { "entry": "gml_GlobalScript_GMLive",    "gml": "gml/gml_GlobalScript_GMLive.gml" },
-        { "entry": "gml_GlobalScript_GMLiveAPI", "gml": "gml/gml_GlobalScript_GMLiveAPI.gml" }
-    ]
-}

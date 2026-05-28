@@ -25,64 +25,15 @@ export DATADIR="$GAMEDIR/assets"
 export SAVEDIR="$GAMEDIR/saves"
 export DATAFILE="dokimon.port"
 
-# Tight-RAM devices can't sustain a parallel astcenc / vorbis workload.
-THREADS_FLAG=""
-if [ "${DEVICE_RAM:-0}" -le 2 ]; then
-    THREADS_FLAG="--threads 1"
-fi
-
-# Pick ASTC block/quality based on display size. Smaller screens don't need 4x4 medium.
-SCREEN_PIXELS=$(( ${DISPLAY_WIDTH:-640} * ${DISPLAY_HEIGHT:-480} ))
-if [ "$SCREEN_PIXELS" -le 480000 ]; then
-    BLOCK_FLAGS="--block 6x6 --quality fastest"
-elif [ "$SCREEN_PIXELS" -le 1000000 ]; then
-    BLOCK_FLAGS="--block 5x5 --quality fast"
-else
-    BLOCK_FLAGS=""
-fi
-
-ORIG_MAX_FREQS=""
-thermal_setup() {
-    for policy in /sys/devices/system/cpu/cpufreq/policy*; do
-        [ -d "$policy" ] && [ -f "$policy/scaling_max_freq" ] || continue
-        orig=$(cat "$policy/scaling_max_freq") || continue
-        target=$((orig * 8 / 10))
-        $ESUDO sh -c "echo $target > '$policy/scaling_max_freq'" 2>/dev/null || true
-        ORIG_MAX_FREQS="$ORIG_MAX_FREQS|$policy=$orig"
-    done
-}
-
-thermal_restore() {
-    OLDIFS=$IFS
-    IFS='|'
-    for entry in $ORIG_MAX_FREQS; do
-        [ -z "$entry" ] && continue
-        policy="${entry%=*}"
-        orig="${entry#*=}"
-        $ESUDO sh -c "echo $orig > '$policy/scaling_max_freq'" 2>/dev/null || true
-    done
-    IFS=$OLDIFS
-}
-
 prepare_files() {
     mkdir -p "$SAVEDIR"
+    touch "$SAVEDIR/config.ini" # Sentinel for ports
 
     # Delete excess files
     find "$DATADIR" -type f \( \
         -name "*.gitkeep" -o -name "*.exe" -o -name "*.dll" -o -name "*.hashdb" -o \
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
     \) -exec rm -f {} \;
-
-    if [ -d "$SAVEDIR/textures" ]; then
-        rm -rf "$SAVEDIR/textures"
-    fi
-}
-
-patch_datafile() {
-    if ! "$controlfolder/gmtoolkit.${DEVICE_ARCH}" --config "$GAMEDIR/tools/dokimon.json" $THREADS_FLAG $BLOCK_FLAGS "$DATADIR/data.win"; then
-        emit_fail_msg "gmtoolkit patch failed."
-        return 1
-    fi
 }
 
 # Zip it all into the .port file
@@ -107,12 +58,6 @@ remove_demo() {
 process_game() {
     echo "Preparing game..."
     prepare_files || return 1
-    thermal_setup
-    echo "Applying patches..."
-    patch_datafile
-    rc=$?
-    thermal_restore
-    [ "$rc" -ne 0 ] && return 1
     echo "Finishing up..."
     zip_archive || return 1
     remove_demo
