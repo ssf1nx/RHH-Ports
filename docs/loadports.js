@@ -128,14 +128,19 @@ async function loadPorts() {
         try { localStorage.setItem(DISCOUNT_CACHE_KEY, JSON.stringify({ ts: Date.now(), data })); } catch (_) {}
     };
 
-    // Returns { appid: { shopName: cutPct, ... }, ... } — empty on any failure.
+    // Returns { appid: { shopName: cutPct, ... }, ... } — empty on any failure
+    // or timeout. The 3s bound keeps a slow/hung proxy from blocking first paint
+    // when we await this before the initial render.
+    const DISCOUNT_FETCH_TIMEOUT_MS = 3000;
     const fetchDiscounts = async (steamAppids) => {
         if (!steamAppids.length) return {};
         const cached = readCachedDiscounts(steamAppids);
         if (cached) return cached;
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), DISCOUNT_FETCH_TIMEOUT_MS);
         try {
             const url = `${DISCOUNT_API_URL}?appids=${steamAppids.join(',')}&country=${DISCOUNT_COUNTRY}`;
-            const res = await fetch(url);
+            const res = await fetch(url, { signal: controller.signal });
             if (!res.ok) throw new Error('discount proxy ' + res.status);
             const data = await res.json();
             writeCachedDiscounts(data);
@@ -143,6 +148,8 @@ async function loadPorts() {
         } catch (err) {
             console.warn('[discounts] fetch failed:', err);
             return {};
+        } finally {
+            clearTimeout(timer);
         }
     };
 
@@ -476,23 +483,22 @@ async function loadPorts() {
         [searchBar, genreDropdown, availabilityDropdown, requirementsDropdown, runtimeDropdown, sortDropdown]
             .forEach(el => el.addEventListener('input', updateDisplay));
 
-        updateDisplay();
-
-        // Kick off ITAD discount fetch in the background. When it returns,
-        // re-render once so the discount badges populate. No-op if the key
-        // is empty or the fetch fails — site stays fully usable.
-        (async () => {
-            const appids = new Set();
-            ports.forEach(p => {
-                (p.attr?.store || []).forEach(s => {
-                    const m = s && s.gameurl && s.gameurl.match(/store\.steampowered\.com\/app\/(\d+)/);
-                    if (m) appids.add(m[1]);
-                });
+        // Await ITAD discounts before the first render so the default
+        // "biggest discount" sort has real data on the initial paint.
+        // fetchDiscounts caps itself at 3s and returns {} on error/timeout,
+        // so a slow proxy can't hang the page.
+        const appids = new Set();
+        ports.forEach(p => {
+            (p.attr?.store || []).forEach(s => {
+                const m = s && s.gameurl && s.gameurl.match(/store\.steampowered\.com\/app\/(\d+)/);
+                if (m) appids.add(m[1]);
             });
-            if (!appids.size) return;
+        });
+        if (appids.size) {
             discountsByAppid = await fetchDiscounts([...appids]);
-            if (Object.keys(discountsByAppid).length) updateDisplay();
-        })();
+        }
+
+        updateDisplay();
 
         // --- README Modal ---
         const readmeModal = document.getElementById('readme-modal');
