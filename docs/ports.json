@@ -140,12 +140,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/arrestofastonebuddha/arrestofastonebuddha/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/arrestofastonebuddha.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-07-02",
-      "md5": "c5cdbec9f1a978556ea7c677958cabe8",
-      "size": 2620757,
-      "lifetime_downloads": 38,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "5c49875155faf2b3ef6b1ebd62c1c2aa",
+      "size": 2620742,
+      "lifetime_downloads": 39,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -200,12 +200,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/aurascope/aurascope/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/aurascope.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "81fd05f18ec0d3b2e53c40929c438e10",
-      "size": 2750648,
-      "lifetime_downloads": 19,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "ad0ff17d897da9641f728c3ed8cdfe8d",
+      "size": 2750636,
+      "lifetime_downloads": 20,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -519,12 +519,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity/darkdeity/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "c90b4e00e426dc89d4a8642cb9ca3f04",
-      "size": 6231734,
+      "md5": "9d8855ccbda77b6aa9671515c7a40561",
+      "size": 6231722,
       "lifetime_downloads": 10,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -588,12 +588,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/darkdeity2/darkdeity2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/darkdeity2.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "9ac6b34b2ad8fa28defc7985cb6c3931",
-      "size": 6131072,
+      "md5": "4243940361511617e4f21c2e28fa338a",
+      "size": 6131061,
       "lifetime_downloads": 7,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -649,12 +649,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "11b860c3720c5a92a29ebff76d5f90bf",
-      "size": 4198139,
-      "lifetime_downloads": 83,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "5e5f8e09e9001cf2e735048e7c3e2717",
+      "size": 4198125,
+      "lifetime_downloads": 84,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -875,12 +875,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/digitaltamersreborn/digitaltamersreborn/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/digitaltamersreborn.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "a96f367066bbab8baf7ab631f1b6e272",
-      "size": 220690784,
-      "lifetime_downloads": 16,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "e69654e752351eca25c8ef97090740fb",
+      "size": 220690768,
+      "lifetime_downloads": 17,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -1310,12 +1310,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gunsoffury/gunsoffury/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gunsoffury.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "c3601afd402dbb3c2b01f1a060b51df2",
-      "size": 5217126,
-      "lifetime_downloads": 45,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "e86b6a9d4e980c453afdb2b530f55a7e",
+      "size": 5217114,
+      "lifetime_downloads": 46,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -1356,12 +1356,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/gyakutenlive/gyakutenlive/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/gyakutenlive.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-07-09",
-      "md5": "5cb7d48c2dc3da67c8d6acd8fe5817c2",
-      "size": 3216312,
-      "lifetime_downloads": 15,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "3a880e5df883e10bda8107878d1692d7",
+      "size": 3216300,
+      "lifetime_downloads": 16,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -1466,12 +1466,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/haque/haque/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/haque.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "6ee164c36dd58474c7dcd24e749b0c0d",
-      "size": 2735405,
-      "lifetime_downloads": 14,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "0dc2e15dca584138fc2e292f4c0f8a08",
+      "size": 2735392,
+      "lifetime_downloads": 15,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -1723,12 +1723,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/iosas/iosas/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/iosas.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-11-11",
-      "md5": "9d1488272d2262234f41cc20512372b2",
-      "size": 5653485,
-      "lifetime_downloads": 41,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "d97b1e08811e06a9cce7e42c643d125e",
+      "size": 5653472,
+      "lifetime_downloads": 42,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -1994,12 +1994,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "7ed0d35cf7a306350d7f0e449192c72b",
-      "size": 5324875,
-      "lifetime_downloads": 10,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "f64b57f2ffe998384ccb7207002135a8",
+      "size": 5324863,
+      "lifetime_downloads": 11,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -2049,12 +2049,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/madhouse/madhouse/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/madhouse.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-28",
-      "md5": "d2407381e6d501e52ae67ea5ad297fdb",
-      "size": 5116578,
-      "lifetime_downloads": 14,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "64ffdb8e8dd56c7308abffd1a87d44e3",
+      "size": 5116564,
+      "lifetime_downloads": 15,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -2221,12 +2221,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mystikbelle/mystikbelle/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mystikbelle.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2025-05-18",
-      "md5": "42770ba61af1951012d6b51d9f51517b",
-      "size": 3045384,
-      "lifetime_downloads": 17,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "9a8d8a42eb4f7ae384061f69f189b77a",
+      "size": 3045371,
+      "lifetime_downloads": 18,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -2385,12 +2385,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ooo/ooo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ooo.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2026-01-01",
-      "md5": "b7142b20156c918943fbbba7580eadcf",
-      "size": 4803452,
-      "lifetime_downloads": 10,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "ad44fcf90564385a8136bcc28e7d0891",
+      "size": 4803437,
+      "lifetime_downloads": 11,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -2486,12 +2486,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/outridermako/outridermako/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/outridermako.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-07-01",
-      "md5": "f353425459eded182082348d21381774",
-      "size": 4906994,
-      "lifetime_downloads": 16,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "03e01a7ecfb94ed1a6c3a0107fcc08d3",
+      "size": 4906981,
+      "lifetime_downloads": 17,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -2575,12 +2575,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/apps/pharos/pharos/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip",
-      "date_updated": "2026-05-27T23:15",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2026-01-29",
-      "md5": "9a86b288281de9f592a6fa87357dd87e",
-      "size": 21661500,
-      "lifetime_downloads": 456,
-      "last_commit": "[Pharos] Update to v1.1.2"
+      "md5": "c79c40a401deb445f6b9fa36aa7e6a0f",
+      "size": 21659247,
+      "lifetime_downloads": 481,
+      "last_commit": "[Pharos] Update to v1.1.3"
     }
   },
   {
@@ -2630,12 +2630,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/picayunedreams/picayune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/picayune.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2026-01-01",
-      "md5": "5020cad18b71e03215f211e921fed1a6",
-      "size": 5228342,
-      "lifetime_downloads": 3,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "63fafd2600548592d61beabbb71a9b73",
+      "size": 5228330,
+      "lifetime_downloads": 4,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -3077,12 +3077,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/experimental/rolusoutskirts/rolusoutskirts/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/rolusoutskirts.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2026-01-01",
-      "md5": "de94731e33f283b0d5cb8a1d9cf32bec",
-      "size": 5247119,
+      "md5": "a047a527553a434a7ea84118979fbe87",
+      "size": 5247107,
       "lifetime_downloads": 4,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -3287,12 +3287,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/shrineslegacy/shrineslegacy/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/shrineslegacy.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-10-07",
-      "md5": "292a493274eb8c1bb8e7b5a69526c7a7",
-      "size": 5423395,
+      "md5": "88b3c12503d986ea5136cf1a47dfa719",
+      "size": 5423384,
       "lifetime_downloads": 21,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -3652,12 +3652,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/sonictt16b/sonictt16b/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sonictt16b.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-05-18",
-      "md5": "62bd2ab1c247fc82d7c27b34fbdc13b6",
-      "size": 14962548,
-      "lifetime_downloads": 46,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "65a955f247c4ebe7aa188a6f139c7880",
+      "size": 14962532,
+      "lifetime_downloads": 48,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -3803,12 +3803,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/spinelasher/spinelasher/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spinelasher.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-08-11",
-      "md5": "41ef04297b76fff859b59a391adfe149",
-      "size": 5133706,
-      "lifetime_downloads": 13,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "4e660cc26f15f8ae4b3eb0c113e79b0f",
+      "size": 5133694,
+      "lifetime_downloads": 14,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -4107,12 +4107,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/mariokartzx/mariokartzx/screenshot.png",
       "readme_url": "",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/mariokartzx.zip",
-      "date_updated": "2026-05-28T16:20",
+      "date_updated": "2026-05-29T03:25",
       "first_seen": "2026-02-08",
-      "md5": "57ab5b77db7bfcaf7ac362ec0145e952",
-      "size": 2743644,
-      "lifetime_downloads": 46,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "5858875df2b9a5d91d83cb64c02b1e00",
+      "size": 2743629,
+      "lifetime_downloads": 47,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -4258,12 +4258,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/yeotrilogy/friendsofringo/friendsofringo/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/friendsofringo.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-07-02",
-      "md5": "084278acd558c0cbbc6908ca90261eb7",
-      "size": 3985788,
-      "lifetime_downloads": 31,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "bb170e6e5abd9a03d21b182594cf86b5",
+      "size": 3985774,
+      "lifetime_downloads": 32,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -4362,12 +4362,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-foer/zelda-foer/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-foer.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-11-07",
-      "md5": "34a31d0a0b842c9a2a40e59601d9f79c",
-      "size": 325273,
-      "lifetime_downloads": 47,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "b6b28e553dae6845edf78edab80e4850",
+      "size": 325257,
+      "lifetime_downloads": 48,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -4410,12 +4410,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda-wogr/zelda-wogr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda-wogr.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-11-07",
-      "md5": "872b35354755c99592e74a1b1f053a26",
-      "size": 403906,
-      "lifetime_downloads": 36,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "d31b90e3731a08eaed39ca6fe98f6061",
+      "size": 403890,
+      "lifetime_downloads": 37,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5066,12 +5066,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/triga/triga/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/triga.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-07-09",
-      "md5": "d61699208e25a0ef690f542a20a292b7",
-      "size": 3621677,
-      "lifetime_downloads": 8,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "9381722f2e01185f08cb77ed556ebf25",
+      "size": 3621666,
+      "lifetime_downloads": 9,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5163,12 +5163,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/ufo50/ufo50/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/ufo50.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-05-18",
-      "md5": "c43a06a01205434568479e0ecde3a8fd",
-      "size": 5327048,
-      "lifetime_downloads": 68,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "89be5f84e403597d1e31366ffd3ee343",
+      "size": 5327035,
+      "lifetime_downloads": 69,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5280,12 +5280,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/undertaleredyellow/undertaleredyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/undertaleredyellow.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-05-19",
-      "md5": "b2dc0090ad4a72e319186df32661de63",
-      "size": 9965899,
+      "md5": "b77f77ec77b4804c245f5a7ed3c26996",
+      "size": 9965888,
       "lifetime_downloads": 18,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5342,12 +5342,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/utyellow/utyellow/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/utyellow.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-11-11",
-      "md5": "e6225d044e0a4dccb31259e99cab2630",
-      "size": 3939214,
+      "md5": "6b8379aa487a6c9c3bdfe20104091c90",
+      "size": 3939201,
       "lifetime_downloads": 17,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5409,12 +5409,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/valhalla/valhalla/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/valhalla.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-08-25",
-      "md5": "59945db2d98338d99078f5972ecf3462",
-      "size": 2431447,
-      "lifetime_downloads": 27,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "03d41442c0df8091599f1a8780510ca7",
+      "size": 2431432,
+      "lifetime_downloads": 28,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5474,12 +5474,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/vhr/vhr/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/vhr.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2025-11-11",
-      "md5": "42fb74f4c9e0e70cbd06b56a0ed7daf3",
-      "size": 5561514,
-      "lifetime_downloads": 62,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "57456970f887777a8aa2f479750d45d1",
+      "size": 5561502,
+      "lifetime_downloads": 64,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   },
   {
@@ -5637,12 +5637,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/zelda2enhanced/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/zelda2enhanced/zelda2enhanced/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/zelda2enhanced.zip",
-      "date_updated": "2026-05-28T16:21",
+      "date_updated": "2026-05-29T03:26",
       "first_seen": "2026-05-14",
-      "md5": "63c0a200c9921667025b54e4448ca224",
-      "size": 2824595,
-      "lifetime_downloads": 13,
-      "last_commit": "[GMS] Bump audio compression min size to avoid breaking small sfx"
+      "md5": "b614c6cba1070e896f7d8cec6ce3b44e",
+      "size": 2824579,
+      "lifetime_downloads": 14,
+      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
     }
   }
 ]
