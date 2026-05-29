@@ -1210,6 +1210,60 @@
   },
   {
     "version": 4,
+    "name": "fishbowl.zip",
+    "items": [
+      "Fishbowl.sh",
+      "fishbowl"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Fishbowl",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "A narrative game about dreams, grief, and hope. Rediscover your memories and find your way into the present in this intimate experience where slice-of-life meets surreal.",
+      "desc_md": null,
+      "inst": "Purchase Fishbowl on Steam and copy the game files to fishbowl/assets.",
+      "inst_md": null,
+      "genres": [
+        "adventure"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [
+        "gmloadernext.squashfs"
+      ],
+      "store": [
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1638070/Fishbowl/",
+          "developerurl": ""
+        }
+      ],
+      "availability": "paid",
+      "reqs": [
+        "!lowres"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": null
+    },
+    "source": {
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fishbowl/fishbowl/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fishbowl/fishbowl/README.md",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fishbowl.zip",
+      "date_updated": "2026-05-29T13:17",
+      "first_seen": "2026-05-29",
+      "md5": "7b91ca2f2f7ae891d61bdb6bd724b915",
+      "size": 5827682,
+      "lifetime_downloads": 0,
+      "last_commit": "[FISHBOWL] Push Fishbowl to release"
+    }
+  },
+  {
+    "version": 4,
     "name": "grappledog.zip",
     "items": [
       "Grapple Dog.sh",
