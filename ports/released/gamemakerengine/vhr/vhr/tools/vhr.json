@@ -1,7 +1,6 @@
 {
     "game": "VHR THE FINAL",
     "compress_audio": {
-        "min_size":       20000,
         "bitrate":        64,
         "recompress_ogg": true
     },

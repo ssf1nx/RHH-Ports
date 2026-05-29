@@ -38,6 +38,7 @@ DEVICE_ARCH = os.environ.get("DEVICE_ARCH", "")
 # /releases/latest/download/<asset> auto-redirects to the newest non-prerelease
 # asset, so this URL doesn't need to be bumped per release.
 GMTOOLKIT_RELEASE_URL = "https://github.com/JeodC/gmtoolkit/releases/latest/download"
+GMTOOLKIT_API_URL = "https://api.github.com/repos/JeodC/gmtoolkit/releases/latest"
 
 # ----------------------------------------------------------------------
 # GitHub request
@@ -246,11 +247,28 @@ class Downloader:
 
         bin_name = f"gmtoolkit.{DEVICE_ARCH}"
         dest = Path(controlfolder) / bin_name
-        if dest.exists():
-            return
-
         zip_name = f"gmtoolkit-{DEVICE_ARCH}.zip"
-        url = f"{GMTOOLKIT_RELEASE_URL}/{zip_name}"
+
+        remote = self._gmtoolkit_remote_asset(zip_name)
+        local_meta = self._load_gmtoolkit_meta()
+
+        if dest.exists():
+            if not remote:
+                # Can't reach the release API – keep whatever is on disk rather
+                # than break an offline / rate-limited install.
+                print("[GMTOOLKIT] Present, version check skipped (release query failed)")
+                return
+            if (local_meta.get("id") == remote["id"]
+                    and local_meta.get("size") == remote["size"]):
+                print("[GMTOOLKIT] Present and up to date")
+                return
+            # No recorded version → treat as stale; otherwise a newer build exists.
+            reason = "no version recorded" if not local_meta else "newer build available"
+            print(f"[GMTOOLKIT] Updating ({reason})")
+
+        # Prefer the API-provided asset URL; fall back to the latest/download
+        # redirect when the API was unreachable but the binary is missing.
+        url = remote["url"] if remote and remote.get("url") else f"{GMTOOLKIT_RELEASE_URL}/{zip_name}"
         print(f"[GMTOOLKIT] Downloading {zip_name}")
         self.progress_q.put((0, 1, f"gmtoolkit: {zip_name}", "download"))
         zip_tmp = Path(controlfolder) / f"{zip_name}.tmp"
@@ -283,6 +301,9 @@ class Downloader:
 
             with suppress(OSError):
                 os.chmod(dest, 0o755)
+            # Record the version we just installed so future runs detect staleness.
+            if remote:
+                self._save_gmtoolkit_meta({"id": remote["id"], "size": remote["size"]})
             self.progress_q.put((1, 1, "gmtoolkit installed", "download"))
             print(f"[GMTOOLKIT] Installed {dest}")
         except Exception as e:
@@ -290,6 +311,50 @@ class Downloader:
             self.progress_q.put((0, 1, "gmtoolkit failed", "download"))
             with suppress(OSError):
                 zip_tmp.unlink()
+
+    def _gmtoolkit_remote_asset(self, zip_name: str) -> dict | None:
+        """Return {id, size, url} for the latest gmtoolkit asset, or None on failure."""
+        try:
+            data, _ = _gh_request(GMTOOLKIT_API_URL)
+            release = json.loads(data)
+        except Exception as e:
+            print(f"[GMTOOLKIT] Release query failed: {type(e).__name__}: {e}")
+            return None
+        asset = next((a for a in release.get("assets", []) if a["name"] == zip_name), None)
+        if not asset:
+            print(f"[GMTOOLKIT] Asset {zip_name} not found in latest release")
+            return None
+        return {
+            "id": asset.get("id"),
+            "size": asset.get("size", 0),
+            "url": asset.get("browser_download_url"),
+        }
+
+    def _load_gmtoolkit_meta(self) -> dict:
+        if MANIFEST_PATH.exists():
+            with suppress(Exception):
+                with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
+                    return json.load(f).get("gmtoolkit", {})
+        return {}
+
+    def _save_gmtoolkit_meta(self, meta: dict) -> None:
+        data = {}
+        if MANIFEST_PATH.exists():
+            with suppress(Exception):
+                with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+        data["gmtoolkit"] = meta
+        tmp = MANIFEST_PATH.with_suffix(".tmp")
+        try:
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(tmp, MANIFEST_PATH)
+        except Exception as e:
+            print(f"[ERROR] gmtoolkit manifest update failed: {e}")
+            with suppress(OSError):
+                tmp.unlink()
 
     def _load_runtime_manifest(self) -> dict:
         if MANIFEST_PATH.exists():

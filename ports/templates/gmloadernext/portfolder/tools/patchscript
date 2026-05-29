@@ -73,6 +73,10 @@ prepare_files() {
         -name "*.ico" -o -name "*.lnk" -o -name "*.msg" -o -name "*.zip" \
     \) -exec rm -f {} \;
 
+    # Normalize CRLF -> LF on text assets
+    find "$DATADIR" -type f \( -name "*.yarn" -o -name "*.csv" -o -name "*.json" -o -name "*.txt" -o -name "*.ini" \) \
+        -exec sed -i 's/\r$//' {} \;
+
     if [ -d "$SAVEDIR/textures" ]; then
         rm -rf "$SAVEDIR/textures"
     fi
