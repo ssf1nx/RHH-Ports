@@ -2105,6 +2105,69 @@
   },
   {
     "version": 4,
+    "name": "minathehollower.zip",
+    "items": [
+      "Mina the Hollower.sh",
+      "minathehollower"
+    ],
+    "items_opt": [],
+    "attr": {
+      "title": "Mina the Hollower",
+      "porter": [
+        "Jeod"
+      ],
+      "desc": "From the creators of Shovel Knight comes Mina the Hollower, a Game Boy-inspired top-down action-adventure. Play as Mina, a renowned Hollower, and wield your trusty whip and burrow underground to overcome enemies, solve puzzles, and lift a curse from the island of Tenebrous Isle.",
+      "desc_md": null,
+      "inst": "Buy Mina the Hollower on your desired platform, download the Linux version, and copy the assets into minathehollower/data/.",
+      "inst_md": null,
+      "genres": [
+        "action",
+        "adventure"
+      ],
+      "image": null,
+      "rtr": false,
+      "exp": false,
+      "runtime": [],
+      "store": [
+        {
+          "name": "GOG",
+          "gameurl": "https://www.gog.com/game/mina_the_hollower",
+          "developerurl": "https://www.yachtclubgames.com/games/mina-the-hollower/"
+        },
+        {
+          "name": "Humble Bundle",
+          "gameurl": "https://www.humblebundle.com/store/mina-the-hollower",
+          "developerurl": "https://www.yachtclubgames.com/games/mina-the-hollower/"
+        },
+        {
+          "name": "Steam",
+          "gameurl": "https://store.steampowered.com/app/1875580/Mina_the_Hollower/",
+          "developerurl": "https://www.yachtclubgames.com/games/mina-the-hollower/"
+        }
+      ],
+      "availability": "paid",
+      "reqs": [
+        "vulkan"
+      ],
+      "arch": [
+        "aarch64"
+      ],
+      "min_glibc": ""
+    },
+    "source": {
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/README.md",
+      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/minathehollower.zip",
+      "date_updated": "2026-05-29T12:36",
+      "first_seen": "2026-05-29",
+      "md5": "2cd63a7b4faf365bea58b64ae508f2c5",
+      "size": 7752579,
+      "lifetime_downloads": 0,
+      "last_commit": "[MINA] Add Mina the Hollower"
+    }
+  },
+  {
+    "version": 4,
     "name": "momodora_rutm.zip",
     "items": [
       "Momodora RUtM.sh",
