@@ -2161,12 +2161,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/momodora_rutm/momodora_rutm/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/momodora_rutm.zip",
-      "date_updated": "2026-05-14T18:18",
+      "date_updated": "2026-05-29T12:03",
       "first_seen": "2026-01-17",
-      "md5": "1709ab6dc852495c58c7aa59c8199973",
-      "size": 8486745,
-      "lifetime_downloads": 30,
-      "last_commit": "Add discounts and more stores"
+      "md5": "ff9025bdd7c08b9fde9e5b350bdbdb58",
+      "size": 8487756,
+      "lifetime_downloads": 41,
+      "last_commit": "Add westonpack license files to ports that use westonpack"
     }
   },
   {
@@ -3022,12 +3022,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/pokewilds/pokewilds/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pokewilds.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-29T12:03",
       "first_seen": "2025-05-17",
-      "md5": "e2c03d93d69036156d8024d5be30f979",
-      "size": 2196623,
-      "lifetime_downloads": 24,
-      "last_commit": "Update readmes to add runtime requirements"
+      "md5": "459d1370e84ab1adbede68e851c87e83",
+      "size": 2197618,
+      "lifetime_downloads": 32,
+      "last_commit": "Add westonpack license files to ports that use westonpack"
     }
   },
   {
@@ -4063,12 +4063,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/smb1r/smb1r/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/smb1r.zip",
-      "date_updated": "2026-05-14T13:39",
+      "date_updated": "2026-05-29T12:03",
       "first_seen": "2025-09-15",
-      "md5": "3e585bb45967791c04d50696335febed",
-      "size": 67779183,
-      "lifetime_downloads": 165,
-      "last_commit": "Update readmes to add runtime requirements"
+      "md5": "99df21b4f62ff8bef04bf218bf5274ed",
+      "size": 67780162,
+      "lifetime_downloads": 233,
+      "last_commit": "Add westonpack license files to ports that use westonpack"
     }
   },
   {
