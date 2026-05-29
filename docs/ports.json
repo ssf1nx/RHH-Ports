@@ -2135,7 +2135,7 @@
           "developerurl": "https://www.yachtclubgames.com/games/mina-the-hollower/"
         },
         {
-          "name": "Humble Bundle",
+          "name": "Humble Store",
           "gameurl": "https://www.humblebundle.com/store/mina-the-hollower",
           "developerurl": "https://www.yachtclubgames.com/games/mina-the-hollower/"
         },
@@ -2158,12 +2158,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/minathehollower.zip",
-      "date_updated": "2026-05-29T12:36",
+      "date_updated": "2026-05-29T12:55",
       "first_seen": "2026-05-29",
-      "md5": "2cd63a7b4faf365bea58b64ae508f2c5",
+      "md5": "6d7d59fbb39b38e521d8689d2cb75704",
       "size": 7752579,
       "lifetime_downloads": 0,
-      "last_commit": "[MINA] Add Mina the Hollower"
+      "last_commit": "[MINA] Store fix"
     }
   },
   {
