@@ -1254,12 +1254,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fishbowl/fishbowl/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/fishbowl/fishbowl/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/fishbowl.zip",
-      "date_updated": "2026-05-29T13:17",
+      "date_updated": "2026-05-30T16:58",
       "first_seen": "2026-05-29",
-      "md5": "7b91ca2f2f7ae891d61bdb6bd724b915",
-      "size": 5827682,
-      "lifetime_downloads": 0,
-      "last_commit": "[FISHBOWL] Push Fishbowl to release"
+      "md5": "da3a639f0a7f7e327cb3f2348bc433f4",
+      "size": 5827770,
+      "lifetime_downloads": 5,
+      "last_commit": "[FISHBOWL] Add note to readme"
     }
   },
   {
