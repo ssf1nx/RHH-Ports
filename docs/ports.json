@@ -2212,12 +2212,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/boxports/minathehollower/minathehollower/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/minathehollower.zip",
-      "date_updated": "2026-05-29T13:48",
+      "date_updated": "2026-05-30T12:00",
       "first_seen": "2026-05-29",
-      "md5": "78244ed3240f747486206e66e9e7d663",
-      "size": 7753229,
-      "lifetime_downloads": 1,
-      "last_commit": "[MINA] Add mesa flags, strip some box64 flags for running on RPMINI"
+      "md5": "92849caf28dfa539b90dc5e97a5f535e",
+      "size": 7753167,
+      "lifetime_downloads": 7,
+      "last_commit": "[MINA] Remove readme note about Steam since issue is resolved"
     }
   },
   {
