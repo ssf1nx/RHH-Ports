@@ -1,4 +1,4 @@
-## Fishbowl -- PortMaster
+## Fishbowl
 A narrative game about dreams, grief, and hope. Rediscover your memories and find your way into the present in this intimate experience where slice-of-life meets surreal.
 
 ## Installation
@@ -15,6 +15,9 @@ Purchase [Fishbowl on Steam](https://store.steampowered.com/app/1638070/Fishbowl
 | START              | Pause |
 
 The D-pad and left stick are interchangeable everywhere, including the drag-and-drop packing puzzle. L1/R1/L2/R2 and Select are unused.
+
+## Notes
+There are some areas with lower fps than others. Unfortunately patches were unable to fully mitigate these slowdowns. On RG353V the game is still fully playable.
 
 ## Runtimes
 
