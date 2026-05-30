@@ -6,8 +6,6 @@ If using Steam, you can get the Linux version from https://steamdb.info/app/1875
 - https://steamdb.info/depot/1875581 (this is also on Windows, the data/*.pak files)
 - https://steamdb.info/depot/1875583/ (the Linux launcher and specific Linux files)
 
-*Note: If using Steam, you may encounter an issue with `libsteam.so`. A future update from YCG should rectify the issue.
-
 ## Requirements
 Mina the Hollower is a **Vulkan-only** game. Your device needs a working Vulkan driver and a native X11/Xwayland display.
 
