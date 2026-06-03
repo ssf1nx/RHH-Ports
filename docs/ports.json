@@ -3215,7 +3215,7 @@
       "porter": [
         "Jeod"
       ],
-      "desc": "A source port of Super Mario 64 by the reputable HarbourMasters64.",
+      "desc": "A source port of Super Mario 64 by the reputable HarbourMasters.",
       "desc_md": null,
       "inst": "Follow the guide in the readme to generate your sm64.o2r file.",
       "inst_md": null,
@@ -3235,15 +3235,15 @@
       "min_glibc": null
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/sm64-ghostship/sm64-ghostship/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/sm64-ghostship/sm64-ghostship/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/sm64-ghostship/sm64-ghostship/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sm64-ghostship.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-06-03T15:29",
       "first_seen": "2026-01-18",
-      "md5": "1930d7aba46b0ca742ce2229400a8b7a",
-      "size": 11196544,
-      "lifetime_downloads": 64,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "aa3a1698824cb920b2a4c2241ae1e780",
+      "size": 9131598,
+      "lifetime_downloads": 94,
+      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
     }
   },
   {
@@ -3281,15 +3281,15 @@
       "min_glibc": null
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh/soh/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh/soh/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh/soh/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-06-03T15:29",
       "first_seen": "2025-11-11",
-      "md5": "9d8b3f49e3dc9fb4c9601c6687ab3fa4",
-      "size": 51064133,
-      "lifetime_downloads": 63,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "0b204a0a84ef42d6209be580dc184ea4",
+      "size": 51008565,
+      "lifetime_downloads": 114,
+      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
     }
   },
   {
@@ -3327,15 +3327,15 @@
       "min_glibc": null
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/soh2/soh2/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "date_updated": "2026-05-12T14:45",
+      "date_updated": "2026-06-03T15:29",
       "first_seen": "2025-11-11",
-      "md5": "82cfbf14f99c90ae1ab036c4e86c94ca",
-      "size": 14069563,
-      "lifetime_downloads": 91,
-      "last_commit": "Update all patchscripts in prep for new patcher gui commands"
+      "md5": "15814618279f8fe3621b078479995444",
+      "size": 14143360,
+      "lifetime_downloads": 116,
+      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
     }
   },
   {
@@ -3859,15 +3859,15 @@
       "min_glibc": ""
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/spaghettikart/spaghettikart/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/spaghettikart/spaghettikart/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/spaghettikart/spaghettikart/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/spaghettikart.zip",
-      "date_updated": "2026-05-16T10:55",
+      "date_updated": "2026-06-03T15:29",
       "first_seen": "2026-01-25",
-      "md5": "be36bfa0a5713a9a78ae712f6d928fe1",
-      "size": 28989598,
-      "lifetime_downloads": 76,
-      "last_commit": "Update autobuilds"
+      "md5": "40721e621711fd9450eb274b73b97536",
+      "size": 28989595,
+      "lifetime_downloads": 98,
+      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
     }
   },
   {
@@ -4084,15 +4084,15 @@
       "min_glibc": ""
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters64/starship/starship/README.md",
+      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/starship/starship/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/starship/starship/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/starship.zip",
-      "date_updated": "2026-05-17T10:20",
+      "date_updated": "2026-06-03T15:29",
       "first_seen": "2025-11-11",
-      "md5": "d102bba68d5d3e1523d778990da73384",
-      "size": 6745119,
-      "lifetime_downloads": 53,
-      "last_commit": "Properly catch logs and preseed Starship"
+      "md5": "43156648f33cb569f1899563c58ee0e3",
+      "size": 6745118,
+      "lifetime_downloads": 74,
+      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
     }
   },
   {
