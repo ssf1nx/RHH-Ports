@@ -3,9 +3,16 @@
 AutoInstaller
 """
 from pathlib import Path
+from contextlib import suppress
+import io
+import os
+import tempfile
 import zipfile
 import shutil
 import xml.etree.ElementTree as ET
+
+# Basenames of the GameMaker data file inside a .port archive.
+GAME_DATA_NAMES = ("game.droid", "data.win")
 
 # DATA_DIR holds the autoinstall queue. INSTALL_DIR is the binary's install
 # dir on disk; PORTS_DIR / WINDOWS_DIR derive from its siblings (where
@@ -53,7 +60,7 @@ class AutoInstaller:
                 base_dir.mkdir(parents=True, exist_ok=True)
 
                 print(f"[EXTRACT] Extracting {zip_name} → {base_dir}/ (flat)")
-                zf.extractall(base_dir)
+                self._extract_preserving_ports(zf, base_dir)
 
                 # Clean macOS junk
                 for junk in base_dir.rglob("__MACOSX"):
@@ -87,6 +94,84 @@ class AutoInstaller:
         zip_path.unlink(missing_ok=True)
         print(f"[OK] Installed {zip_name}")
         return 0
+
+    def _extract_preserving_ports(self, zf: zipfile.ZipFile, base_dir: Path) -> None:
+        """Like extractall(), but never blow away a user's GameMaker .port."""
+        for member in zf.infolist():
+            if member.filename.endswith(".port") and not member.is_dir():
+                target = base_dir / member.filename
+                if target.is_file() and self._merge_port(zf, member, target):
+                    continue
+            zf.extract(member, base_dir)
+
+    def _merge_port(self, zf: zipfile.ZipFile, member: zipfile.ZipInfo, target: Path) -> bool:
+        """Reconcile an incoming .port with the one already on disk.
+
+        Returns True if the member was handled here (caller must skip the
+        normal extract), or False to fall back to a plain overwrite.
+        """
+        try:
+            incoming = zipfile.ZipFile(io.BytesIO(zf.read(member)))
+            incoming_infos = incoming.infolist()
+        except (zipfile.BadZipFile, OSError) as e:
+            print(f"[PORT][WARN] {member.filename}: unreadable incoming .port ({e}); overwriting")
+            return False
+
+        # Complete, self-contained game; overwrite to deliver updates. Such a
+        # .port carries no user data (saves are kept in a separate save_dir).
+        if any(os.path.basename(i.filename) in GAME_DATA_NAMES for i in incoming_infos):
+            print(f"[PORT] {member.filename}: ships game data → overwriting")
+            return False
+
+        # Runtime-only base: the on-device copy has the user's game packed in.
+        try:
+            existing = zipfile.ZipFile(target, "r")
+        except (zipfile.BadZipFile, OSError) as e:
+            print(f"[PORT][WARN] {target}: unreadable existing .port ({e}); overwriting")
+            return False
+
+        try:
+            existing_infos = existing.infolist()
+            existing_crc = {i.filename: i.CRC for i in existing_infos}
+            runtime_changed = any(
+                not i.is_dir() and existing_crc.get(i.filename) != i.CRC
+                for i in incoming_infos
+            )
+
+            if not runtime_changed:
+                return True
+
+            # Runtime updated: splice the new runtime libs into the user's .port
+            # while preserving every entry the base does not provide (game data).
+            incoming_names = {i.filename for i in incoming_infos}
+            fd, tmp = tempfile.mkstemp(dir=str(target.parent), suffix=".porttmp")
+            os.close(fd)
+            try:
+                with zipfile.ZipFile(tmp, "w") as out:
+                    for info in incoming_infos:
+                        self._copy_entry(incoming, info, out)
+                    for info in existing_infos:
+                        if info.filename not in incoming_names:
+                            self._copy_entry(existing, info, out)
+                existing.close()
+                os.replace(tmp, str(target))
+            except Exception as e:
+                with suppress(OSError):
+                    os.remove(tmp)
+                print(f"[ERROR] {member.filename}: splice failed ({e}); overwriting")
+                return False
+            return True
+        finally:
+            existing.close()
+
+    @staticmethod
+    def _copy_entry(src: zipfile.ZipFile, info: zipfile.ZipInfo, out: zipfile.ZipFile) -> None:
+        """Stream one entry from src into out, preserving name and compression."""
+        if info.is_dir():
+            out.writestr(info, b"")
+            return
+        with src.open(info, "r") as sf, out.open(info, "w") as df:
+            shutil.copyfileobj(sf, df, 1024 * 1024)
 
     def gamelist_add(self, gameinfo_file: Path, gamelist_path: Path) -> None:
         try:
