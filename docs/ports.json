@@ -2003,7 +2003,7 @@
         "rpg"
       ],
       "image": null,
-      "rtr": true,
+      "rtr": false,
       "exp": false,
       "runtime": [
         "gmloadernext.squashfs"
@@ -2048,12 +2048,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/screenshot.jpg",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/lunarlux/lunarlux/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/lunarlux.zip",
-      "date_updated": "2026-05-29T03:25",
+      "date_updated": "2026-06-03T15:01",
       "first_seen": "2025-05-18",
-      "md5": "f64b57f2ffe998384ccb7207002135a8",
-      "size": 5324863,
+      "md5": "298d5b5ed1ef936f444c61ca5587e6aa",
+      "size": 5324860,
       "lifetime_downloads": 11,
-      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
+      "last_commit": "[LUNARLUX] Correct port.json"
     }
   },
   {
