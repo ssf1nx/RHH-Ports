@@ -3238,12 +3238,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/sm64-ghostship/sm64-ghostship/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/sm64-ghostship/sm64-ghostship/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/sm64-ghostship.zip",
-      "date_updated": "2026-06-03T15:29",
+      "date_updated": "2026-06-04T16:18",
       "first_seen": "2026-01-18",
-      "md5": "aa3a1698824cb920b2a4c2241ae1e780",
-      "size": 9131598,
-      "lifetime_downloads": 94,
-      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
+      "md5": "23b2a12740c4d2943871a330b7891d75",
+      "size": 9143858,
+      "lifetime_downloads": 96,
+      "last_commit": "[HARBOURMASTERS] Rebuild libzip without libcrypto"
     }
   },
   {
@@ -3284,12 +3284,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh/soh/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh/soh/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh.zip",
-      "date_updated": "2026-06-03T15:29",
+      "date_updated": "2026-06-04T16:18",
       "first_seen": "2025-11-11",
-      "md5": "0b204a0a84ef42d6209be580dc184ea4",
-      "size": 51008565,
-      "lifetime_downloads": 114,
-      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
+      "md5": "22e6de1c6228c379d3ce772611da7353",
+      "size": 51020825,
+      "lifetime_downloads": 116,
+      "last_commit": "[HARBOURMASTERS] Rebuild libzip without libcrypto"
     }
   },
   {
@@ -3330,12 +3330,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "date_updated": "2026-06-03T15:29",
+      "date_updated": "2026-06-04T16:18",
       "first_seen": "2025-11-11",
-      "md5": "15814618279f8fe3621b078479995444",
-      "size": 14143360,
-      "lifetime_downloads": 116,
-      "last_commit": "[HARBOURMASTERS] Rebranding, drop the 64"
+      "md5": "e38cec6df9b4c3c4cd4525724ba12cd1",
+      "size": 14155620,
+      "lifetime_downloads": 118,
+      "last_commit": "[HARBOURMASTERS] Rebuild libzip without libcrypto"
     }
   },
   {
