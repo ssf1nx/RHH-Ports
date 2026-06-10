@@ -649,12 +649,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-05-29T03:25",
+      "date_updated": "2026-06-10T22:45",
       "first_seen": "2025-05-18",
-      "md5": "5e5f8e09e9001cf2e735048e7c3e2717",
-      "size": 4198125,
-      "lifetime_downloads": 84,
-      "last_commit": "[GMS] Switch audio compression to auto, Pharos stores gmtoolkit version and updates it when stale"
+      "md5": "2a86eede50e34e73aa44d3b2904bf088",
+      "size": 4200476,
+      "lifetime_downloads": 92,
+      "last_commit": "[DELTARUNE] Add code patches for performance"
     }
   },
   {
