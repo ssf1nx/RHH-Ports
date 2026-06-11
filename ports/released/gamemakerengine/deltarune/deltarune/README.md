@@ -14,11 +14,9 @@ If you are using a widescreen device you may be interested in the [console borde
 
 This port requires the following runtimes in `PortMaster/libs`:
 
-- **.NET 8** — [dotnet-8.0.12.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/dotnet-8.0.12.squashfs)
-- **GMToolkit** — [gmtoolkit.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmtoolkit.squashfs)
 - **GMLoader-Next** — [gmloadernext.squashfs](https://github.com/JeodC/RHH-Ports/raw/main/runtimes/gmloadernext.squashfs)
 
-[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch these automatically when installing the port. Otherwise download them manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop them in `PortMaster/libs`.
+[Pharos](https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/pharos.zip) will fetch this automatically when installing the port. Otherwise download it manually from the [runtimes folder](https://github.com/JeodC/RHH-Ports/tree/main/runtimes) and drop it in `PortMaster/libs`.
 
 ## Thanks
 TobyFox -- The absolutely amazing game  
