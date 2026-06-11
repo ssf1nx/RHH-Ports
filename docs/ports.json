@@ -649,12 +649,12 @@
       "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/gamemakerengine/deltarune/deltarune/README.md",
       "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/deltarune.zip",
-      "date_updated": "2026-06-10T22:45",
+      "date_updated": "2026-06-11T23:05",
       "first_seen": "2025-05-18",
-      "md5": "2a86eede50e34e73aa44d3b2904bf088",
-      "size": 4200476,
-      "lifetime_downloads": 92,
-      "last_commit": "[DELTARUNE] Add code patches for performance"
+      "md5": "11bf4ac040d80103ae614cb22a6eac0a",
+      "size": 4200429,
+      "lifetime_downloads": 97,
+      "last_commit": "[DELTARUNE] Readme update"
     }
   },
   {
