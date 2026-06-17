@@ -44,6 +44,13 @@ is_consumed() {
     grep -qFx -- "$1" "$CONSUMED_FILE"
 }
 
+is_linux_elf() {
+    [ -f "$1" ] || return 1
+    local magic
+    magic=$(head -c4 "$1" 2>/dev/null | od -An -t x1 | tr -d ' \n')
+    [ "$magic" = "7f454c46" ]
+}
+
 # Get derived files for a given source filename. Reads from $TARGETS_FILE
 # (parsed live from upstream Functions.cs by download_file_targets) so new
 # upstream derivatives are picked up automatically.
@@ -201,7 +208,6 @@ download_patches() {
 }
 
 download_file_targets() {
-    # Pull the upstream derived-files mapping from Functions.cs
     local cs_file="$TMPDIR/Functions.cs"
     local manual_cs="$DATADIR/Functions.cs"
 
@@ -210,22 +216,25 @@ download_file_targets() {
         echo "Using manually-placed Functions.cs from data/."
         cp -f "$manual_cs" "$cs_file"
     elif ! $FETCH "$cs_file" "$FUNCTIONS_CS_URL"; then
-        echo "ERROR: could not download Functions.cs; derived patches will be skipped."
-        return
+        emit_fail_msg "Could not get the derived-file mapping (Functions.cs). Check your internet connection, or for an offline install place Functions.cs in the data folder next to patches_linux_arm64.zip."
+        echo "ERROR: could not download Functions.cs and none was placed in data/."
+        return 1
     fi
 
     if ! awk -f "$PARSE_TARGETS_AWK" "$cs_file" > "$TARGETS_FILE" 2>&1; then
-        echo "ERROR: failed to parse Functions.cs; derived patches will be skipped."
+        emit_fail_msg "The derived-file mapping (Functions.cs) could not be parsed. The file may be corrupt or from an unexpected upstream version."
+        echo "ERROR: failed to parse Functions.cs."
         rm -f "$TARGETS_FILE"
-        return
+        return 1
     fi
 
     local count
     count=$(wc -l < "$TARGETS_FILE" 2>/dev/null)
     if [ "${count:-0}" -lt 5 ]; then
-        echo "WARN: parsed mapping has only ${count:-0} entries (suspicious); discarding."
+        emit_fail_msg "The derived-file mapping (Functions.cs) looks incomplete. Refusing to patch with a partial mapping - try reinstalling, or replace Functions.cs in the data folder."
+        echo "ERROR: parsed mapping has only ${count:-0} entries (expected many); refusing to continue."
         rm -f "$TARGETS_FILE"
-        return
+        return 1
     fi
 
     echo "Parsed $count derived-file mappings from upstream."
@@ -379,6 +388,12 @@ patch_game_files() {
         return 1
     fi
 
+    if ! is_linux_elf "$EXECUTABLE"; then
+        emit_fail_msg "The game binary was not converted to the Linux version. Patching is incomplete - reinstall with an internet connection (offline installs also need Functions.cs in the data folder)."
+        echo "ERROR: '$EXECUTABLE' is not a Linux ELF after patching — the binary patch did not apply."
+        return 1
+    fi
+
     echo "Patching complete."
     post_patch
 }
@@ -439,7 +454,7 @@ process_game() {
     extract_game || return 1
     echo "Downloading and extracting patches..."
     download_patches || return 1
-    download_file_targets
+    download_file_targets || return 1
     echo "Patching game files..."
     patch_game_files || return 1
     echo "Recording patch version..."

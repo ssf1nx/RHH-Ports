@@ -17,7 +17,7 @@ If your device has no internet connection, you can pre-stage the patcher files o
    ```
    https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/<tag>/ladxhd_patcher_source_code/Resources/patches_linux_arm64.zip
    ```
-3. (Optional) Download `Functions.cs` from the same tag and place it at `zelda-ladxhd/data/Functions.cs`. Without it, the patcher falls back to slower checksum-based auto-matching:
+3. Download `Functions.cs` from the same tag and place it at `zelda-ladxhd/data/Functions.cs`. This maps the upstream source files to their Linux outputs (including the game binary itself) and is **required** for an offline patch — with no internet to fetch it, the patcher will stop and report it missing rather than produce a broken install:
    ```
    https://raw.githubusercontent.com/BigheadSMZ/Zelda-LA-DX-HD-Updated/<tag>/ladxhd_patcher_source_code/Program/Functions.cs
    ```
