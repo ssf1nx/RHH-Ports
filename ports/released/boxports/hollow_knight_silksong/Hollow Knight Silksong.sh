@@ -93,6 +93,10 @@ export GPTOKEYB="$GAMEDIR/tools/gptokeyb $ESUDOKILL"
 
 # Run it
 $GPTOKEYB "$GAME" xbox360 & 
+
+# Ignore input plumber
+export SDL_GAMECONTROLLER_IGNORE_DEVICES_EXCEPT=0x045e/0x028e
+
 pm_platform_helper $GAME > /dev/null
 $BOX64 "$GAMEDIR/data/$GAME" -force-opengl -screen-fullscreen 1 -screen-width $DISPLAY_WIDTH -screen-height $DISPLAY_HEIGHT
 
