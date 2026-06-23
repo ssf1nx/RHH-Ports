@@ -7,6 +7,8 @@ project_clone https://github.com/ssf1nx/2ship2harkinian.git
 # shipping libSDL2 to devices.
 build_sdl2
 
+build_sdl2_net
+
 build_libzip
 build_json
 build_bzip2
@@ -22,7 +24,8 @@ export CXXFLAGS="$CFLAGS"
 project_configure_and_build Generate2ShipOtr \
     -DUSE_OPENGLES=1 \
     -DBUILD_CROWD_CONTROL=0 \
-    -DCMAKE_BUILD_TYPE=${BUILD_TYPE:-Release}
+    -DCMAKE_BUILD_TYPE=${BUILD_TYPE:-Release} \
+    -DBUILD_NETWORKING=1
 
 # 2s2h adds spdlog to SoH's NEEDED set.
 stage_libs mm/2s2h.elf \
