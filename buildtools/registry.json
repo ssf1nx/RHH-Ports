@@ -55,8 +55,9 @@
     "soh2": {
       "port_dir": "buildtools/harbourmasters/soh2/soh2",
       "target_dirs": ["ports/released/harbourmasters/soh2/soh2"],
-      "upstream_repo": "HarbourMasters/2ship2harkinian",
-      "track": "release",
+      "upstream_repo": "ssf1nx/2ship2harkinian",
+      "track": "branch",
+      "upstream_branch": "anchor",
       "commit_prefix": "SOH2",
       "artifacts": ["*.elf", "2ship.o2r", "libs", "assets/extractor.zip"]
     },
