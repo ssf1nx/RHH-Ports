@@ -40,4 +40,5 @@ stage_libs mm/2s2h.elf \
     libzip.so.5 \
     libtinyxml2.so.10 \
     libopus.so.0 \
-    libopusfile.so.0
+    libopusfile.so.0 \
+    libSDL2_net-2.0.so.0
