@@ -3264,15 +3264,15 @@
       "min_glibc": null
     },
     "source": {
-      "screenshot_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/screenshot.png",
-      "readme_url": "https://raw.githubusercontent.com/JeodC/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/README.md",
-      "download_url": "https://github.com/JeodC/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "date_updated": "2026-06-04T16:18",
+      "screenshot_url": "https://raw.githubusercontent.com/ssf1nx/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/screenshot.png",
+      "readme_url": "https://raw.githubusercontent.com/ssf1nx/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/README.md",
+      "download_url": "https://github.com/ssf1nx/RHH-Ports/releases/download/ports-latest/soh2.zip",
+      "date_updated": "2026-06-23T17:47",
       "first_seen": "2025-11-11",
-      "md5": "e38cec6df9b4c3c4cd4525724ba12cd1",
-      "size": 14155620,
+      "md5": "b9722639bdea8ea309fca3e96750e664",
+      "size": 14149705,
       "lifetime_downloads": 118,
-      "last_commit": "[HARBOURMASTERS] Rebuild libzip without libcrypto"
+      "last_commit": "[SOH2] Update to 0d52462"
     }
   },
   {
