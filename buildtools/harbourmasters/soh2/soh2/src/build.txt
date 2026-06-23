@@ -1,7 +1,7 @@
 set -e
 source /root/buildtools/harbourmasters/lib_build.sh
 
-project_clone https://github.com/HarbourMasters/2ship2harkinian.git
+project_clone https://github.com/ssf1nx/2ship2harkinian.git
 
 # See SoH build.txt for the rationale on building SDL2 from source but not
 # shipping libSDL2 to devices.
