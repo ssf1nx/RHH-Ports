@@ -3267,11 +3267,11 @@
       "screenshot_url": "https://raw.githubusercontent.com/ssf1nx/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/screenshot.png",
       "readme_url": "https://raw.githubusercontent.com/ssf1nx/RHH-Ports/main/ports/released/harbourmasters/soh2/soh2/README.md",
       "download_url": "https://github.com/ssf1nx/RHH-Ports/releases/download/ports-latest/soh2.zip",
-      "date_updated": "2026-06-23T19:52",
+      "date_updated": "2026-06-24T01:17",
       "first_seen": "2025-11-11",
-      "md5": "fdbc1f9b09929de2070f09e0eee1cc48",
-      "size": 14149709,
-      "lifetime_downloads": 120,
+      "md5": "b0de762ac8a97d9e1805a66fc30780e9",
+      "size": 14373336,
+      "lifetime_downloads": 121,
       "last_commit": "[SOH2] Update to 67ee6f9"
     }
   },
